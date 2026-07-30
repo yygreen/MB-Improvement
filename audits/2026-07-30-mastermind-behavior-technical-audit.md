@@ -340,8 +340,8 @@ a publish failure.
 
 | # | Issue | Severity | Evidence |
 |---|---|---|---|
-| 1 | No BlogPosting schema on any of 337 posts — incl. the page carrying 72% of organic traffic | **High** | 0 tags + 0 JS references on 13/13 posts |
-| 2 | `/areas-we-serve/perry-043a7` still in sitemap (301s to `/perry`) | **Medium** | Only non-200 entry of 579 |
+| 1 | ~~No BlogPosting schema on any of 337 posts~~ **FIXED** — see Change log | ~~High~~ | Live; 50 posts verified valid |
+| 2 | ~~`/areas-we-serve/perry-043a7` still in sitemap (301s to `/perry`)~~ **FIXED** — see Change log | ~~Medium~~ | Sitemap now 578 entries, 0 non-200 |
 | 3 | 337 of 337 posts attributed to the generic Clinical Team; 8 BCBAs have zero articles | **Medium** | Pagination walk = 337; 8/9 pages `w-dyn-empty` |
 | 4 | All 9 noindexed `/bcbas/*` URLs are still submitted in `sitemap.xml` | **Low** | 9/9 `includeInSitemap: true` |
 | 5 | 7 root pages carry no schema (outside staged scope) | **Low** | See Task 4 |
@@ -442,3 +442,55 @@ double quotes. Webflow escapes them, so the JSON stays valid, but the headline v
 reads `...Accept &quot;No&quot;` — parsers do not HTML-decode inside a JSON-LD script
 tag. Replacing the straight quotes with curly quotes in the CMS title fixes the schema
 and improves the visible typography. Not applied: it edits live post content.
+
+---
+
+## Change log — 2026-07-30: duplicate Perry sitemap entry
+
+**Status: LIVE on production.** Addresses open issue #2.
+
+### Cause
+
+Not a missing redirect — the 301 was already in place and firing correctly. The Areas We
+Serve collection held **two published items both named "Perry"**:
+
+| Item | Slug | Created | Content |
+|---|---|---|---|
+| `66ad3c53921c8c113c3c241b` | `perry-043a7` | 2024-08-02 | empty — `local-detail-html`, `final-cta-body`, `verify-body` and all 3 nearby-city refs `null` |
+| `6674696ea34ecacbc4eb3d61` | `perry` | 2024-06-20 | fully populated |
+
+The `-043a7` suffix is Webflow's auto-generated collision hash, so the duplicate was
+created by accident and left empty. Webflow builds its sitemap from every *published*
+item regardless of whether a redirect rule shadows the URL, which is why a 301'ing URL
+was still advertised.
+
+### Fix applied
+
+`includeInSitemap: false` on the duplicate item (`66ad3c53921c8c113c3c241b`), then a
+production publish. The item and its 301 are left intact.
+
+**Deletion was deliberately avoided.** `nearby-city-*` are reference fields, so deleting
+the item could break those references on any city page pointing at it, and the redirect's
+survival depends on whether it is a manual rule or one Webflow auto-created from a slug
+change. Sitemap exclusion achieves the same result, is reversible, and risks neither.
+
+### Verification (production, cache-busted)
+
+| Check | Before | After |
+|---|---|---|
+| `<loc>` entries | 579 | **578** |
+| `perry-043a7` in sitemap | present | **absent** |
+| `/areas-we-serve/perry-043a7` | 301 → `/perry` | 301 → `/perry` (unchanged) |
+| `/areas-we-serve/perry` | 200, in sitemap | 200, in sitemap |
+| Non-200 entries across full sitemap | 1 | **0 of 578** |
+
+Full HEAD sweep of all 578 entries returns 200 on every URL. One post initially returned
+a curl connection failure (`000`, not an HTTP status) under 24-way parallelism and
+returned 200 on three serial retries — the same transient behaviour noted during the
+original audit, not a site fault.
+
+### Not done
+
+The nine noindexed `/bcbas/*` URLs remain in the sitemap by prior decision — keeping them
+submitted is what lets Google recrawl and register the `noindex`. They should be excluded
+once Search Console shows them dropped from the index.
