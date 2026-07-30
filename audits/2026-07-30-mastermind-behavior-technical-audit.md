@@ -344,7 +344,7 @@ a publish failure.
 | 2 | ~~`/areas-we-serve/perry-043a7` still in sitemap (301s to `/perry`)~~ **FIXED** — see Change log | ~~Medium~~ | Sitemap now 578 entries, 0 non-200 |
 | 3 | 337 of 337 posts attributed to the generic Clinical Team; 8 BCBAs have zero articles | **Medium** | Pagination walk = 337; 8/9 pages `w-dyn-empty` |
 | 4 | All 9 noindexed `/bcbas/*` URLs are still submitted in `sitemap.xml` | **Low** | 9/9 `includeInSitemap: true` |
-| 5 | 7 root pages carry no schema (outside staged scope) | **Low** | See Task 4 |
+| 5 | ~~7 root pages carry no schema~~ **FIXED** — see Change log | ~~Low~~ | 7/7 live and verified |
 | 6 | Sitemap carries no `lastmod` on any of 579 entries | **Low** | 0 occurrences |
 
 ### Downgraded to informational — the BCBA pages are deliberately deindexed
@@ -499,8 +499,9 @@ once Search Console shows them dropped from the index.
 
 ## Change log — 2026-07-30: schema for the 7 hub pages
 
-**Status: staged in Webflow and verified on staging. NOT yet published to production.**
-Addresses open issue #5. Payloads are committed under `schema/hub-pages/`.
+**Status: LIVE on production as of 2026-07-30.** Published to `www.mastermindbehavior.com`
+and `mastermindbehavior.com`. Addresses open issue #5. Payloads are committed under
+`schema/hub-pages/`.
 
 ### Rationale
 
@@ -546,12 +547,15 @@ searched and holds nothing on her credentials. Her `Person` node therefore has `
 `honorificSuffix`**. Asserting a BCBA certification for her would fabricate a
 professional credential on YMYL medical content.
 
-### Staging verification
+### Verification
 
-| Check | Result |
-|---|---|
-| Pages emitting exactly one valid, parseable JSON-LD block | **7 / 7** |
-| Node counts | 10 on `/bcba-team` (1 page + 1 breadcrumb + 8 Person), 2 on each other |
-| Dangling `@id` references inside each graph | **none** |
-| The 6 `#service` `@id`s referenced by `/services` exist on their target pages | **6 / 6** |
-| Pages that already had schema | unchanged — 1 block each on `/`, `/contact`, a city page, a post, a state hub |
+| Check | Staging | Production |
+|---|---|---|
+| Pages emitting exactly one valid, parseable JSON-LD block | 7 / 7 | **7 / 7** |
+| `BreadcrumbList` present | 7 / 7 | **7 / 7** |
+| Node counts | 10 on `/bcba-team`, 2 elsewhere | same |
+| 8 `Person` entities live on `/bcba-team` | ✅ | ✅ |
+| Kelly Brzak node carries no `jobTitle` / `honorificSuffix` | ✅ | ✅ confirmed live |
+| Dangling `@id` references inside each graph | none | none |
+| The 6 `#service` `@id`s referenced by `/services` exist on target pages | 6 / 6 | 6 / 6 |
+| Pages that already had schema | unchanged | unchanged — 1 block each on `/`, `/contact`, a city page, 2 posts, a state hub, a service page |
