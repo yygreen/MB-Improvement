@@ -574,3 +574,112 @@ professional credential on YMYL medical content.
 | Dangling `@id` references inside each graph | none | none |
 | The 6 `#service` `@id`s referenced by `/services` exist on target pages | 6 / 6 | 6 / 6 |
 | Pages that already had schema | unchanged | unchanged — 1 block each on `/`, `/contact`, a city page, 2 posts, a state hub, a service page |
+
+---
+
+## Internal linking analysis — 2026-07-30 (analysis only, no changes made)
+
+Measured across all 337 posts (fetched in full), not sampled.
+
+### The link graph
+
+| Source | → services | → city pages | → state hubs | → other posts |
+|---|---|---|---|---|
+| Blog (337 posts, ~96% of site traffic) | 2.05/post | **0** | **0** | 3.26/post |
+| Homepage | — | 0 | 3 | — |
+| `/areas-we-serve` | — | 190 | — | — |
+| State hubs (NJ 100 / GA 78 / NC 12) | — | 190 total | — | — |
+| A city page | 7 | 1 | 3 | **0** |
+
+Zero-city and zero-state-hub figures verified on 48 posts: the 10 highest-traffic
+(≈92% of all organic traffic) plus a 38-post spread across the sitemap.
+
+**The local layer is not unlinked — it is sealed off from the traffic.** The blog forms a
+closed loop with the service pages; the only inbound path to the local subgraph is the
+homepage.
+
+### 15 city pages have no internal links at all
+
+`toms-river · trenton · union · vernon · vineland · voorhees · wall · wayne ·
+west-milford · west-new-york · west-orange · westfield · willingboro · winslow ·
+woodbridge` — all New Jersey. The NJ state hub links **exactly 100** cities (Webflow's
+per-list cap) while GA (78) and NC (12) sit under it and lose nothing. Strong inference,
+not proven. Needs pagination or a second list.
+
+`/areas-we-serve` also still links `perry-043a7` — an internal link into a redirect.
+
+### State-hub linking has a far smaller addressable surface than expected
+
+An earlier recommendation in this document assumed a state-hub link would be
+"editorially natural in any ABA post." **That was wrong.** Three sources inflate apparent
+state mentions, none editorial:
+
+1. the boilerplate closing block ("serving families across New Jersey, Georgia, and
+   North Carolina") — on 212 posts;
+2. the embedded insurance widget, which renders a state dropdown as page text;
+3. incidental rhetoric (e.g. *"whether the family is in Naples or in New Jersey"*).
+
+Excluding all three:
+
+| | Posts | Share |
+|---|---|---|
+| Genuinely state-specific (state in slug and subject) | **6** | 1.8% |
+| Insurance/school topic, could be made state-specific | 17 | 5.0% |
+| No natural geographic hook | ~264 | 78% |
+
+The six: `aba-therapy-services-in-georgia-overview`, `how-georgia-laws-support-autism-services`,
+`how-access-school-based-aba-therapy-in-georgia`, `autism-prevalence-in-north-carolina`,
+`is-aba-therapy-covered-by-insurance-north-carolina`, `medicaid-and-aba-coverage-in-nj`.
+
+**Conclusion: internal linking cannot rescue the city pages.** There is not enough honest
+editorial surface. The local layer needs its own demand strategy.
+
+### The unlinked boilerplate — the one at-scale opportunity
+
+| | Posts |
+|---|---|
+| Have the "Why Mastermind" closing block | 212 |
+| Block names all three states | 212 |
+| Those state names linked to hubs | **0** |
+| Block links to `/contact` | 212 |
+
+A sentence that is already about service areas, already beside a working `/contact` link,
+with the state names as plain text. Honest to link. Two caveats: it is boilerplate, which
+Google discounts heavily, and it lives in each post's rich-text `post-body`, so it is 212
+scripted CMS edits rather than one template change.
+
+### The 13 posts with zero service links — mapping (NOT YET APPLIED)
+
+Every one has a cluster already set in the CMS; the cluster→service mapping is consistent
+with the other 324 posts.
+
+| Post | Cluster | Service target |
+|---|---|---|
+| autism-diagnostic-criteria-dsm-5 | Diagnosis, Causes & Brain Science | `/early-intervention` |
+| autism-facial-expressions | Medical & Co-occurring | `/early-intervention` |
+| autism-physical-traits | Medical & Co-occurring | `/early-intervention` |
+| best-dogs-for-autism | Parenting, Advocacy & Daily Support | `/parent-training` |
+| free-sensory-toys-for-autism | Sensory Processing & Stimming | `/behavior-support` |
+| how-to-handle-regression-in-learned-skills | Emotional Regulation & Coping | `/behavior-support` |
+| teaching-abstract-thinking-skills-through-aba | Academic & Cognitive Skills | `/skill-development` |
+| the-impact-of-peer-modeling-on-skill-development | Emotional Regulation & Coping | `/skill-development` * |
+| the-role-of-functional-play-in-developing-critical-thinking-skills | Academic & Cognitive Skills | `/skill-development` |
+| the-role-of-storytelling-in-enhancing-language-skills-for-autism | Communication & Language | `/skill-development` |
+| understanding-perseverative-behaviors-and-how-to-redirect-them-in-autism | Challenging Behaviors & Assessment | `/behavior-support` |
+| what-is-choice-theory | Academic & Cognitive Skills | `/skill-development` |
+| what-is-respite-care-autism | Access, Insurance & Resources | `/in-home-aba-therapy` |
+
+\* cluster says Emotional Regulation, but the post is explicitly about skill development —
+override the cluster mapping here.
+
+Three need a human eye on the anchor sentence rather than the target: **best-dogs-for-autism**
+(listicle, no natural service sentence), **what-is-choice-theory** (Glasser's framework,
+only loosely ABA), **what-is-respite-care-autism** (closest natural anchor is
+*"how it fits next to ongoing services like ABA"*).
+
+**Implementation note.** Webflow rich-text updates require resending the entire
+`post-body` field; these 13 total ~305 KB. Prefer linking an existing phrase over
+inserting new sentences, and work in small batches.
+
+**Status: not applied.** Work stopped because the Webflow MCP reconnected under a
+different workspace that does not include this site.
