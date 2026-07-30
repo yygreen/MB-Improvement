@@ -435,13 +435,28 @@ Production sample was 38 of the 337 `/post/*` sitemap URLs, taken as every 9th e
 the sorted list for an even spread, plus the 12 targeted posts (top-traffic and the
 known quote-in-title edge case). 50 distinct posts checked, 0 failures.
 
-### Known cosmetic issue (1 post)
+### Cosmetic issue on 1 post — RESOLVED
 
-`/post/how-to-teach-children-with-autism-to-accept-no` has a title containing straight
-double quotes. Webflow escapes them, so the JSON stays valid, but the headline value
-reads `...Accept &quot;No&quot;` — parsers do not HTML-decode inside a JSON-LD script
-tag. Replacing the straight quotes with curly quotes in the CMS title fixes the schema
-and improves the visible typography. Not applied: it edits live post content.
+`/post/how-to-teach-children-with-autism-to-accept-no` had a title containing straight
+ASCII double quotes. Webflow escapes bound values, so the JSON stayed valid, but the
+headline read `...Accept &quot;No&quot;` — JSON-LD is parsed as JSON, and parsers do not
+HTML-decode inside a `<script type="application/ld+json">` block, so the entity survived
+into the value Google ingests. In the HTML body the same entity decodes normally, so the
+visible page was never affected.
+
+**Fixed** by replacing the two straight quotes with typographic quotes in the CMS `name`
+field. Curly quotes have no special meaning in HTML or JSON, so Webflow passes them
+through unescaped. Verified live:
+
+| | Before | After |
+|---|---|---|
+| JSON-LD `headline` | `...Accept &quot;No&quot;` | `...Accept “No”` |
+| `<title>` / `<h1>` / `og:title` | rendered `"No"` | `“No”` |
+| Slug and canonical | unchanged | **unchanged** |
+
+Only the `name` field was touched — the slug is untouched, so no URL or inbound link
+changed. This was the only one of 337 posts whose title contained a double quote,
+confirmed by CMS filter.
 
 ---
 
