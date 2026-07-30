@@ -375,3 +375,60 @@ should be settled together.
 - City page schema — present and server-rendered on 15/15 sampled.
 - NC `MedicalOrganization` with no address — correct; no NC office or GBP exists.
 - CallRail DNI is installed sitewide (company `477025173`), confirmed in page source.
+
+---
+
+## Change log — 2026-07-30: BlogPosting schema
+
+**Status: staged in Webflow and verified on staging. NOT yet published to production.**
+
+Addresses open issue #1. Implemented as a `<script type="application/ld+json">` block in
+head custom code on the Blog Posts template (page `6627fd62e242d50407cfe1ad`), matching
+the mechanism already proven on the city template.
+
+### Emitted per post
+
+`BlogPosting` (`headline`, `image`, `datePublished`, `inLanguage`, `url`,
+`mainEntityOfPage`, `author`, `publisher`) plus the shared `MedicalOrganization` node,
+referenced by `@id` so it resolves against the existing sitewide organization entity.
+
+### Three constraints found during implementation
+
+**1. The native JSON-LD page field cannot carry CMS bindings.** Webflow validates that
+field as strict JSON, and the binding token itself contains `\}` — an invalid JSON escape
+— so the API rejects it with `400 The provided schema markup must be valid JSON`. Head
+custom code is the only mechanism that supports per-item bindings. Both existing schema
+implementations on this site already use it; `jsonLdSchema` is null on every page.
+
+**2. There is no date field to bind.** The Blog Posts collection has no date field, and
+`get_bindable_sources` returns 27 sources with no date among them. `datePublished` binds
+the built-in `Created On` via `{{wf {"path":"created-on","type":"Date"} }}`, which is not
+enumerated by the API but does resolve — verified rendering real ISO timestamps
+(`2024-11-28T20:14:27.098Z`) matching each item's stored `createdOn`. `Created On` is
+stable across republishes.
+
+**3. `description` is deliberately omitted.** `post-summary` is a multi-line field, and a
+raw newline inside a JSON string would make the whole block unparseable. Double quotes
+turned out to be safe — Webflow HTML-escapes bound values — but newlines are not, and the
+field cannot be audited for them through the API (the `contains` filter cannot match a
+newline). `description` adds little for article rich results, so the safe trade was to
+leave it out.
+
+### Staging verification
+
+| Check | Result |
+|---|---|
+| Posts sampled with valid, parseable JSON-LD | **11 / 11** |
+| Exactly one `ld+json` block per post | ✅ |
+| `datePublished` resolves to the item's real `createdOn` | ✅ all 11 |
+| Pre-existing page CSS after the rewrite | **byte-identical** to pre-change live |
+| `og:url`, hero preload, Finsweet loader | intact |
+| `BlogPosting` leakage onto non-post pages | 0 on `/`, `/contact`, `/bcba-team`, `/areas-we-serve/perry` |
+
+### Known cosmetic issue (1 post)
+
+`/post/how-to-teach-children-with-autism-to-accept-no` has a title containing straight
+double quotes. Webflow escapes them, so the JSON stays valid, but the headline value
+reads `...Accept &quot;No&quot;` — parsers do not HTML-decode inside a JSON-LD script
+tag. Replacing the straight quotes with curly quotes in the CMS title fixes the schema
+and improves the visible typography. Not applied: it edits live post content.
