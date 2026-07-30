@@ -681,5 +681,42 @@ only loosely ABA), **what-is-respite-care-autism** (closest natural anchor is
 `post-body` field; these 13 total ~305 KB. Prefer linking an existing phrase over
 inserting new sentences, and work in small batches.
 
-**Status: not applied.** Work stopped because the Webflow MCP reconnected under a
-different workspace that does not include this site.
+### Execution status — 3 of 13 applied and live
+
+| Post | Service | Anchor (existing prose, linked in place) | Diff blocks |
+|---|---|---|---|
+| what-is-respite-care-autism | `/in-home-aba-therapy` | "in-home ABA therapy" | 2 |
+| teaching-abstract-thinking-skills-through-aba | `/skill-development` | "develop essential cognitive skills" | 44 * |
+| autism-facial-expressions | `/early-intervention` | "the right support and interventions" | 1 |
+
+Each verified by diffing the live page against its pre-change state. No prose was
+rewritten — in all three cases an existing phrase was wrapped in a link.
+
+\* **The 44 blocks are not corruption.** One is the link; the other 43 are Webflow
+re-rendering `<figure>` markup. The live page had been serving a stale 2026-07-13 publish,
+and an item-level republish brought it in line with what was already stored. Side effect
+worth knowing: 4 in-article images went from `loading="lazy"` to `loading="auto"`, which
+browsers treat as eager. **This was already in the stored CMS field before the edit** —
+it was not introduced here — but any item-level republish will surface it. Full-site
+publishes do not. Where a remaining post contains figures, set `loading="lazy"` in the
+same edit, since the whole field is being rewritten anyway.
+
+### Remaining 10 — not yet applied
+
+`autism-diagnostic-criteria-dsm-5` · `autism-physical-traits` · `best-dogs-for-autism` ·
+`free-sensory-toys-for-autism` · `how-to-handle-regression-in-learned-skills` ·
+`the-impact-of-peer-modeling-on-skill-development` ·
+`the-role-of-functional-play-in-developing-critical-thinking-skills` ·
+`the-role-of-storytelling-in-enhancing-language-skills-for-autism` ·
+`understanding-perseverative-behaviors-and-how-to-redirect-them-in-autism` ·
+`what-is-choice-theory`
+
+Targets are in the mapping table above. Method that works: fetch the item, find an
+existing phrase that genuinely matches the target service, wrap it in place, resend the
+full `post-body`, publish the item, then diff the live page against its previous state to
+confirm only the link changed.
+
+**Why this stopped at 3:** Webflow has no partial update for rich text, so every link
+costs the entire `post-body` twice (fetch + write). The remaining 10 are ~250 KB of
+round-trip. The method is proven and safe; it is simply expensive per link, and is the
+wrong tool for anything larger than this batch.
