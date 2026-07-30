@@ -681,42 +681,46 @@ only loosely ABA), **what-is-respite-care-autism** (closest natural anchor is
 `post-body` field; these 13 total ~305 KB. Prefer linking an existing phrase over
 inserting new sentences, and work in small batches.
 
-### Execution status — 3 of 13 applied and live
+### Execution status — 12 of 13 applied and live
 
-| Post | Service | Anchor (existing prose, linked in place) | Diff blocks |
+All verified by diffing the live page against its pre-change state. In every case an
+existing phrase was wrapped in a link; **no prose was rewritten or added**.
+
+| Post | Service | Anchor (existing prose) | Diff blocks |
 |---|---|---|---|
 | what-is-respite-care-autism | `/in-home-aba-therapy` | "in-home ABA therapy" | 2 |
 | teaching-abstract-thinking-skills-through-aba | `/skill-development` | "develop essential cognitive skills" | 44 * |
 | autism-facial-expressions | `/early-intervention` | "the right support and interventions" | 1 |
+| what-is-choice-theory | `/skill-development` | "skill development program" | 3 |
+| how-to-handle-regression-in-learned-skills | `/behavior-support` | "functional behavior assessments" | 2 |
+| autism-physical-traits | `/early-intervention` | "Early identification" | 2 |
+| free-sensory-toys-for-autism | `/behavior-support` | "sensory regulation" | 1 |
+| understanding-perseverative-behaviors… | `/behavior-support` | "Functional behavior assessments" | 2 |
+| best-dogs-for-autism | `/parent-training` | "parent training coaches" | 1 |
+| autism-diagnostic-criteria-dsm-5 | `/early-intervention` | "consistent intervention" | 1 |
+| the-role-of-storytelling… | `/skill-development` | "developing language and social skills" | 2 |
+| the-role-of-functional-play… | `/skill-development` | "support both cognitive and social-emotional skills" | 4 |
 
-Each verified by diffing the live page against its pre-change state. No prose was
-rewritten — in all three cases an existing phrase was wrapped in a link.
+Zero deletions on 11 of 12.
 
 \* **The 44 blocks are not corruption.** One is the link; the other 43 are Webflow
-re-rendering `<figure>` markup. The live page had been serving a stale 2026-07-13 publish,
-and an item-level republish brought it in line with what was already stored. Side effect
-worth knowing: 4 in-article images went from `loading="lazy"` to `loading="auto"`, which
-browsers treat as eager. **This was already in the stored CMS field before the edit** —
-it was not introduced here — but any item-level republish will surface it. Full-site
-publishes do not. Where a remaining post contains figures, set `loading="lazy"` in the
-same edit, since the whole field is being rewritten anyway.
+re-rendering `<figure>` markup because the live page had been serving a stale 2026-07-13
+publish. An item-level republish brought it in line with what was already stored. Side
+effect: 4 in-article images went from `loading="lazy"` to `loading="auto"`, which browsers
+treat as eager. **That value was already in the stored CMS field before the edit** — it was
+not introduced here. Full-site publishes do not surface it; item-level publishes do.
 
-### Remaining 10 — not yet applied
+### The 13th — `the-impact-of-peer-modeling-on-skill-development` — NOT applied
 
-`autism-diagnostic-criteria-dsm-5` · `autism-physical-traits` · `best-dogs-for-autism` ·
-`free-sensory-toys-for-autism` · `how-to-handle-regression-in-learned-skills` ·
-`the-impact-of-peer-modeling-on-skill-development` ·
-`the-role-of-functional-play-in-developing-critical-thinking-skills` ·
-`the-role-of-storytelling-in-enhancing-language-skills-for-autism` ·
-`understanding-perseverative-behaviors-and-how-to-redirect-them-in-autism` ·
-`what-is-choice-theory`
+Target `/skill-development`. Anchor identified and verified unique:
+*"These strategies leverage peer influence to foster skill development and confidence."*
 
-Targets are in the mapping table above. Method that works: fetch the item, find an
-existing phrase that genuinely matches the target service, wrap it in place, resend the
-full `post-body`, publish the item, then diff the live page against its previous state to
-confirm only the link changed.
+**Blocked by a tooling limit, not by the content.** Webflow rich text has no partial
+update, so the whole `post-body` must be resent — and this post's body is **49,436
+characters**. That exceeds what can be moved through the tool pipeline in one piece
+without chunking, and reassembling a 49 KB document by hand carries a real risk of
+silently corrupting a live article. The other twelve ranged 13–37 KB and were safe.
 
-**Why this stopped at 3:** Webflow has no partial update for rich text, so every link
-costs the entire `post-body` twice (fetch + write). The remaining 10 are ~250 KB of
-round-trip. The method is proven and safe; it is simply expensive per link, and is the
-wrong tool for anything larger than this batch.
+**Recommended fix: do this one by hand in the Webflow editor.** Open the post, find the
+sentence above, select the words "skill development", and link them to
+`https://www.mastermindbehavior.com/skill-development`. About thirty seconds, zero risk.
