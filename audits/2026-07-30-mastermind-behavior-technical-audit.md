@@ -383,7 +383,8 @@ should be settled together.
 
 ## Change log — 2026-07-30: BlogPosting schema
 
-**Status: staged in Webflow and verified on staging. NOT yet published to production.**
+**Status: LIVE on production as of 2026-07-30.** Published to `www.mastermindbehavior.com`
+and `mastermindbehavior.com` after staging verification.
 
 Addresses open issue #1. Implemented as a `<script type="application/ld+json">` block in
 head custom code on the Blog Posts template (page `6627fd62e242d50407cfe1ad`), matching
@@ -417,16 +418,22 @@ field cannot be audited for them through the API (the `contains` filter cannot m
 newline). `description` adds little for article rich results, so the safe trade was to
 leave it out.
 
-### Staging verification
+### Verification
 
-| Check | Result |
-|---|---|
-| Posts sampled with valid, parseable JSON-LD | **11 / 11** |
-| Exactly one `ld+json` block per post | ✅ |
-| `datePublished` resolves to the item's real `createdOn` | ✅ all 11 |
-| Pre-existing page CSS after the rewrite | **byte-identical** to pre-change live |
-| `og:url`, hero preload, Finsweet loader | intact |
-| `BlogPosting` leakage onto non-post pages | 0 on `/`, `/contact`, `/bcba-team`, `/areas-we-serve/perry` |
+| Check | Staging | Production |
+|---|---|---|
+| Posts with valid, parseable JSON-LD | 11 / 11 | **38 / 38** (every 9th sitemap URL) + 12 / 12 targeted |
+| Exactly one `ld+json` block per post | ✅ | ✅ |
+| `datePublished` resolves to the item's real `createdOn` | ✅ | ✅ |
+| `BlogPosting` + `MedicalOrganization` both present in `@graph` | ✅ | ✅ |
+| Pre-existing page CSS after the head rewrite | byte-identical | byte-identical |
+| `og:url`, hero preload, Finsweet loader | intact | intact |
+| `BlogPosting` leakage onto non-post pages | 0 | 0 on `/`, `/contact`, `/areas-we-serve/perry`, `/early-intervention` |
+| Existing schema on non-post pages still intact | — | ✅ 1 block each, unchanged |
+
+Production sample was 38 of the 337 `/post/*` sitemap URLs, taken as every 9th entry of
+the sorted list for an even spread, plus the 12 targeted posts (top-traffic and the
+known quote-in-title edge case). 50 distinct posts checked, 0 failures.
 
 ### Known cosmetic issue (1 post)
 
