@@ -4,8 +4,8 @@
 **Scope:** mastermindbehavior.com (Webflow site `6627fd62e242d50407cfe12d`)
 **Mode:** The audit itself (Tasks 1–4) was read-only — no Webflow writes, no publishes,
 no CMS changes, no freeform code edits. Remediation began afterwards and is recorded in
-the Change log at the end of this document; that work does write to Webflow. No change
-has been published to the production domain.
+the Change log at the end of this document; that work does write to Webflow and has been
+published to the production domains.
 
 ---
 
