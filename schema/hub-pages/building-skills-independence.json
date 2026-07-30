@@ -1,0 +1,43 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": "https://www.mastermindbehavior.com/building-skills-independence#webpage",
+      "url": "https://www.mastermindbehavior.com/building-skills-independence",
+      "name": "Building Skills & Independence",
+      "description": "Evidence-based guides on building communication, academic, cognitive, and daily living skills through ABA therapy. Written and reviewed by BCBAs.",
+      "isPartOf": {
+        "@id": "https://www.mastermindbehavior.com/blog#webpage"
+      },
+      "about": {
+        "@id": "https://www.mastermindbehavior.com/#organization"
+      },
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.mastermindbehavior.com/building-skills-independence#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.mastermindbehavior.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://www.mastermindbehavior.com/blog"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Building Skills & Independence",
+          "item": "https://www.mastermindbehavior.com/building-skills-independence"
+        }
+      ]
+    }
+  ]
+}

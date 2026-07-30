@@ -1,0 +1,43 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": "https://www.mastermindbehavior.com/understanding-aba-therapy#webpage",
+      "url": "https://www.mastermindbehavior.com/understanding-aba-therapy",
+      "name": "Understanding ABA Therapy",
+      "description": "Explore evidence-based ABA therapy principles, real-world practice applications, and career resources. Written and reviewed by Board Certified Behavior Analysts.",
+      "isPartOf": {
+        "@id": "https://www.mastermindbehavior.com/blog#webpage"
+      },
+      "about": {
+        "@id": "https://www.mastermindbehavior.com/#organization"
+      },
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.mastermindbehavior.com/understanding-aba-therapy#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.mastermindbehavior.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://www.mastermindbehavior.com/blog"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Understanding ABA Therapy",
+          "item": "https://www.mastermindbehavior.com/understanding-aba-therapy"
+        }
+      ]
+    }
+  ]
+}

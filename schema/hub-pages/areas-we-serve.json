@@ -1,0 +1,62 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": "https://www.mastermindbehavior.com/areas-we-serve#webpage",
+      "url": "https://www.mastermindbehavior.com/areas-we-serve",
+      "name": "Areas We Serve",
+      "description": "Give your child with autism the chance to thrive in the real world with in-home ABA services in NJ, NC & GA. Start at-home ABA therapy today.",
+      "isPartOf": {
+        "@id": "https://www.mastermindbehavior.com/#website"
+      },
+      "about": {
+        "@id": "https://www.mastermindbehavior.com/#organization"
+      },
+      "inLanguage": "en-US",
+      "mainEntity": {
+        "@type": "ItemList",
+        "@id": "https://www.mastermindbehavior.com/areas-we-serve#state-list",
+        "name": "States Served",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "ABA Therapy in New Jersey",
+            "item": "https://www.mastermindbehavior.com/aba-therapy-in-new-jersey"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "ABA Therapy in Georgia",
+            "item": "https://www.mastermindbehavior.com/aba-therapy-in-georgia"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "ABA Therapy in North Carolina",
+            "item": "https://www.mastermindbehavior.com/aba-therapy-in-north-carolina"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.mastermindbehavior.com/areas-we-serve#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.mastermindbehavior.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Areas We Serve",
+          "item": "https://www.mastermindbehavior.com/areas-we-serve"
+        }
+      ]
+    }
+  ]
+}

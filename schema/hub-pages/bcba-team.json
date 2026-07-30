@@ -1,0 +1,194 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": "https://www.mastermindbehavior.com/bcba-team#webpage",
+      "url": "https://www.mastermindbehavior.com/bcba-team",
+      "name": "Our Clinical Team",
+      "description": "Meet the Board Certified Behavior Analysts and founders behind Mastermind Behavior — in-home ABA therapy across New Jersey, Georgia, and North Carolina.",
+      "isPartOf": {
+        "@id": "https://www.mastermindbehavior.com/#website"
+      },
+      "about": {
+        "@id": "https://www.mastermindbehavior.com/#organization"
+      },
+      "inLanguage": "en-US",
+      "mainEntity": {
+        "@type": "ItemList",
+        "@id": "https://www.mastermindbehavior.com/bcba-team#team-list",
+        "name": "Clinical Team",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+              "@id": "https://www.mastermindbehavior.com/bcba-team#person-taylor-dzingle"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+              "@id": "https://www.mastermindbehavior.com/bcba-team#person-kristin-waugh"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+              "@id": "https://www.mastermindbehavior.com/bcba-team#person-audrey-poggi"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "item": {
+              "@id": "https://www.mastermindbehavior.com/bcba-team#person-kafayat-thomas"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "item": {
+              "@id": "https://www.mastermindbehavior.com/bcba-team#person-victoria-hornback"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 6,
+            "item": {
+              "@id": "https://www.mastermindbehavior.com/bcba-team#person-marissa-burd"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 7,
+            "item": {
+              "@id": "https://www.mastermindbehavior.com/bcba-team#person-kelly-brzak"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 8,
+            "item": {
+              "@id": "https://www.mastermindbehavior.com/bcba-team#person-jennifer-chiochankitmun"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.mastermindbehavior.com/bcba-team#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.mastermindbehavior.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Our Clinical Team",
+          "item": "https://www.mastermindbehavior.com/bcba-team"
+        }
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.mastermindbehavior.com/bcba-team#person-taylor-dzingle",
+      "name": "Taylor Dzingle",
+      "description": "As Clinical Director, Taylor sets the clinical standard at Mastermind — 10+ years as a BCBA and a track record of building ABA programs across multiple states.",
+      "image": "https://cdn.prod.website-files.com/6627fd62e242d50407cfe155/6a2ec2f41f174bbdee850803_image008.jpg",
+      "worksFor": {
+        "@id": "https://www.mastermindbehavior.com/#organization"
+      },
+      "honorificSuffix": "BCBA, LBA",
+      "jobTitle": "Clinical Director"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.mastermindbehavior.com/bcba-team#person-kristin-waugh",
+      "name": "Kristin Waugh",
+      "description": "Kristin supports children ages 2–15 across home, clinic, and hospital settings, with a focus on self-advocacy and communication.",
+      "image": "https://cdn.prod.website-files.com/6627fd62e242d50407cfe155/6a2e6e1a11f6e324147e77d2_image001.jpg",
+      "worksFor": {
+        "@id": "https://www.mastermindbehavior.com/#organization"
+      },
+      "honorificSuffix": "M.A., BCBA, LBA",
+      "jobTitle": "Board Certified Behavior Analyst"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.mastermindbehavior.com/bcba-team#person-audrey-poggi",
+      "name": "Audrey Poggi",
+      "description": "Audrey brings over a decade in behavior analysis with a specialty in public school settings — connecting behavioral science to outcomes educators and families can actually use.",
+      "image": "https://cdn.prod.website-files.com/6627fd62e242d50407cfe155/6a2ec1a0b835d8b669890887_Image-2.jpg",
+      "worksFor": {
+        "@id": "https://www.mastermindbehavior.com/#organization"
+      },
+      "honorificSuffix": "BCBA",
+      "jobTitle": "Board Certified Behavior Analyst"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.mastermindbehavior.com/bcba-team#person-kafayat-thomas",
+      "name": "Kafayat Thomas",
+      "description": "Kafayat completed her BCBA fieldwork at the Carbone Clinic in Dubai and brings experience across early intervention, severe behavior, and functional communication training.",
+      "image": "https://cdn.prod.website-files.com/6627fd62e242d50407cfe155/6a4b6b3c933c441ad3a94d0d_Kafayat%20Thomas.jpg",
+      "worksFor": {
+        "@id": "https://www.mastermindbehavior.com/#organization"
+      },
+      "honorificSuffix": "M.S.",
+      "jobTitle": "Behavior Analyst"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.mastermindbehavior.com/bcba-team#person-victoria-hornback",
+      "name": "Victoria Hornback",
+      "description": "Victoria is both a BCBA and a high school special education teacher, with 17 years in the classroom. Her specialty: skill acquisition, visual supports, and technology.",
+      "image": "https://cdn.prod.website-files.com/6627fd62e242d50407cfe155/6a5e24e54677b974feea7e32_6a5e24bb6b567196a21763fe_victoria-hornback-sq.webp",
+      "worksFor": {
+        "@id": "https://www.mastermindbehavior.com/#organization"
+      },
+      "honorificSuffix": "MA, BCBA, LBA-NJ",
+      "jobTitle": "Board Certified Behavior Analyst"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.mastermindbehavior.com/bcba-team#person-marissa-burd",
+      "name": "Marissa Burd",
+      "description": "Marissa has supported learners from age 2 to 20 and builds every intervention on two foundations: parent collaboration and strong pairing.",
+      "image": "https://cdn.prod.website-files.com/6627fd62e242d50407cfe155/6a5e282935602869752c70cf_6a5e280a1627e2ff6bb9743b_marissa-burd-placeholder.webp",
+      "worksFor": {
+        "@id": "https://www.mastermindbehavior.com/#organization"
+      },
+      "honorificSuffix": "M.Ed., BCBA, LBA",
+      "jobTitle": "Board Certified Behavior Analyst"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.mastermindbehavior.com/bcba-team#person-kelly-brzak",
+      "name": "Kelly Brzak",
+      "description": "A former elementary teacher with a Master's in Child Development, Kelly focuses on making behavior analysis accessible to the caregivers and family members who use it daily.",
+      "image": "https://cdn.prod.website-files.com/6627fd62e242d50407cfe155/6a5e24e54677b974feea7e3b_6a5e24bc726873975d77147a_kelly-brzak-sq.webp",
+      "worksFor": {
+        "@id": "https://www.mastermindbehavior.com/#organization"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.mastermindbehavior.com/bcba-team#person-jennifer-chiochankitmun",
+      "name": "Jennifer Chiochankitmun",
+      "description": "With 20+ years in autism and developmental disabilities — including seven on a Child Study Team — Jen pairs deep school-systems knowledge with neurodiversity-affirming care.",
+      "image": "https://cdn.prod.website-files.com/6627fd62e242d50407cfe155/6a5e24e54677b974feea7e38_6a5e24bca190a853530b0c23_jennifer-chiochankitmun-sq.webp",
+      "worksFor": {
+        "@id": "https://www.mastermindbehavior.com/#organization"
+      },
+      "honorificSuffix": "BCBA, LBA",
+      "jobTitle": "Board Certified Behavior Analyst"
+    }
+  ]
+}

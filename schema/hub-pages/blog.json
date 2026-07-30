@@ -1,0 +1,40 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Blog",
+      "@id": "https://www.mastermindbehavior.com/blog#webpage",
+      "url": "https://www.mastermindbehavior.com/blog",
+      "name": "The ABA Therapy & Autism Resource Library",
+      "description": "Discover insights and expert tips on autism, ABA therapy, and parenting strategies on the Mastermind Behavior blog.",
+      "isPartOf": {
+        "@id": "https://www.mastermindbehavior.com/#website"
+      },
+      "about": {
+        "@id": "https://www.mastermindbehavior.com/#organization"
+      },
+      "inLanguage": "en-US",
+      "publisher": {
+        "@id": "https://www.mastermindbehavior.com/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.mastermindbehavior.com/blog#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.mastermindbehavior.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://www.mastermindbehavior.com/blog"
+        }
+      ]
+    }
+  ]
+}

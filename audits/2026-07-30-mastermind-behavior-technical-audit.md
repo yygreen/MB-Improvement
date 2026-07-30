@@ -494,3 +494,64 @@ original audit, not a site fault.
 The nine noindexed `/bcbas/*` URLs remain in the sitemap by prior decision — keeping them
 submitted is what lets Google recrawl and register the `noindex`. They should be excluded
 once Search Console shows them dropped from the index.
+
+---
+
+## Change log — 2026-07-30: schema for the 7 hub pages
+
+**Status: staged in Webflow and verified on staging. NOT yet published to production.**
+Addresses open issue #5. Payloads are committed under `schema/hub-pages/`.
+
+### Rationale
+
+The site's entity graph had leaves but no trunk. Six `#service` entities, 205 city
+`Service` nodes, two `MedicalBusiness` offices and 337 `BlogPosting`s all pointed at
+`/#organization`, but the seven hub pages that organise them declared nothing. These
+additions link the hubs into the existing graph **by `@id` reference rather than
+redefinition**, the same pattern the city template already uses.
+
+| Page | Type | Links to |
+|---|---|---|
+| `/services` | `CollectionPage` + `ItemList` | the 6 existing `#service` `@id`s |
+| `/about-us` | `AboutPage` | `mainEntity` → `#organization` |
+| `/bcba-team` | `CollectionPage` + 8 × `Person` | `worksFor` → `#organization` |
+| `/blog` | `Blog` | `publisher` → `#organization` |
+| `/areas-we-serve` | `CollectionPage` + `ItemList` | the 3 state hubs |
+| `/understanding-aba-therapy` | `CollectionPage` | `isPartOf` → `/blog#webpage` |
+| `/building-skills-independence` | `CollectionPage` | `isPartOf` → `/blog#webpage` |
+
+`BreadcrumbList` added to all seven — the most direct rich-result win, and city pages
+already had them while hubs did not.
+
+### Why `/bcba-team` matters most
+
+`/bcbas/*` is noindexed **and** orphaned — the team page renders 9 CMS cards but contains
+zero links to the individual profiles. The eight clinicians therefore did not exist as
+entities to Google at all. `/bcba-team` *is* indexed, so `Person` schema there recovers
+the practitioner-authority layer without reopening the noindex decision, and mints stable
+`Person` `@id`s that `BlogPosting.author` can point at if attribution is ever fixed.
+
+### Two deliberate choices
+
+**Person data is hardcoded.** `/bcba-team` is a static page rendering a CMS list, and
+page-level custom code cannot bind to individual list items. The 8 Persons ship as
+literal JSON: accurate today, but it must be edited by hand when the roster changes.
+Accepted knowingly as maintenance debt in exchange for the E-E-A-T.
+
+**Kelly Brzak carries no credential claim.** Her `credentials` field is null, her card
+renders no credential line (unlike the other seven), and her bio describes a former
+elementary teacher with a Master's in Child Development — it never claims BCBA. Email was
+searched and holds nothing on her credentials. Her `Person` node therefore has `name`,
+`description`, `image` and `worksFor` only, with **no `jobTitle` and no
+`honorificSuffix`**. Asserting a BCBA certification for her would fabricate a
+professional credential on YMYL medical content.
+
+### Staging verification
+
+| Check | Result |
+|---|---|
+| Pages emitting exactly one valid, parseable JSON-LD block | **7 / 7** |
+| Node counts | 10 on `/bcba-team` (1 page + 1 breadcrumb + 8 Person), 2 on each other |
+| Dangling `@id` references inside each graph | **none** |
+| The 6 `#service` `@id`s referenced by `/services` exist on their target pages | **6 / 6** |
+| Pages that already had schema | unchanged — 1 block each on `/`, `/contact`, a city page, a post, a state hub |

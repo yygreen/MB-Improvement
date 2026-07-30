@@ -1,0 +1,40 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "AboutPage",
+      "@id": "https://www.mastermindbehavior.com/about-us#webpage",
+      "url": "https://www.mastermindbehavior.com/about-us",
+      "name": "About Mastermind Behavior",
+      "description": "Mastermind Behavior is a BCBA-owned in-home ABA therapy provider serving families across New Jersey, Georgia, and North Carolina.",
+      "isPartOf": {
+        "@id": "https://www.mastermindbehavior.com/#website"
+      },
+      "about": {
+        "@id": "https://www.mastermindbehavior.com/#organization"
+      },
+      "inLanguage": "en-US",
+      "mainEntity": {
+        "@id": "https://www.mastermindbehavior.com/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.mastermindbehavior.com/about-us#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.mastermindbehavior.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "About Us",
+          "item": "https://www.mastermindbehavior.com/about-us"
+        }
+      ]
+    }
+  ]
+}
