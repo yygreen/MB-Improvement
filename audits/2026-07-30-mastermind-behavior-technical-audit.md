@@ -95,24 +95,51 @@ So the fetch retrieved the full document; the schema simply is not in it.
 - Staging (`mastermindbehavior.webflow.io`): also 0 on all three top-traffic posts, so
   this is not schema staged-but-unpublished either.
 
-### Incidental finding (high severity): every post displays today's date as its publish date
+### RETRACTED — "every post displays today's date as its publish date"
 
-All 13 sampled posts render the byline date as **"Published: Thu Jul 30 2026"** — the
-date this audit ran. The byline is bound to Webflow's `Published On` system field, which
-resets on every full site republish. The practical effect is that all 337 posts claim to
-have been published today, and the real publication dates are not recoverable from the
-front end.
+**This finding was a false positive and has been withdrawn. There is no date bug.**
+The original claim — that all 13 sampled posts render a byline of "Published: Thu Jul 30
+2026" — came from matching the string `Thu Jul 30 2026` in the page source. That string
+is **not a rendered byline.** It is Webflow's own boilerplate comment, the first line of
+every page it serves:
 
-This matters directly for the BlogPosting work: if `datePublished` is wired to the same
-field when schema is added, the markup would assert a false, self-resetting date on every
-post — worse than having no schema at all. **The date binding should be fixed to a
-dedicated CMS date field before or alongside adding BlogPosting.**
+```html
+<!-- Last Published: Thu Jul 30 2026 12:54:51 GMT+0000 (Coordinated Universal Time) -->
+```
+
+It is an HTML comment (invisible to users, not a date signal to search engines), it
+carries the *site's* last publish timestamp rather than any post's date, and it is
+byte-identical on every URL on the domain. Verified on `/`, `/contact`, `/bcba-team`,
+`/areas-we-serve/perry`, and two posts — all five return the same comment, same
+timestamp. The original grep had no way to distinguish it from page content.
+
+**The byline dates are correct and vary per post.** They are bound to Webflow's built-in
+`Created On` item field, which is stable and does not reset on republish:
+
+| Post | Rendered byline | CMS `createdOn` | Match |
+|---|---|---|---|
+| what-is-the-average-iq | November 28, 2024 | `2024-11-28T20:14:27Z` | ✅ |
+| vocal-stimming-in-autism | June 2, 2024 | `2024-06-02T07:16:53Z` | ✅ |
+
+The Blog Posts collection has no dedicated date field (confirmed against the full field
+list), so `Created On` is what the template binds — correctly.
+
+**Consequence for the BlogPosting work:** the concern raised here was unfounded.
+`datePublished` can be wired to `Created On` safely. A dedicated editable date field is
+still worth adding if editors ever need to backdate or correct a publication date, but
+that is a convenience, not a prerequisite, and it does not block adding schema.
 
 ---
 
 ## Task 2 — /bcbas/* page metadata
 
 All nine profile URLs fetched. **The prior audit's finding is confirmed and still true.**
+
+> **Read this section in light of the noindex.** All nine of these pages serve
+> `<meta name="robots" content="noindex,follow">` and are out of Google's index. This
+> pass did not check the robots meta — that was a gap, corrected in the summary below.
+> Every metadata gap catalogued here is real but carries no search impact while the
+> noindex stands.
 
 | Page | `<title>` | Meta description | Canonical | Person / ProfilePage JSON-LD |
 |---|---|---|---|---|
@@ -303,20 +330,44 @@ a publish failure.
 
 ## Summary of open issues
 
+> **Revised after follow-up verification.** Two changes from the first pass: the
+> publish-date issue was retracted as a false positive (see Task 1), and all nine
+> `/bcbas/*` pages were found to be serving `noindex,follow`, which drops every
+> BCBA-page finding to informational.
+
 | # | Issue | Severity | Evidence |
 |---|---|---|---|
-| 1 | Every post displays today's date as publish date (binding resets on republish) | **High** | 13/13 posts show "Published: Thu Jul 30 2026" |
-| 2 | No BlogPosting schema on any of 337 posts — incl. the page carrying 72% of organic traffic | **High** | 0 tags + 0 JS references on 13/13 posts |
-| 3 | All 9 `/bcbas/*` pages share the title `MasterMindBehavior.com` | **High** | 9/9 confirmed |
-| 4 | All 9 `/bcbas/*` pages have no meta description, no OG, no Twitter tags | **High** | 9/9 confirmed |
-| 5 | 337 of 337 posts attributed to the generic Clinical Team; 8 BCBAs have zero articles | **Medium** | Pagination walk = 337; 8/9 pages `w-dyn-empty` |
-| 6 | No `Person`/`ProfilePage` schema on any BCBA profile | **Medium** | 9/9 confirmed |
-| 7 | `/areas-we-serve/perry-043a7` still in sitemap (301s to `/perry`) | **Medium** | Only non-200 entry of 579 |
-| 8 | Sitemap carries no `lastmod` on any of 579 entries | **Low** | 0 occurrences |
-| 9 | 7 root pages carry no schema (outside staged scope) | **Low** | See Task 4 |
+| 1 | No BlogPosting schema on any of 337 posts — incl. the page carrying 72% of organic traffic | **High** | 0 tags + 0 JS references on 13/13 posts |
+| 2 | `/areas-we-serve/perry-043a7` still in sitemap (301s to `/perry`) | **Medium** | Only non-200 entry of 579 |
+| 3 | 337 of 337 posts attributed to the generic Clinical Team; 8 BCBAs have zero articles | **Medium** | Pagination walk = 337; 8/9 pages `w-dyn-empty` |
+| 4 | All 9 noindexed `/bcbas/*` URLs are still submitted in `sitemap.xml` | **Low** | 9/9 `includeInSitemap: true` |
+| 5 | 7 root pages carry no schema (outside staged scope) | **Low** | See Task 4 |
+| 6 | Sitemap carries no `lastmod` on any of 579 entries | **Low** | 0 occurrences |
+
+### Downgraded to informational — the BCBA pages are deliberately deindexed
+
+All nine `/bcbas/*` pages serve `<meta name="robots" content="noindex,follow">`, set
+unconditionally in head custom code on the BCBAs collection template
+(page `6a2e6dbfd8c767bf9acb51d9`). Verified live on 9/9. The original audit checked
+title, description, canonical, and schema on these pages but **never checked
+indexability**, which is why this was missed.
+
+Because these pages are out of the index, the following carry no search impact and
+should not be prioritized: the shared `MasterMindBehavior.com` title across all nine,
+the absent meta descriptions / OG / Twitter tags, and the absent `Person`/`ProfilePage`
+schema. They matter only if the noindex is ever reversed.
+
+One strategic note: author-authority (E-E-A-T) work on YMYL medical content normally
+depends on indexable author profiles. Fixing post-to-author attribution (#3) has limited
+upside while `/bcbas/*` stays deindexed — these two decisions pull against each other and
+should be settled together.
 
 ## Explicitly checked and NOT an issue
 
+- **Post publish dates — correct, and varying per post.** Bound to Webflow's built-in
+  `Created On`, which does not reset on republish. The earlier "all posts show today's
+  date" claim was a misread of Webflow's `<!-- Last Published: -->` boilerplate comment
+  and is retracted in full. (Task 1)
 - Schema publish state — all staged groups are live; nothing pending. (Task 4)
 - Sitemap health — 578/579 return 200; no 404s or 5xx.
 - The `perry-043a7` → `perry` 301 fires correctly.
