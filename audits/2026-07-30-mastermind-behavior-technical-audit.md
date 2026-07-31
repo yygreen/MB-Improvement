@@ -1399,3 +1399,66 @@ Not all cross-page repetition is blocked on the 30 conflicting selectors. Severa
 `global-styles` is the obvious first move: identical on four pages, already isolated in its
 own embed, and it only needs converting to a Webflow Component to become genuinely shared.
 The 30 conflicts affect only the remainder.
+
+---
+
+## Change log — full-site scan: 28 pages, and a reordering of priorities
+
+Scanning every published page changes the picture, in two ways.
+
+### 1. The clone family is seven pages, not two
+
+Exact hashing found four; three more were *near*-duplicates and were invisible to it — the
+same blind spot that hid `/in-home-aba-therapy`'s 14 KB until it was diffed. In every case
+the duplication is blocks 3 & 4: two embeds, each carrying the full stylesheet.
+
+| Page | Copies | Recoverable |
+| --- | --- | --- |
+| `early-intervention` | identical | 21,736 B |
+| `behavior-support` | identical | 20,999 B |
+| `skill-development` | 99.9% similar | 20,953 B |
+| `transition-planning` | identical | 20,724 B |
+| `parent-training` | identical | 20,240 B — done |
+| `services` | **92.0% similar** | 16,759 B |
+| `in-home-aba-therapy` | 98.1% similar | 16,171 B — done |
+
+~137 KB total. `services` is the most drifted pair on the site and needs the closest reading.
+
+### 2. Step 1 is a no-op on the other pages, and the real prize is elsewhere
+
+`first-90-days-of-aba-therapy`, `insurance-terminology`, `financial-aid-resources`, the three
+state hubs and `bcba-team` all have **zero** intra-page duplication. Nothing for step 1 to do.
+Their redundancy is entirely cross-page — and that is where the largest single number on the
+site is:
+
+| Block | Size | Pages | Redundant |
+| --- | --- | --- | --- |
+| `23615ce8` — the `global-styles` embed | 3,604 B | **25 of 28** | **86,496 B** |
+| `1eb2d944` | 3,577 B | 4 (3 state hubs + insurance-terminology) | 10,731 B |
+| `be5cd20a` | 10,675 B | 2 (building-skills-independence, understanding-aba-therapy) | 10,675 B |
+| `cd0faf5e` | 9,298 B | 2 (financial-aid-resources, insurance-terminology) | 9,298 B |
+| `a2950cca` | 4,851 B | 2 (NJ, NC hubs) | 4,851 B |
+| | | | **122,051 B** |
+
+Site-wide inline CSS is 526,127 B across 28 pages.
+
+### The state hubs are their own clone family
+
+Five stylesheets totalling 8,163 B are present on all three. North Carolina has **no** unique
+blocks at all; New Jersey has one (1,479 B); Georgia has two (7,187 B). They are siblings of
+one template.
+
+### Recommended reordering
+
+Grinding page-by-page through step 1 is not the highest-value path. One block sits on 25 of
+28 pages, byte-identical, already isolated in its own embed named `global-styles`, and needs
+**no design decisions** — converting it to a single Webflow Component removes 86 KB and
+touches every page on the site in one edit.
+
+Revised order:
+
+1. `global-styles` → one shared Component. Largest win, lowest risk, no decisions required.
+2. Finish step 1 on the five remaining clone pages (~101 KB).
+3. The three state hubs → one Component with props; NC has nothing unique, so it is nearly
+   free.
+4. The 30 conflicting selectors — the only part that genuinely needs design calls.
