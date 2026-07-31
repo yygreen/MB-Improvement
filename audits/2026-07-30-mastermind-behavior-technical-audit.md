@@ -843,3 +843,66 @@ attributes are untouched, so nothing about existing behaviour changes.
 `offset` is fixed at 100. This is correct while New Jersey holds 101–200 published cities
 (currently 115). If it ever exceeds 200 a third list at `offset: 200` would be needed. Worth
 a note in the CMS runbook rather than a mechanism.
+
+---
+
+## Change log — correction: the two lists now share one scroll pane
+
+The first version of this build cloned the `cards` class onto the overflow list. That was
+wrong. Reading the compiled stylesheet:
+
+```css
+.cards { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+         max-height: 375px; overflow: scroll; }
+@media (max-width: …) { .cards { grid-template-columns: 1fr 1fr; } }
+```
+
+`.cards` is a **fixed 375px-tall internal scroll pane**, not a plain grid. Cloning it
+produced a second scroll pane stacked directly under the first — worse than the problem it
+was meant to solve.
+
+### Two related findings from the same check
+
+**Finsweet is not loaded on this site.** The live HTML contains `fs-cmsload-mode="infinite"`
+and `fs-cmsload-element="list"` as inert attributes, but no script fetches them — there is
+no `finsweet`, `cmscore`, `jsdelivr`, or `unpkg` reference anywhere in the document, and the
+head carries a `<!-- Canonical enforcement (overrides Finsweet) -->` comment suggesting it
+was removed on purpose. The original list was therefore always a hard stop at exactly 100
+items, with nothing lazy-loading. This also means the overflow list carries **no duplication
+risk** — there was never a client-side fetch of page 2 to collide with.
+
+**`pagination-hide` is `display: none`**, so no next-page control was reachable either. The
+15 cities were genuinely unreachable from both pages.
+
+### The fix
+
+Both lists now sit inside a single shared grid container, and the list containers are
+removed from the box tree so every card becomes a direct grid child of that one container:
+
+| Page | Shared container | DOM id |
+| --- | --- | --- |
+| `/aba-therapy-in-new-jersey` | `025e761d-92b5-685f-dd30-5fad51132448` | `nj-cities-grid` |
+| `/areas-we-serve` | `05180012-fe3e-0936-5b48-040e85f3fce0` | `nj-cities-grid` |
+
+The container carries `cards` (plus `cards-ga` on the hub, matching its original), so the
+pane keeps exactly the dimensions and column count it had before. A scoped `HtmlEmbed`
+immediately above each container supplies:
+
+```css
+#nj-cities-grid > .w-dyn-list,
+#nj-cities-grid .w-dyn-items { display: contents; }
+```
+
+The id selector outranks `.cards`, so the inner lists stop generating boxes and their
+`max-height` / `overflow` no longer apply. Result: one 375px scroll pane containing all 115
+New Jersey cities in one continuous grid, visually identical to today apart from the 15
+that were missing.
+
+Scoping by id matters on `/areas-we-serve`, which also holds Georgia and North Carolina
+lists — those are untouched.
+
+Note the failure mode is deliberately benign: if the embed ever fails to render, the rule
+simply does not apply and the layout falls back to the two-pane version rather than
+collapsing.
+
+**Status: staged in the Designer, not yet published.**
