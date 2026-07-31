@@ -1462,3 +1462,51 @@ Revised order:
 3. The three state hubs → one Component with props; NC has nothing unique, so it is nearly
    free.
 4. The 30 conflicting selectors — the only part that genuinely needs design calls.
+
+---
+
+## Change log — correction: Global Styles is already a Component; priorities revert
+
+The recommendation to lift `global-styles` into a shared Component was wrong. It already is
+one. Every page-wrapper begins with:
+
+```
+ComponentInstance  id d36a88a9-0b45-2553-76ef-3200b3336cad  name "Global Styles"
+ComponentInstance  id c29251c3-4c95-fee7-6218-95199d7ddce2  name "navigation"
+...
+ComponentInstance  id 39e67c04-e408-f054-1a24-d4728ad220c8  name "footer"
+```
+
+So the 86,496 B attributed to that block is **one definition rendering on 25 pages**, not 25
+copies. Every page has to carry the CSS in its own HTML; that is unavoidable for inline
+styles and is not a maintenance hazard — editing the component updates all 25 at once. No
+work to do, and nothing was changed.
+
+The error came from measuring the *published output* and inferring duplication from repeated
+bytes. Repeated bytes across pages are expected when a component renders on every page. Only
+duplication **within** a page, or blocks living in separate page-level embeds, indicate
+actual copy-paste.
+
+### Corrected cross-page numbers
+
+| Block | Size | Pages | Source | Real redundancy |
+| --- | --- | --- | --- | --- |
+| `23615ce8` | 3,604 B | 25 | **Global Styles component** | none |
+| `b3cfaaac`, `7e7363f8` | 649 B | 5 | site-wide custom code | none |
+| `1eb2d944` | 3,577 B | 4 | page-level embeds | 10,731 B |
+| `be5cd20a` | 10,675 B | 2 | page-level embeds | 10,675 B |
+| `cd0faf5e` | 9,298 B | 2 | page-level embeds | 9,298 B |
+| `a2950cca` | 4,851 B | 2 | page-level embeds | 4,851 B |
+
+Real cross-page copy-paste is **~35,555 B**, not the 122,051 B reported before.
+
+### Priorities revert
+
+Intra-page duplication is back to being the larger prize: **~101 KB** still recoverable
+across the five remaining clone pages, versus ~36 KB cross-page. The original order stands.
+
+### One genuinely useful finding
+
+The site already uses Components for shared structure — Global Styles, navigation, footer.
+Step 3 is therefore not a new pattern to introduce but an extension of one already in use,
+which makes componentising the seven-page clone family considerably less speculative.
