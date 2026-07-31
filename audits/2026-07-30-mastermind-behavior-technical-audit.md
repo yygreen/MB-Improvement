@@ -1510,3 +1510,71 @@ across the five remaining clone pages, versus ~36 KB cross-page. The original or
 The site already uses Components for shared structure — Global Styles, navigation, footer.
 Step 3 is therefore not a new pattern to introduce but an extension of one already in use,
 which makes componentising the seven-page clone family considerably less speculative.
+
+---
+
+## Change log — unification analysis for the seven clone pages
+
+Goal changed from "dedupe each page" to "one stylesheet shared by all seven", matching the
+`Global Styles` component pattern the site already uses.
+
+### How far apart the seven have drifted
+
+| | Count |
+| --- | --- |
+| Union of selectors across the seven | 386 |
+| Present on 2+ pages | 224 |
+| — identical everywhere | **181 (81%)** |
+| — conflicting | **43** |
+
+Of the 43 conflicts, 18 differ in a single property and 8 in two. Typical shape is one page
+against a four-page majority: `20px` vs `22px`, `1.65` vs `1.7`, `12px` vs `16px`. Classic
+copy-paste drift, not deliberate variation.
+
+Full conflict report: `tools/css-consolidation/service-pages.conflicts.txt`
+Proposed sheet: `tools/css-consolidation/service-pages.canonical.css`
+
+### The canonical sheet
+
+42,432 B / 343 selectors, replacing ~316 KB of page-level CSS across the seven pages. Each
+property takes the majority value; ties break toward a real value over an absent one.
+
+### Two false starts worth recording
+
+**Union order breaks the cascade.** Merging by union produced one rule order where each page
+had its own, so equal-specificity overrides stopped winning. Concretely, `.hero-headline`
+collapsed from 48px to 18px. Anchoring the order to the most complete page's sheet fixed it.
+
+**The first impact measurement was meaningless.** Comparing absolute x/y reported
+"271/271 elements differ" — but a single padding change near the top of a page shifts every
+later element's absolute position. Re-measured on parent-relative geometry plus box, font,
+colour and spacing, the real figure is 10–25% of elements.
+
+### Actual impact of unifying
+
+| Page | Changed at 1440px | at 390px |
+| --- | --- | --- |
+| `services` | 22 / 189 | 19 / 189 |
+| `skill-development` | 22 / 213 | 23 / 213 |
+| `behavior-support` | 23 / 254 | 49 / 254 |
+| `transition-planning` | 48 / 204 | 51 / 204 |
+| `early-intervention` | 56 / 246 | 56 / 246 |
+
+### These are design decisions, not cleanup
+
+The largest single change is hero bottom padding: five pages use `80px 0 100px`, `services`
+uses `80px 0 64px`. Majority rule as implemented picks 64px, shortening the hero on five
+pages by 36px. Other visible calls:
+
+| Selector | Values | Majority |
+| --- | --- | --- |
+| `.hero h1` font-size | 48px (2) vs 40px (services) | 48px |
+| `.hero h1` font-weight | 700 (2) vs 800 (in-home) | 700 |
+| `.hero h1` @768px | 36px vs 34px | tie |
+| `.areas-header h2` colour | `white` (6) vs `#fff` (services) | identical in effect |
+
+Majority voting is a reasonable default for the 30-odd cosmetic conflicts, but it is not the
+right authority for hero padding or headline weight. Those need a human call, and the answer
+determines how five live pages look.
+
+**Nothing has been written to Webflow for this step. Staging is unchanged.**
