@@ -1770,3 +1770,46 @@ Artefacts final and committed:
 - `tools/css-consolidation/layout-diff.mjs` (verification harness)
 
 Still nothing written to Webflow.
+
+---
+
+## Change log — Service Page Styles component created; page 1 of 6 live on staging
+
+### Component
+
+`Service Page Styles` — component id `b3b13b91-f7d3-431f-4f5c-148220cae266`. Holds the
+Manrope font link and the 19.6 KB shared stylesheet, with all heading selectors scoped to
+`.mm-embed` and the pinned hero values. Mirrors the existing `Global Styles` component:
+authored once, instanced per page.
+
+### `/in-home-aba-therapy` — done and verified
+
+- instance of `Service Page Styles` prepended to the page wrapper
+- hero embed now carries only a 6-rule page override plus its markup
+- trust badges restructured to the majority pattern: one `.trust-badges`, two
+  `.trust-badge-row` children
+
+Page inline CSS **36,543 B → 25,580 B**. Rendered against production at 1440 and 390:
+headline, body copy and CTA unchanged; badges now 2 + 2 instead of 2 / 1 / gap / 1.
+
+### A collision the threshold rule created
+
+`in-home`'s override contained `.mm-embed h2 { font-weight: 800 }`. Because the other five
+pages used a *bare* `h2`, that selector fell below the 4-page threshold and stayed
+page-specific — but scoping the shared sheet's headings to `.mm-embed` made the two collide,
+and the override loads last. Left alone, `in-home` would have kept 800 while the other five
+moved to 700, defeating the pin on the one page it was meant to change.
+
+Both `.mm-embed h2` rules were removed from that override. **The same check is required on
+each remaining page**: any override selector that also exists in the shared sheet silently
+wins, and the threshold rule does not catch it because the collision is created by the
+scoping fix rather than by the source CSS.
+
+### Remaining
+
+Five pages: `parent-training`, `early-intervention`, `behavior-support`,
+`transition-planning`, `skill-development`. Each is the same operation — instance the
+component, replace the embed stylesheet with its override minus any shared-sheet collisions,
+strip the duplicate copy, render at 1440/390. Then one staging publish for the set.
+
+Production remains untouched throughout.
