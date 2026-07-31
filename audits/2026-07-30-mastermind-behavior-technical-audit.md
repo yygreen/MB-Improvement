@@ -1059,3 +1059,53 @@ city links, `aberdeen` first, `woodbridge` last, zero broken anchors, and all th
 The Georgia and North Carolina lists still use the 375px pane, so the New Jersey section is
 now visually taller than those. Worth deciding whether to apply the same treatment there —
 it is the same one-line override per grid.
+
+---
+
+## Change log — scroll pane restored with a forced scroll reset
+
+The 375px `.cards` scroll pane is back on the New Jersey grid by request. The earlier
+`max-height: none` override has been removed.
+
+To stop the pane stranding the first towns, both grids now carry a small script that pins
+the container to the top:
+
+```js
+(function () {
+  var top = function () {
+    var g = document.getElementById('nj-cities-grid');
+    if (g) g.scrollTop = 0;
+  };
+  if (document.readyState !== 'loading') top();
+  else document.addEventListener('DOMContentLoaded', top);
+  window.addEventListener('load', top);
+})();
+```
+
+On the cause of the clipped top row: the grid renders in correct alphabetical order and all
+115 anchors are present in the HTML, so nothing is missing — the pane was simply scrolled.
+Browsers restore a scroll container's offset across reloads, and this page had been reloaded
+many times mid-scroll during the work, so the offset persisted. A first-time visitor would
+not usually hit it. The script makes the starting position deterministic either way.
+
+### Live state, verified against production
+
+| Page | City links | Empty anchors | Notes |
+| --- | --- | --- | --- |
+| `/aba-therapy-in-new-jersey` | 115 (`aberdeen` → `woodbridge`) | 0 | complete |
+| `/areas-we-serve` | 190 | 0 | overflow list still hidden |
+
+### `/areas-we-serve` still not resolving
+
+Two separate staging publishes after the Designer edit both still rendered
+`<a href="#" class="card-link">` for all 15 overflow cards on that page — sample from
+staging:
+
+```html
+<a href="#" class="card-link w-inline-block"><h2 class="heading-style-h5">Toms River</h2></a>
+```
+
+So the Page dropdown on that page's card link has not taken effect yet. The wrapper is
+hidden again and production is unaffected at 190 links with no broken anchors. Note this is
+a *different* element from the hub page's link — page `664751f18604421a35f42f61`, link
+`140f029c-8823-a0b9-8e82-b041f4f87ea1`, inside wrapper `4ca9b8a9-4c56-94e7-a246-0e19b2b08bed`.
