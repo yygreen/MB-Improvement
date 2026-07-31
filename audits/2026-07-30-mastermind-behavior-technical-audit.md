@@ -994,3 +994,37 @@ The scaffolding is intact and hidden — grid container, second Collection List 
 
 Everything else — the query, the offset, the shared grid, the styling, the centering — is
 already correct and does not need to be touched.
+
+---
+
+## Change log — New Jersey hub complete: all 115 cities live
+
+`/aba-therapy-in-new-jersey` now renders all 115 published New Jersey cities as a single
+continuous grid in one scroll pane. Verified against production:
+
+- 115 unique `/areas-we-serve/*` links, `aberdeen` first, `woodbridge` last
+- correct alphabetical order across the seam — index 99 `tinton-falls`, index 100 `toms-river`
+- zero `href="#"` anchors, zero literal binding tokens
+
+### What unblocked it
+
+The `collectionPage` link needed a target chosen from the Designer's **Page** dropdown
+("Current Areas We Serve"). That selection is not reachable through the Data API and, more
+awkwardly, leaves no trace the API can read: `all_raw_settings` and `all_resolved_settings`
+both return `{"mode": "collectionPage"}` for the working link and for a broken one alike.
+The only reliable signal is the rendered HTML — or, in the Designer Navigator, a small ⟳
+binding marker next to the element.
+
+Practical rule for this stack: a Collection List built through the API is fully configurable
+(source, filter, sort, limit, offset) and its text bindings work, but **any link to the
+current collection item has to be set once by hand in the Designer.**
+
+### Still outstanding
+
+`/areas-we-serve` keeps its overflow list hidden (`4ca9b8a9-4c56-94e7-a246-0e19b2b08bed`),
+because its card link has not had the same Page dropdown set — a staging publish confirmed
+15 unresolved anchors there. Production is unaffected: that page stays at 190 links with no
+broken anchors. Setting the dropdown on that one link and unhiding the wrapper takes it to
+205.
+
+All experimental publishes during this work went to `mastermindbehavior.webflow.io` only.
