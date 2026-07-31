@@ -724,3 +724,67 @@ silently corrupting a live article. The other twelve ranged 13–37 KB and were 
 **Recommended fix: do this one by hand in the Webflow editor.** Open the post, find the
 sentence above, select the words "skill development", and link them to
 `https://www.mastermindbehavior.com/skill-development`. About thirty seconds, zero risk.
+
+---
+
+## Change log — can the Collection List cap be fixed via the Webflow MCP?
+
+**Answer: no.** The Data API does not expose a Collection List's data source, sort,
+filter, or item limit — not for reading, not for writing.
+
+Evidence, run against the New Jersey hub's list
+(`{component: 6a01d3a82e9293bcfba0e668, element: 2cbc6394-bd19-178c-7b66-f4c5878f5cdf}`,
+internal type `DynamoList`):
+
+| Probe | Result |
+| --- | --- |
+| `get_settings` → `all_raw_settings` | 4 keys only: `domId`, `tag`, `visibility`, `attributes` |
+| `get_settings` → `query_settings`, `value_type: sort` | 0 matches |
+| `get_settings` → `query_settings`, `value_type: filter` | 0 matches |
+| `get_settings` → `query_settings`, `value_type: selectedItems` | 0 matches |
+| `data_element_builder`, `type: CMSCollection` | Creatable, but the schema has no field for collection source or sort |
+| `designer_tool` | Navigation and selection only; no list-configuration actions |
+
+`sort`, `filter`, and `selectedItems` do appear in the tool's `value_type` enum, so the
+concepts exist in the API surface — they are simply not attached to this element type.
+The builder can therefore create a Collection List, but only an unbound, unsorted one.
+Creating an empty list on a live page is worse than leaving the page alone.
+
+**Conclusion: the second-Collection-List fix is a manual Designer change.**
+
+### Scope of the problem
+
+Only New Jersey is affected. Published (non-archived) counts are NJ 115 / GA 78 / NC 12;
+Webflow caps a Collection List at 100 items, so only NJ overflows. The overflow is a clean
+alphabetical tail — page 1 renders `aberdeen` … `tinton-falls`, and page 2
+(`?c93d3bc8_page=2`, confirmed live, HTTP 200) serves exactly these 15:
+
+```
+toms-river      trenton         union           vernon          vineland
+voorhees        wall            wayne           westfield       west-milford
+west-new-york   west-orange     willingboro     winslow         woodbridge
+```
+
+The same 15 are missing from `/areas-we-serve`, whose 190 rendered links break down as
+100 (NJ, capped) + 78 + 12.
+
+Note on the CMS totals: the collection holds 517 NJ / 455 GA / 20 NC items, but the large
+majority carry `isArchived: true` and `lastPublished: null`. Those are archived, not
+merely unpublished — they are not a hidden inventory of live pages.
+
+### Options, in order of preference
+
+1. **Second Collection List, sorted Z→A** (manual Designer work, on both the NJ hub and
+   `/areas-we-serve`). Renders the tail server-side in the page-1 HTML and stays correct
+   as the CMS changes. This is the right fix.
+2. **Static link block of the 15 tail cities** — this one *is* fully doable via MCP
+   (`data_element_builder` creating `TextLink` elements with `set_link`). Server-rendered
+   and crawlable. Downside: hardcoded, so it drifts if the published city set changes.
+3. **Remove the `pagination-hide` class** from the pagination wrapper — a one-line change,
+   but it only exposes `?c93d3bc8_page=2`, and the site's own script serves that URL as
+   `noindex,follow`. It would pass link equity to the 15 cities without making the
+   pagination URL itself indexable. Weakest of the three.
+
+Worth keeping in proportion: all 205 city pages combined draw roughly 4 organic visits per
+month. Restoring 15 of them to the internal link graph is correctness work, not a traffic
+lever.
