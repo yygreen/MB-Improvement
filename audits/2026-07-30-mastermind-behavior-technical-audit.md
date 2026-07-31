@@ -1328,3 +1328,74 @@ two 16 KB copies to one 17 KB copy.
    ~90 KB deduped union cannot live in Site Settings → Head.
 3. Rebuild the layout as a Webflow Component with props, which is what actually makes the
    layout identical by construction rather than by convention.
+
+---
+
+## Change log — step 1 complete; correction to the duplication figures
+
+### Correction
+
+The per-page "duplicate" figures reported earlier conflated two different things. That table
+counted a block as duplicate if it had been seen on *any* previously scanned page, so
+cross-page repeats were charged to whichever page was scanned second. Measured strictly
+within each page:
+
+| Page | Intra-page duplicate CSS | Action |
+| --- | --- | --- |
+| `in-home-aba-therapy` | two 16 KB near-copies | merged (declaration-level) |
+| `parent-training` | 23,055 B, byte-identical copy | earlier copy removed |
+| `insurance-terminology` | **none** | nothing to do |
+| `financial-aid-resources` | **none** | nothing to do |
+| `bcba-team` | none | nothing to do |
+
+So step 1 touches two pages, not four. `insurance-terminology` and `financial-aid-resources`
+carry several distinct stylesheets each, one per section — verbose, but not duplicated
+within the page.
+
+### parent-training
+
+"Code Embed 4" and "Code Embed 5" held byte-identical copies of the same 23 KB stylesheet
+with nothing between them in document order, so removing the earlier copy is exactly
+cascade-neutral. The hero embed now carries markup only.
+
+| Viewport | Elements | Doc height | Differing |
+| --- | --- | --- | --- |
+| 1440 | 242 vs 242 | 8489 vs 8489 | **0** |
+| 768 | 242 vs 242 | 11632 vs 11632 | **0** |
+| 390 | 242 vs 242 | 14864 vs 14864 | **0** |
+
+Page inline CSS: 50,567 B in 5 blocks → 27,512 B in 4.
+
+### Step 1 result, staged
+
+| Page | Before | After | Saved |
+| --- | --- | --- | --- |
+| `/in-home-aba-therapy` | 36,543 B | 22,375 B | 14,168 B |
+| `/parent-training` | 50,567 B | 27,512 B | 23,055 B |
+
+Zero rendering differences on either page at 1440 / 768 / 390. **Staging only.**
+
+### What this does and does not achieve
+
+It does not make the pages share anything. Each still carries its own private stylesheet and
+its own hand-written markup. It removes each page's ability to disagree with *itself* — the
+bug that had `/in-home-aba-therapy` shipping an aspect-ratio fix in one copy and a
+min-height in the other.
+
+### Step 2 is cheaper than first assessed
+
+Not all cross-page repetition is blocked on the 30 conflicting selectors. Several blocks are
+**byte-identical across pages** and can be shared with no design decisions at all:
+
+| Block | Size | Pages | Redundant |
+| --- | --- | --- | --- |
+| `23615ce8` (the `global-styles` embed) | 3,808 B | 4 | 11,424 B |
+| `cd0faf5e` | 10,383 B | 2 | 10,383 B |
+| `c0e2cf83` | 2,546 B | 2 | 2,546 B |
+| `b3cfaaac` | 598 B | 5 | 2,392 B |
+| `7e7363f8` | 51 B | 5 | 204 B |
+| | | | **26,949 B** |
+
+`global-styles` is the obvious first move: identical on four pages, already isolated in its
+own embed, and it only needs converting to a Webflow Component to become genuinely shared.
+The 30 conflicts affect only the remainder.
