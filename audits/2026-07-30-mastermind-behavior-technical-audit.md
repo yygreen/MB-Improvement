@@ -1028,3 +1028,34 @@ broken anchors. Setting the dropdown on that one link and unhiding the wrapper t
 205.
 
 All experimental publishes during this work went to `mastermindbehavior.webflow.io` only.
+
+---
+
+## Change log — New Jersey grid no longer an inner scroll pane
+
+Reported symptom: the first towns were unreachable on `/aba-therapy-in-new-jersey`, with the
+visible top row clipped mid-glyph starting at "Garfield".
+
+Cause: `.cards` is `max-height: 375px; overflow: scroll`, so the grid is a short internal
+scroll pane roughly five rows tall. With 115 towns most of the list sits outside it, and
+browsers restore a scroll container's offset across reloads — which is why the pane loaded
+already scrolled past Aberdeen through Fair Lawn.
+
+This predates the overflow-list work: the same clipped "Garfield" top row appears in
+screenshots taken before any of these changes. It was previously less visible because the
+list stopped at 100 towns.
+
+Fix, scoped to this grid only:
+
+```css
+#nj-cities-grid { max-height: none; overflow: visible; }
+```
+
+All 115 towns now render in normal page flow, so nothing is hidden behind an inner
+scrollbar and no scroll position can strand the first entries. Verified live: 115 unique
+city links, `aberdeen` first, `woodbridge` last, zero broken anchors, and all three
+`#nj-cities-grid` rules present.
+
+The Georgia and North Carolina lists still use the 375px pane, so the New Jersey section is
+now visually taller than those. Worth deciding whether to apply the same treatment there —
+it is the same one-line override per grid.
