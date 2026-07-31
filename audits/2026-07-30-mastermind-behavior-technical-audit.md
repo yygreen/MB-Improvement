@@ -1109,3 +1109,75 @@ So the Page dropdown on that page's card link has not taken effect yet. The wrap
 hidden again and production is unaffected at 190 links with no broken anchors. Note this is
 a *different* element from the hub page's link — page `664751f18604421a35f42f61`, link
 `140f029c-8823-a0b9-8e82-b041f4f87ea1`, inside wrapper `4ca9b8a9-4c56-94e7-a246-0e19b2b08bed`.
+
+---
+
+## Change log — root cause of every "cut off" report: centred grid overflow
+
+Rendering the live page in a headless browser finally located the real defect, which had
+nothing to do with scroll position and predates all of this work.
+
+```css
+.cards          { max-height: 375px; overflow: scroll; display: grid; }
+.cards.cards-ga { align-content: center; }
+```
+
+When a grid's rows are taller than its own `max-height`, `align-content: center` centres
+them in the box and overflows them **equally above and below**. Overflow above a scroll
+container's top edge is unreachable: `scrollTop` cannot go negative. Measured on the live
+New Jersey hub:
+
+| | Before | After |
+| --- | --- | --- |
+| `align-content` | `center` | `start` |
+| First card offset from container top | **−333px** | 0px |
+| Cards at negative offsets (invisible, unscrollable) | **40** | 0 |
+| `scrollTop` on load | 0 | 0 |
+
+`scrollTop` was zero the entire time — the pane was never scrolled. That is why the earlier
+scroll-restoration theory was wrong and why the scroll-reset script changed nothing; it has
+been removed. Forty towns were simply painted above the container and clipped, which is
+exactly the reported symptom: a list that appears to begin partway through the alphabet with
+its top row sliced mid-glyph.
+
+Fix, one line, scoped to the merged grid:
+
+```css
+#nj-cities-grid { align-content: start; }
+```
+
+The same guard was added to `/areas-we-serve` even though its grid lacks `cards-ga`, so the
+merged grid there cannot fall into the same trap.
+
+This bug existed before the overflow work — the very first screenshot in this engagement
+shows the same clipped "Garfield" top row at 100 towns. Adding 15 more made it worse, not
+new. **The Georgia and North Carolina lists carry `cards-ga` too and are worth checking for
+the same clipping.**
+
+### Verified against production, rendered in a browser
+
+| Page | Cards in grid | Unreachable above | First | Last |
+| --- | --- | --- | --- | --- |
+| `/aba-therapy-in-new-jersey` | 115 | 0 | Aberdeen | Woodbridge |
+| `/areas-we-serve` | 100 | 0 | Aberdeen | Tinton Falls |
+
+### `/areas-we-serve` overflow: every API route is now exhausted
+
+The remaining 15 towns on that page need its overflow list's card link bound to the current
+collection item. Attempts, all failed:
+
+1. `link = {mode:"collectionPage"}` — renders `href="#"`
+2. `link` with `to` as page slug or page id — emitted literally as the href
+3. `HtmlEmbed` with `{{wf …}}` binding tokens — rendered as literal text
+4. `transform_element_to_component` on the working link — `Target element is invalid`;
+   Webflow refuses to componentise an element inside a Collection List, so the working
+   link cannot be cloned into the second list
+
+That leaves one Designer click, on page `664751f18604421a35f42f61`, link
+`140f029c-8823-a0b9-8e82-b041f4f87ea1`, inside hidden wrapper
+`4ca9b8a9-4c56-94e7-a246-0e19b2b08bed`.
+
+Worth noting the SEO objective is already met without it: all 115 New Jersey city pages are
+internally linked and crawlable from `/aba-therapy-in-new-jersey`. Adding them to
+`/areas-we-serve` is duplication, not new coverage. Removing that page's hidden overflow
+list is a legitimate alternative to finishing it.
