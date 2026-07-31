@@ -1727,3 +1727,46 @@ deduplicating it, and it was only found by rendering an example rather than coun
 selectors.
 
 Still nothing written to Webflow.
+
+---
+
+## Change log — family reduced to six; unscoped `h2` caught before it spread
+
+`services` removed from the family per decision. Recomputed over the remaining six:
+
+| | Value |
+| --- | --- |
+| Selectors in the family | 226 |
+| Shared (on 4+ of 6) | 157 — of which 123 identical everywhere |
+| Page-specific | 69 |
+| Shared sheet | 19,585 B |
+| Per-page override | 1,106–1,989 B |
+| Page total after | ~21 KB, against 36–50 KB today |
+
+### A bug the majority rule would have propagated
+
+Five of the six pages declare a **bare `h2 { … }`** — unscoped, so it restyles every `<h2>`
+on the page, including navigation, footer and any Webflow-native section. Only
+`in-home-aba-therapy` scopes it correctly as `.mm-embed h2`.
+
+Majority is 5–1 for the unscoped version. Left alone, the shared sheet would have preserved
+the bug on five pages and newly imposed it on the one page that had it right. All bare
+heading selectors in the shared sheet are now scoped to `.mm-embed`.
+
+This is the second deliberate override of majority, alongside the 36px mobile headline. Both
+follow the same principle: the majority reflects what was copy-pasted most often, not what is
+correct.
+
+### Architecture for the write
+
+The shared sheet goes into a Webflow **Component**, mirroring the existing `Global Styles`
+component — authored once, instanced on each of the six pages. Each page then carries only
+its own 1–2 KB override. This also keeps the write small: 19.6 KB written once rather than
+six times.
+
+Artefacts final and committed:
+- `tools/css-consolidation/service-pages.shared.css`
+- `tools/css-consolidation/override.<page>.css` (six files)
+- `tools/css-consolidation/layout-diff.mjs` (verification harness)
+
+Still nothing written to Webflow.
