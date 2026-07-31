@@ -1261,3 +1261,70 @@ elements (towns 101-115), which must be edited by hand if the published New Jers
 changes. `/aba-therapy-in-new-jersey` uses a second Collection List at `offset: 100` instead
 and stays in sync automatically; it needed one Designer step the API cannot perform —
 setting the card link's Page target to "Current Areas We Serve".
+
+---
+
+## Change log — step 1 of embed standardisation, staged on /in-home-aba-therapy
+
+### Why the naive plan does not work
+
+A single site-wide stylesheet cannot simply be lifted out of the embeds. Parsing all inline
+CSS across five pages gives 429 distinct selectors, of which **30 are defined differently on
+different pages**:
+
+| Selector | Conflict |
+| --- | --- |
+| `.mm-embed *` | `margin:0; padding:0; box-sizing:border-box` on two pages, `box-sizing:inherit` on the other two |
+| `.mm-step` | `grid-template-columns: 56px 1fr` vs `44px 1fr`, different padding |
+| `.mm-embed .hero-headline` | `font-weight: 800` vs `700` |
+| `.mm-step__body strong` | `var(--font-body)` vs `var(--font-disp)` |
+
+Merging those into one file would visibly change pages. Cross-page sharing is therefore
+gated on 30 design decisions, not a mechanical step.
+
+### What was done instead
+
+Per-page consolidation, which is where the actual drift bug lives. `/in-home-aba-therapy`
+shipped its stylesheet **twice**, once per embed, 98.1% identical and already diverged:
+
+```
+copy A: min-height: 280px          copy B: aspect-ratio: 16/9
+copy A: min-height: 200px          copy B: aspect-ratio: 16/9
+copy A: (no .section-warm-alt)     copy B: .section-warm-alt { background:#f8f6f1 }
+```
+
+The two were merged into one block in the first embed; the second embed now carries markup
+only. The merge is declaration-level, not rule-level: where both copies define the same
+selector, declarations are combined with the later copy winning **per property**. A
+first attempt that kept only the later rule silently dropped `min-height: 200px` from
+`.benefit-image`, because the other copy set `aspect-ratio` — a different property, so both
+had been applying. The layout harness caught it.
+
+### Verification
+
+`tools/css-consolidation/layout-diff.mjs` renders both builds in headless Chromium and
+compares every element inside `.mm-embed` on position, size, font-size, weight, colour,
+background and display, plus total document height, at three viewports.
+
+Run against the **published staging build** vs production:
+
+| Viewport | Elements | Doc height | Differing |
+| --- | --- | --- | --- |
+| 1440 | 271 vs 271 | 9423 vs 9423 | **0** |
+| 768 | 271 vs 271 | 15188 vs 15188 | **0** |
+| 390 | 271 vs 271 | 16857 vs 16857 | **0** |
+
+Page inline CSS: 36,543 B in 5 blocks → 22,375 B in 4. The page's own stylesheet went from
+two 16 KB copies to one 17 KB copy.
+
+**Staging only. Production is untouched.**
+
+### Remaining, in order
+
+1. Same treatment for `parent-training` (24,420 B duplicated), `insurance-terminology`
+   (15,732 B), `financial-aid-resources`.
+2. Reconcile the 30 cross-page conflicts, then lift the shared core into a component that
+   renders on every page. Webflow caps site-wide custom code near 10k characters, so the
+   ~90 KB deduped union cannot live in Site Settings → Head.
+3. Rebuild the layout as a Webflow Component with props, which is what actually makes the
+   layout identical by construction rather than by convention.
