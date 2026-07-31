@@ -906,3 +906,44 @@ simply does not apply and the layout falls back to the two-pane version rather t
 collapsing.
 
 **Status: staged in the Designer, not yet published.**
+
+---
+
+## Change log — restoring the centering the flattened wrapper used to supply
+
+The merged grid shipped misaligned on `/aba-therapy-in-new-jersey`: the town list ran to
+the section edge while the heading above it stayed centred. Cause, from the compiled
+stylesheet:
+
+```css
+.collection-list-wrapper-2 { max-width: 1200px; margin-left: auto; margin-right: auto;
+                             padding-bottom: 100px; color: #fff; }
+@media screen and (min-width: 1920px) {
+  .collection-list-wrapper-2 { width: 1200px; max-width: 1200px; margin-left: auto;
+                               margin-right: auto; } }
+```
+
+That wrapper — not the grid — was the element holding the 1200px column and centring it.
+`display: contents` removes an element's box entirely, so the max-width and auto margins
+went with it. The cards then filled the full section width.
+
+Fix: move those properties onto `#nj-cities-grid`, which is now the only box in the chain.
+
+```css
+#nj-cities-grid { max-width: 1200px; margin-left: auto; margin-right: auto;
+                  margin-bottom: 100px; }
+@media screen and (min-width: 1920px) { #nj-cities-grid { width: 1200px; } }
+```
+
+`margin-bottom` rather than the original `padding-bottom`: the wrapper's padding sat
+outside the 375px scroll pane, but `#nj-cities-grid` *is* the pane, so padding would scroll
+with the cards instead of spacing the section below it.
+
+`/areas-we-serve` was not affected and needed no change — its three list wrappers carry no
+classes at all (`class="w-dyn-list"`), so `display: contents` removed nothing of value
+there, and the Georgia and North Carolina lists sit at the same full width as New Jersey.
+The Georgia hub page was never touched.
+
+**General lesson for this codebase:** `display: contents` on a Webflow Collection List
+Wrapper silently drops whatever layout that wrapper was carrying. Check the wrapper's own
+classes before flattening it — on this site the hub pages and the index page differ.
