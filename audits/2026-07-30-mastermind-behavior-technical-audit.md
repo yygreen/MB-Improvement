@@ -1181,3 +1181,47 @@ Worth noting the SEO objective is already met without it: all 115 New Jersey cit
 internally linked and crawlable from `/aba-therapy-in-new-jersey`. Adding them to
 `/areas-we-serve` is duplication, not new coverage. Removing that page's hidden overflow
 list is a legitimate alternative to finishing it.
+
+---
+
+## Change log — /areas-we-serve completed with a static overflow embed
+
+The Collection List route was abandoned on this page. Its replacement needs no CMS binding,
+so it needs no Designer click.
+
+The non-functional second Collection List was removed. In its place, an `HtmlEmbed` appended
+inside `#nj-cities-grid` holds the 15 towns past the cap as plain anchors using the page's
+own card markup:
+
+```html
+<a href="/areas-we-serve/toms-river" class="card-link w-inline-block">
+  <h2 class="heading-style-h5">Toms River</h2></a>
+```
+
+The flattening rule was extended to cover it, so the anchors become direct grid children and
+sit flush with the dynamic cards rather than occupying one cell:
+
+```css
+#nj-cities-grid > .w-dyn-list,
+#nj-cities-grid .w-dyn-items,
+#nj-cities-grid > .w-embed { display: contents; }
+```
+
+### Verified against production, rendered in a browser
+
+| Page | Page links | NJ cards in grid | Unreachable | First | Last |
+| --- | --- | --- | --- | --- | --- |
+| `/aba-therapy-in-new-jersey` | 115 | 115 | 0 | Aberdeen | Woodbridge |
+| `/areas-we-serve` | 205 | 115 | 0 | Aberdeen | Woodbridge |
+
+Computed text colour is identical between the dynamic and static cards on each page
+(`#fff` on the hub, `#002833` on the index), so the seam is invisible. Order is continuous:
+`… Tinton Falls` → `Toms River` → `… Woodbridge`.
+
+### Trade-off
+
+These 15 anchors are static. If the published New Jersey city set changes, they must be
+edited by hand — the embed carries a comment saying so. The first 100 remain fully dynamic.
+The alternative is the Collection List version used on the hub, which stays in sync
+automatically but requires the Designer link step. The hub keeps that version; this page
+uses the static one.
