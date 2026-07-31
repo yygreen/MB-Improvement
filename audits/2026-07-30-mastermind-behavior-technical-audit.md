@@ -1648,3 +1648,53 @@ The sheet is built and measured but **not yet written to Webflow**. Applying it 
 page: replace the first large embed's stylesheet with the canonical one and strip the second
 copy — the same operation already performed on `/in-home-aba-therapy` and `/parent-training`,
 seven times over, each verified with the harness before it counts.
+
+---
+
+## Change log — the single-sheet approach was wrong; shared base + overrides instead
+
+Rendering one page before applying anything caught a regression that no amount of selector
+counting would have.
+
+### What the example showed
+
+On mobile, the unified sheet centred the entire hero — headline, body copy and trust badges
+— where the page is left-aligned. Source: `@media (max-width: 768px) .mm-embed .hero
+{ text-align: center }`, which exists on **`services` alone**.
+
+The majority logic only voted among pages that *have* a selector. A rule unique to one page
+therefore won 1–0 and propagated to all seven. That is not a bug in the tally — it is what
+"merge by union" means, and it is wrong for genuinely page-specific styling.
+
+**174 of the 331 selectors are unique to a single page.** Every one of them would have been
+pushed onto the other six.
+
+### Corrected structure
+
+A rule joins the shared sheet only if it appears on **4 or more of the 7** pages. Everything
+below that threshold stays local.
+
+| | Size | Selectors |
+| --- | --- | --- |
+| Shared sheet | 19,585 B | 157 |
+| `in-home-aba-therapy` override | 1,106 B | 9 |
+| `parent-training` override | 1,385 B | 16 |
+| `transition-planning` override | 1,610 B | 17 |
+| `early-intervention` override | 1,783 B | 17 |
+| `behavior-support` override | 1,914 B | 19 |
+| `skill-development` override | 1,989 B | 20 |
+| `services` override | 14,417 B | 110 |
+
+Total ~44 KB against ~316 KB today, an 86% reduction, with no page able to impose its
+private styling on any other.
+
+### `services` is not really a clone
+
+110 unique selectors against 9–20 for the others. It shares the shell but most of its
+styling is its own. It should probably be treated as a separate page rather than forced into
+the family.
+
+Artefacts: `tools/css-consolidation/service-pages.shared.css` and
+`tools/css-consolidation/override.<page>.css`.
+
+Still nothing written to Webflow.

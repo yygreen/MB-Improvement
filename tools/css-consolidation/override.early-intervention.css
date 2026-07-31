@@ -1,0 +1,23 @@
+  .mm-embed .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--teal); margin-bottom: 20px; }
+  .mm-embed .hero-eyebrow::before { content: ''; width: 24px; height: 2px; background: var(--teal); }
+  .mm-embed .hero h1 { font-family: var(--font-display); font-size: 48px; line-height: 1.15; font-weight: 700; color: var(--navy); margin-bottom: 24px; letter-spacing: -0.5px; }
+@media (max-width: 768px) {
+  .mm-embed .hero h1 { font-size: 36px; }
+}
+  .mm-embed .why-early-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; margin-top: 48px; }
+  .mm-embed .why-early-copy p { font-size: 17px; line-height: 1.75; color: var(--text-light); margin-bottom: 20px; }
+  .mm-embed .why-early-copy strong { color: var(--text); font-weight: 600; }
+  .mm-embed .why-early-copy a { color: var(--teal); text-decoration: underline; text-decoration-color: rgba(59,165,168,0.3); text-underline-offset: 3px; transition: text-decoration-color 0.2s; }
+  .mm-embed .why-early-copy a:hover { text-decoration-color: var(--teal); }
+  .mm-embed .why-early-image { border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 4/3; background: var(--warm-dark); }
+  .mm-embed .sessions-header { text-align: center; margin-bottom: 64px; }
+  .mm-embed .sessions-header h2 { margin: 0 auto 16px; }
+  .mm-embed .skills-header h2 { margin: 0 auto 16px; }
+  .mm-embed .approach-header h2 { margin: 0 auto 16px; }
+@media (max-width: 768px) {
+  .mm-embed .why-early-grid { grid-template-columns: 1fr; gap: 40px; }
+  .mm-embed .right-grid { grid-template-columns: 1fr; gap: 40px; }
+}
+@media (max-width: 480px) {
+  .mm-embed .icon-grid { grid-template-columns: 1fr; }
+}
