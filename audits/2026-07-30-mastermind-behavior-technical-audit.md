@@ -1225,3 +1225,39 @@ edited by hand — the embed carries a comment saying so. The first 100 remain f
 The alternative is the Collection List version used on the hub, which stays in sync
 automatically but requires the Designer link step. The hub keeps that version; this page
 uses the static one.
+
+---
+
+## Change log — empty first cell fixed; static cards rebuilt as real elements
+
+The static overflow cards were initially delivered as an `HtmlEmbed` flattened with
+`display: contents`. That left the top-left cell of the grid empty and shifted every card
+one position, producing a 24th row holding a single town.
+
+Cause, established by removing the embed in the browser and re-measuring: flattening an
+`HtmlEmbed` leaves an anonymous grid item behind. Removing whitespace and comment nodes from
+the embed did not help; removing the embed entirely moved the first card from x=259 back to
+x=0. The wrapper div itself is the source, not its contents.
+
+Fix: the 15 towns are now real Webflow `LinkBlock` elements appended directly inside
+`#nj-cities-grid`, each with the `card-link` class, a static URL, and an `h2.heading-style-h5`
+child — the same markup the collection list produces. No embed, no flattening, no anonymous
+item. The `> .w-embed` selector was dropped from the flattening rule.
+
+### Verified against production, rendered in a browser
+
+| Page | Cards | Rows | First row | First card x | Unreachable | First | Last |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `/aba-therapy-in-new-jersey` | 115 | 23 | 5 | 0 | 0 | Aberdeen | Woodbridge |
+| `/areas-we-serve` | 115 | 23 | 5 | 0 | 0 | Aberdeen | Woodbridge |
+
+23 rows × 5 columns = 115 exactly on both pages, no gap and no orphan row. Page totals are
+115 and 205 city links respectively.
+
+### Note for whoever maintains this
+
+`/areas-we-serve` now mixes a dynamic Collection List (towns 1-100) with 15 hand-built link
+elements (towns 101-115), which must be edited by hand if the published New Jersey city set
+changes. `/aba-therapy-in-new-jersey` uses a second Collection List at `offset: 100` instead
+and stays in sync automatically; it needed one Designer step the API cannot perform —
+setting the card link's Page target to "Current Areas We Serve".
