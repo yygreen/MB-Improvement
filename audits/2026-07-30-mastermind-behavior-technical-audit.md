@@ -1578,3 +1578,73 @@ right authority for hero padding or headline weight. Those need a human call, an
 determines how five live pages look.
 
 **Nothing has been written to Webflow for this step. Staging is unchanged.**
+
+---
+
+## Change log — correction: CSS comments were corrupting the analysis
+
+The conflict analysis above was wrong. The CSS parser did not strip comments, so a comment
+preceding a rule became part of its selector key. These were treated as two different
+selectors and never merged:
+
+```
+/* ─── HERO ─── */ .mm-embed .hero           { padding: 80px 0 100px; … }
+/* ─── HERO (compact) ─── */ .mm-embed .hero { padding: 80px 0 64px;  … }
+```
+
+Both survived into the canonical sheet, and the later one won. **The hero shrinking to 64px
+was never a majority vote — it was comment text leaking into selector names.**
+
+Re-run with comments stripped:
+
+| | Before (wrong) | After |
+| --- | --- | --- |
+| Union selectors | 386 | **331** (55 were phantoms) |
+| Shared by 2+ pages | 224 | 182 |
+| Identical everywhere | 181 | 138 |
+| Conflicting | 43 | 44 |
+
+And the hero tally reverses completely: **six of seven pages use `80px 0 100px`**; only
+`services` uses `80px 0 64px`.
+
+### Pinned values
+
+| Property | Tally | Pinned | Basis |
+| --- | --- | --- | --- |
+| `.hero` padding | 100px ×6, 64px ×1 | `80px 0 100px` | majority |
+| `.hero-headline` font-size | 48px ×5, 40px ×1 | `48px` | majority |
+| `.hero-headline` font-weight | 700 ×5, 800 ×1 | `700` | majority |
+| `.hero-headline` line-height | 1.15 ×5, 1.18 ×1 | `1.15` | majority |
+| `.hero h1` size / weight | 48px ×2, 700 ×2 | `48px` / `700` | consistent with above |
+| `.hero-headline` @768px | 48px ×3, 36px ×2, 34px ×1 | **`36px`** | **majority overridden** |
+
+The mobile headline is the one deliberate departure. `48px` leads only because three pages
+never received a mobile override at all — a 48px headline at 390px is an omission, not a
+decision. `36px` is the considered value on the pages that handle the breakpoint.
+
+### Canonical sheet v2
+
+40,288 B / 331 selectors, 9 pinned properties. Replaces ~316 KB of page-level CSS across the
+seven pages. Committed at `tools/css-consolidation/service-pages.canonical.css`.
+
+Measured impact, parent-relative geometry plus box, font, colour and spacing, at 1440px:
+
+| Page | Elements changed |
+| --- | --- |
+| `skill-development` | 22 / 213 |
+| `services` | 22 / 189 |
+| `behavior-support` | 23 / 254 |
+| `transition-planning` | 48 / 204 |
+| `parent-training` | 52 / 242 |
+| `in-home-aba-therapy` | 76 / 271 |
+| `early-intervention` | 78 / 246 |
+
+`in-home-aba-therapy` absorbs the most because it is the outlier on headline weight (800 →
+700) and font-family (`var(--font-display)` → `'Manrope', sans-serif`).
+
+### Still to do
+
+The sheet is built and measured but **not yet written to Webflow**. Applying it means, per
+page: replace the first large embed's stylesheet with the canonical one and strip the second
+copy — the same operation already performed on `/in-home-aba-therapy` and `/parent-training`,
+seven times over, each verified with the harness before it counts.
