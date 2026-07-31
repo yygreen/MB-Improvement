@@ -800,3 +800,46 @@ HTML without reversing anything or risking overlap. Both are reachable via MCP.
 Worth keeping in proportion: all 205 city pages together draw roughly 4 organic visits per
 month. Restoring 15 of them to the internal link graph is correctness work, not a traffic
 lever.
+
+---
+
+## Change log — overflow Collection Lists built on both New Jersey pages
+
+Built entirely through the MCP with the Designer bridge connected. Both new lists mirror
+the original query exactly, differing only in `offset` (100 instead of 0) and `pagination`
+(null instead of `{itemsPerPage: 100}`).
+
+| Page | Page ID | New wrapper | Inner list classes |
+| --- | --- | --- | --- |
+| `/aba-therapy-in-new-jersey` | `6a01d3a82e9293bcfba0e668` | `8d50025c-e805-4ee0-97cf-7d2c0e75cd7c` | `cards`, `cards-ga` |
+| `/areas-we-serve` | `664751f18604421a35f42f61` | `4ca9b8a9-4c56-94e7-a246-0e19b2b08bed` | `cards` |
+
+The index page carries three lists filtered to New Jersey / Georgia / North Carolina; only
+the New Jersey one (`8a3b6adb-0111-59f5-7e06-8ab598e9efa0`) overflows, and the new list was
+inserted directly after it.
+
+Card markup replicates the original on each page: `DynamoItem > Link.card-link >
+Heading.heading-style-h5[h2]`, with the link set to `collectionPage` mode and the heading
+text bound to the `Name` field (`d288331399cee88e56b59c0a125879e4`). The hub page also
+carries `areas-ga` on the heading and `aria-label="link"` on the link, matching its
+original; the index page does not, matching its own.
+
+Two deliberate departures from a straight copy:
+
+- **No Finsweet attributes.** The originals carry `fs-cmsload-element="list"` and
+  `fs-cmsload-mode="infinite"`. The overflow lists are not paginated, so client-side
+  infinite load has nothing to do and would only risk interfering with the list above it.
+- **Empty state hidden.** `DynamoEmpty` visibility set to false on both. If New Jersey ever
+  drops below 101 published cities the overflow list returns nothing, and without this the
+  page would render a stray "No items found." block.
+
+The original lists were not modified — their `pagination-hide` class and Finsweet
+attributes are untouched, so nothing about existing behaviour changes.
+
+**Status: staged in the Designer, not yet published.** The next site publish ships them.
+
+### Known limitation
+
+`offset` is fixed at 100. This is correct while New Jersey holds 101–200 published cities
+(currently 115). If it ever exceeds 200 a third list at `offset: 200` would be needed. Worth
+a note in the CMS runbook rather than a mechanism.
