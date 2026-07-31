@@ -1698,3 +1698,32 @@ Artefacts: `tools/css-consolidation/service-pages.shared.css` and
 `tools/css-consolidation/override.<page>.css`.
 
 Still nothing written to Webflow.
+
+---
+
+## Change log — trust badges: a markup inconsistency, not a CSS one
+
+Reported as "looks weird" on the in-home hero: badges rendering 2 / 1 / gap / 1 at 390px.
+
+Cause is markup, and it predates this work:
+
+| Page | Structure |
+| --- | --- |
+| `in-home-aba-therapy` | **two** separate `.trust-badges` containers |
+| 5 other clone pages | **one** `.trust-badges` holding two `.trust-badge-row` divs |
+| `services` | no trust badges |
+
+`.trust-badges` is `display: flex; flex-wrap: wrap; gap: 24px`. With two independent
+containers, each wraps on its own and the 4px margin between them adds a visible gap — so
+four badges land as 2 / 1 / gap / 1. `.trust-badge-row` has **no CSS on any page**; it is an
+unstyled `div`, which is exactly why the majority pattern works: as a block-level flex item
+it forces a clean break, giving two tidy pairs.
+
+Fix: `in-home` adopts the majority structure. One container, two rows, badges 2 + 2 —
+identical to the other five. Verified by rendering both at 390px.
+
+This is the first change in the unification exercise that improves a page rather than merely
+deduplicating it, and it was only found by rendering an example rather than counting
+selectors.
+
+Still nothing written to Webflow.
