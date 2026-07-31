@@ -947,3 +947,50 @@ The Georgia hub page was never touched.
 **General lesson for this codebase:** `display: contents` on a Webflow Collection List
 Wrapper silently drops whatever layout that wrapper was carrying. Check the wrapper's own
 classes before flattening it — on this site the hub pages and the index page differ.
+
+---
+
+## Change log — the overflow lists cannot be linked via the API; they are hidden
+
+The centering fix worked, but verifying it exposed a second defect in the overflow lists:
+their 15 cards rendered with `href="#"`. Every API route to a working per-item link was
+tried and all three failed.
+
+| Attempt | Result in published HTML |
+| --- | --- |
+| `link = {mode: "collectionPage"}` — byte-identical to the working original | `href="#"` |
+| `link = {mode: "collectionPage", to: "detail_areas-we-serve"}` | `href="detail_areas-we-serve"` — `to` is emitted as a literal string |
+| `link = {mode: "collectionPage", to: "<template page id>"}` | stored as `{pageSlug: "<id>"}`, same literal emission |
+| `HtmlEmbed` containing `{{wf {…"path":"slug"…} }}` binding tokens | tokens rendered literally as text |
+
+`get_settings` returns exactly the same value for the working original link and the broken
+new one, and `get_bindable_sources` returns zero sources for both. Whatever associates a
+`collectionPage` link with its collection is Designer-side state the Data API neither
+exposes nor reproduces.
+
+The binding-token attempt was published to `mastermindbehavior.webflow.io` only, so the
+literal `{{wf …}}` text never reached production.
+
+### Current live state
+
+Both overflow list wrappers are set to `visibility: false` and the site is published. The
+live pages are back to 100 (NJ hub) and 190 (`/areas-we-serve`) city links, with no broken
+anchors and the corrected centering in place. Verified against production: zero occurrences
+of `href="#" class="card-link"`, `detail_areas-we-serve"`, or `{{wf`.
+
+**Production was briefly wrong.** Between two publishes the 15 cards were live with
+`href="detail_areas-we-serve"`. That is now cleared.
+
+### What remains, and how to finish it
+
+The scaffolding is intact and hidden — grid container, second Collection List with
+`offset: 100`, card markup, and the flattening CSS. Finishing it is a Designer job:
+
+1. Open `/aba-therapy-in-new-jersey`, find the hidden second Collection List inside
+   `#nj-cities-grid` (`8d50025c-e805-4ee0-97cf-7d2c0e75cd7c`).
+2. Select the card link inside it, open Link Settings, choose **Current Item**.
+3. Unhide the Collection List wrapper.
+4. Repeat on `/areas-we-serve` (`4ca9b8a9-4c56-94e7-a246-0e19b2b08bed`), then publish.
+
+Everything else — the query, the offset, the shared grid, the styling, the centering — is
+already correct and does not need to be touched.
