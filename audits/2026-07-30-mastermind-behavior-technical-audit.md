@@ -770,9 +770,21 @@ Confirmed empirically on a temporary wrapper created at the page body root:
 | --- | --- |
 | `source` | Written. Requires `static_json` with `{"collectionId": "..."}` — a bare string is rejected |
 | `offset` | Written via `static_number` |
-| `sort` | Array of `{fieldSlug, ...}`; `fieldId` is rejected, direction must be `ascending` / `descending` |
-| `filters` | Array of `{fieldSlug, operator, value}`; operators are named (`equals`, `doesNotEqual`, `isSet`, `isNotSet`), not `eq` |
-| `limit` | Default 100 |
+| `sort` | Written. `[{"fieldSlug":"name","direction":"ascending"}]`. `fieldId` is rejected in favour of `fieldSlug`; the key is `direction`, not `order`; values are `ascending` / `descending`, not `asc` / `desc`. Note `slug` is *not* a sortable field — sort on `name` |
+| `filters` | Written. `[{"fieldSlug":"state","operator":"equals","value":"New Jersey"}]`. Operators are named (`equals`, `doesNotEqual`, `isSet`, `isNotSet`), not `eq` |
+| `limit` | Default 100, and this is the hard cap |
+
+Final verified state of the test wrapper, read back from the API:
+
+```json
+{"source": {"collectionId": "6642b822923646375241d310"},
+ "filters": [{"fieldSlug": "state", "operator": "equals", "value": "New Jersey"}],
+ "sort": [{"fieldSlug": "name", "direction": "ascending"}],
+ "limit": 100, "offset": 100, "queryMode": "dynamic"}
+```
+
+That is precisely the configuration needed to render the 15 tail cities. The test element
+was removed after verification; nothing was left on the page.
 
 Two practical notes. `data_element_builder` with `type: CMSCollection` creates a
 `DynamoWrapper`, but it cannot be inserted as a sibling of an existing inner list —
