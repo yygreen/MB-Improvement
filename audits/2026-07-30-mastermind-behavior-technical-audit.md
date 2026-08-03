@@ -2433,3 +2433,57 @@ The brand set carries **semantic** state colours — `--mb-good #006078`, `--mb-
 and their soft tints — driving the widget's `.is-good` / `.is-warm` result panels. The
 dominant set has **no semantic colours**; `--accent` and `--cta` are brand colours, not
 states. Migrating the widget needs those added, or the good/warn distinction collapses.
+
+---
+
+## Change log — hub flipped to the dominant palette
+
+Both hub pages now render the dominant `.mm-*` colours. A four-value edit to one
+component, propagating to both instances.
+
+| Token | was | now |
+| --- | --- | --- |
+| `--navy` | `#002833` | `#1a2744` |
+| `--teal` | `#34abc7` | `#3ba5a8` |
+| `--text-light` | `#6b6872` | `#5a5a5a` |
+| `--border` | `#e3dee3` | `#e5e5e5` |
+| `--teal-pale` | `#e8f5f8` | `#e8f6f6` — collapsed into `--teal-light`, which it duplicated to within two units |
+
+`--cta`, `--cta-hover`, `--warm` and `--teal-light` already matched dominant.
+`--surface-alt` and `--warm-alt` are hub-specific neutrals with no dominant
+equivalent and were deliberately left alone.
+
+**Colour only, no geometry.** Element count and document height unchanged at all three
+viewports; every difference is a colour substitution:
+
+| change | elements |
+| --- | --- |
+| navy `#002833` → `#1a2744` | 33 |
+| teal `#34abc7` → `#3ba5a8` | 24 |
+| muted `#6b6872` → `#5a5a5a` | 18 |
+
+The live result reproduced the locally predicted figures **exactly** on both pages —
+predicted before publishing, then confirmed against staging rather than inspected
+after the fact.
+
+The tokenise-then-flip split is what made that possible: the refactor was provable at
+zero diff, so the flip's diff contains nothing but the intended change. A combined
+edit would have mixed the two and left nothing to check against.
+
+`resource-hub.tokenised.css` superseded by `resource-hub.dominant.css`.
+
+### The container was recycled mid-session
+
+The working tree reset to `75bd4eb` — the starting commit — and `/tmp` was cleared.
+Every commit survived on the remote, and `git reset --hard origin/<branch>` restored
+the checkout intact; `collision-check` and `rebase-shared` both still pass, the latter
+idempotently. Committing and pushing after each verified step is what made this a
+non-event rather than a lost session.
+
+### Remaining on the palette migration
+
+Four pages still on `.mb-*`: `insurance-terminology`, `financial-aid-resources`,
+`autism-screening-checklist`, `first-90-days-of-aba-therapy`. Blocked on one decision —
+the brand set carries **semantic** state colours (`--mb-good`, `--mb-warm` and soft
+tints) driving the widget's good/warning result panels, and the dominant set has no
+semantic colours at all. They need adding, or the distinction collapses.

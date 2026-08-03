@@ -1,35 +1,39 @@
+/* ── Tokens ─ MIGRATED TO THE DOMINANT PALETTE ──────────────────────
+   This sheet originally had no tokens at all - every colour was a raw hex, which
+   made the hub the one family that could not join a palette change. It was first
+   tokenised at unchanged values (verified 0 differing elements), and then the four
+   divergent tokens were flipped to the dominant .mm-* palette:
 
-/* ── Tokens ──────────────────────────────────────────────────────────────
-   This sheet previously had NO tokens: every colour was a raw hex, which
-   made the hub the one family that could not participate in any palette
-   change. Values below are UNCHANGED from the literals they replace -- this
-   is a pure refactor, verified at zero visual diff.
+       --navy       #002833  ->  #1a2744
+       --teal       #34abc7  ->  #3ba5a8
+       --text-light #6b6872  ->  #5a5a5a
+       --border     #e3dee3  ->  #e5e5e5
+       --teal-pale  #e8f5f8  ->  #e8f6f6   (collapsed into --teal-light, which it
+                                            duplicated to within two units)
 
-   Names deliberately mirror the dominant .mm-* set, so migrating onto it is
-   a value change rather than a rename. Four tokens actually differ from
-   dominant; the rest already match:
-       --navy       #002833  ->  dominant #1a2744
-       --teal       #34abc7  ->  dominant #3ba5a8
-       --text-light #6b6872  ->  dominant #5a5a5a
-       --border     #e3dee3  ->  dominant #e5e5e5
-       --cta, --cta-hover, --warm, --teal-light already match dominant.
+   --cta, --cta-hover, --warm and --teal-light already matched dominant exactly.
+   --surface-alt and --warm-alt are hub-specific neutrals with no dominant
+   equivalent and are deliberately left alone.
 
-   Declared on :root rather than .mm-hub because this sheet also carries
-   unscoped rules (.hub-card-grid, .hub-article-card) that style native
-   Webflow CMS lists OUTSIDE .mm-hub, and those need the tokens too. Safe
-   here because neither hub page declares the .mm-* token set. If a hub page
-   ever gains a .mm-embed block, scope these instead -- :root is last-wins.
+   Measured effect: colour only, no geometry. 33 elements move navy, 24 move teal,
+   18 move muted; element count and document height unchanged at 1440/768/390.
 
-   The -rgb triples exist because alpha variants (rgba(0,40,51,0.08)) cannot
-   reference a hex token; they must move together with their base.
-   ──────────────────────────────────────────────────────────────────────── */
+   Declared on :root rather than .mm-hub because this sheet also carries unscoped
+   rules (.hub-card-grid, .hub-article-card) styling native Webflow CMS lists
+   OUTSIDE .mm-hub, which need the tokens too. Safe because neither hub page
+   declares the .mm-* set. If one ever gains a .mm-embed block, scope these to
+   .mm-hub instead - :root is last-wins.
+
+   The -rgb triples exist because alpha variants cannot reference a hex token;
+   they must move with their base colour.
+   ──────────────────────────────────────────────────────────────────── */
   :root {
-    --navy: #002833;      --navy-rgb: 0,40,51;
-    --teal: #34abc7;      --teal-rgb: 52,171,199;
+    --navy: #1a2744;      --navy-rgb: 26,39,68;
+    --teal: #3ba5a8;      --teal-rgb: 59,165,168;
     --teal-light: #e8f6f6;
-    --teal-pale: #e8f5f8;
-    --text-light: #6b6872;
-    --border: #e3dee3;
+    --teal-pale: #e8f6f6;
+    --text-light: #5a5a5a;
+    --border: #e5e5e5;
     --cta: #db5b4f;       --cta-rgb: 219,91,79;
     --cta-hover: #b34a40;
     --white: #ffffff;
