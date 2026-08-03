@@ -1864,3 +1864,45 @@ shared `Service Page Styles` component plus a markup lint is the realistic ceili
 3. Treat "port the embed CSS into Webflow Designer styles" as a separate, scoped project —
    probably starting with the hero alone (roughly 15 of the 100 classes) to size the effort
    honestly before committing to the rest.
+
+---
+
+## Change log — collision audit across all five overrides; parent-training part-migrated
+
+### Collision audit
+
+Ran every override against the shared sheet. The `.mm-embed h2` clash found on `in-home`
+was not isolated:
+
+| Page | Override selectors | Collisions with shared sheet |
+| --- | --- | --- |
+| `parent-training` | 16 | none |
+| `transition-planning` | 18 | none |
+| `early-intervention` | 17 | `.mm-embed .icon-grid`, `.mm-embed .right-grid` |
+| `behavior-support` | 20 | `.mm-embed .right-grid`, `.mm-embed .right-image` |
+| `skill-development` | 21 | `.mm-embed .icon-grid`, `.mm-embed .right-grid`, `.mm-embed .right-image` |
+
+**The check itself is not yet trustworthy.** It compares selector text while ignoring
+`@media` context, so a base-level rule in the shared sheet matches a rule inside a media
+query in an override. Some of the above are probably false positives — and more importantly
+the same blindness could hide a genuine same-media collision. It must be made media-aware
+before those three pages are migrated.
+
+### A second bug class in the overrides
+
+`parent-training`'s override carried **unscoped** selectors inside its media queries —
+`.right-grid`, `.approach-grid`, `.icon-grid`, with no `.mm-embed` prefix. Same failure as
+the bare `h2`: they apply to the whole page rather than the embed. Scoped when written.
+The other overrides need the same sweep.
+
+### `/parent-training` — partially migrated, not published
+
+Done: `Service Page Styles` instance prepended; override written with selectors scoped.
+**Not done:** the second embed still carries the 23 KB duplicate stylesheet, so the page is
+in a mixed state — the old sheet loads after both the component and the override and still
+wins. Visually identical to production, but not the intended end state.
+
+Deliberately **not published**. Staging still shows the previous state for this page.
+
+To finish: rewrite the second embed (`7c08cadb-3d4f-0168-4cee-601897904faa`) with its markup
+only, then render at 1440/390.
