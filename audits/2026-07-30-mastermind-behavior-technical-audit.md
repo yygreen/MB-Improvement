@@ -2006,3 +2006,110 @@ Production remains untouched — custom domains still show the 2026-07-31 publis
 Three pages: `early-intervention`, `behavior-support`, `skill-development` — now confirmed
 collision-free and with their overrides scoped, so each is the plain four-step recipe.
 `behavior-support` and `transition-planning` each had one unscoped `.icon-grid` fixed here.
+
+---
+
+## Change log — correction: the majority rule was invalid; shared sheet rebased on in-home
+
+### The clone family has a parent, and it is not a democracy
+
+Webflow page IDs are Mongo ObjectIds. Decoding their embedded timestamps:
+
+| Created | Page |
+| --- | --- |
+| 2026-03-23 14:03 | `in-home-aba-therapy` |
+| 2026-03-30 08:40 | `early-intervention` |
+| 2026-03-30 08:51 | `skill-development` |
+| 2026-03-30 11:19 | `behavior-support` |
+| 2026-03-30 12:17 | `parent-training` |
+| 2026-03-30 12:42 | `transition-planning` |
+
+in-home was built **a week earlier**; the other five were minted inside a four-hour
+window on one morning. That is build-one, clone-five.
+
+So the "majority of five" is **one decision copy-pasted five times and then frozen**,
+while in-home carried on being refined. Majority rule counts the stale snapshot five
+times and the maintained original once. It is not a vote; it is an echo.
+
+### What majority rule was discarding
+
+26 conflicting properties resolved against in-home, and they are not random drift:
+
+- **`font-weight: 800` on six selectors** — `.hero-headline`, `h2`, `.benefit-copy h3`,
+  `.step-title`, `.timeline-title`, `.tip-card h3`. Nobody sets 800 in six places by accident.
+- **Ten defensive `!important` rules** — `.btn-primary { border / cursor / line-height }`,
+  `:hover { color / text-decoration }`, `.area-card { color: inherit }`. This is what gets
+  added *after* discovering the Webflow host stylesheet bleeding through.
+- **Deliberate image framing** — `hero-image 4/3` with `max-width: 1200px` / `max-height:
+  900px`, `benefit-image 16/9`.
+
+The cost was concrete and measurable. in-home had `.area-card { color: inherit !important }`;
+the five clones did not, and rendered browser-default link blue on the navy section.
+Unification **deleted the fix from the reference page instead of propagating it**, taking
+the defect from five pages of six to six of six.
+
+| `.area-card` colour | production | staging (before) | staging (after) |
+| --- | --- | --- | --- |
+| `in-home` | white | **rgb(0,0,238)** | white |
+| `parent-training` | rgb(0,0,238) | rgb(0,0,238) | **white** |
+| `transition-planning` | rgb(0,0,238) | rgb(0,0,238) | **white** |
+
+The previous sessions had already half-seen this. Majority was overridden exactly twice —
+the bare `h2` and the 36px mobile headline — and *both times* the answer landed on
+in-home's value, under the note that "the majority reflects what was copy-pasted most
+often, not what is correct." The insight was right; it was never generalised.
+
+### The corrected rule
+
+> **in-home wins wherever it has an opinion.** Majority-of-five applies only to selectors
+> in-home does not have at all — sections that exist only on the clone pages, where the
+> drift is genuine.
+
+Of 157 shared rules, 129 have an in-home counterpart and are now rebased on it; 28 do not
+and remain on majority-of-five. Implemented as `tools/css-consolidation/rebase-shared.mjs`,
+which is idempotent — a second run reports 0 changed, 0 added, 0 dropped.
+
+The reference is `in-home-aba-therapy.merged.css`. It was validated before use, not assumed:
+in-home's two embed copies are **not** identical (18,210 B and 18,183 B — they disagree about
+`.benefit-image`, and the later embed wins). Re-deriving the cascade from the raw copies and
+diffing against `merged.css` gives 136 keys on both sides, 0 missing, 0 differing, 0 extra.
+
+### Result
+
+The component was rewritten once; all instances follow. Verified against **production
+in-home** rather than against each page's own production self:
+
+- `in-home` — **zero property differences**. The reference page is restored exactly.
+- `parent-training`, `transition-planning` — every change is a 700 → 800 weight adopting
+  in-home's typography, plus the two mobile grid bugs fixed.
+- `transition-planning` keeps `aspect-ratio: 16/9`. The visible regression flagged in the
+  previous entry is reversed: in-home declares 16/9, so it is now the shared value.
+
+Production remains untouched.
+
+### Two harness bugs found while verifying this
+
+The layout diff claimed "269 changed, 258 removed" on in-home. Both causes were mine:
+
+1. The row key ended in a **global index**, which reintroduced the exact problem the
+   structural keying existed to remove — one inserted node shifts every later key.
+2. The structural path was walked up to `<body>`, making the key sensitive to anything
+   **outside** the embed. Prepending the component shifts an ancestor's ordinal, so every
+   descendant key changed and the diff reported 100% churn.
+
+Keys are now rooted at the `.mm-embed` element and each segment carries the element's
+ordinal among its like-tagged siblings. A verification harness that cries wolf is worse
+than none — it trains you to skim the number.
+
+### One deliberate deviation from the reference, still open
+
+in-home's hero trust badges were restructured in an earlier session from its own
+2 / 1 / gap / 1 rendering to the clones' `.trust-badges` + two `.trust-badge-row` pattern,
+on the grounds that in-home's rendering was visibly ragged. Under the corrected rule that
+is backwards — but the reference's own output was the defect here. Left as-is and flagged:
+it is the one place where a clone pattern deliberately beats the reference.
+
+### Remaining
+
+`early-intervention`, `behavior-support`, `skill-development` — unchanged by this correction
+except that they will now inherit in-home's values when migrated.

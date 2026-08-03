@@ -37,12 +37,27 @@ const snap = async (file, width) => {
       const b = n.getBoundingClientRect();
       const p = n.parentElement ? n.parentElement.getBoundingClientRect() : { x: 0, y: 0 };
       const c = getComputedStyle(n);
+      // Structural address, rooted at the embed and NOT at <body>.
+      //
+      // Two mistakes are baked out here. A global index makes one inserted node shift
+      // every later key, so the whole page reads as changed. And walking the path up
+      // to <body> makes the key sensitive to anything outside the embed -- prepending
+      // the Service Page Styles component shifts an ancestor's ordinal and, again,
+      // every descendant key changes. Each segment carries the element's ordinal among
+      // its like-tagged siblings; the walk stops at the .mm-embed root, which is itself
+      // identified by its position among the page's embeds.
+      const seg = e => {
+        const tag = e.tagName;
+        const cls = (e.className || '').toString().trim().split(/\s+/)[0] || '';
+        const sibs = e.parentElement ? [...e.parentElement.children].filter(x => x.tagName === tag) : [e];
+        return `${tag}.${cls}[${sibs.indexOf(e)}]`;
+      };
+      const roots = [...document.querySelectorAll('.mm-embed')];
       const path = [];
-      for (let e = n; e && e !== document.body; e = e.parentElement) {
-        path.push(e.tagName + '.' + ((e.className || '').toString().trim().split(/\s+/)[0] || ''));
-      }
+      let e = n;
+      for (; e && !e.classList.contains('mm-embed'); e = e.parentElement) path.push(seg(e));
       rows.push({
-        key: path.reverse().join('>') + '#' + i,
+        key: `mm[${roots.indexOf(e)}]>` + path.reverse().join('>'),
         tag: n.tagName,
         cls: (n.className || '').toString().slice(0, 40),
         dx: Math.round(b.x - p.x),   // parent-relative
