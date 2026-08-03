@@ -89,9 +89,14 @@ const RULES = [
    /(\.mb-step(?:-label)? b \{ color: )var\(--mb-primary\)/g,
    '$1var(--mb-heading)'],
 
-  // Selected chip label sits on --teal-light; teal-dark on it is 3.7:1.
+  // Selected option label sits on --teal-light; teal-dark on it is 3.7:1. Two
+  // shapes: radio chips (.mb-chip input:checked + span) and the quiz's buttons
+  // (.mb-opt.is-sel), which the radio pattern does not match.
   ['selected chip label',
    /(input:checked \+ span \{[^{}]*?color:\s*)var\(--mb-primary-strong\)/g,
+   '$1var(--mb-heading)'],
+  ['selected option label',
+   /(\.mb-opt\.is-sel \{[^{}]*?color:\s*)var\(--mb-primary-strong\)/g,
    '$1var(--mb-heading)'],
 
   // Body links.

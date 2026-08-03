@@ -93,7 +93,7 @@
   .mb-qi .mb-opt:hover { border-color: var(--mb-line-strong); }
   .mb-qi .mb-opt.is-sel {
     border-color: var(--mb-primary); background: var(--mb-primary-soft);
-    color: var(--mb-primary-strong); box-shadow: inset 0 0 0 1px var(--mb-primary);
+    color: var(--mb-heading); box-shadow: inset 0 0 0 1px var(--mb-primary);
   }
   .mb-qi .mb-opt:focus-visible { outline: 3px solid rgba(var(--mb-primary-rgb),.35); outline-offset: 2px; }
   .mb-qi .mb-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 16px; }
