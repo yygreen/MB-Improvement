@@ -1813,3 +1813,54 @@ component, replace the embed stylesheet with its override minus any shared-sheet
 strip the duplicate copy, render at 1440/390. Then one staging publish for the set.
 
 Production remains untouched throughout.
+
+---
+
+## Change log — native hero rebuild attempted and reverted; the real blocker
+
+Attempted to rebuild `/in-home-aba-therapy`'s hero as native Webflow elements, 1:1 with the
+embed markup, as a test before rolling the pattern out.
+
+Every element was created. **Every class failed:**
+
+```
+One or more styles not found: hero
+One or more styles not found: container
+One or more styles not found: hero-grid
+One or more styles not found: hero-headline
+One or more styles not found: trust-badges
+One or more styles not found: btn-primary          … and so on
+```
+
+### Why
+
+`hero`, `container`, `hero-grid` and the rest exist **only as CSS text inside the embeds'
+`<style>` blocks**. They are not Webflow Designer styles. Webflow's style system only knows
+classes created in the Designer, so native elements cannot be given them — the rebuild
+produced correctly-structured but entirely unstyled markup. It was removed; the page is
+unchanged.
+
+### What this means for componentising
+
+The blocker is not the components. It is that the design system lives in CSS text rather
+than in Webflow. Any native rebuild requires the ~100 embed classes to exist as real Designer
+styles first, with their properties and breakpoints.
+
+That is a bigger project than the CSS consolidation, and it is also the point at which the
+site stops being hand-written HTML:
+
+- classes become editable in the Designer rather than in a `<style>` block
+- breakpoints come from Webflow's responsive system rather than hand-written media queries
+- non-developers can edit sections
+- sections can then be Components with props — structure identical by construction
+
+Until that happens, "unified design" remains a discipline maintained by convention, and the
+shared `Service Page Styles` component plus a markup lint is the realistic ceiling.
+
+### Revised recommendation
+
+1. Finish the five remaining CSS migrations onto the shared component (~101 KB, low risk).
+2. Add the markup lint so structural drift like the trust badges is visible.
+3. Treat "port the embed CSS into Webflow Designer styles" as a separate, scoped project —
+   probably starting with the hero alone (roughly 15 of the 100 classes) to size the effort
+   honestly before committing to the rest.
