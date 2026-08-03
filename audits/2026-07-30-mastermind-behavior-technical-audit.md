@@ -2352,3 +2352,84 @@ It is most likely in the `/areas-we-serve/*` CMS template, which is out of scope
 already applied to `/services`. The remaining byte savings total ~6.7 KB against the
 20,585 B recovered from `services` alone, so the ratio of rewrite risk to gain is now
 markedly worse than anything done so far.
+
+---
+
+## Change log — palette decision: dominant wins; `.mm-hub` tokenised
+
+### Decision
+
+The site converges on the **dominant `.mm-*` palette** — `#1a2744` navy, `#3ba5a8` teal,
+`#2c2c2c` text, `#e5e5e5` border, `#db5b4f` CTA. User's call, made against a rendered
+side-by-side of both systems applied to real components.
+
+### A correction that changed the size of the job
+
+The comparison first told the user that dominant covered **12 pages including both
+resource hubs**. Measured, that was wrong twice: the hubs run a **third** palette of their
+own, and dominant covers **10**.
+
+| Palette | Pages |
+| --- | --- |
+| `.mm-*` dominant | **10** — six service pages, `services`, three state hubs |
+| `.mb-*` brand | 4 |
+| `.mm-hub` | **2** — `#002833` / `#34abc7` / `#6b6872` / `#e3dee3` |
+
+The decision was unaffected — dominant is still the majority — but the migration is
+**six pages, not four**. The comparison document was corrected in place.
+
+Also surfaced by the count: **three pages already run two palettes at once.**
+`insurance-terminology`, `financial-aid-resources` and `autism-screening-checklist` carry
+dominant `.mm-*` for page chrome *and* brand `.mb-*` for the embedded widget — two
+different teals on one screen. That is where the split is most visible today.
+
+### Two findings that make "migrate to brand" harder than it looked
+
+Recorded because they would have been discovered mid-migration otherwise:
+
+- **The brand set contains no red.** Every CTA on the site is `#db5b4f`. Brand's nearest,
+  `--mb-warm #bf5247`, is a muted brick used for *warnings* in the widget. On brand, buttons
+  would become the same teal as links.
+- **Brand teal fails contrast on brand navy.** `#186c78` on `#18313a` is not legible, and
+  every navy section carries accent links. Migrating to brand would require *adding* a
+  lightened accent token that exists in neither set.
+
+Both argue for the direction chosen.
+
+### `.mm-hub` tokenised — the prerequisite
+
+The hub sheet declared **no tokens at all**: `#002833` ×12, `#6b6872` ×7, `#db5b4f` ×7,
+`#34abc7` ×6, `#e3dee3` ×5, all raw. It was the one family that could not participate in
+any palette change.
+
+64 literals replaced by `var()` references, mechanically, at unchanged values. Token names
+deliberately mirror the dominant set so the migration is a value change rather than a
+rename. Alpha variants got `-rgb` triple tokens, since `rgba()` cannot reference a hex token
+and the variants must move with their base.
+
+**Only four tokens actually differ from dominant.** `--cta`, `--cta-hover`, `--warm` and
+`--teal-light` already match it exactly — the hub's divergence is narrower than the raw hex
+counts suggested.
+
+Declared on `:root` rather than `.mm-hub` because the sheet also carries unscoped rules
+(`.hub-card-grid`, `.hub-article-card`) styling native Webflow CMS lists *outside* the hub,
+which need the tokens too. Safe because neither hub page declares the `.mm-*` set — noted
+in the sheet, since `:root` is last-wins if that ever changes.
+
+Verified: **0 differing elements** on both pages at 1440/768/390, and `h1`, accent and
+border computed colours identical before and after. Snapshot kept at
+`tools/css-consolidation/resource-hub.tokenised.css`.
+
+### A verification near-miss
+
+The first post-publish check reported 0 differences — against a **stale CDN copy that did
+not yet contain the tokenised sheet**. It was comparing cached content with itself. Caught
+by asserting on a marker string from the new sheet before trusting the diff; the check now
+polls until the marker appears. A green diff against the wrong input is worse than a red one.
+
+### Still open before the widget migrates
+
+The brand set carries **semantic** state colours — `--mb-good #006078`, `--mb-warm #bf5247`
+and their soft tints — driving the widget's `.is-good` / `.is-warm` result panels. The
+dominant set has **no semantic colours**; `--accent` and `--cta` are brand colours, not
+states. Migrating the widget needs those added, or the good/warn distinction collapses.
