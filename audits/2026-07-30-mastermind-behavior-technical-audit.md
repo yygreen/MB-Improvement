@@ -2186,3 +2186,48 @@ extractor now blanks `<style>` blocks before balancing.
 Nothing on the six service pages. Next is the token layer — see the queued work:
 Design Tokens component, the `.mm-*` / `.mb-*` palette split, the print stylesheet's
 hardcoded hexes, and the Resource Page Styles pair.
+
+---
+
+## Change log — `.tip-card` hover fixed; deviations now survive a rebase
+
+### Where `.tip-card` actually lives
+
+Only `/in-home-aba-therapy` has `.tip-card` markup — three cards. The other five carried
+the CSS but no elements, so the rule was dead there. The snapping hover was a one-page
+glitch, not a family-wide one.
+
+All three card types animate the same hover — `translateY(-4px)` plus a shadow swap — but
+declared it three different ways:
+
+| | transition | result |
+| --- | --- | --- |
+| `.tip-card` | *none* | snapped |
+| `.icon-card` | `all 0.3s` | animated |
+| `.approach-card` | `transform 0.3s, box-shadow 0.3s` | animated |
+
+`.tip-card` now matches `.approach-card`, which transitions exactly the two properties the
+hover changes. `.icon-card`'s `all 0.3s` is visually identical here and was left alone —
+nothing to gain from churning a rule that already behaves correctly.
+
+Verified on staging: `tip-card 0.3s, 0.3s`; `icon-card 0.3s`; `approach-card 0.3s, 0.3s`.
+
+### A fix a tool would have silently undone
+
+This is a **deliberate deviation from the reference** — in-home declares no transition, so
+the next `rebase-shared.mjs --apply` would have dropped it again and nobody would have
+noticed until the hover snapped once more.
+
+`rebase-shared.mjs` now carries an `EXCEPTIONS` map, keyed by `context||selector`, layered
+on top of the reference values. Each entry records its reason at the point of the
+exception. The script stays idempotent: after applying, a re-run reports 0 changed,
+0 added, 0 dropped.
+
+This is the same failure mode as the on-disk overrides drifting from the live embeds,
+one layer up. A correction that only survives because nothing re-ran the generator is not
+a correction — it is a race.
+
+### Closed
+
+The two other open items were reviewed and accepted as-is: `early-intervention`'s
+`.benefit-image` on the reference construct, and `in-home`'s restructured trust badges.

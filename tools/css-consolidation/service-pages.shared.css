@@ -94,7 +94,7 @@
   .mm-embed .tips-header h2 { margin: 0 auto 16px; }
   .mm-embed .tips-header .section-subtitle { margin: 0 auto; }
   .mm-embed .tips-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  .mm-embed .tip-card { background: var(--white); border-radius: var(--radius-lg); padding: 36px 28px; box-shadow: var(--shadow-md); border: 1px solid var(--border); display: flex; flex-direction: column; }
+  .mm-embed .tip-card { background: var(--white); border-radius: var(--radius-lg); padding: 36px 28px; box-shadow: var(--shadow-md); border: 1px solid var(--border); display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; }
   .mm-embed .tip-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
   .mm-embed .tip-icon { width: 52px; height: 52px; border-radius: 14px; background: var(--teal-light); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
   .mm-embed .tip-icon svg { width: 24px; height: 24px; color: var(--teal); }

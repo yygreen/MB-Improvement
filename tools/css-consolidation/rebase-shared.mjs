@@ -36,6 +36,22 @@ import { fileURLToPath } from 'node:url';
 const DIR = dirname(fileURLToPath(import.meta.url));
 const APPLY = process.argv.includes('--apply');
 
+// Deliberate deviations from the reference, keyed "<context>||<selector>".
+//
+// Without this the next run of this script silently reverts them: the rule is
+// "in-home wins", and in-home has no opinion on these, so a rebase would drop them.
+// A fix that a tool quietly undoes is worse than no fix, so each one is recorded here
+// with its reason rather than left to survive by luck.
+const EXCEPTIONS = new Map([
+  ['||.mm-embed .tip-card', {
+    // in-home declares no transition, so its :hover transform snaps. Every sibling card
+    // animates the same hover (.icon-card, .approach-card), and .tip-card markup exists
+    // only on in-home -- so this is a one-page glitch, not a design choice. Matched to
+    // .approach-card, which transitions exactly the two properties :hover changes.
+    transition: 'transform 0.3s, box-shadow 0.3s',
+  }],
+]);
+
 // --- shared parsing helpers (same semantics as collision-check.mjs) ---------
 
 function stripComments(css) {
@@ -163,6 +179,11 @@ for (const rule of sharedRules) {
   // merge the reference blocks for each selector in the group
   const want = new Map();
   for (const k of keys) for (const [p, v] of ref.get(k)) want.set(p, v);
+  // then layer any recorded deviation on top, so it survives a rebase
+  for (const k of keys) {
+    const ex = EXCEPTIONS.get(k);
+    if (ex) for (const [p, v] of Object.entries(ex)) want.set(p, v);
+  }
 
   const label = `${rule.context || '<base>'} :: ${rule.prelude}`;
   let dirty = false;
