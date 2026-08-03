@@ -2545,3 +2545,52 @@ pages are done; `autism-screening-checklist` and `first-90-days-of-aba-therapy` 
 
 **Not done here:** `--mb-font` is still the system stack while the rest of the site is
 Manrope. That changes text metrics, not colours, and belongs in its own verified step.
+
+## Change log — the screener and the remaining brand sheets
+
+Three page-level sheets carry their own copy of the same twelve-token brand
+palette: the screener on `autism-screening-checklist` (21.8 kB, `.mb-scr`), and two
+on `first-90-days-of-aba-therapy` — a quick-intake widget (7.4 kB, `.mb-qi`) and a
+9.5 kB `.mb-iw` sheet. `migrate-mb-sheet.mjs` generalises the widget migration to
+all three: every rewrite is a regex with an exact expected hit count, and a
+mismatch is a hard failure rather than a warning, because a sheet that does not
+match the assumed shape must not be half-migrated in silence.
+
+**Two defects the first generated sheet carried, both mine.**
+
+The new tokens' comments quote the hexes they replace ("was hardcoded `#c2e0e4`"),
+and the rule pass ran *after* they were inserted — so it rewrote those hexes inside
+my own comments, producing `was hardcoded var(--mb-good-line)`. The fix is ordering:
+rule rewrites first, new tokens second, with a comment saying why.
+
+The second was live. `.mb-cta-secondary`'s label sets both `color` and
+`-webkit-text-fill-color`, and my substitution only caught `color`. On WebKit
+`-webkit-text-fill-color` wins, so the label would have rendered teal-dark in Safari
+and navy everywhere else — a browser-dependent split from one missed declaration.
+Both are fixed in the generator, not patched in the output.
+
+**One role the widget did not have.** `--mb-primary-strong` is the screener's link
+colour, used for `.mb-pathway a`, `.mb-aba a` and `.mb-callout`. Dominant's
+`--teal-dark` is 4.09:1 on white, short of AA for body text. Dominant has exactly two
+values that clear 4.5:1 and are not near-black: `--cta-hover #b34a40` (5.29:1) and
+`--navy` (14.8:1). Navy reads as ordinary text next to `--text #2c2c2c`, so links take
+`--mb-link: #b34a40`. Two roles that are buttons, not links — the secondary CTA label
+and the selected chip label — take navy instead, as they do on the widget.
+
+`.mb-steps li::before`, the numbered step circle, keeps `--teal` with white text.
+That is `.step-number-inner`'s exact role on the ten service pages, so it matches the
+site rather than diverging from it.
+
+**Verified.** autism: 30 → 30 elements, docHeight 9439 → 9439 (and unchanged at 768
+and 390); first-90: 115 → 115, docHeight 8410 → 8410. Only `color`, `bg` and `border`
+differ — no `dx`, `dy`, `w`, `h`, `cols`, `font` or `display` anywhere. (`border`
+tracks `color` on elements with no border set, because `border-color` defaults to
+`currentColor`.) On staging the screener was driven end to end — age band, eight
+checkboxes, submit — and every measured colour matched prediction: `.mb-go` #db5b4f,
+eyebrow #3ba5a8, step bold and selected chip #1a2744, warm panel #fef0eb with a
+#e8beb8 border, icon #b34a40, step circle #3ba5a8, `.mb-aba a` #b34a40.
+
+**Still on the old palette:** the printable summary sheet inside the screener's second
+embed — seven hardcoded hexes (`#18313a` ×1, `#5b6f76` ×3, `#dce7e9` ×3) built as a
+JavaScript string for a print window. It is a separate printed document, not part of
+the page render.
