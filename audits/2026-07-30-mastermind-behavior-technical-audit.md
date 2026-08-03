@@ -2594,3 +2594,47 @@ eyebrow #3ba5a8, step bold and selected chip #1a2744, warm panel #fef0eb with a
 embed — seven hardcoded hexes (`#18313a` ×1, `#5b6f76` ×3, `#dce7e9` ×3) built as a
 JavaScript string for a print window. It is a separate printed document, not part of
 the page render.
+
+## Palette migration — final state and the two remainders
+
+After publishing, a sweep of every consolidated page for the old brand palette
+(the twelve `--mb-*` values plus the five colours that were hardcoded):
+
+| page | old-palette values in live CSS |
+|---|---|
+| insurance-terminology | 0 |
+| financial-aid-resources | 0 |
+| services | 0 |
+| in-home-aba-therapy | 0 |
+| aba-therapy-in-new-jersey | 0 |
+| understanding-aba-therapy | 0 |
+| building-skills-independence | 0 |
+| autism-screening-checklist | 7 |
+| first-90-days-of-aba-therapy | 2 |
+
+The site is on one palette. Two remainders, both deliberate:
+
+**The screener's printable summary** (7 values). `#18313a` ×1, `#5b6f76` ×3,
+`#dce7e9` ×3, built as a JavaScript string inside a 38 kB embed for a separate
+print window. Against dominant these become `#2c2c2c`, `#5a5a5a` and `#e5e5e5` —
+differences that are imperceptible on paper. Changing them means hand-transcribing
+38 kB of working JavaScript through the API for no visual effect, and a
+transcription slip would break the print feature outright. Worth doing if the goal
+is that a grep for the old palette returns nothing; not worth doing for how the
+handout looks.
+
+**The guide modal's shell** on first-90-days (`rgba(24,49,58,.55)` scrim and a
+`#18313a` close button). It is not in either embed — it lives in the page's custom
+code, which the Data API does not expose. It needs a Designer edit:
+`rgba(26,39,68,.55)` for the scrim and `#2c2c2c` for the close button. The modal's
+`#f9f6f1` background is already dominant's `--warm`.
+
+**Also not colour, and not done:** all four `.mb-*` sheets still use the system font
+stack while the rest of the site is Manrope. That changes text metrics, so it is a
+separate step with its own verification — not something to fold into a colour pass.
+
+**Structural, for later:** first-90-days carries a third copy of the insurance
+widget, 96% identical to the component but with a 560px card instead of 1200px.
+Making it a component variant would delete ~28 kB of duplicated markup, styles and
+logic, and would mean a plan-list change stops needing two edits. It is a layout
+and component-API change, not a palette one.
