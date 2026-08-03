@@ -2231,3 +2231,71 @@ a correction — it is a race.
 
 The two other open items were reviewed and accepted as-is: `early-intervention`'s
 `.benefit-image` on the reference construct, and `in-home`'s restructured trust badges.
+
+---
+
+## Change log — site-wide sweep; a correction about what componentising actually saves
+
+### The six were not the whole story
+
+Scanned all 28 published full pages. Sixteen carry substantial inline CSS; twelve
+(home, about-us, contact, blog, careers, areas-we-serve, bcba-team, podcast, legal)
+carry none and need nothing.
+
+### Componentising cross-page duplication saves no bytes
+
+The `Resource Hub Styles` component was created for
+`building-skills-independence` + `understanding-aba-therapy`, whose 11,358 B sheets
+were byte-identical. Both pages then got **604 B larger**.
+
+A Webflow component is authored once but still **inlines into every page that instances
+it**. Each of those pages had only ONE copy of the sheet, so there was no page weight to
+recover — the component buys maintainability (one edit, no future drift) and the added
+header comment cost bytes.
+
+> Duplication **across** pages → maintainability only.
+> Duplication **within** a page → real bytes.
+
+The six service pages benefited because each carried *two* copies. That distinction was
+implicit before and is now explicit, in `merge-page-sheets.mjs`.
+
+### `/services` — 20,585 B recovered
+
+The single largest CSS payload on the site: two near-duplicate sheets in one page
+(19,619 + 20,172 B, 90% identical), one per embed. Merged into one 19,458 B sheet.
+
+**92,153 B → 71,568 B. Zero differing elements at 1440/768/390.**
+
+Two bugs in the merge tool, both caught by the render diff rather than by reading CSS:
+
+1. **Keyed on the comma group, not the selector.** `.a, .b { … }` in one sheet and
+   `.a { … }` in the other produce different keys, so the grouped rule was classed
+   "earlier-only", emitted first, and then overridden. Now keyed per selector.
+2. **"Later wins" is only true at equal importance.** The earlier copy declared
+   `.hero-cta { background: #db5b4f !important }`; the later copy had dropped the
+   `!important`. Both sheets carry `.mm-embed a { background-color: transparent
+   !important }`, so taking the later value made the button **transparent**. 15
+   declarations were affected. The merge is now importance-aware.
+
+Neither would have been visible by inspection. A diff that renders is worth more than a
+diff that reads.
+
+### Remaining, with honest value
+
+| Target | Recoverable | Kind |
+| --- | --- | --- |
+| `financial-aid-resources` sheets 2/3 (77% overlap) | ~3,845 B | within-page, real |
+| `first-90-days-of-aba-therapy` (23%) | ~1,702 B | within-page, real |
+| `aba-therapy-in-georgia` (25%) | ~1,128 B | within-page, real |
+| `insurance-terminology` + `financial-aid` 10,383 B block | 0 B | cross-page, maintainability |
+| NJ + NC (both sheets byte-identical) | 0 B | cross-page, maintainability |
+| `autism-screening-checklist` | 0 B | single unique sheet, nothing to share |
+
+`aba-therapy-in-georgia` differs from the byte-identical NJ/NC pair, consistent with the
+queued Georgia-only `align-content: start` city-grid bug.
+
+### A third palette
+
+The hub family uses `#002833` navy, `#34abc7` teal, `#6b6872` muted, `#e3dee3` rule —
+distinct from both the `.mm-*` prose set and the `.mb-*` widget set. Only `#db5b4f`
+(CTA red) is shared. The token reconciliation is a three-way problem, not two.
