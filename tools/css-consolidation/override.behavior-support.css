@@ -19,5 +19,5 @@
   .mm-embed .right-image { aspect-ratio: 4/3; }
 }
 @media (max-width: 480px) {
-  .icon-grid { grid-template-columns: 1fr; }
+  .mm-embed .icon-grid { grid-template-columns: 1fr; }
 }

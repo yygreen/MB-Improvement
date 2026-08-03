@@ -17,5 +17,5 @@
   .mm-embed .covers-grid { grid-template-columns: 1fr; gap: 40px; }
 }
 @media (max-width: 480px) {
-  .icon-grid { grid-template-columns: 1fr; }
+  .mm-embed .icon-grid { grid-template-columns: 1fr; }
 }
