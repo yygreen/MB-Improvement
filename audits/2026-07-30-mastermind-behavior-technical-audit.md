@@ -1906,3 +1906,103 @@ Deliberately **not published**. Staging still shows the previous state for this 
 
 To finish: rewrite the second embed (`7c08cadb-3d4f-0168-4cee-601897904faa`) with its markup
 only, then render at 1440/390.
+
+---
+
+## Change log — collision check made media-aware; pages 2 and 3 of 6 live on staging
+
+### The collision check was wrong in both directions
+
+The previous check compared selector text while ignoring `@media` context. Replaced with
+`tools/css-consolidation/collision-check.mjs`, which keys on `(at-rule context, selector)`
+and strips comments through a string-aware scanner before parsing.
+
+Its seven flags — `.icon-grid` / `.right-grid` / `.right-image` on `early-intervention`,
+`behavior-support` and `skill-development` — were **all false positives**. Every one is an
+override rule inside a media query against a shared rule at base level, which is the
+intended cascade, not a collision. Those three pages are collision-free.
+
+It had also missed two real ones. Both `.mm-embed h2` rules were still present in
+`in-home`'s override *on disk*, though the previous session recorded removing them. The
+artefact had drifted from what was written to Webflow.
+
+| | old check | media-aware check |
+| --- | --- | --- |
+| real collisions | 2 missed | 2 found |
+| false positives | 7 | 0 |
+
+### The unscoped selectors were all already dead
+
+Swept all six overrides: six unscoped selectors on three pages. They trace to grouped
+selectors in the source CSS of the form `.mm-embed .icon-grid, .approach-grid { … }` — the
+split left the second half unanchored.
+
+**Measured before changing them.** Every unscoped rule was already a no-op. At `(0,1,0)` it
+loses to the base `.mm-embed .approach-grid` at `(0,2,0)`, and media queries add no
+specificity, so source order never mattered. Confirmed in headless Chromium across all six
+production pages.
+
+That means `parent-training` ships two live mobile bugs today: `.approach-grid` renders
+**3 columns at 390px** and `.right-grid` renders **2 columns at 390px** (152px + 98px).
+The author wrote the collapse rules; they never applied.
+
+Scoped rather than deleted, honouring the authors' evident intent. Two assumptions, flagged
+for reversal: honour author intent over byte-identical production, and match the other five
+at 768px.
+
+Scoping `.approach-grid` then *created* a real collision against the shared sheet — the same
+class of bug as the `h2` one, where the fix creates the collision. Dropped from the override.
+
+### `/parent-training` and `/transition-planning` — done and verified
+
+Both now: `Service Page Styles` instance on the page wrapper, hero embed carrying only the
+page override, body embed carrying markup only.
+
+| Page | Before | After |
+| --- | --- | --- |
+| `parent-training` | 98,372 B | 73,791 B |
+| `transition-planning` | 95,466 B | 69,705 B |
+
+Each page had **two byte-identical copies** of its stylesheet (23,062 B and 23,563 B
+respectively); both now load the 20,141 B shared sheet once plus a ~1.7 KB override.
+
+Every embed rewrite was diffed byte-for-byte against the published staging HTML. All four
+markup blocks identical — no transcription error.
+
+### A trap worth recording: the on-disk artefacts had drifted
+
+`parent-training`'s hero embed was written in the previous session with the *old* override,
+so correcting the file on disk did not correct the page. The first staging render still
+showed `.approach-grid` at 2 columns at 768px. **The artefact is not the source of truth —
+the live embed is.** Caught only because the grid columns were measured rather than assumed.
+
+Also: Webflow's staging CDN serves stale HTML for a minute or so after publish. The first
+re-fetch showed the old override. Cache-bust the URL before believing a verification.
+
+### Layout diff, staging vs production
+
+The harness (`layout-diff.mjs`) now compares **parent-relative** geometry and keys rows by
+structural path, so a change is attributed to the element that changed rather than to
+everything below it.
+
+Desktop (1440px) is unchanged on both pages apart from majority pins. Every difference
+traces to a recorded decision:
+
+- `.approach-card` `display: block → flex`, `h3` 22px → 20px, grid gap 28px → 24px —
+  majority pins `parent-training` had drifted from
+- hero headline 48px → 36px at ≤768px — the deliberate mobile-headline override
+- `.approach-grid` 3→1 col and `.right-grid` 2→1 col on mobile — **the two live bugs, fixed**
+- `.icon-grid` 2→1 col at 390px on both pages — the revived author intent
+
+One visible change worth a second opinion: `transition-planning` was one of only two pages
+declaring `aspect-ratio: 16/9` on `.benefit-image`. The majority of four has none, so the
+shared sheet drops it and the rows fall back to their 280px min-height (387px → 200px at
+768px). Intended by the unification, but it is a real change to a real page.
+
+Production remains untouched — custom domains still show the 2026-07-31 publish.
+
+### Remaining
+
+Three pages: `early-intervention`, `behavior-support`, `skill-development` — now confirmed
+collision-free and with their overrides scoped, so each is the plain four-step recipe.
+`behavior-support` and `transition-planning` each had one unscoped `.icon-grid` fixed here.
