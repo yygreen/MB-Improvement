@@ -2113,3 +2113,76 @@ it is the one place where a clone pattern deliberately beats the reference.
 
 `early-intervention`, `behavior-support`, `skill-development` — unchanged by this correction
 except that they will now inherit in-home's values when migrated.
+
+---
+
+## Change log — all six pages migrated; family complete
+
+`early-intervention`, `behavior-support` and `skill-development` migrated on the
+in-home-referenced shared sheet. The family is done.
+
+| Page | Before | After | Saved |
+| --- | --- | --- | --- |
+| `in-home-aba-therapy` | 87,889 | 73,275 | 14,614 |
+| `parent-training` | 97,882 | 74,444 | 23,438 |
+| `transition-planning` | 95,020 | 70,224 | 24,796 |
+| `early-intervention` | 101,267 | 74,106 | 27,161 |
+| `behavior-support` | 100,296 | 75,684 | 24,612 |
+| `skill-development` | 97,907 | 72,544 | 25,363 |
+| **Total** | | | **~140 KB** |
+
+Every page now carries exactly one shared stylesheet plus a 1–2 KB override. All ten
+embed markup blocks were diffed byte-for-byte against the published staging HTML —
+all identical, no transcription error.
+
+Live Designer state was confirmed equal to production before writing, at zero cost, by
+diffing the already-published staging HTML rather than reading the embeds back.
+
+### Two more pages had non-identical stylesheet copies
+
+Like `in-home`, two pages carried two *different* copies of their sheet:
+
+- `early-intervention` — 25,284 vs 25,283 B, whitespace only.
+- `skill-development` — the hero copy had `.right-grid { align-items: start }` and
+  `.right-image { aspect-ratio: 3/4 }`; the body copy had `center` and `4/3`. The body
+  embed loads later and wins, so `center` / `4/3` is what production renders and what
+  the shared sheet carries. The `3/4` variant was deliberately not revived.
+
+That is three of six pages whose two copies disagree. "Duplicated stylesheet" was never
+quite accurate — they were *drifting* duplicates, and the later embed silently won.
+
+### `early-intervention` is structurally different
+
+Its hero uses a `div` for the eyebrow and a bare `h1` for the headline, where the other
+five use an `h1` carrying `.hero-eyebrow` plus a paragraph carrying `.hero-headline`.
+Both need rules in its override. Its headline was raised 700 → 800 to match the
+reference; leaving it would have made it the only page with a lighter headline.
+
+### One visible change to review
+
+`early-intervention` was the only page with `display: flex; align-items: center` on
+`.benefit-image` (box 260px, `aspect-ratio: auto`). It now uses the reference construct —
+`display: block`, `min-height: 280px`, `aspect-ratio: 16/9`, box 320px — like the other
+five. `.benefit-image` was genuinely inconsistent across the family in production:
+two pages at 16/9, three at auto/280, and this one at flex/260.
+
+Images do not load in the verification sandbox, so the image *fill* behaviour inside that
+box could not be measured directly. Worth eyeballing the "Skills We Build in Early
+Intervention" rows on staging before this goes to production.
+
+### A self-inflicted verification failure worth recording
+
+The first check reported `early-intervention`'s hero markup as non-identical. It was not:
+the first 2,584 characters — its entire length — matched exactly. The override comment
+authored for that page contained the literal text `<div>` and `<h1 …>`, and the
+div-balancing extractor counted them as real tags, running past the wrapper.
+
+Valid CSS, harmless in a browser, and still wrong: a literal tag inside a style block
+trips naive markup tooling. The comment was reworded without angle brackets, and the
+extractor now blanks `<style>` blocks before balancing.
+
+### Remaining
+
+Nothing on the six service pages. Next is the token layer — see the queued work:
+Design Tokens component, the `.mm-*` / `.mb-*` palette split, the print stylesheet's
+hardcoded hexes, and the Resource Page Styles pair.
