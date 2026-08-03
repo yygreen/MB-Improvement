@@ -1,0 +1,380 @@
+/* ── Insurance Widget (.mb-iw) ─ MIGRATED TO THE DOMINANT PALETTE ─────────────
+   Source of truth: the Insurance Widget component embed (used by
+   /insurance-terminology and /financial-aid-resources). Regenerate with
+   tools/css-consolidation/migrate-widget.mjs against the live sheet.
+
+   This widget shipped its own complete brand palette (--mb-*), one of three
+   colour systems on the site. Per the dominant-palette decision it moves onto
+   the .mm-* values used by the ten service/state pages.
+
+   It is NOT a flat token rename. --mb-primary carried two jobs that dominant
+   splits between two colours:
+       decorative teal  -> eyebrows, chip borders, focus rings   (--teal)
+       action red       -> buttons, matching .btn-primary        (--cta)
+   Mapping --mb-primary wholesale onto --teal would have put white text on
+   #3ba5a8 at 2.9:1. So --mb-action/--mb-action-strong were added and the four
+   button rules moved onto them.
+
+   Three contrast decisions, all measured against WCAG AA:
+     --mb-warm  -> --cta-hover #b34a40, NOT --accent #e8734a. .mb-hint renders
+                   it as 14px body text; #e8734a is 3.0:1 on white (fail),
+                   #b34a40 is 5.3:1 (today's #bf5247 was 4.65:1).
+     selected chip label and .mb-cta-secondary -> --navy, not --teal-dark.
+                   #2d8a8d on #e8f6f6 is 3.7:1; navy is 13.4:1.
+     .mb-eyebrow -> --teal, deliberately. 12px uppercase letterspaced is
+                   exactly dominant's .section-label / .hero-eyebrow role, and
+                   it carries the same 2.9:1 the rest of the site already ships.
+                   Consistent, not new; worth revisiting site-wide, not here.
+
+   Three colours were hardcoded hexes with no token (#b6c9cd hover borders,
+   #95a7ac placeholder, and the two result-panel border tints #c2e0e4 /
+   #f2cfc8). They are tokens now so a future rebrand cannot miss them. The two
+   panel borders have no dominant equivalent and are derived: the soft fill
+   mixed 30% toward its base colour, the same weight the originals used.
+
+   Not changed here: --mb-font is still the system stack while the rest of the
+   site is Manrope. That is a text-metrics change, not a colour change, and it
+   belongs in its own verified step.
+
+   Measured: element count 77 -> 77 and docHeight 10502 -> 10502 unchanged at
+   1440/768/390. Of the nine compared fields only `color` and `bg` differ --
+   dx, dy, w, h, cols, font and display are byte-identical. Every one of the
+   twelve distinct colour transitions is in the map above.
+   ─────────────────────────────────────────────────────────────────────────── */
+
+  /* All styles are scoped under .mb-iw so they never leak into the host page. */
+
+  .mb-iw {
+    padding: clamp(40px, 6vw, 80px) clamp(20px, 5vw, 48px);
+    /* Palette (edit these to rebrand) */
+    /* Palette migrated to the site-dominant .mm-* set. The dominant name each
+       value comes from is in the comment; values are copied, never approximated.
+       Two roles the old sheet folded into --mb-primary are split out, because
+       dominant uses teal and red for different jobs:
+         --mb-primary*  decorative teal  (eyebrows, chip borders, focus rings)
+         --mb-action*   the CTA red      (buttons -- matches .btn-primary)
+       Three colours that were hardcoded hexes are now tokens so a future
+       rebrand cannot miss them. */
+    --mb-bg: transparent;          /* widget sits on the page background */
+    --mb-surface: #ffffff;         /* --white       (already matched) */
+    --mb-ink: #2c2c2c;             /* --text        was #18313a */
+    --mb-heading: #1a2744;         /* --navy        NEW: readable emphasis */
+    --mb-muted: #5a5a5a;           /* --text-light  was #5b6f76 */
+    --mb-line: #e5e5e5;            /* --border      was #dce7e9 */
+    --mb-line-strong: #c9c9c9;     /* NEW: hover borders, was hardcoded #b6c9cd */
+    --mb-placeholder: #8a8a8a;     /* --text-muted  was hardcoded #95a7ac */
+    --mb-soft: #e8f6f6;            /* --teal-light  was #eef4f5 */
+
+    --mb-primary: #3ba5a8;         /* --teal        was #186c78 */
+    --mb-primary-strong: #2d8a8d;  /* --teal-dark   was #0e505c */
+    --mb-primary-soft: #e8f6f6;    /* --teal-light  was #e3f1f3 */
+    --mb-primary-rgb: 59,165,168;  /* alpha variants cannot read a hex token */
+
+    --mb-action: #db5b4f;          /* --cta         NEW: button fill */
+    --mb-action-strong: #b34a40;   /* --cta-hover   NEW: button hover */
+    --mb-action-rgb: 219,91,79;
+
+    --mb-good: #2d8a8d;            /* --teal-dark   was #006078 */
+    --mb-good-soft: #e8f6f6;       /* --teal-light  was #e1f0f2 */
+    --mb-good-line: #b4dedf;       /* NEW: was hardcoded #c2e0e4 */
+    --mb-warm: #b34a40;            /* --cta-hover   was #bf5247; kept dark
+                                      because .mb-hint renders it as body text
+                                      (--accent #e8734a would be 3.0:1 on white) */
+    --mb-warm-soft: #fef0eb;       /* --accent-light was #fbeae6 */
+    --mb-warm-line: #e8beb8;       /* NEW: was hardcoded #f2cfc8 */
+
+    --mb-radius: 16px;
+    --mb-radius-sm: 10px;
+    --mb-shadow: 0 1px 2px rgba(20,30,40,.04), 0 10px 30px rgba(20,30,40,.06);
+
+    /* System font stack, no web fonts */
+    --mb-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+               Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+
+    background: var(--mb-bg);
+    color: var(--mb-ink);
+    font-family: var(--mb-font);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    padding: 8px;
+  }
+  .mb-iw *, .mb-iw *::before, .mb-iw *::after { box-sizing: border-box; }
+
+  .mb-card {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: var(--mb-surface);
+    border: 1px solid var(--mb-line);
+    border-radius: var(--mb-radius);
+    box-shadow: var(--mb-shadow);
+    padding: clamp(20px, 5vw, 32px);
+  }
+
+  /* Header */
+  .mb-logo {
+    display: block;
+    width: 200px;
+    max-width: 62%;
+    height: auto;
+    margin: 0 0 18px;
+  }
+  .mb-eyebrow {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--mb-primary);
+    margin: 0 0 8px;
+  }
+  .mb-title {
+    font-size: clamp(21px, 5vw, 26px);
+    font-weight: 700;
+    letter-spacing: -.01em;
+    margin: 0 0 6px;
+    color: var(--mb-ink);
+  }
+  .mb-sub {
+    font-size: 15px;
+    color: var(--mb-muted);
+    margin: 0 0 4px;
+  }
+
+  /* Form blocks */
+  .mb-block { margin-top: 22px; }
+  .mb-step {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: var(--mb-muted);
+    margin: 0 0 10px;
+    padding: 0;
+  }
+  .mb-step b { color: var(--mb-heading); font-weight: 700; }
+
+  fieldset.mb-block { border: 0; margin-inline: 0; padding: 0; }
+
+  /* State chips (accessible radio group) */
+  .mb-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+  .mb-chip { flex: 1 1 140px; position: relative; cursor: pointer; }
+  .mb-chip input {
+    /* visually hidden but still focusable and in tab order */
+    position: absolute; width: 1px; height: 1px;
+    margin: -1px; padding: 0; border: 0; overflow: hidden;
+    clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+  }
+  .mb-chip span {
+    display: flex; align-items: center; justify-content: center;
+    text-align: center;
+    min-height: 48px;
+    padding: 10px 14px;
+    border: 1.5px solid var(--mb-line);
+    border-radius: var(--mb-radius-sm);
+    background: var(--mb-surface);
+    color: var(--mb-ink);
+    font-size: 15px; font-weight: 600;
+    transition: border-color .15s ease, background-color .15s ease, box-shadow .15s ease;
+  }
+  .mb-chip:hover span { border-color: var(--mb-line-strong); }
+  .mb-chip input:checked + span {
+    border-color: var(--mb-primary);
+    background: var(--mb-primary-soft);
+    color: var(--mb-heading);
+    box-shadow: inset 0 0 0 1px var(--mb-primary);
+  }
+  .mb-chip input:focus-visible + span {
+    outline: 3px solid rgba(var(--mb-primary-rgb),.35);
+    outline-offset: 2px;
+  }
+
+  /* Plan select */
+  .mb-label { display: block; }
+  .mb-select-wrap { position: relative; }
+  .mb-select {
+    width: 100%;
+    min-height: 50px;
+    padding: 12px 44px 12px 14px;
+    font-family: inherit;
+    font-size: 15px;
+    color: var(--mb-ink);
+    background: var(--mb-surface);
+    border: 1.5px solid var(--mb-line);
+    border-radius: var(--mb-radius-sm);
+    appearance: none; -webkit-appearance: none; -moz-appearance: none;
+    cursor: pointer;
+    transition: border-color .15s ease, box-shadow .15s ease;
+  }
+  .mb-select:hover { border-color: var(--mb-line-strong); }
+  .mb-select:focus-visible {
+    outline: none;
+    border-color: var(--mb-primary);
+    box-shadow: 0 0 0 3px rgba(var(--mb-primary-rgb),.25);
+  }
+  /* custom chevron */
+  .mb-select-wrap::after {
+    content: ""; position: absolute; right: 16px; top: 50%;
+    width: 11px; height: 11px; margin-top: -7px; pointer-events: none;
+    border-right: 2px solid var(--mb-muted);
+    border-bottom: 2px solid var(--mb-muted);
+    transform: rotate(45deg);
+  }
+
+  /* Text input, reused by the typed-plan field */
+  .mb-input {
+    width: 100%;
+    min-height: 50px;
+    padding: 12px 14px;
+    font-family: inherit;
+    font-size: 15px;
+    color: var(--mb-ink);
+    background: var(--mb-surface);
+    border: 1.5px solid var(--mb-line);
+    border-radius: var(--mb-radius-sm);
+    transition: border-color .15s ease, box-shadow .15s ease;
+  }
+  .mb-input::placeholder { color: var(--mb-placeholder); }
+  .mb-input:hover { border-color: var(--mb-line-strong); }
+  .mb-input:focus-visible {
+    outline: none;
+    border-color: var(--mb-primary);
+    box-shadow: 0 0 0 3px rgba(var(--mb-primary-rgb),.25);
+  }
+
+  /* Typed plan field (shown when "Type my insurance plan" is chosen) */
+  .mb-typed { margin-top: 12px; }
+  .mb-typed[hidden] { display: none; }
+  .mb-typed-label {
+    display: block; font-size: 13px; font-weight: 600;
+    color: var(--mb-muted); margin: 0 0 6px;
+  }
+
+  /* Primary button */
+  .mb-check {
+    margin-top: 22px;
+    width: 100%;
+    min-height: 52px;
+    padding: 14px 20px;
+    font-family: inherit;
+    font-size: 16px; font-weight: 700;
+    color: #fff; background: var(--mb-action);
+    border: 0; border-radius: var(--mb-radius-sm);
+    cursor: pointer;
+    transition: background-color .15s ease, transform .05s ease;
+  }
+  .mb-check:hover { background: var(--mb-action-strong); }
+  .mb-check:active { transform: translateY(1px); }
+  .mb-check:focus-visible {
+    outline: 3px solid rgba(var(--mb-action-rgb),.4);
+    outline-offset: 2px;
+  }
+
+  /* Inline hint when something is missing (direction, not an apology) */
+  .mb-hint {
+    margin: 12px 0 0;
+    font-size: 14px;
+    color: var(--mb-warm);
+    min-height: 0;
+  }
+  .mb-hint:empty { margin: 0; }
+
+  .mb-privacy {
+    margin: 18px 0 0;
+    font-size: 12.5px;
+    color: var(--mb-muted);
+    text-align: center;
+  }
+
+  /* Shown only when JavaScript is disabled */
+  .mb-noscript {
+    margin: 16px 0 0;
+    padding: 14px 16px;
+    font-size: 14px;
+    color: var(--mb-ink);
+    background: var(--mb-soft);
+    border: 1px solid var(--mb-line);
+    border-radius: var(--mb-radius-sm);
+  }
+  .mb-noscript a { color: var(--mb-heading); font-weight: 700; }
+
+  /* Result panel */
+  .mb-result { margin-top: 22px; }
+  .mb-result:empty { margin-top: 0; }
+  .mb-panel {
+    border: 1px solid var(--mb-line);
+    border-radius: var(--mb-radius);
+    padding: clamp(16px, 4vw, 22px);
+    animation: mb-fade .25s ease both;
+  }
+  .mb-panel.is-good { background: var(--mb-good-soft); border-color: var(--mb-good-line); }
+  .mb-panel.is-warm { background: var(--mb-warm-soft); border-color: var(--mb-warm-line); }
+
+  .mb-panel-head { display: flex; align-items: flex-start; gap: 12px; }
+  .mb-icon {
+    flex: 0 0 auto; width: 32px; height: 32px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .is-good .mb-icon { background: var(--mb-good); }
+  .is-warm .mb-icon { background: var(--mb-warm); }
+  .mb-icon svg { width: 18px; height: 18px; display: block; }
+
+  .mb-result-title { font-size: 17px; font-weight: 700; margin: 4px 0 0; }
+  .mb-result-body { margin: 10px 0 0; }
+  .mb-result-body p { margin: 0 0 10px; font-size: 15px; color: var(--mb-ink); }
+  .mb-result-body p:last-child { margin-bottom: 0; }
+  .mb-result-note {
+    margin-top: 12px; padding-top: 12px;
+    border-top: 1px dashed rgba(20,30,40,.14);
+    font-size: 14px; color: var(--mb-muted);
+  }
+  .mb-result-note b { color: var(--mb-ink); font-weight: 600; }
+
+  /* CTAs inside the result */
+  .mb-ctas { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+  .mb-cta {
+    flex: 1 1 200px;
+    text-align: center; text-decoration: none;
+    min-height: 50px; padding: 13px 18px;
+    border-radius: var(--mb-radius-sm);
+    font-size: 15px; font-weight: 700;
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    transition: background-color .15s ease, border-color .15s ease;
+  }
+  .mb-cta-primary { background: var(--mb-action); color: #fff; }
+  .mb-cta-primary:hover { background: var(--mb-action-strong); }
+  .mb-cta-secondary {
+    background: var(--mb-surface); color: var(--mb-heading);
+    border: 1.5px solid var(--mb-action);
+  }
+  .mb-cta-secondary:hover { background: var(--mb-action); color: #fff; }
+  .mb-cta:focus-visible { outline: 3px solid rgba(var(--mb-action-rgb),.4); outline-offset: 2px; }
+  .mb-cta svg { width: 16px; height: 16px; }
+
+  .mb-restart {
+    display: inline-block; margin-top: 16px;
+    background: none; border: 0; padding: 6px 2px;
+    color: var(--mb-muted); font-family: inherit; font-size: 14px;
+    text-decoration: underline; text-underline-offset: 3px; cursor: pointer;
+  }
+  .mb-restart:hover { color: var(--mb-ink); }
+  .mb-restart:focus-visible { outline: 3px solid rgba(var(--mb-primary-rgb),.4); outline-offset: 2px; border-radius: 6px; }
+
+  @keyframes mb-fade {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .mb-iw *, .mb-iw *::before, .mb-iw *::after {
+      animation-duration: .001ms !important;
+      transition-duration: .001ms !important;
+    }
+  }
+
+  /* Narrow screens: stack chips and CTAs */
+  @media (max-width: 380px) {
+    .mb-chip { flex: 1 1 100%; }
+    .mb-cta { flex: 1 1 100%; }
+  }

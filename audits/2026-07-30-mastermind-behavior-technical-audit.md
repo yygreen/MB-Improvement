@@ -2487,3 +2487,61 @@ Four pages still on `.mb-*`: `insurance-terminology`, `financial-aid-resources`,
 the brand set carries **semantic** state colours (`--mb-good`, `--mb-warm` and soft
 tints) driving the widget's good/warning result panels, and the dominant set has no
 semantic colours at all. They need adding, or the distinction collapses.
+
+## Change log — Insurance Widget migrated to the dominant palette
+
+The semantic-colour question above is answered, and it turned out to be the smaller
+half of the problem.
+
+**The semantic pair maps cleanly.** `--mb-good` → `--teal-dark #2d8a8d`, `--mb-good-soft`
+→ `--teal-light #e8f6f6`, and the warning pair onto the red family. Good stays teal,
+warning stays red, so a parent can still tell "we accept your plan" from "let's check
+together" at a glance. No new semantic vocabulary was needed after all — dominant
+already had colours in both families, they just had decorative names.
+
+**The real problem was `--mb-primary` carrying two jobs.** The widget used one teal for
+button fills *and* for small accents. Dominant splits that work between two colours:
+teal for eyebrows, labels and icons; the CTA red for every button on the site. Mapping
+`--mb-primary` wholesale onto `--teal` would have put white text on `#3ba5a8` at
+**2.9:1** — the widget's main call to action, below AA. So `--mb-action` /
+`--mb-action-strong` were added (`--cta` / `--cta-hover`) and the four button rules moved
+onto them. The widget's buttons now match `.btn-primary` and `.btn-secondary` exactly,
+which is the point of the exercise.
+
+**Three contrast decisions, all measured:**
+
+| what | naive mapping | ratio | shipped instead | ratio |
+|---|---|---|---|---|
+| `.mb-hint` (14px body text) | `--accent #e8734a` | 3.0:1 ✗ | `--cta-hover #b34a40` | 5.3:1 ✓ |
+| selected chip label on `--teal-light` | `--teal-dark #2d8a8d` | 3.7:1 ✗ | `--navy #1a2744` | 13.4:1 ✓ |
+| `.mb-cta-secondary` label | `--teal-dark` | 3.7:1 ✗ | `--navy` | 13.4:1 ✓ |
+
+Today's `#bf5247` hint was 4.65:1, so the shipped value is also an improvement on what
+was there. `.mb-eyebrow` was deliberately left on `--teal` at 2.9:1: 12px uppercase
+letterspaced is exactly the `.section-label` / `.hero-eyebrow` role, and that ratio is
+what the other ten pages already ship. It is a site-wide issue to raise on its own
+terms, not something to fix on one widget and nowhere else.
+
+**Five colours had no token at all** — `#b6c9cd` hover borders (×3), `#95a7ac`
+placeholder, and the two result-panel border tints `#c2e0e4` / `#f2cfc8`. All five are
+tokens now. The panel borders have no dominant equivalent, so they are derived: the
+soft fill mixed 30% toward its base colour, the same weight the originals used.
+
+**Method.** `migrate-widget.mjs` applies 21 literal, anchored string substitutions
+against the live sheet, so anything not named in the map is byte-identical by
+construction. It reports a MISS for any rule that fails to match, and asserts no
+old-palette value survives outside a comment.
+
+**Verified.** Element count 77 → 77 and document height 10502 → 10502 unchanged at
+1440/768/390. Of the nine compared fields only `color` and `bg` differ — `dx`, `dy`,
+`w`, `h`, `cols`, `font` and `display` are identical everywhere. All twelve distinct
+colour transitions are in the map. On staging, both result panels were driven live and
+every measured colour matched prediction; the widget's JS paths (missing input, accepted
+plan, not-accepted-in-state) all still work.
+
+One edit covered both pages, because the widget is a component. Two of the four `.mb-*`
+pages are done; `autism-screening-checklist` and `first-90-days-of-aba-therapy` are not
+— they have their own `.mb-*` sheets, not this one.
+
+**Not done here:** `--mb-font` is still the system stack while the rest of the site is
+Manrope. That changes text metrics, not colours, and belongs in its own verified step.
