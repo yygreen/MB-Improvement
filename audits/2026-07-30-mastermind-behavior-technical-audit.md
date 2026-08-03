@@ -2299,3 +2299,56 @@ queued Georgia-only `align-content: start` city-grid bug.
 The hub family uses `#002833` navy, `#34abc7` teal, `#6b6872` muted, `#e3dee3` rule —
 distinct from both the `.mm-*` prose set and the `.mb-*` widget set. Only `#db5b4f`
 (CTA red) is shared. The token reconciliation is a three-way problem, not two.
+
+---
+
+## Change log — Insurance Widget componentised; remaining work scoped
+
+### The `.mb-iw` block was an entire duplicated embed, not just a sheet
+
+`insurance-terminology` and `financial-aid-resources` carried a **byte-identical 27,335 B
+embed** — stylesheet *and* markup — the `.mb-iw` insurance coverage checker
+(`id="insurance-widget"`). This is the queued "1eb2d944 shared block", and it also settles
+the queued "verify `.mb-scr` ↔ `.mb-iw`" item: `.mb-iw` is the insurance widget, a
+different component from the screener's `.mb-scr`.
+
+Because the whole embed matched, it was promoted with `transform_element_to_component` and
+instanced on the second page — **no content re-emission at all**, just structural
+operations. The duplicate embed was then removed.
+
+Both pages: byte count unchanged, exactly one widget each, **0 differing elements at
+1440/768/390**. The only textual difference is Webflow's publish timestamp.
+
+Method note: the instance was inserted *before* the duplicate and published for
+verification *before* the duplicate was removed, so a mis-identified embed would have
+surfaced as a visible second widget rather than as a deletion.
+
+### The state hubs use a fourth token vocabulary
+
+`aba-therapy-in-georgia` / `-new-jersey` / `-north-carolina` declare
+`--soft` / `--mute` / `--rule` / `--cta` / `--teal-pale`, distinct again from the `.mm-*`
+prose, `.mb-*` widget and `.mm-hub` sets. Their palettes agree on hex values with the
+service pages (`#1a2744`, `#3ba5a8`, `#e8734a`) but under different names, so the token
+work is a naming reconciliation here rather than a colour one.
+
+Georgia's sheets differ from the NJ/NC pair mostly by **formatting** — pretty-printed vs
+compact — not by content. That accounts for the 6,048 vs 5,400 B gap and means the
+"Georgia has diverged" reading was overstated.
+
+The queued `align-content: start` city-grid bug is **not** in these three pages' embeds.
+It is most likely in the `/areas-we-serve/*` CMS template, which is out of scope.
+
+### Remaining, with cost/benefit stated honestly
+
+| Target | Recoverable | Markup to rewrite |
+| --- | --- | --- |
+| `financial-aid-resources` e3+e4 merge | ~3,845 B | ~30 KB |
+| `first-90-days-of-aba-therapy` merge | ~1,702 B | ~25 KB |
+| `aba-therapy-in-georgia` sheet merge | ~1,128 B | ~12 KB |
+| NJ + NC shared CSS component | 0 B | ~25 KB |
+| `autism-screening-checklist` | 0 B | nothing to do — single unique sheet |
+
+`merge-page-sheets.mjs` is verified and handles these; each is the same mechanical recipe
+already applied to `/services`. The remaining byte savings total ~6.7 KB against the
+20,585 B recovered from `services` alone, so the ratio of rewrite risk to gain is now
+markedly worse than anything done so far.
