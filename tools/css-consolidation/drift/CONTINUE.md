@@ -22,6 +22,35 @@ Every corrected embed was additionally checked byte-for-byte against its
 `.fixed.html` on the rendered page, after polling for a marker so the comparison
 could not run against cached content.
 
+## How to verify
+
+`verify.sh` reproduces the whole check from scratch. It is read-only — it fetches
+pages and compares, and never writes to Webflow.
+
+```bash
+bash tools/css-consolidation/drift/verify.sh          # all five checks, ~90s
+bash tools/css-consolidation/drift/verify.sh quick    # skip the full-site sweep, ~15s
+```
+
+It checks five things, and each one can fail independently:
+
+1. **No drift value on the 16 in-scope pages** — the "done" criterion.
+2. **No drift value anywhere in the staging sitemap** (586 pages) — catches the CMS
+   and blog pages that inherit the shared component but are not authored here.
+3. **Byte-identity**: every applied embed still matches its authoritative
+   `.fixed.html` on the rendered page, the component across all six pages it feeds.
+4. **The deliberate retentions are still present** — `#ff8c5a`, `#e6e2da`, `#002833`,
+   `#f7f6f5`. This is the guard against a future sweep going too far; it fails if a
+   held value *disappears*.
+5. **Negative control**: production still carries the old values, proving the
+   staging-only constraint held. This one is expected to start failing the day the
+   custom domains are published — that is the signal to retire the check, not a bug.
+
+Note that `worklist.py` still lists `#e6e2da` in its `DRIFT` map and will therefore
+report "12 occurrences to change". That map predates the decision to keep `#e6e2da`
+as the warm hairline, recorded in README.md. Trust `verify.sh` and the README;
+`worklist.py` is only useful for reproducing the original findings.
+
 ## Final state
 
 | page / component | element id | file | status |
