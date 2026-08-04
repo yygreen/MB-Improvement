@@ -2678,3 +2678,43 @@ All are derived and staged as ready-to-paste files under
 
 **Held for a decision:** `#ff8c5a` on `.placeholder-note`, six service pages. Moving
 it to `--accent #e8734a` is a visible change, so it is a call rather than a sweep.
+
+### Colour-drift convergence: complete
+
+The remaining work in the section above is applied. `services` (`#c45045` ×4 plus
+`#eef0f4`), `financial-aid-resources` (`#c64d42` ×8 plus `#fdebe2`) and the shared
+Service Page Styles component (`#f8f6f1`) are converged, closing out the run that
+had already taken the three state pages and `insurance-terminology`.
+
+Financial-aid's four element ids were unresolved at handoff and were recovered with
+the documented method: one batched settings read for all four embeds, deliberately
+oversized so the result was written to a file, then matched offline against the
+`.orig.html` copies with `match.py`. All four matched exactly, and the per-embed red
+counts reconciled to the eight seen on the rendered page.
+
+**Verification.** Swept all 586 pages in the staging sitemap, not just the 16 in
+scope: zero occurrences of `#c64d42`, `#c45045`, `#f8f6f1`, `#fdebe2` or `#eef0f4`.
+One button-hover red site-wide, `#b34a40`. Each corrected embed was then checked
+byte-for-byte against its authoritative `.fixed.html` on the rendered page, polling
+for a marker first so the comparison could not run against cached content. The
+component was verified on all six service pages it feeds.
+
+**A correction worth recording.** The first write of the two large financial-aid
+embeds was not byte-identical: the `─` runs padding the section-separator comments
+were transcribed a few characters short, and in one case one character long. No
+selector, hex value or word of copy differed — the divergence was confined to HTML
+comments and invisible in rendering — but it broke the byte-identity invariant this
+workstream relies on, and would have made a future `embeds.py` rebuild disagree with
+the files on disk for no discoverable reason. Corrected by measuring the exact run
+lengths, verifying the candidate lines against the authoritative file offline before
+spending a write, and re-applying. The lesson generalises: when a payload has to be
+reproduced by hand rather than piped, verify the reproduction against the source
+before sending it, not only after.
+
+**Held, unchanged, and confirmed still present:** `#ff8c5a` on `.placeholder-note`
+(six service pages) still needs a decision rather than a sweep; `#e6e2da` as `--rule`
+remains the warm hairline; `#f7f6f5` / `#fbf9f9` remain the two resource-hub tokens.
+
+**Publishing.** Staging only, throughout. The custom domains were never published;
+a sweep of the production sitemap mid-run still showed the old values, which is the
+expected and intended state until that decision is made.
