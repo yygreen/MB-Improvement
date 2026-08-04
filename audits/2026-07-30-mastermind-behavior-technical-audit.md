@@ -169,6 +169,32 @@ All nine profile URLs fetched. **The prior audit's finding is confirmed and stil
 Staging is identical (`mastermindbehavior.webflow.io/bcbas/audrey-poggi` →
 `<title>MasterMindBehavior.com</title>`), so no fix is staged and awaiting publish.
 
+### RESOLVED — the Clinical Team byline is correct and must not be "fixed"
+
+**Confirmed with the client, 2026-08-04: the BCBAs did not individually author these
+posts, and they do not want to be named.** Collective attribution to the Clinical Team
+is therefore accurate, and it is what they want. Issue 3 above was a false positive —
+it inferred a defect from a pattern without checking whether the pattern was intended.
+
+The live implementation already matches that intent, on both surfaces:
+
+- `BlogPosting.author` resolves by `@id` to the sitewide `MedicalOrganization` node,
+  not to any `Person`. Authorship is claimed by the organization.
+- The rendered byline reads "Mastermind Behavior Clinical Team".
+- The nine `/bcbas/*` pages serve `noindex,follow`, so no individual is being surfaced
+  to search in an authorship role.
+
+**Do not attribute posts to named BCBAs.** Doing so would assert, on a healthcare site,
+that a named clinician wrote content they did not write — false attribution against the
+explicit wishes of the people named. The eight `w-dyn-empty` blocks below are the
+expected result of a correct configuration, not a bug to be closed by populating them.
+
+The only thing still arguably worth doing is cosmetic and optional: on the eight BCBA
+pages the empty block renders as the heading "Articles by this author" above Webflow's
+literal "No items found." That reads as broken to a human visitor. Since the pages are
+noindexed, this is a UX detail rather than an SEO one — hide the section when the list
+is empty, rather than filling it.
+
 ### "Articles by this author" block
 
 **The block renders on all nine pages. It is empty on eight of the nine.**
@@ -342,7 +368,7 @@ a publish failure.
 |---|---|---|---|
 | 1 | ~~No BlogPosting schema on any of 337 posts~~ **FIXED** — see Change log | ~~High~~ | Live; 50 posts verified valid |
 | 2 | ~~`/areas-we-serve/perry-043a7` still in sitemap (301s to `/perry`)~~ **FIXED** — see Change log | ~~Medium~~ | Sitemap now 578 entries, 0 non-200 |
-| 3 | 337 of 337 posts attributed to the generic Clinical Team; 8 BCBAs have zero articles | **Medium** | Pagination walk = 337; 8/9 pages `w-dyn-empty` |
+| 3 | ~~337 of 337 posts attributed to the generic Clinical Team; 8 BCBAs have zero articles~~ **NOT AN ISSUE — deliberate.** See below | ~~Medium~~ | Confirmed with the client 2026-08-04 |
 | 4 | All 9 noindexed `/bcbas/*` URLs are still submitted in `sitemap.xml` | **Low** | 9/9 `includeInSitemap: true` |
 | 5 | ~~7 root pages carry no schema~~ **FIXED** — see Change log | ~~Low~~ | 7/7 live and verified |
 | 6 | Sitemap carries no `lastmod` on any of 579 entries | **Low** | 0 occurrences |
