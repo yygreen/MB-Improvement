@@ -1,0 +1,33 @@
+<style>
+/* Merge the two New Jersey collection lists into one scroll pane.
+   Webflow caps a Collection List at 100 items, so the towns past the cap
+   come from a second list with offset:100. display:contents removes both
+   list containers from the box tree, so all cards become direct grid
+   children of #nj-cities-grid and flow as one continuous grid. */
+#nj-cities-grid > .w-dyn-list,
+#nj-cities-grid .w-dyn-items { display: contents; }
+
+/* .collection-list-wrapper-2 was the element that centred this block:
+   max-width 1200px with auto side margins, plus space beneath.
+   display:contents deletes that box, so those properties move onto the
+   grid container itself or the towns run to the section edge. */
+#nj-cities-grid {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 100px;
+}
+@media screen and (min-width: 1920px) {
+  #nj-cities-grid { width: 1200px; }
+}
+
+/* THE IMPORTANT ONE. .cards.cards-ga sets align-content:center, and .cards
+   caps the pane at max-height:375px. Once the rows are taller than the cap,
+   centring overflows them equally above and below — and overflow above a
+   scroll container's top edge cannot be reached, because scrollTop cannot
+   go negative. Measured on the live page: 40 towns sat at negative offsets,
+   invisible and unscrollable, which is why the list appeared to start
+   partway through the alphabet with its top row sliced mid-glyph.
+   Starting the rows at the top makes the pane scroll through all of them. */
+#nj-cities-grid { align-content: start; }
+</style>

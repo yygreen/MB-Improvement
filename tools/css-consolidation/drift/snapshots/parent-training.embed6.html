@@ -1,0 +1,72 @@
+<style>
+/* Page-specific overrides for /parent-training.
+   Shared rules live in the "Service Page Styles" component - do not
+   duplicate them here, an override loads later and silently wins.
+   Note: .right-grid, .approach-grid and .icon-grid were unscoped in the
+   original (no .mm-embed prefix), so they never applied to the embed at all -
+   a base .mm-embed rule at (0,2,0) outranks them at (0,1,0), and media queries
+   add no specificity. Scoping them revives them, which is why approach-grid
+   and right-grid now collapse on mobile as the author intended.
+   .approach-grid is left entirely to the shared sheet so this page matches
+   the other five (1-up at 768px). */
+  .mm-embed .why-early-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; margin-top: 48px; }
+  .mm-embed .why-early-copy p { font-size: 17px; line-height: 1.75; color: var(--text-light); margin-bottom: 20px; }
+  .mm-embed .why-early-copy strong { color: var(--text); font-weight: 600; }
+  .mm-embed .why-early-copy a { color: var(--teal); text-decoration: underline; text-decoration-color: rgba(59,165,168,0.3); text-underline-offset: 3px; transition: text-decoration-color 0.2s; }
+  .mm-embed .why-early-copy a:hover { text-decoration-color: var(--teal); }
+  .mm-embed .why-early-image { border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 4/3; background: var(--warm-dark); }
+  .mm-embed .sessions-header { text-align: center; margin-bottom: 64px; }
+  .mm-embed .sessions-header h2 { margin: 0 auto 16px; }
+  .mm-embed .sessions-header .section-subtitle { margin: 0 auto; }
+  .mm-embed .right-grid-left .section-label { margin-bottom: 12px; }
+  .mm-embed .right-grid-left h2 { margin-bottom: 28px; }
+@media (max-width: 768px) {
+  .mm-embed .why-early-grid { grid-template-columns: 1fr; gap: 40px; }
+  .mm-embed .right-grid { grid-template-columns: 1fr; gap: 40px; }
+}
+@media (max-width: 480px) {
+  .mm-embed .icon-grid { grid-template-columns: 1fr; }
+}
+</style>
+<div class="mm-embed">
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <h1 class="hero-eyebrow">ABA Parent Training</h1>
+        <p class="hero-headline">Therapy doesn't end when the session does</p>
+        <p class="hero-body">You watch your child's therapist get a breakthrough — a new word, a calmer transition, a moment of eye contact — and then the session ends. ABA parent training gives you the practical, everyday tools to keep that progress going. At breakfast. At bedtime. In the car on the way to Grandma's house.</p>
+        <div class="hero-ctas">
+          <a href="/contact" class="btn-primary">Schedule Parent Coaching →</a>
+        </div>
+        <div class="trust-badges">
+          <div class="trust-badge-row">
+            <div class="trust-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;color:var(--teal)"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              BCBA-led coaching
+            </div>
+            <div class="trust-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;color:var(--teal)"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              BHCOE accredited
+            </div>
+          </div>
+          <div class="trust-badge-row">
+            <div class="trust-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;color:var(--teal)"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              In your home, in real time
+            </div>
+            <div class="trust-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;color:var(--teal)"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              Insurance accepted
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="https://cdn.prod.website-files.com/6627fd62e242d50407cfe12d/69ca6d1f4b390a049401b178_aba-parent-training-bcba-coaching-mother-son-table.webp" alt="BCBA coaching mother and son through a learning activity at a small table in the living room" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+    </div>
+  </div>
+</section>
+</div>
