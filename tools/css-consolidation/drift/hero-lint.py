@@ -80,7 +80,19 @@ def check(slug, html):
         if not re.search(r'(?<![\w.])\.hero-eyebrow\s*[{,]', css):
             yield 'markup uses .hero-eyebrow but no tag-independent rule defines it'
 
-    # 4. heading order must not skip levels
+    # 4. the hero's padding rule must apply exactly once.
+    #    The state pages put .mm-hero on BOTH the wrapper div and the inner
+    #    <section>, so its padding landed twice - double the top padding, and
+    #    below ~1296px a different left edge and inner width from the service
+    #    family. Invisible at wide viewports because the 1200px cap absorbs it.
+    hits = (len(re.findall(r'<div class="mm-embed mm-hero"', html))
+            + len(re.findall(r'<section class="mm-hero"', html))
+            + len(re.findall(r'<section class="hero"', html)))
+    if hits > 1:
+        yield (f'hero padding applied {hits}x - .mm-hero is on both the wrapper '
+               f'and the inner section; remove it from the wrapper div')
+
+    # 5. heading order must not skip levels
     levels = [int(tag[1]) for tag, _ in hs]
     for a, b in zip(levels, levels[1:]):
         if b > a + 1:
