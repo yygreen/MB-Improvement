@@ -38,6 +38,6 @@ Deliberately NOT changed:
 | `embed10` | 21719 | body embed | financial-aid-resources | `#c64d42`x2, `#fdebe2`x1 | no |
 | `embed11` | 19479 | body embed | financial-aid-resources | `#c64d42`x2 | no |
 | `embed12` | 4595 | bottom CTA band | financial-aid-resources | `#c64d42`x2 | no |
-| `embed13` | 6533 | hero band | insurance-terminology | `#c64d42`x2 | no |
-| `embed15` | 4613 | bottom CTA band | insurance-terminology | `#c64d42`x2 | no |
+| `embed13` | 6533 | hero band | insurance-terminology | `#c64d42`x2 | yes |
+| `embed15` | 4613 | bottom CTA band | insurance-terminology | `#c64d42`x2 | yes |
 | `embed16` | 21927 | page embed | services | `#c45045`x4, `#eef0f4`x1 | no |
