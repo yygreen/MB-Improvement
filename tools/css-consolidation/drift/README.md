@@ -29,7 +29,7 @@ Deliberately NOT changed:
 
 | embed | bytes | what | page(s) | substitutions | applied |
 |---|---|---|---|---|---|
-| `embed0` | 21033 | Service Page Styles component | behavior-support, early-intervention, in-home-aba-therapy, parent-training, skill-development, transition-planning | `#f8f6f1`x1 | yes |
+| `embed0` | 21607 | Service Page Styles component (+ hero convergence, see note) | behavior-support, early-intervention, in-home-aba-therapy, parent-training, skill-development, transition-planning | `#f8f6f1`x1 | yes |
 | `embed1` | 7004 | hero band | aba-therapy-in-georgia | `#c64d42`x2 | yes |
 | `embed3` | 5143 | bottom CTA band | aba-therapy-in-georgia | `#c64d42`x2 | yes |
 | `embed4` | 6807 | hero band | aba-therapy-in-new-jersey | `#c64d42`x2 | yes |
@@ -41,3 +41,30 @@ Deliberately NOT changed:
 | `embed13` | 6533 | hero band | insurance-terminology | `#c64d42`x2 | yes |
 | `embed15` | 4613 | bottom CTA band | insurance-terminology | `#c64d42`x2 | yes |
 | `embed16` | 21927 | page embed | services | `#c45045`x4, `#eef0f4`x1 | yes |
+
+## Note on `embed0` — the length invariant no longer applies to it
+
+Every other embed here is a hex-for-hex colour substitution, so `.orig` and
+`.fixed` are the same length and `fix.py` asserts it. `embed0` is now the one
+exception: on 2026-08-04 it also took the hero convergence, which is a deliberate
+value change rather than a colour swap.
+
+What changed beyond colour, all of it aligning the service hero with the state
+pages' `.mm-hero`:
+
+- `.hero` vertical padding `80px 0 100px` -> `clamp(36px, 5vw, 64px) 0 clamp(28px, 4vw, 48px)`
+- `.hero-grid` `1fr 1fr` / `gap: 64px` -> `minmax(0, 1.05fr) minmax(0, 1fr)` / `gap: clamp(32px, 5vw, 64px)`
+- `.hero-headline` `48px / 800 / 1.15 / -0.5px` -> `clamp(32px, 5vw, 52px) / 600 / 1.08 / -0.015em`
+- the eyebrow rule is **de-qualified**: `.hero h1.hero-eyebrow` -> `.hero .hero-eyebrow`,
+  with `letter-spacing` `1.5px` -> `0.08em` and `margin-bottom` `20px` -> `28px`
+- the fixed `font-size: 36px` mobile override is gone; `clamp()` governs
+- the hero grid now collapses at 900px, matching the state family, not 768px
+
+Two things a future reader will trip over:
+
+1. **Do not re-add `h1.` to the eyebrow selector.** The eyebrow is a `div`; the h1
+   is the headline. Re-qualifying it silently unstyles the eyebrow on all six pages.
+2. **The five page embeds still carry their own `.hero-eyebrow` rule** at
+   `1.5px` / `20px`. Those are now outranked by the component's `.hero .hero-eyebrow`
+   (0,3,0 beats 0,2,0) and are kept only as a fallback. They are not what renders —
+   `hero-lint.py` and the cascade check confirm `0.08em` / `28px` wins on all six.
