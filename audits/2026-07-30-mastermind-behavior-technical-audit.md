@@ -2638,3 +2638,43 @@ widget, 96% identical to the component but with a 560px card instead of 1200px.
 Making it a component variant would delete ~28 kB of duplicated markup, styles and
 logic, and would mean a plan-list change stops needing two edits. It is a layout
 and component-API change, not a palette one.
+
+## Change log — colour drift across all 16 in-scope pages
+
+Auditing every colour literal in the embed stylesheets on all 16 pages against the
+dominant token set turned up 62 off-palette literals. Sorting them by *why* they
+are off-palette matters more than the count:
+
+**Not drift, left alone.** `#e6e2da` appears 10 times and only ever as `--rule` —
+a warm hairline that pairs with the warm backgrounds. Consistent use makes it an
+unnamed member of the palette, not a mistake; flattening it to `--border #e5e5e5`
+would put neutral hairlines on warm fills. Likewise `#002833` and `#34abc7`, which
+are fallbacks inside `var(--base-color-brand--blue-dark, …)`. Those embeds read
+Webflow's own Designer brand variables, a fourth colour system; overriding them
+from a stylesheet would fight the Designer rather than unify with it. Recognising
+these as deliberate removed five embed rewrites, 91 kB, from the work.
+
+**The finding that mattered:** three different button-hover reds were live for the
+same button role — `#b34a40` on the six service pages and all four migrated
+widgets, `#c64d42` on the state pages and two resource pages, `#c45045` on
+services. No page shows two of them side by side, which is exactly why nobody
+would catch it by eye.
+
+**Applied so far:** the three state pages. All 22 of their button hovers now use
+`#b34a40`. Site-wide, 13 of 16 pages carry only that value.
+
+**Method.** Webflow renders an HtmlEmbed verbatim inside `div.w-embed`, so each
+embed's code can be reconstructed from the rendered page. That let me build every
+corrected embed offline and verify it is byte-identical to the live code apart from
+the colour — lengths match exactly — instead of reading each one back first. Batching
+several embeds into one settings read is deliberate too: an oversized tool result is
+written to a file, so the matching happens on disk rather than in context.
+
+**Remaining:** `services` (`#c45045` ×4 plus `#eef0f4`), `insurance-terminology`
+(`#c64d42` ×4), `financial-aid-resources` (`#c64d42` ×8 plus `#fdebe2`), and the
+shared Service Page Styles component (`#f8f6f1`, one unit off `--warm`, invisible).
+All are derived and staged as ready-to-paste files under
+`tools/css-consolidation/drift/`, each with its element mapping in the README.
+
+**Held for a decision:** `#ff8c5a` on `.placeholder-note`, six service pages. Moving
+it to `--accent #e8734a` is a visible change, so it is a call rather than a sweep.

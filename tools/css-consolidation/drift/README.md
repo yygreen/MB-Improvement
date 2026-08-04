@@ -32,8 +32,8 @@ Deliberately NOT changed:
 | `embed0` | 21033 | Service Page Styles component | behavior-support, early-intervention, in-home-aba-therapy, parent-training, skill-development, transition-planning | `#f8f6f1`x1 | no |
 | `embed1` | 7004 | hero band | aba-therapy-in-georgia | `#c64d42`x2 | yes |
 | `embed3` | 5143 | bottom CTA band | aba-therapy-in-georgia | `#c64d42`x2 | yes |
-| `embed4` | 6807 | hero band | aba-therapy-in-new-jersey | `#c64d42`x2 | no |
-| `embed6` | 6782 | hero band | aba-therapy-in-north-carolina | `#c64d42`x2 | no |
+| `embed4` | 6807 | hero band | aba-therapy-in-new-jersey | `#c64d42`x2 | yes |
+| `embed6` | 6782 | hero band | aba-therapy-in-north-carolina | `#c64d42`x2 | yes |
 | `embed9` | 6855 | hero band | financial-aid-resources | `#c64d42`x2 | no |
 | `embed10` | 21719 | body embed | financial-aid-resources | `#c64d42`x2, `#fdebe2`x1 | no |
 | `embed11` | 19479 | body embed | financial-aid-resources | `#c64d42`x2 | no |
