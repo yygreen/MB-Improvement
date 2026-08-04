@@ -1,0 +1,3 @@
+
+# schema.org vocabulary is ~1.5MB and re-downloaded on demand by validate-schema.py
+tools/schema/schemaorg.jsonld
