@@ -1,0 +1,310 @@
+<div class="mm-embed mm-body">
+  <style>
+    .mm-embed { box-sizing: border-box; }
+    .mm-embed *, .mm-embed *::before, .mm-embed *::after { box-sizing: inherit; }
+
+    .mm-embed {
+      --navy:      #1a2744;
+      --teal:      #3ba5a8;
+      --teal-pale: #e8f6f6;
+      --warm:      #f9f6f1;
+      --accent:    #e8734a;
+      --cta:       #db5b4f;
+      --text:      #2c2c2c;
+      --soft:      #5a5a5a;
+      --mute:      #8a8a8a;
+      --rule:      #e6e2da;
+      --font-body: 'Manrope', system-ui, -apple-system, sans-serif;
+      --font-disp: 'Manrope', system-ui, -apple-system, sans-serif;
+    }
+
+    .mm-body { font-family: var(--font-body); color: var(--text); }
+
+    .mm-section { padding: clamp(64px, 10vw, 120px) clamp(20px, 5vw, 48px); }
+    .mm-section--warm { background: var(--warm); }
+    .mm-section__inner { max-width: 1200px; margin: 0 auto; }
+
+    .mm-h2 {
+      font-family: var(--font-disp); font-weight: 600;
+      font-size: clamp(28px, 4vw, 44px); line-height: 1.15;
+      letter-spacing: -0.01em; color: var(--navy); margin: 0 0 32px 0;
+    }
+    .mm-h3 {
+      font-family: var(--font-disp); font-weight: 600;
+      font-size: 22px; line-height: 1.3; color: var(--navy);
+      margin: 2em 0 0.5em 0;
+    }
+
+    .mm-rt { font-size: 17px; line-height: 1.7; color: var(--text); }
+    .mm-rt p { margin: 0 0 1.1em 0; }
+    .mm-rt p:last-child { margin-bottom: 0; }
+    .mm-rt strong { color: var(--navy); font-weight: 600; }
+    .mm-rt a {
+      color: var(--navy); text-decoration: underline;
+      text-decoration-color: var(--teal); text-underline-offset: 3px; text-decoration-thickness: 2px;
+    }
+    .mm-rt ul, .mm-rt ol { padding-left: 1.4em; margin: 0; }
+    .mm-rt li { margin-bottom: 0.6em; }
+    .mm-rt li::marker { color: var(--teal); }
+
+    /* TL;DR Card */
+    .mm-tldr {
+      padding: 28px 32px; background: #fff;
+      border-left: 4px solid var(--teal); border-radius: 0 12px 12px 0;
+      margin-bottom: 32px;
+      box-shadow: 0 1px 0 var(--rule), 0 12px 40px rgba(26,39,68,0.04);
+    }
+    .mm-tldr__label {
+      font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--teal); margin: 0 0 10px 0;
+    }
+    .mm-tldr p { margin: 0; font-size: 16px; line-height: 1.65; color: var(--text); }
+    .mm-tldr p + p { margin-top: 6px; }
+    .mm-tldr strong { color: var(--navy); font-weight: 700; }
+
+    /* Numbered steps for the playbook */
+    .mm-steps {
+      list-style: none; padding: 0; margin: 32px 0 0 0;
+      display: grid; gap: 20px;
+    }
+    .mm-step {
+      display: grid; grid-template-columns: 56px 1fr; gap: 20px; align-items: start;
+      padding: 24px; background: #fff;
+      border: 1px solid var(--rule); border-radius: 12px;
+    }
+    .mm-step__num {
+      display: flex; align-items: center; justify-content: center;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--teal-pale); color: var(--teal);
+      font-family: var(--font-disp); font-weight: 600; font-size: 20px;
+    }
+    .mm-step__body p { margin: 0; font-size: 16px; line-height: 1.65; color: var(--soft); }
+    .mm-step__body strong {
+      display: block; color: var(--navy); font-family: var(--font-body);
+      font-weight: 600; font-size: 17px; margin-bottom: 4px;
+    }
+
+    /* Tables */
+    .mm-rt table {
+      width: 100%; border-collapse: collapse; margin: 24px 0;
+      font-size: 15px; background: #fff; border-radius: 12px; overflow: hidden;
+      box-shadow: 0 1px 0 var(--rule), 0 12px 40px rgba(26,39,68,0.04);
+    }
+    .mm-rt thead { display: none; }
+    .mm-rt tbody tr { border-bottom: 1px solid var(--rule); }
+    .mm-rt tbody tr:last-child { border-bottom: none; }
+    .mm-rt tbody tr:first-child { background: var(--navy); color: #fff; }
+    .mm-rt tbody tr:first-child strong { color: #fff; }
+    .mm-rt th, .mm-rt td {
+      padding: 14px 18px; text-align: left; vertical-align: top; line-height: 1.55;
+    }
+    .mm-rt tbody tr:first-child td { font-weight: 600; }
+    .mm-rt tbody td:first-child { width: 26%; }
+    @media (max-width: 600px) {
+      .mm-rt tbody td:first-child { width: 40%; }
+    }
+
+    .mm-cta-row {
+      display: flex; flex-wrap: wrap; gap: 14px; margin-top: 40px;
+    }
+    .mm-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 16px 28px; font-family: var(--font-body); font-size: 15px; font-weight: 600;
+      letter-spacing: 0.01em; border-radius: 999px; border: 2px solid transparent;
+      text-decoration: none; cursor: pointer;
+      transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+    .mm-btn--primary { background: var(--cta); color: #fff; border-color: var(--cta); }
+    .mm-btn--primary:hover { background: #c64d42; border-color: #c64d42; transform: translateY(-1px); }
+    .mm-btn--secondary { background: transparent; color: var(--navy); border-color: var(--cta); }
+    .mm-btn--secondary:hover { background: var(--cta); color: #fff; border-color: var(--cta); }
+  </style>
+
+  <!-- ── National grants ───────────────────────────────────────────────────── -->
+  <section class="mm-section">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">National grants and scholarships</h2>
+
+      <div class="mm-tldr">
+        <p class="mm-tldr__label">Quick answer</p>
+        <p>National non-profits pay for the costs insurance and Medicaid don't reach: out-of-pocket copays, evaluations, therapy materials, AAC devices, sensory equipment, and respite. Individual grants are usually small ($500 to $5,000) but most families qualify for two or three at once. <strong>You file each application; we provide the clinical letter of medical necessity that goes into it.</strong></p>
+      </div>
+
+      <div class="mm-rt">
+        <table>
+          <tbody>
+            <tr>
+              <td><strong>Organization</strong></td>
+              <td><strong>Typical award</strong></td>
+              <td><strong>What it covers / who qualifies</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Autism Care Today (ACT)</strong></td>
+              <td>Up to $5,000</td>
+              <td>Quarterly application cycles. ABA therapy, biomedical treatment, sensory integration, safety equipment, and other autism-related services. U.S. residents under 21.</td>
+            </tr>
+            <tr>
+              <td><strong>ACT Today (Autism Care and Treatment Today)</strong></td>
+              <td>Up to $5,000</td>
+              <td>Treatment grants for ABA, OT, speech, social skills programs, safety items. Open to families with a child diagnosed with autism.</td>
+            </tr>
+            <tr>
+              <td><strong>UnitedHealthcare Children's Foundation</strong></td>
+              <td>Up to $5,000 per child per year</td>
+              <td>Medical and therapy services not fully covered by insurance. Family income limits apply (currently around $95k for family of three; around $115k for family of four). Confirm at apply time.</td>
+            </tr>
+            <tr>
+              <td><strong>Doug Flutie Jr. Foundation for Autism</strong></td>
+              <td>Up to $1,000</td>
+              <td>The "Family Grant" supports ABA, therapy materials, summer camps, communication devices. Rolling applications.</td>
+            </tr>
+            <tr>
+              <td><strong>MyGOAL Inc.</strong></td>
+              <td>Up to $1,000</td>
+              <td>Annual autism awards for therapies, education, recreation, and family support. Open to children under 18 with an autism diagnosis.</td>
+            </tr>
+            <tr>
+              <td><strong>National Autism Association (Give-A-Voice)</strong></td>
+              <td>AAC device + 1 year support</td>
+              <td>For non-verbal children with autism; provides communication devices and software. Application based on need.</td>
+            </tr>
+            <tr>
+              <td><strong>Talk About Curing Autism (TACA)</strong></td>
+              <td>Varies (typically $500 to $2,500)</td>
+              <td>Family scholarships, conference scholarships, equipment grants. Membership-based; joining TACA is free.</td>
+            </tr>
+            <tr>
+              <td><strong>The Autism Site (Greater Good)</strong></td>
+              <td>Varies</td>
+              <td>Emergency assistance fund administered with partner orgs. Smaller awards for urgent needs.</td>
+            </tr>
+            <tr>
+              <td><strong>Lifesong Foundation</strong></td>
+              <td>Varies</td>
+              <td>Faith-based support for adoption and special-needs families. ABA and therapy costs covered where they fit the mission.</td>
+            </tr>
+            <tr>
+              <td><strong>Modest Needs Foundation</strong></td>
+              <td>Up to $1,000</td>
+              <td>Emergency assistance for low-income working families. Typical use covers a copay or a one-month therapy gap. Not autism-specific but often used by families navigating diagnosis costs.</td>
+            </tr>
+            <tr>
+              <td><strong>Variety, the Children's Charity</strong></td>
+              <td>Adaptive equipment + therapy</td>
+              <td>Regional chapters cover wheelchairs, AAC devices, sensory tools, and limited therapy support. Eligibility varies by chapter.</td>
+            </tr>
+            <tr>
+              <td><strong>Autism Spectrum Disorder Foundation</strong></td>
+              <td>Varies</td>
+              <td>iPads, ABA scholarships, social skills programs. Application-based; published cycles.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>Two practical notes. Award amounts are guidance, not guarantees. Actual amounts depend on the year's funding pool and the volume of applications. And almost every grant on this list takes a documented autism diagnosis and a letter of medical necessity from a licensed clinician. <strong>If we're your ABA provider, we'll write that letter at no charge as part of intake.</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Tax credits, FSA/HSA, ABLE ────────────────────────────────────────── -->
+  <section class="mm-section mm-section--warm">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">Tax credits, FSA/HSA, and ABLE accounts</h2>
+
+      <div class="mm-tldr">
+        <p class="mm-tldr__label">Quick answer</p>
+        <p>Most families miss thousands of dollars in tax recovery and pre-tax savings every year. The four to know: the <strong>Child and Dependent Care Credit</strong>, the <strong>Medical Expense Deduction</strong>, an <strong>FSA or HSA</strong> that pays for ABA in pre-tax dollars, and an <strong>ABLE account</strong> for long-term savings without losing SSI or Medicaid.</p>
+      </div>
+
+      <div class="mm-rt">
+        <h3 class="mm-h3">Child and Dependent Care Credit</h3>
+        <p>If you paid for care so you could work or look for work, you may claim a credit of up to <strong>35%</strong> of qualifying expenses, with a cap of $3,000 in expenses for one child or $6,000 for two or more. The credit phases down at higher incomes but does not phase out completely. ABA and related therapies that allow a parent to work qualify in many cases. Consult a CPA familiar with disability tax for your specific situation.</p>
+
+        <h3 class="mm-h3">Medical Expense Deduction (IRS Publication 502)</h3>
+        <p>Medical expenses above <strong>7.5% of Adjusted Gross Income</strong> are deductible if you itemize. ABA therapy, diagnostic evaluations, speech therapy, occupational therapy, and travel to and from therapy (mileage and lodging when required) all count as deductible medical expenses under IRS Pub 502. For families with a young child receiving 20 to 40 hours of ABA per week, this deduction often clears the 7.5% threshold easily.</p>
+
+        <h3 class="mm-h3">Flexible Spending Accounts (FSAs) and HSAs</h3>
+        <p>Both let you pay for ABA therapy with pre-tax dollars, the equivalent of a 22% to 37% discount depending on your bracket. A <strong>healthcare FSA</strong> typically caps contributions in the low $3,000s per year per employee (the limit adjusts annually). A <strong>Health Savings Account (HSA)</strong>, available only with a high-deductible health plan, has higher contribution limits (well over $8,000 for family coverage), and the funds roll over year to year, unlike FSAs.</p>
+        <p>ABA, evaluations, parent training, AAC devices, and therapy-related travel are eligible expenses for both account types.</p>
+
+        <h3 class="mm-h3">ABLE accounts</h3>
+        <p>An ABLE (Achieving a Better Life Experience) account lets a person with a disability save and invest up to <strong>$19,000+ per year</strong> (the annual gift-tax exclusion, which adjusts for inflation) without losing Medicaid eligibility and with the first $100,000 of the account balance exempt from SSI's $2,000 resource limit. Funds grow tax-free and qualified withdrawals are tax-free.</p>
+        <p>Qualified expenses are broad: education, housing, transportation, employment training, assistive technology, health and wellness, financial management, legal fees. Eligibility requires a disability with onset before age 26. Every state runs its own ABLE program, but most allow out-of-state enrollment.</p>
+
+        <h3 class="mm-h3">A short note on long-term planning</h3>
+        <p>ABLE accounts are powerful but not a substitute for a <strong>Special Needs Trust (SNT)</strong> at scale. A third-party SNT lets parents, grandparents, and others fund a child's long-term care without affecting eligibility for means-tested benefits. <strong>Guardianship</strong> becomes a question the moment your child turns 18 and becomes a legal adult. Both require a special-needs attorney. We don't do legal work, but we'll point you to attorneys in NJ, GA, and NC who do.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── The parent's playbook ─────────────────────────────────────────────── -->
+  <section class="mm-section">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">The parent's playbook for applying</h2>
+
+      <p class="mm-rt" style="margin-bottom:8px;">Most grants and waiver applications fail for the same handful of reasons. These five rules, adapted from the Autism Speaks Financial Planning Tool Kit and refined by what we've seen working with families, will keep you on the right side of that statistic:</p>
+
+      <ol class="mm-steps">
+        <li class="mm-step">
+          <div class="mm-step__num">1</div>
+          <div class="mm-step__body">
+            <strong>Read the entire application twice before you start it.</strong>
+            <p>Print every page. Note every required document. Many applications are denied not because the family doesn't qualify, but because a tax statement, IEP, or letter was missing or in the wrong format. You will save days by reading it through once for context and once for the checklist.</p>
+          </div>
+        </li>
+        <li class="mm-step">
+          <div class="mm-step__num">2</div>
+          <div class="mm-step__body">
+            <strong>Calendar every deadline.</strong>
+            <p>Some grants run year-round; most have hard annual or quarterly cutoffs. Letters of recommendation, therapy notes, and clinical documentation take time to gather. Aim to submit two weeks before the deadline so you can recover from one thing going wrong.</p>
+          </div>
+        </li>
+        <li class="mm-step">
+          <div class="mm-step__num">3</div>
+          <div class="mm-step__body">
+            <strong>Tell the story honestly and briefly.</strong>
+            <p>Reviewers read thousands of applications. They aren't looking for the most heartbreaking story; they're looking for a clear, honest one. Say what your child needs, why this grant would matter, and what it will pay for. Two paragraphs is usually enough.</p>
+          </div>
+        </li>
+        <li class="mm-step">
+          <div class="mm-step__num">4</div>
+          <div class="mm-step__body">
+            <strong>Apply to multiple at once.</strong>
+            <p>Individual grants are small. A $1,000 grant from MyGOAL plus $1,500 from Autism Care Today plus $2,000 from the UHC Children's Foundation adds up to a real number. The applications overlap heavily, and much of the documentation you collect for one will serve three.</p>
+          </div>
+        </li>
+        <li class="mm-step">
+          <div class="mm-step__num">5</div>
+          <div class="mm-step__body">
+            <strong>Treat a denial as "wrong fit," not "no."</strong>
+            <p>Most denials aren't about your child; they're about the grant's specific funding mission this cycle. Note the reason if you can find it out, and apply to a different grant next month. Persistence accounts for most of the families who fund what they need.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ── What Mastermind does for you ─────────────────────────────────────── -->
+  <section class="mm-section mm-section--warm">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">What Mastermind does for you</h2>
+
+      <div class="mm-tldr">
+        <p class="mm-tldr__label">The boundary</p>
+        <p><strong>We handle the insurance side of ABA funding end to end.</strong> For waivers, grants, and SSI, the application stays with the family. We provide the clinical documentation you'll include in each one, at no charge.</p>
+      </div>
+
+      <div class="mm-rt">
+        <p>We're not a financial planner, and we're not a law firm. We're the ABA provider that takes the insurance work off your plate and gives you everything you need to apply for the rest. Specifically:</p>
+        <ul>
+          <li><strong>Free benefits checks.</strong> We call your insurance, identify your ABA coverage, your age limit, your dollar cap (and whether parity law overrides it), your prior-auth process, and your in-network cost. You get a written summary before you commit to anything.</li>
+          <li><strong>Prior authorization end to end.</strong> We file the initial auth, the six-month reauths, and every appeal. If your plan denies coverage on technicalities we know how to fix, we fix them.</li>
+          <li><strong>Single Case Agreements.</strong> If your plan keeps a narrow ABA network and we're not in it, we negotiate the SCA on your behalf so you get in-network rates with an out-of-network provider.</li>
+          <li><strong>Clinical documentation for grants and SSI.</strong> You file the application. We provide the diagnostic letters, treatment summaries, progress data, and letters of medical necessity that go into it, at no charge. Most grant denials come down to missing or weak clinical documentation. We make sure yours is strong.</li>
+          <li><strong>Clinical packet for your waiver application.</strong> We provide every piece of clinical documentation you'll include in your waiver packet: diagnostic letters, BCBA assessments, treatment plans, progress data. You file the application with the state. We point you to the right state agency in NJ, GA, or NC.</li>
+        </ul>
+        <p>None of this costs anything beyond the cost of ABA. If we end up the right fit for your family, your insurance pays for therapy. If we don't, we still send you off with the benefits summary, the documentation, and a path forward.</p>
+      </div>
+    </div>
+  </section>
+</div>
