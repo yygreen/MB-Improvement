@@ -21,7 +21,11 @@
    clamp() rather than a fixed size plus a breakpoint override, weight 600, 1.05fr
    ratio, and the grid collapses at 900px. .hero-eyebrow is intentionally NOT
    element-qualified: the eyebrow is a div, not the h1. Do not re-add `h1.` to it,
-   and do not restore `font-size: 36px` under 768px - clamp() governs. */
+   and do not restore `font-size: 36px` under 768px - clamp() governs.
+   The hero's horizontal padding lives on .hero, NOT inside .container - the state
+   pages put it outside the 1200px box, so putting it inside here made the text
+   start 32px further right and the columns 64px narrower. .hero .container is
+   therefore reset to padding 0. Do not "tidy" that away. */
   :root { --navy: #1a2744; --navy-light: #2a3a5c; --teal: #3ba5a8; --teal-light: #e8f6f6; --teal-dark: #2d8a8d; --warm: #f9f6f1; --warm-dark: #f0ebe3; --white: #ffffff; --text: #2c2c2c; --text-light: #5a5a5a; --text-muted: #8a8a8a; --accent: #e8734a; --accent-light: #fef0eb; --border: #e5e5e5; --shadow-sm: 0 1px 3px rgba(0,0,0,0.06); --shadow-md: 0 4px 20px rgba(0,0,0,0.08); --shadow-lg: 0 8px 40px rgba(0,0,0,0.1); --radius: 12px; --radius-lg: 20px; --font-display: 'Manrope', sans-serif; --font-body: 'Manrope', sans-serif; --max-width: 1200px; --section-pad: 100px; }
   .mm-embed { font-family: 'Manrope', sans-serif !important; color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
   .mm-embed * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -29,8 +33,9 @@
   .mm-embed *::after { margin: 0; padding: 0; box-sizing: border-box; }
   .mm-embed a { text-decoration: none !important; background-color: transparent !important; }
   .mm-embed .container { max-width: var(--max-width); margin: 0 auto; padding: 0 32px; }
-  .mm-embed .hero { padding: clamp(36px, 5vw, 64px) 0 clamp(28px, 4vw, 48px); background: linear-gradient(165deg, var(--warm) 0%, var(--white) 60%); position: relative; overflow: hidden; }
+  .mm-embed .hero { padding: clamp(36px, 5vw, 64px) clamp(20px, 5vw, 48px) clamp(28px, 4vw, 48px); background: linear-gradient(165deg, var(--warm) 0%, var(--white) 60%); position: relative; overflow: hidden; }
   .mm-embed .hero::before { content: ''; position: absolute; top: -120px; right: -80px; width: 500px; height: 500px; border-radius: 50%; background: var(--teal-light); opacity: 0.4; }
+  .mm-embed .hero .container { padding: 0; }
   .mm-embed .hero-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 64px); align-items: center; position: relative; }
   .mm-embed .hero .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--teal); margin-bottom: 28px; font-family: 'Manrope', sans-serif; line-height: 1.4; }
   .mm-embed .hero .hero-eyebrow::before { content: ''; width: 24px; height: 2px; background: var(--teal); }
