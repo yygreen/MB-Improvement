@@ -1,0 +1,191 @@
+<div class="mm-embed mm-t1">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
+    .mm-embed { box-sizing: border-box; }
+    .mm-embed *, .mm-embed *::before, .mm-embed *::after { box-sizing: inherit; }
+
+    .mm-embed {
+      --navy:     #1a2744;
+      --teal:     #3ba5a8;
+      --teal-pale:#e8f6f6;
+      --warm:     #f9f6f1;
+      --cta:      #db5b4f;
+      --text:     #2c2c2c;
+      --soft:     #5a5a5a;
+      --rule:     #e6e2da;
+      --font-body: 'Manrope', system-ui, -apple-system, sans-serif;
+    }
+    .mm-t1 { font-family: var(--font-body, 'Manrope', sans-serif); color: var(--text, #2c2c2c); }
+
+    .mm-hero {
+      background: radial-gradient(ellipse at 80% 0%, rgba(59,165,168,0.15) 0%, transparent 55%),
+                  linear-gradient(180deg, var(--warm, #f9f6f1) 0%, #fff 100%);
+      padding: clamp(36px, 5vw, 64px) clamp(20px, 5vw, 48px) clamp(28px, 4vw, 48px);
+    }
+    .mm-hero__inner { max-width: 900px; margin: 0 auto; }
+    .mm-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--teal, #3ba5a8); margin-bottom: 28px;
+    }
+    .mm-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--teal, #3ba5a8); }
+    .mm-t1 h1 {
+      font-family: var(--font-body); font-weight: 600;
+      font-size: clamp(32px, 5vw, 52px); line-height: 1.08; letter-spacing: -0.015em;
+      color: var(--navy, #1a2744); margin: 0 0 28px 0;
+    }
+    .mm-hero__intro { font-size: clamp(16px, 1.5vw, 20px); line-height: 1.65; color: var(--soft, #5a5a5a); max-width: 62ch; margin: 0 0 36px 0; }
+    .mm-hero__intro p { margin: 0 0 1.1em 0; }
+    .mm-hero__intro p:last-child { margin-bottom: 0; }
+    .mm-hero__intro a, .mm-rt a {
+      color: var(--navy, #1a2744); text-decoration: underline;
+      text-decoration-color: var(--teal, #3ba5a8); text-underline-offset: 3px; text-decoration-thickness: 2px;
+    }
+    .mm-cta-row { display: flex; flex-wrap: wrap; gap: 14px; }
+    .mm-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 16px 28px; font-family: var(--font-body); font-size: 15px; font-weight: 600;
+      letter-spacing: 0.01em; border-radius: 999px; border: 2px solid transparent;
+      text-decoration: none; cursor: pointer;
+      transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+    .mm-btn--primary { background: var(--cta, #db5b4f); color: #fff; border-color: var(--cta, #db5b4f); }
+    .mm-btn--primary:hover { background: #b34a40; border-color: #b34a40; transform: translateY(-1px); }
+    .mm-btn--secondary { background: transparent; color: var(--navy, #1a2744); border-color: var(--cta, #db5b4f); }
+    .mm-btn--secondary:hover { background: var(--cta, #db5b4f); color: #fff; border-color: var(--cta, #db5b4f); }
+
+    .mm-section { padding: clamp(48px, 7vw, 88px) clamp(20px, 5vw, 48px); }
+    .mm-section--warm { background: var(--warm, #f9f6f1); }
+    .mm-section__inner { max-width: 900px; margin: 0 auto; }
+    .mm-h2 {
+      font-family: var(--font-body); font-weight: 600;
+      font-size: clamp(26px, 3.6vw, 40px); line-height: 1.15; letter-spacing: -0.01em;
+      color: var(--navy, #1a2744); margin: 0 0 28px 0;
+    }
+    .mm-h3 { font-family: var(--font-body); font-weight: 600; font-size: 20px; line-height: 1.3; color: var(--navy, #1a2744); margin: 1.8em 0 0.4em 0; }
+    .mm-rt { font-size: 17px; line-height: 1.7; color: var(--text, #2c2c2c); }
+    .mm-rt p { margin: 0 0 1.1em 0; }
+    .mm-rt p:last-child { margin-bottom: 0; }
+    .mm-rt strong { color: var(--navy, #1a2744); font-weight: 600; }
+
+    .mm-rt table {
+      width: 100%; border-collapse: collapse; margin: 24px 0;
+      font-size: 15px; background: #fff; border-radius: 12px; overflow: hidden;
+      box-shadow: 0 1px 0 var(--rule, #e6e2da), 0 12px 40px rgba(26,39,68,0.04);
+    }
+    .mm-rt tbody tr { border-bottom: 1px solid var(--rule, #e6e2da); }
+    .mm-rt tbody tr:last-child { border-bottom: none; }
+    .mm-rt tbody tr:first-child { background: var(--navy, #1a2744); color: #fff; }
+    .mm-rt tbody tr:first-child strong { color: #fff; }
+    .mm-rt td { padding: 14px 18px; text-align: left; vertical-align: top; line-height: 1.55; }
+    .mm-rt tbody td:first-child { width: 30%; }
+    @media (max-width: 600px) { .mm-rt tbody td:first-child { width: 40%; } }
+
+    .mm-faq .mm-h3 { margin-top: 1.4em; }
+    .mm-cta-close { background: #f9f6f1; text-align: center; }
+    .mm-cta-close .mm-h2 { margin-bottom: 16px; }
+    .mm-cta-close .mm-cta-row { justify-content: center; margin-top: 28px; }
+  </style>
+
+  <section class="mm-hero">
+    <div class="mm-hero__inner">
+      <span class="mm-eyebrow">In-Home ABA in New Jersey</span>
+      <h1>Transition Planning in New Jersey</h1>
+      <div class="mm-hero__intro">
+        <p>Your child is fourteen. The IEP meeting last spring included a section you had not seen before, about life after high school, and it felt early. It is not early. New Jersey builds transition planning into the IEP years before most families feel ready to think about it, and the state does this for a reason: the systems your child moves into as an adult work nothing like the ones they are in now.</p>
+        <p><a href="/transition-planning">Transition planning in ABA</a> means teaching the specific skills that adult life will ask for, starting while there is still time to teach them. Self-advocacy. Daily living routines. Managing unstructured time. Communicating needs to someone who does not already know your child. We work on these in your home and in the community where your child will actually use them, because a skill that only appears in a therapy room is not a skill your child gets to keep.</p>
+        <p>Mastermind Behavior provides in-home ABA therapy for children and young people with autism through age 21, across New Jersey.</p>
+      </div>
+      <div class="mm-cta-row">
+        <a href="/contact" class="mm-btn mm-btn--primary">Schedule a free consultation</a>
+        <a href="tel:732.813.7333" class="mm-btn mm-btn--secondary">Call 732.813.7333</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="mm-section mm-section--warm">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">What New Jersey requires, and when</h2>
+      <div class="mm-rt">
+        <p>New Jersey starts earlier than federal law does. IDEA requires transition services in the IEP by age 16. New Jersey regulation requires transition planning to be addressed in the IEP in place for the school year in which your child turns 14, or earlier if the IEP team decides it is appropriate (N.J.A.C. 6A:14-3.7(e)11). Your child must be invited to that meeting, and to every IEP meeting after it. Age-appropriate transition assessments follow at 16.</p>
+        <p>That is the school side. The adult services side runs on a completely different clock, and the gap between the two is what catches families out.</p>
+        <p>Until age 21, developmental disability services in New Jersey run through the Children's System of Care, administered by PerformCare under the Department of Children and Families. From 21 onward, they run through the Division of Developmental Disabilities under the Department of Human Services. These are separate agencies with separate applications and separate eligibility determinations.</p>
+        <p>Here is the part worth writing down. Your child can be evaluated by DDD for functional eligibility starting at 18, but DDD services do not begin until 21, and require Medicaid eligibility. Eligibility for the Children's System of Care ends the day before the 21st birthday. DDD begins offering transition-assistance from age 16.</p>
+        <p>So the sequence that actually works looks like this: transition planning enters the IEP at 14, DDD transition assistance becomes available at 16, the DDD eligibility application goes in at 18, and DDD services start at 21 on the day the children's system stops. Families who wait until 20 to start the application are often still waiting when school-based services end.</p>
+        <p>Special education itself continues until your child graduates with a diploma or ages out at 21. The IEP ends on that day. Whatever your child can do independently by then is what they carry into a system that will not be organised around them the way school was.</p>
+        <p>That is the case for starting skill-building early, and it is why the age 14 requirement exists rather than being a formality.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="mm-section">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">Coverage in New Jersey</h2>
+      <div class="mm-rt">
+        <p>Coverage does not stop because your teen is getting older. The rows below are the parts of New Jersey's coverage picture that matter most in the transition years. The full state-by-state detail lives on our <a href="/aba-therapy-in-new-jersey">New Jersey ABA therapy page</a>.</p>
+        <table>
+          <tbody>
+            <tr><td><strong>Coverage element</strong></td><td><strong>New Jersey detail</strong></td></tr>
+            <tr><td><strong>State mandate</strong></td><td>P.L. 2009, c. 115 ("Health Benefits Coverage for Autism and Other Developmental Disabilities") — signed August 2009, effective February 9, 2010</td></tr>
+            <tr><td><strong>Age limit</strong></td><td>Statute references under 21; federal MHPAEA parity generally makes age caps unenforceable on plans subject to parity</td></tr>
+            <tr><td><strong>NJ FamilyCare (Medicaid)</strong></td><td>Covers ABA for children under 21 via EPSDT, effective April 2020. Income up to 355% FPL for children under 19. We're enrolled with the major NJ FamilyCare MCOs.</td></tr>
+            <tr><td><strong>Other pathways</strong></td><td>NJ Children's System of Care, NJ Early Intervention System (NJEIS) for children under 3</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="mm-section mm-section--warm">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">How we work with teens in New Jersey</h2>
+      <div class="mm-rt">
+        <p>Everything we do happens in your home and in the places your child already goes. For a six-year-old that is mostly the living room. For a sixteen-year-old it is much less useful to stay there, so sessions move toward the settings where adult skills get used: the kitchen, the bus stop, the store, the routine of getting somewhere on time and handling it when something changes.</p>
+        <p>Programmes are designed and supervised by a BCBA and delivered by Behavior Technicians who work with your child consistently rather than rotating through. For a teenager who has been through years of services and staff turnover, that consistency is not a nicety. It is often the thing that determines whether the work goes anywhere.</p>
+        <p>Assessment takes about four weeks, and there is no onboarding waitlist, which matters more in the transition years than at any other point. A family whose child is 19 does not have six months to spend on a waiting list.</p>
+        <p>Your BCBA can contribute to the IEP process.</p>
+        <p>Our New Jersey team works from the Lakewood office at 410 Monmouth Ave, <a href="/aba-therapy-in-new-jersey">serving families across the state</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="mm-section">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">Where we serve</h2>
+      <div class="mm-rt">
+        <p><strong>In-home means your home.</strong> We provide transition-focused ABA across New Jersey, including <a href="/areas-we-serve/newark">Newark</a>, <a href="/areas-we-serve/jersey-city">Jersey City</a>, <a href="/areas-we-serve/paterson">Paterson</a>, <a href="/areas-we-serve/elizabeth">Elizabeth</a>, <a href="/areas-we-serve/lakewood">Lakewood</a>, <a href="/areas-we-serve/edison">Edison</a>, <a href="/areas-we-serve/woodbridge">Woodbridge</a>, <a href="/areas-we-serve/toms-river">Toms River</a>, <a href="/areas-we-serve/trenton">Trenton</a>, <a href="/areas-we-serve/clifton">Clifton</a>, <a href="/areas-we-serve/cherry-hill">Cherry Hill</a>, and <a href="/areas-we-serve/brick">Brick</a>. See every community we serve on our <a href="/aba-therapy-in-new-jersey">New Jersey page</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="mm-section mm-section--warm mm-faq">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">Questions families ask</h2>
+      <div class="mm-rt">
+        <h3 class="mm-h3">When does transition planning start in New Jersey?</h3>
+        <p>It must be addressed in the IEP in place for the school year in which your child turns 14, or earlier if the IEP team determines it is appropriate. That is two years ahead of the federal requirement.</p>
+        <h3 class="mm-h3">Does my child attend the IEP meeting?</h3>
+        <p>Yes. Once transition planning is part of the IEP, your child must be invited to the meeting and is a member of the IEP team.</p>
+        <h3 class="mm-h3">What happens when my child turns 21?</h3>
+        <p>Special education ends at graduation or at age 21. Eligibility for the Children's System of Care ends the day before the 21st birthday. If your child is found eligible for DDD and is Medicaid eligible, DDD services begin at 21.</p>
+        <h3 class="mm-h3">When should we apply to DDD?</h3>
+        <p>Your child can be evaluated for functional eligibility from age 18, and DDD offers transition assistance from 16. Applying at 18 rather than close to 21 leaves room for the determination to be completed before school-based services end.</p>
+        <h3 class="mm-h3">Can ABA therapy continue through the transition years?</h3>
+        <p>We work with children and young people through age 21. Whether that continues uninterrupted depends on your coverage, which is covered above.</p>
+        <h3 class="mm-h3">How soon can we start?</h3>
+        <p>There is no onboarding waitlist. Assessment takes about four weeks.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="mm-section mm-cta-close">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">Start while there is still time to teach</h2>
+      <div class="mm-cta-row">
+        <a href="/contact" class="mm-btn mm-btn--primary">Schedule a free consultation</a>
+        <a href="tel:732.813.7333" class="mm-btn mm-btn--secondary">Call 732.813.7333</a>
+      </div>
+    </div>
+  </section>
+</div>
