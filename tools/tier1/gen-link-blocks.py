@@ -78,11 +78,41 @@ def svc_block(state_name, state_key):
     )
 
 
+def navy_section(label, base):
+    """Card section for a service's three state pages, mirroring the existing
+    client-approved 'Find Your Local Team' section (same classes, styled by
+    the page's own stylesheet: section-navy, areas-grid, area-card...)."""
+    cards = "\n".join(
+        f'      <a href="/{base}-{k}" class="area-card">\n'
+        f"        <h3>{n}</h3>\n"
+        f"        <p>Serving families statewide</p>\n"
+        f'        <span class="area-link">{label} in {n} →</span>\n'
+        f"      </a>"
+        for k, n in STATES
+    )
+    # the shared stylesheet scopes every rule under .mm-embed; markup
+    # outside that wrapper renders unstyled
+    return (
+        '<div class="mm-embed">\n'
+        '<section class="section section-navy">\n'
+        '  <div class="container">\n'
+        '    <div class="areas-header">\n'
+        '      <div class="section-label">Where we serve</div>\n'
+        f"      <h2>{label} in Your State</h2>\n"
+        f'      <p class="section-subtitle">In-home {label.lower()} for families across New Jersey, Georgia, and North Carolina.</p>\n'
+        "    </div>\n"
+        '    <div class="areas-grid">\n'
+        f"{cards}\n"
+        "    </div>\n"
+        "  </div>\n"
+        "</section>\n"
+        "</div>\n"
+    )
+
+
 BLOCKS = {}
 for s, label in SERVICES:
-    BLOCKS[s] = strip(
-        f"{label} by state", [(f"/{s}-{k}", n) for k, n in STATES]
-    )
+    BLOCKS[s] = navy_section(label, s)
 for slug in ("in-home-aba-therapy", "skill-development"):
     BLOCKS[slug] = strip(
         "In-home ABA by state", [(f"/aba-therapy-in-{k}", n) for k, n in STATES]
@@ -92,10 +122,10 @@ for k, n in STATES:
 
 FORBIDDEN = ["—", "RBT", "rbt", "clinic", "center", "guarantee", "–"]
 for slug, html in BLOCKS.items():
-    body = html[html.index("</style>") :]
+    body = html[html.index("</style>") :] if "<style>" in html else html
     for w in FORBIDDEN:
         assert w not in body, f"{slug}: forbidden token {w!r}"
-    assert html.count("<style>") == 1 and html.count("<section") == 1, slug
+    assert html.count("<style>") <= 1 and html.count("<section") == 1, slug
     hrefs = re.findall(r'href="([^"]+)"', html)
     assert hrefs and all(h in VALID_HREFS for h in hrefs), f"{slug}: bad href {hrefs}"
     exp = 4 if slug.startswith("aba-therapy-in-") else 3

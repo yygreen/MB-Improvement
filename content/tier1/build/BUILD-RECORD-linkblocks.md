@@ -7,16 +7,25 @@ production publish (they are edits to client-approved pages).
 
 ## What was built
 
-Two block types, both derived from the client-approved town-services-block
-mockup (same tokens: navy #1a2744, teal #3ba5a8, warm #f9f6f1, rule #e6e2da,
-Manrope; same white card-link pattern with teal arrow):
+Three block types (the first two derived from the client-approved
+town-services-block mockup tokens; the third from the site's own
+"Find Your Local Team" section):
 
-1. **"Available in:" strip** on each of the 6 generic service pages: an
-   uppercase label plus three state card-links.
-2. **Four-card services block** on each of the 3 state hubs: heading
-   "ABA services in {State}", the approved fixed byline sentence ("All four
-   are delivered in your home by a BCBA-led team, anywhere we serve in
-   {State}."), and the four service links for that state.
+1. **Card-style states section** ("{Service} in Your State") on each of the
+   4 service pages with state variants: markup mirrors the existing
+   "Find Your Local Team" section and reuses its stylesheet classes
+   (section-navy, areas-grid, area-card), wrapped in `div.mm-embed` because
+   the shared sheet scopes every rule under it. Three cards link to that
+   service's state pages. (Replaced the original "Available in:" strip on
+   user request "can we not build a similar section for the services in
+   state".)
+2. **"Available in:" strip** on /in-home-aba-therapy and /skill-development
+   (no per-state pages; links the three state hubs). User keep/drop call
+   pending: these duplicate the hub links in each page's existing
+   "Find Your Local Team" section.
+3. **Four-card services block** on each of the 3 state hubs: heading
+   "ABA services in {State}", the approved fixed byline sentence, and the
+   four service links for that state.
 
 Placement (repositioned 2026-08-05 on user feedback "find a better embed
 position" — the first pass sat before the footer): one new HtmlEmbed per
@@ -67,6 +76,9 @@ less. Do not let a production publish happen before Taylor sign-off.
   and bea2227e-ceaf-c889-b790-08b33ed57f46 (footer).
 - HtmlEmbed code is written with data_element_settings_tool set_settings
   key "code" (static_text); discovered via get_settings value_type "code".
+- The service pages' shared stylesheet scopes EVERY rule under `.mm-embed`;
+  block markup outside that wrapper renders completely unstyled. Wrap any
+  new embed's markup in `<div class="mm-embed">`.
 - Screenshots in this container: Chromium resets TLS through the explicit
   agent proxy; instead add /root/.ccr/ca-bundle.crt certs to the NSS store
   (certutil -d sql:/root/.pki/nssdb -A -t "C,,") and launch Chromium with

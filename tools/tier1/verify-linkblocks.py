@@ -25,12 +25,25 @@ def get(url):
 
 manifest = json.loads((BUILD / "manifest.json").read_text())["blocks"]
 
+def block_marker(banked):
+    """A line unique to our block on the rendered page. The navy states
+    sections share their section class with the page's existing 'Find Your
+    Local Team' section, so use the block's h2 line for those."""
+    for probe in ('<section class="mm-availin">', '<section class="mm-svc">'):
+        if probe in banked:
+            return probe
+    return next(
+        ln.strip() for ln in banked.splitlines() if "<h2>" in ln
+    )
+
+
 # wait for the publish: poll the first page until its block renders in the
-# expected position (present alone is not enough after a reposition)
+# expected position (present alone is not enough after a reposition/swap)
 first = manifest[0]
+first_marker = block_marker((BUILD / f"{first['slug']}.embed.html").read_text())
 for attempt in range(24):
     _, page = get(f"{BASE}/{first['slug']}")
-    bp = page.find('<section class="mm-availin">')
+    bp = page.find(first_marker)
     mp = page.find("We Accept Most Insurances")
     if bp != -1 and (mp == -1 or bp < mp):
         break
@@ -63,16 +76,15 @@ for b in manifest:
     ]
     if missing:
         fails.append(f"{slug}: {len(missing)} lines missing, first: {missing[0].strip()[:60]}")
-    root_cls = re.search(r'<section class="(mm-[a-z]+)"', banked).group(1)
-    block_pos = page.find(f'<section class="{root_cls}">')
+    block_pos = page.find(block_marker(banked))
     footer_pos = page.find("footer_link")
     if block_pos == -1:
         fails.append(f"{slug}: block section not found")
     elif footer_pos != -1 and block_pos > footer_pos:
         fails.append(f"{slug}: block renders after the footer")
-    # position: strips sit under the hero (before the insurance-logos
-    # section); hub blocks sit above the city grid
-    if b["kind"] == "availin-strip":
+    # position: service-page blocks sit under the hero (before the
+    # insurance-logos section); hub blocks sit above the city grid
+    if b["kind"] in ("availin-strip", "svc-states-section"):
         marker_pos = page.find("We Accept Most Insurances")
         marker = "insurance logos"
     else:
