@@ -36,6 +36,30 @@ for st in new-jersey georgia north-carolina; do
   code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 30 "$HOST/aba-therapy-in-$st")
   [ "$code" = "200" ] && echo "  ok    /aba-therapy-in-$st" || { echo "  FAIL  /aba-therapy-in-$st ($code)"; fail=1; }
 done
+echo "== 3. per-state town sampling (NC's 20 must not hide behind NJ's 517) =="
+# Sample towns from EACH state's hub city grid: first, middle, last. Every
+# sampled town must 200. Once the town services block ships, each sampled
+# town page must carry the block with that state's href suffix; until then
+# the block is reported PENDING, not failed.
+blockpending=0
+for st in new-jersey georgia north-carolina; do
+  towns=$(curl -s --max-time 30 "$HOST/aba-therapy-in-$st" \
+    | grep -o 'href="/areas-we-serve/[a-z0-9-]*"' | sed 's/href="//;s/"//' | sort -u)
+  count=$(echo "$towns" | grep -c .)
+  if [ "$count" = "0" ]; then echo "  FAIL  $st: no towns found on hub"; fail=1; continue; fi
+  sample=$(echo "$towns" | awk -v n="$count" 'NR==1 || NR==int((n+1)/2) || NR==n')
+  for t in $sample; do
+    page=$(curl -s -w '\n%{http_code}' --max-time 30 "$HOST$t")
+    code=$(echo "$page" | tail -1)
+    if [ "$code" != "200" ]; then echo "  FAIL     $t ($code)"; fail=1; continue; fi
+    if echo "$page" | grep -q 'class="mm-svc"'; then
+      bad=$(echo "$page" | grep -o "href=\"/\(early-intervention\|parent-training\|behavior-support\|transition-planning\)-[a-z-]*\"" | grep -vc -- "-$st\"")
+      if [ "$bad" = "0" ]; then echo "  ok       $t (block, $st links)"; else echo "  FAIL     $t (block carries $bad wrong-state links)"; fail=1; fi
+    else
+      echo "  ok       $t (200; block PENDING)"; blockpending=$((blockpending+1))
+    fi
+  done
+done
 echo
-[ "$fail" = "0" ] && echo "RESULT: pass ($pending Tier 1 targets pending)" || echo "RESULT: FAIL"
+[ "$fail" = "0" ] && echo "RESULT: pass ($pending Tier 1 targets pending, town block pending on $blockpending sampled towns)" || echo "RESULT: FAIL"
 exit $fail
