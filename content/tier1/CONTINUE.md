@@ -9,9 +9,10 @@ complex went live on staging. Read this top to bottom before touching anything.
    customDomains: []`. NOTHING goes to production without Taylor's clinical
    sign-off, and nothing may be staged that is unsafe if someone else runs a
    full-site production publish (see "rides a publish" below).
-2. Push all work to branch `claude/mastermind-behavior-css-unify-es1c30`
-   (PR #1, draft) — the user chose this over the originally-designated
-   ncsu87 branch. Never push elsewhere.
+2. Push all work to the session's designated branch. As of 2026-08-05 that
+   is `claude/tier1-state-service-continue-fn9xeg`, fast-forwarded from
+   `claude/mastermind-behavior-css-unify-es1c30` (PR #1) so it carries the
+   full history. Never push elsewhere.
 3. Site id `6627fd62e242d50407cfe12d`. Phone is 732.813.7333 only.
 4. Copy gates: no em dashes in fresh client-facing copy (verbatim coverage
    rows are the sole exemption); Behavior Technicians / BT, never RBT; no
@@ -64,11 +65,14 @@ counts, verification results, citation status: see
 
 1. After Taylor sign-off: apply edits, regenerate FAQPage schema from FINAL
    Section 6 text, add OG images, flip pages sitemap-INCLUDED.
-2. Build the 9 nav-pathway link blocks and stage them: an "Available in:"
-   state strip on each of the 6 generic service pages, and a 4-link services
-   block on each of the 3 state hubs. Screenshot all 9 for the user before
-   publishing (they are edits to client-approved pages). The 12 pages stay
-   OUT of the global nav — decided; do not revisit.
+2. DONE 2026-08-05: the 9 nav-pathway link blocks are BUILT and STAGED
+   (staging subdomain only), verified, and screenshotted for the user —
+   approval still pending. See build/BUILD-RECORD-linkblocks.md and
+   build/linkblocks/ (embeds, manifest.json with element ids, generator
+   tools/tier1/gen-link-blocks.py, verifier tools/tier1/verify-linkblocks.py).
+   Session decision to review: in-home-aba-therapy and skill-development
+   strips link to the three STATE HUBS (no per-state pages exist for them).
+   The 12 pages stay OUT of the global nav — decided; do not revisit.
 3. Run backfill (after typed confirmation).
 4. **Production publish #1**: 12 pages + 9 link blocks + the long-staged
    old-path link fixes (tools/css-consolidation/linkfix/, -45 bytes each,
@@ -90,12 +94,15 @@ counts, verification results, citation status: see
 ## "Rides a publish" warning (the sharpest live edge)
 
 All 12 pages are NOT draft and NOT noindexed (the Data API cannot set
-per-page robots). Protections today: sitemap-excluded + zero inbound links.
-If ANYONE runs a full-site production publish before sign-off, the pages go
-live and indexable. Mitigate before that risk materializes: add noindex via
-Designer page-settings head code, or flip the pages to draft (breaks
-review URLs). The staged old-path link fixes ride the same publish — that
-part is fine and intended.
+per-page robots). Protections today: sitemap-excluded ONLY — the "zero
+inbound links" protection is GONE as of 2026-08-05: the 9 staged link
+blocks sit on six production service pages and three production hubs, so a
+full-site production publish now takes the 12 pages live WITH inbound
+navigation. That order (blocks staged before production publish #1) is the
+client-confirmed plan, but it sharpens this edge. Mitigate before the risk
+materializes: add noindex via Designer page-settings head code, or flip the
+pages to draft (breaks review URLs). The staged old-path link fixes ride
+the same publish — that part is fine and intended.
 
 ## Traps already paid for (do not rediscover)
 

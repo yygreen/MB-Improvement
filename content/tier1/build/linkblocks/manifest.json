@@ -1,0 +1,14 @@
+{
+  "note": "Nav-pathway link blocks (ship plan step 2). One HtmlEmbed per page, inserted immediately before the footer component instance. Created 2026-08-05 via data_element_builder + set_settings key 'code'. Staging subdomain only.",
+  "blocks": [
+    {"slug": "early-intervention", "pageId": "69ca36ff03019f3d983c385f", "embedElement": "63c83328-d16e-720f-a609-c6a81ade6555", "kind": "availin-strip"},
+    {"slug": "parent-training", "pageId": "69ca69e6a3bb040d987206e2", "embedElement": "b03d4857-0a5d-1a24-b177-a7df6bd6bd7a", "kind": "availin-strip"},
+    {"slug": "behavior-support", "pageId": "69ca5c56b8f7eccaca217c71", "embedElement": "d066ab8b-b6eb-e60a-4262-8c00e8ed6531", "kind": "availin-strip"},
+    {"slug": "transition-planning", "pageId": "69ca6fbf8fa1e0792a4ee251", "embedElement": "dd02e3db-212d-4b9f-c5cc-2c82793d747e", "kind": "availin-strip"},
+    {"slug": "in-home-aba-therapy", "pageId": "69c1484f66f2d6de1a2426a3", "embedElement": "e1fcddab-7366-7c9d-cb6c-585801bff687", "kind": "availin-strip", "targets": "state hubs (no per-state service pages exist)"},
+    {"slug": "skill-development", "pageId": "69ca397abe9c9c6557ec6273", "embedElement": "9251a929-ee75-a7aa-a892-6228c89337f0", "kind": "availin-strip", "targets": "state hubs (no per-state service pages exist)"},
+    {"slug": "aba-therapy-in-new-jersey", "pageId": "6a01d3a82e9293bcfba0e668", "embedElement": "bf262247-890b-bf7c-9b3f-811492b7f7ab", "kind": "svc-block"},
+    {"slug": "aba-therapy-in-georgia", "pageId": "69fc99911d73abe45c201c88", "embedElement": "5779fed3-1a75-fa6f-5bdf-4f8fa6ed5336", "kind": "svc-block"},
+    {"slug": "aba-therapy-in-north-carolina", "pageId": "6a01dd81bb0bf3352c66b3f4", "embedElement": "0eaf6e1a-e9e0-d506-7253-90b6f4638bd3", "kind": "svc-block"}
+  ]
+}
