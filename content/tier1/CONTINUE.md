@@ -67,7 +67,9 @@ counts, verification results, citation status: see
    Section 6 text, add OG images, flip pages sitemap-INCLUDED.
 2. DONE 2026-08-05: the 9 nav-pathway link blocks are BUILT and STAGED
    (staging subdomain only), verified, and screenshotted for the user —
-   approval still pending. See build/BUILD-RECORD-linkblocks.md and
+   approval still pending. Positioned directly under each page's hero
+   (repositioned from before-footer on user feedback; second screenshot
+   set sent). See build/BUILD-RECORD-linkblocks.md and
    build/linkblocks/ (embeds, manifest.json with element ids, generator
    tools/tier1/gen-link-blocks.py, verifier tools/tier1/verify-linkblocks.py).
    Session decision to review: in-home-aba-therapy and skill-development

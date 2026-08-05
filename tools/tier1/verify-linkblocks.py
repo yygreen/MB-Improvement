@@ -25,16 +25,18 @@ def get(url):
 
 manifest = json.loads((BUILD / "manifest.json").read_text())["blocks"]
 
-# wait for the publish: poll the first page until its block renders
+# wait for the publish: poll the first page until its block renders in the
+# expected position (present alone is not enough after a reposition)
 first = manifest[0]
-marker = '<section class="mm-availin">'
 for attempt in range(24):
     _, page = get(f"{BASE}/{first['slug']}")
-    if marker in page:
+    bp = page.find('<section class="mm-availin">')
+    mp = page.find("We Accept Most Insurances")
+    if bp != -1 and (mp == -1 or bp < mp):
         break
     time.sleep(5)
 else:
-    sys.exit("publish never landed: block missing on first page after 2 min")
+    sys.exit("publish never landed: block not in expected position after 2 min")
 
 fails = []
 head_cache = {}
@@ -68,6 +70,16 @@ for b in manifest:
         fails.append(f"{slug}: block section not found")
     elif footer_pos != -1 and block_pos > footer_pos:
         fails.append(f"{slug}: block renders after the footer")
+    # position: strips sit under the hero (before the insurance-logos
+    # section); hub blocks sit above the city grid
+    if b["kind"] == "availin-strip":
+        marker_pos = page.find("We Accept Most Insurances")
+        marker = "insurance logos"
+    else:
+        marker_pos = page.find("w-dyn-item")
+        marker = "city grid"
+    if block_pos != -1 and marker_pos != -1 and block_pos > marker_pos:
+        fails.append(f"{slug}: block renders after the {marker}")
     for h in sorted(set(re.findall(r'href="(/[^"]*)"', banked))):
         c = head_ok(h)
         if c != 200:

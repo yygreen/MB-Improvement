@@ -1,5 +1,5 @@
 {
-  "note": "Nav-pathway link blocks (ship plan step 2). One HtmlEmbed per page, inserted immediately before the footer component instance. Created 2026-08-05 via data_element_builder + set_settings key 'code'. Staging subdomain only.",
+  "note": "Nav-pathway link blocks (ship plan step 2). One HtmlEmbed per page, positioned directly under the hero (service pages: after hero embed af8a739b-..., before section_logo; hubs: after hero embed 29c4a1d4-...). Created 2026-08-05 via data_element_builder + set_settings key 'code', repositioned same day via move_element on user feedback. Staging subdomain only.",
   "blocks": [
     {"slug": "early-intervention", "pageId": "69ca36ff03019f3d983c385f", "embedElement": "63c83328-d16e-720f-a609-c6a81ade6555", "kind": "availin-strip"},
     {"slug": "parent-training", "pageId": "69ca69e6a3bb040d987206e2", "embedElement": "b03d4857-0a5d-1a24-b177-a7df6bd6bd7a", "kind": "availin-strip"},

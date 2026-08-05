@@ -18,10 +18,17 @@ Manrope; same white card-link pattern with teal arrow):
    are delivered in your home by a BCBA-led team, anywhere we serve in
    {State}."), and the four service links for that state.
 
-Placement: one new HtmlEmbed per page, inserted immediately before the
-footer component instance (after the page's closing CTA), matching the
-approved town-block placement "after unique content, before the footer".
-No existing element was edited; removal is one remove_element call per page.
+Placement (repositioned 2026-08-05 on user feedback "find a better embed
+position" — the first pass sat before the footer): one new HtmlEmbed per
+page, now DIRECTLY UNDER THE HERO. On the six service pages the hero is its
+own embed (af8a739b-...), so the strip sits between the hero and the
+insurance-logos section. On the three hubs the main embed (29c4a1d4-...) is
+just the hero, so the services block sits between the hero and the rest of
+the state content / city grid. Pure move_element operations; no existing
+element was edited; removal is one remove_element call per page.
+NOTE: the 992-page town block (production publish #2, not yet built) keeps
+its client-approved placement "after unique content, before the footer";
+revisit with the client if the under-hero pattern should apply there too.
 
 Generator: `tools/tier1/gen-link-blocks.py` (gates: no em dashes, no RBT /
 clinic / center / guarantee tokens, href whitelist, single section root).
