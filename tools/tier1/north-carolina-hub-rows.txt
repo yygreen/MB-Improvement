@@ -1,0 +1,24 @@
+<tr><td><strong>Coverage element</strong></td><td><strong>North Carolina detail</strong></td></tr>
+=====
+<tr><td><strong>State mandate</strong></td><td>SB 676, codified at G.S. § 58-3-192 — enacted October 15, 2015, effective July 1, 2016</td></tr>
+=====
+<tr><td><strong>Coverage</strong></td><td>Adaptive behavior treatment for autism spectrum disorder, including ABA</td></tr>
+=====
+<tr><td><strong>Annual dollar cap</strong></td><td>$40,000/year on state-regulated plans (Federal MHPAEA parity may make this unenforceable on plans subject to parity)</td></tr>
+=====
+<tr><td><strong>Age limit</strong></td><td>Coverage mandated for individuals under 19</td></tr>
+=====
+<tr><td><strong>Plans not covered by mandate</strong></td><td>Self-funded employer plans (subject to federal MHPAEA parity), NC State Health Plan, Medicaid (covered separately and more broadly via EPSDT)</td></tr>
+=====
+<tr><td><strong>NC Medicaid (children)</strong></td><td>Covers ABA as RB-BHT (Research-Based Behavioral Health Treatment) for children under 21 via EPSDT, delivered through the LME/MCO, Tailored Plan, or Standard Health Plan you're enrolled in</td></tr>
+=====
+<tr><td><strong>NC Medicaid (adults 21+)</strong></td><td>RB-BHT for adults over 21 — approved by CMS effective July 1, 2021. NC is one of the few states with adult ABA Medicaid coverage. Requests go through the assigned plan.</td></tr>
+=====
+<tr><td><strong>BCBA licensure</strong></td><td>Required in NC. North Carolina's Behavior Analyst Licensure Board was established by SB 103 (signed May 2021); applications opened July 2023. Our BCBAs hold both BACB certification and an active NC behavior analyst license.</td></tr>
+=====
+<tr><td><strong>Major insurers covering ABA</strong></td><td>Blue Cross Blue Shield NC, Aetna, UnitedHealthcare, Cigna, MedCost</td></tr>
+=====
+<tr><td><strong>LME/MCOs</strong></td><td>Alliance Health, Trillium Health Resources, Vaya Health, Partners Health Management</td></tr>
+=====
+<tr><td><strong>Other programs</strong></td><td>NC Innovations Waiver, NC Autism Program (NCAP), Specialized Consultative Services</td></tr>
+=====

@@ -13,6 +13,7 @@ For each slug passed on argv (or the default set):
 - em dashes on the page only inside <td>
 - JSON-LD schema block present with expected @type Service and page url
 """
+import html as html_mod
 import json, re, sys, urllib.request
 
 BASE = "https://mastermindbehavior.webflow.io"
@@ -31,6 +32,46 @@ EXPECT = {
         "Behavior Support in New Jersey",
         "Behavior Support in New Jersey | In-Home ABA | Mastermind Behavior",
         "In-home behavior support across New Jersey. An FBA-based plan built where behaviors happen, from BCBAs licensed in New Jersey.",
+    ),
+    "transition-planning-georgia": (
+        "Transition Planning in Georgia",
+        "Transition Planning in Georgia | In-Home ABA | Mastermind Behavior",
+        "Georgia's autism supports wind down in the early twenties. Learn how in-home ABA builds adult-life skills through the transition years.",
+    ),
+    "early-intervention-georgia": (
+        "Early Intervention in Georgia",
+        "Early Intervention in Georgia | In-Home ABA | Mastermind Behavior",
+        "In-home early intervention ABA across Georgia. How Babies Can't Wait works, what changes at age three, and how coverage keeps going.",
+    ),
+    "parent-training-georgia": (
+        "Parent Training in Georgia",
+        "Parent Training in Georgia | In-Home ABA | Mastermind Behavior",
+        "In-home ABA parent training for Georgia families. Hands-on coaching in your own routines, typically covered as part of ABA therapy.",
+    ),
+    "behavior-support-georgia": (
+        "Behavior Support in Georgia",
+        "Behavior Support in Georgia | In-Home ABA | Mastermind Behavior",
+        "In-home behavior support across Georgia. An FBA-based plan built where behaviors happen, from state-licensed BCBAs.",
+    ),
+    "transition-planning-north-carolina": (
+        "Transition Planning in North Carolina",
+        "Transition Planning in North Carolina | In-Home ABA | Mastermind Behavior",
+        "Transition planning with in-home ABA across North Carolina, where Medicaid ABA coverage can continue past 21. Start the skills work early.",
+    ),
+    "early-intervention-north-carolina": (
+        "Early Intervention in North Carolina",
+        "Early Intervention in North Carolina | In-Home ABA | Mastermind Behavior",
+        "In-home early intervention ABA across North Carolina. How the Infant-Toddler Program works and what changes at age three.",
+    ),
+    "parent-training-north-carolina": (
+        "Parent Training in North Carolina",
+        "Parent Training in North Carolina | In-Home ABA | Mastermind Behavior",
+        "In-home ABA parent training for North Carolina families. Hands-on coaching in your own routines, typically covered as part of ABA therapy.",
+    ),
+    "behavior-support-north-carolina": (
+        "Behavior Support in North Carolina",
+        "Behavior Support in North Carolina | In-Home ABA | Mastermind Behavior",
+        "In-home behavior support across North Carolina. An FBA-based plan built where behaviors happen, from state-licensed BCBAs.",
     ),
 }
 
@@ -68,7 +109,7 @@ for slug in slugs:
     m = re.search(r'<meta content="([^"]*)" name="description"', page) or re.search(
         r'<meta name="description" content="([^"]*)"', page
     )
-    if not m or m.group(1) != metax:
+    if not m or html_mod.unescape(m.group(1)) != metax:
         fails.append(f"{tag}: meta description mismatch")
     if body.split("</div>")[0].split("\n")[0].strip() not in page:
         fails.append(f"{tag}: first embed line not found in page")
