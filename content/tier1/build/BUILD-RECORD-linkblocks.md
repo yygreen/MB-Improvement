@@ -11,14 +11,20 @@ Three block types (the first two derived from the client-approved
 town-services-block mockup tokens; the third from the site's own
 "Find Your Local Team" section):
 
-1. **Card-style states section** ("{Service} in Your State") on each of the
-   4 service pages with state variants: markup mirrors the existing
-   "Find Your Local Team" section and reuses its stylesheet classes
-   (section-navy, areas-grid, area-card), wrapped in `div.mm-embed` because
-   the shared sheet scopes every rule under it. Three cards link to that
-   service's state pages. (Replaced the original "Available in:" strip on
-   user request "can we not build a similar section for the services in
-   state".)
+1. **"Find Your Local Team" retarget** on each of the 4 service pages with
+   state variants: the page's EXISTING navy section (its usual position,
+   above the closing CTA) now links its three state cards to that service's
+   state pages instead of the generic hubs, with matching link text
+   ("Early Intervention in New Jersey" etc). Exactly six lines changed per
+   page inside the content embed (element 7c08cadb-...); generated and
+   gated by tools/tier1/gen-fylt-retarget.py from the linkfix bank, which
+   now tracks the new state. Full new embeds banked at
+   content/tier1/build/linkblocks/fylt/. Evolution on user feedback:
+   bottom strip -> under-hero strip -> under-hero card section -> this
+   ("they should be lower"). The interim standalone sections were removed
+   (elements 63c83328/b03d4857/d066ab8b/dd02e3db no longer exist).
+   NOTE: these four pages no longer body-link the state hubs; hub links
+   remain in the site-wide footer on every page.
 2. **"Available in:" strip** on /in-home-aba-therapy and /skill-development
    (no per-state pages; links the three state hubs). User keep/drop call
    pending: these duplicate the hub links in each page's existing

@@ -1,29 +1,37 @@
 {
-  "note": "Nav-pathway link blocks (ship plan step 2). One HtmlEmbed per page, positioned directly under the hero (service pages: after hero embed af8a739b-..., before section_logo; hubs: after hero embed 29c4a1d4-...). Four service blocks converted to card-style states sections (mirroring the site's Find Your Local Team section) on user request 2026-08-05. Created 2026-08-05 via data_element_builder + set_settings key 'code', repositioned same day via move_element on user feedback. Staging subdomain only.",
+  "note": "Nav-pathway link blocks (ship plan step 2). Service pages with state variants: the existing Find Your Local Team section's three cards are retargeted to the service's state pages (kind fylt-retarget, banked full embed under fylt/). in-home/skill-development keep an 'Available in:' strip under the hero; hubs keep the approved four-card services block under the hero. Staging subdomain only, 2026-08-05.",
   "blocks": [
     {
       "slug": "early-intervention",
       "pageId": "69ca36ff03019f3d983c385f",
-      "embedElement": "63c83328-d16e-720f-a609-c6a81ade6555",
-      "kind": "svc-states-section"
+      "embedElement": "7c08cadb-3d4f-0168-4cee-601897904faa",
+      "kind": "fylt-retarget",
+      "banked": "fylt/early-intervention.embed.html",
+      "note": "Standalone under-hero section removed; the page's existing Find Your Local Team card links now point at this service's state pages (6-line edit inside the content embed)."
     },
     {
       "slug": "parent-training",
       "pageId": "69ca69e6a3bb040d987206e2",
-      "embedElement": "b03d4857-0a5d-1a24-b177-a7df6bd6bd7a",
-      "kind": "svc-states-section"
+      "embedElement": "7c08cadb-3d4f-0168-4cee-601897904faa",
+      "kind": "fylt-retarget",
+      "banked": "fylt/parent-training.embed.html",
+      "note": "Standalone under-hero section removed; the page's existing Find Your Local Team card links now point at this service's state pages (6-line edit inside the content embed)."
     },
     {
       "slug": "behavior-support",
       "pageId": "69ca5c56b8f7eccaca217c71",
-      "embedElement": "d066ab8b-b6eb-e60a-4262-8c00e8ed6531",
-      "kind": "svc-states-section"
+      "embedElement": "7c08cadb-3d4f-0168-4cee-601897904faa",
+      "kind": "fylt-retarget",
+      "banked": "fylt/behavior-support.embed.html",
+      "note": "Standalone under-hero section removed; the page's existing Find Your Local Team card links now point at this service's state pages (6-line edit inside the content embed)."
     },
     {
       "slug": "transition-planning",
       "pageId": "69ca6fbf8fa1e0792a4ee251",
-      "embedElement": "dd02e3db-212d-4b9f-c5cc-2c82793d747e",
-      "kind": "svc-states-section"
+      "embedElement": "7c08cadb-3d4f-0168-4cee-601897904faa",
+      "kind": "fylt-retarget",
+      "banked": "fylt/transition-planning.embed.html",
+      "note": "Standalone under-hero section removed; the page's existing Find Your Local Team card links now point at this service's state pages (6-line edit inside the content embed)."
     },
     {
       "slug": "in-home-aba-therapy",

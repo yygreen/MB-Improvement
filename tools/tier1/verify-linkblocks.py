@@ -37,19 +37,16 @@ def block_marker(banked):
     )
 
 
-# wait for the publish: poll the first page until its block renders in the
-# expected position (present alone is not enough after a reposition/swap)
-first = manifest[0]
-first_marker = block_marker((BUILD / f"{first['slug']}.embed.html").read_text())
+# wait for the publish: poll the first page until its retargeted Find Your
+# Local Team card renders (presence of the old hub card means stale render)
 for attempt in range(24):
-    _, page = get(f"{BASE}/{first['slug']}")
-    bp = page.find(first_marker)
-    mp = page.find("We Accept Most Insurances")
-    if bp != -1 and (mp == -1 or bp < mp):
+    _, page = get(f"{BASE}/early-intervention")
+    if ('<a href="/early-intervention-new-jersey" class="area-card">' in page
+            and 'href="/aba-therapy-in-new-jersey" class="area-card"' not in page):
         break
     time.sleep(5)
 else:
-    sys.exit("publish never landed: block not in expected position after 2 min")
+    sys.exit("publish never landed: retargeted cards not rendered after 2 min")
 
 fails = []
 head_cache = {}
@@ -66,7 +63,7 @@ def head_ok(path):
 
 for b in manifest:
     slug = b["slug"]
-    banked = (BUILD / f"{slug}.embed.html").read_text()
+    banked = (BUILD / b.get("banked", f"{slug}.embed.html")).read_text()
     status, page = get(f"{BASE}/{slug}")
     if status != 200:
         fails.append(f"{slug}: fetch {status}")
@@ -82,23 +79,33 @@ for b in manifest:
         fails.append(f"{slug}: block section not found")
     elif footer_pos != -1 and block_pos > footer_pos:
         fails.append(f"{slug}: block renders after the footer")
-    # position: service-page blocks sit under the hero (before the
-    # insurance-logos section); hub blocks sit above the city grid
-    if b["kind"] in ("availin-strip", "svc-states-section"):
+    # position checks: strips sit under the hero (before the insurance
+    # logos); hub blocks sit above the city grid; fylt-retargets live where
+    # the section always was, but the old hub cards must be gone
+    if b["kind"] == "availin-strip":
         marker_pos = page.find("We Accept Most Insurances")
-        marker = "insurance logos"
-    else:
+        if block_pos != -1 and marker_pos != -1 and block_pos > marker_pos:
+            fails.append(f"{slug}: block renders after the insurance logos")
+    elif b["kind"] == "svc-block":
         marker_pos = page.find("w-dyn-item")
-        marker = "city grid"
-    if block_pos != -1 and marker_pos != -1 and block_pos > marker_pos:
-        fails.append(f"{slug}: block renders after the {marker}")
+        if block_pos != -1 and marker_pos != -1 and block_pos > marker_pos:
+            fails.append(f"{slug}: block renders after the city grid")
+    elif b["kind"] == "fylt-retarget":
+        if 'href="/aba-therapy-in-new-jersey" class="area-card"' in page:
+            fails.append(f"{slug}: old hub area-card still renders")
     for h in sorted(set(re.findall(r'href="(/[^"]*)"', banked))):
         c = head_ok(h)
         if c != 200:
             fails.append(f"{slug}: link {h} -> {c}")
-    # em-dash gate applies to the block we added, not to these pages'
-    # pre-existing client-approved copy (hub metas already carry em dashes)
-    if "—" in banked:
+    # em-dash gate applies to markup we authored. fylt-retarget banks the
+    # whole content embed whose approved copy already carries em dashes;
+    # there the gate covers only the six retargeted card lines
+    if b["kind"] == "fylt-retarget":
+        card_lines = [ln for ln in banked.splitlines()
+                      if 'class="area-card"' in ln or 'class="area-link"' in ln]
+        if any("—" in ln for ln in card_lines):
+            fails.append(f"{slug}: em dash in a retargeted card line")
+    elif "—" in banked:
         fails.append(f"{slug}: em dash inside the banked block")
     print(f"{slug}: block present at offset {block_pos}, links ok" if not any(
         f.startswith(slug) for f in fails) else f"{slug}: FAIL")
