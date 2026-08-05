@@ -1,0 +1,20 @@
+<style>
+.mm-navcall{display:none;}
+@media (max-width:991px){
+  .navbar_menu .button-group{display:none !important;}
+  .navbar_menu-buttons{display:flex;flex-direction:column;align-items:stretch;gap:12px;width:100%;}
+  .mm-navcall{display:block;width:100%;max-width:420px;margin:4px 0 0;}
+  .mm-navcall-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:54px;padding:16px 28px;background:var(--cta,#db5b4f);color:#ffffff;border:2px solid transparent;border-radius:999px;font-family:'Manrope',sans-serif;font-weight:600;font-size:15px;line-height:1.2;text-decoration:none;transition:background-color 0.2s ease,transform 0.15s ease;-webkit-tap-highlight-color:rgba(219,91,79,0.2);}
+  .mm-navcall-btn:hover{background:#b34a40;transform:translateY(-1px);}
+  .mm-navcall-btn:active{background:#b34a40;transform:none;}
+  .mm-navcall-btn svg{flex:none;}
+  .mm-navcall-btn span{color:#ffffff;}
+  .navbar_menu-buttons .button.is-secondary{width:100%;max-width:420px;min-height:54px;display:flex;align-items:center;justify-content:center;padding:16px 28px;border-radius:999px;font-size:15px;font-weight:600;text-align:center;margin:0;}
+}
+</style>
+<div class="mm-navcall">
+  <a class="mm-navcall-btn" href="tel:7328137333" aria-label="Call Mastermind Behavior at 732.813.7333">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" fill="#ffffff"/></svg>
+    <span>Call 732.813.7333</span>
+  </a>
+</div>

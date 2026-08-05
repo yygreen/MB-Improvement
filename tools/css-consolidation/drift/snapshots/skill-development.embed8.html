@@ -1,0 +1,78 @@
+<style>
+/* Page-specific overrides for /skill-development.
+   Shared rules live in the "Service Page Styles" component - do not duplicate
+   them here, an override loads later and silently wins.
+   Note: this page's two embeds carried slightly different copies of the old
+   stylesheet - the hero copy had .right-grid { align-items: start } and
+   .right-image { aspect-ratio: 3/4 }, the body copy had center and 4/3. The body
+   copy loaded later and won, so 4/3 and center are what production renders and
+   what the shared sheet carries. The 3/4 variant is deliberately not revived. */
+  .mm-embed .skills-header h2 { margin: 0 auto 16px; }
+  .mm-embed .skills-header .section-subtitle { margin: 0 auto; }
+  .mm-embed .how-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; margin-top: 48px; }
+  .mm-embed .how-copy p { font-size: 17px; line-height: 1.75; color: var(--text-light); margin-bottom: 20px; }
+  .mm-embed .how-copy strong { color: var(--text); font-weight: 600; }
+  .mm-embed .how-copy a { color: var(--teal); text-decoration: underline; text-decoration-color: rgba(59,165,168,0.3); text-underline-offset: 3px; transition: text-decoration-color 0.2s; }
+  .mm-embed .how-copy a:hover { text-decoration-color: var(--teal); }
+  .mm-embed .how-image { border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 4/3; background: var(--warm-dark); }
+  .mm-embed .benefit-header { text-align: center; margin-bottom: 64px; }
+  .mm-embed .benefit-header h2 { margin: 0 auto 16px; }
+  .mm-embed .right-grid-left .section-label { margin-bottom: 12px; }
+  .mm-embed .right-grid-left h2 { margin-bottom: 28px; }
+  .mm-embed .testimonial-callout { max-width: 720px; margin: 48px auto 0; text-align: center; padding: 32px 40px; background: var(--accent-light); border-left: 4px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; font-size: 17px; font-style: italic; color: var(--text); line-height: 1.6; }
+  .mm-embed .testimonial-callout .attribution { display: block; margin-top: 12px; font-size: 14px; font-style: normal; font-weight: 600; color: var(--text-muted); }
+  .mm-embed .approach-header h2 { margin: 0 auto 16px; }
+  .mm-embed .approach-header .section-subtitle { margin: 0 auto; }
+@media (max-width: 768px) {
+  .mm-embed .how-grid { grid-template-columns: 1fr; gap: 40px; }
+  .mm-embed .right-grid { grid-template-columns: 1fr; gap: 40px; }
+  .mm-embed .right-image { aspect-ratio: 4/3; }
+}
+@media (max-width: 480px) {
+  .mm-embed .icon-grid { grid-template-columns: 1fr; }
+}
+  .mm-embed .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--teal); margin-bottom: 20px; }
+  .mm-embed .hero-eyebrow::before { content: ''; width: 24px; height: 2px; background: var(--teal); }
+</style>
+<div class="mm-embed">
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow">ABA Skill Development</div>
+        <h1 class="hero-headline">Every new skill your child learns is a step toward independence</h1>
+        <p class="hero-body">You've seen the flashes. A new word at dinner. A shirt put on without help. Eye contact with a sibling that lasts a beat longer than before. Those moments aren't random — they're potential. Skill acquisition through ABA turns those moments into lasting, measurable abilities your child owns for life.</p>
+        <div class="hero-ctas">
+          <a href="/contact" class="btn-primary">Request a Skills Assessment →</a>
+        </div>
+        <div class="trust-badges">
+          <div class="trust-badge-row">
+            <div class="trust-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;color:var(--teal)"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              BCBA-led programs
+            </div>
+            <div class="trust-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;color:var(--teal)"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              BHCOE accredited
+            </div>
+          </div>
+          <div class="trust-badge-row">
+            <div class="trust-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;color:var(--teal)"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              Insurance accepted
+            </div>
+            <div class="trust-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;color:var(--teal)"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              Data-driven progress
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="https://cdn.prod.website-files.com/6627fd62e242d50407cfe12d/69ca5349bb367bae614f8e5b_child-therapist-building-blocks-playroom-aba-skill-development.webp" alt="Child and therapist building a colorful block tower together on the playroom floor" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+    </div>
+  </div>
+</section>
+</div>

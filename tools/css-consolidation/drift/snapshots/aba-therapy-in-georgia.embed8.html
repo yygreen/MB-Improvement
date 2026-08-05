@@ -1,0 +1,373 @@
+<div class="mm-embed mm-body">
+  <style>
+    .mm-embed { box-sizing: border-box; }
+    .mm-embed *,
+    .mm-embed *::before,
+    .mm-embed *::after { box-sizing: inherit; }
+ 
+    .mm-embed {
+      --navy:      #1a2744;
+      --teal:      #3ba5a8;
+      --teal-pale: #e8f6f6;
+      --warm:      #f9f6f1;
+      --accent:    #e8734a;
+      --cta:       #db5b4f;
+      --text:      #2c2c2c;
+      --soft:      #5a5a5a;
+      --mute:      #8a8a8a;
+      --rule:      #e6e2da;
+      --font-body: 'Manrope', system-ui, -apple-system, sans-serif;
+      --font-disp: 'Manrope', system-ui, -apple-system, sans-serif;
+    }
+ 
+    .mm-body { font-family: var(--font-body); color: var(--text); }
+ 
+    .mm-section { padding: clamp(64px, 10vw, 120px) clamp(20px, 5vw, 48px); }
+    .mm-section--warm  { background: var(--warm); }
+    .mm-section--navy  { background: var(--navy); color: #fff; }
+    .mm-section--navy h2 { color: #fff; }
+    .mm-section__inner { max-width: 1200px; margin: 0 auto; }
+    .mm-section__inner--narrow { max-width: 1200px; }
+ 
+    .mm-h2 {
+      font-family: var(--font-disp);
+      font-weight: 600;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: var(--navy);
+      margin: 0 0 32px 0;
+    }
+    .mm-section--navy .mm-h2 { color: #fff; }
+ 
+    .mm-rt { font-size: 17px; line-height: 1.7; color: var(--text); }
+    .mm-section--navy .mm-rt { color: rgba(255,255,255,0.9); }
+    .mm-rt p { margin: 0 0 1.1em 0; }
+    .mm-rt p:last-child { margin-bottom: 0; }
+    .mm-rt strong { color: var(--navy); font-weight: 600; }
+    .mm-section--navy .mm-rt strong { color: #fff; }
+    .mm-rt a {
+      color: var(--navy);
+      text-decoration: underline;
+      text-decoration-color: var(--teal);
+      text-underline-offset: 3px;
+      text-decoration-thickness: 2px;
+    }
+    .mm-section--navy .mm-rt a { color: #fff; text-decoration-color: var(--teal); }
+    .mm-rt h3 {
+      font-family: var(--font-disp);
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 1.3;
+      color: var(--navy);
+      margin-top: 2em;
+      margin-bottom: 0.5em;
+    }
+    .mm-rt ul, .mm-rt ol { padding-left: 1.4em; margin: 0; }
+    .mm-rt li { margin-bottom: 0.6em; }
+    .mm-rt li::marker { color: var(--teal); }
+ 
+    .mm-rt table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 15px;
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 1px 0 var(--rule), 0 12px 40px rgba(26,39,68,0.04);
+    }
+    .mm-rt thead { display: none; }
+    .mm-rt tbody tr { border-bottom: 1px solid var(--rule); }
+    .mm-rt tbody tr:last-child { border-bottom: none; }
+    .mm-rt tbody tr:first-child { background: var(--navy); color: #fff; }
+    .mm-rt tbody tr:first-child strong { color: #fff; }
+    .mm-rt th, .mm-rt td {
+      padding: 14px 18px;
+      text-align: left;
+      vertical-align: top;
+      line-height: 1.55;
+    }
+    .mm-rt tbody tr:first-child td { font-weight: 600; }
+    .mm-rt tbody td:first-child { width: 28%; }
+    @media (max-width: 600px) {
+      .mm-rt tbody td:first-child { width: 40%; }
+    }
+
+    .mm-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 40px;
+}
+ 
+    /* Coverage Chips Card */
+    .mm-coverage-check {
+      margin: 32px 0 0 0;
+      padding: 28px;
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-radius: 16px;
+      box-shadow: 0 12px 40px rgba(26,39,68,0.04);
+    }
+    .mm-coverage-check__label {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin: 0 0 12px 0;
+    }
+    .mm-coverage-check__title {
+      font-family: var(--font-disp);
+      font-weight: 600;
+      font-size: 22px;
+      color: var(--navy);
+      margin: 0 0 18px 0;
+    }
+    .mm-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+    .mm-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 18px;
+      background: var(--warm);
+      border: 1.5px solid var(--rule);
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--navy);
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.15s ease;
+    }
+    .mm-chip:hover {
+      background: var(--teal);
+      border-color: var(--teal);
+      color: #fff;
+    }
+ 
+    /* TL;DR Card */
+    .mm-tldr {
+      padding: 28px 32px;
+      background: #fff;
+      border-left: 4px solid var(--teal);
+      border-radius: 0 12px 12px 0;
+      margin-bottom: 32px;
+      box-shadow: 0 1px 0 var(--rule), 0 12px 40px rgba(26,39,68,0.04);
+    }
+    .mm-tldr__label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin: 0 0 10px 0;
+    }
+    .mm-tldr p {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--text);
+    }
+    .mm-tldr p + p { margin-top: 6px; }
+    .mm-tldr strong { color: var(--navy); font-weight: 700; }
+ 
+    /* Clinical Steps */
+    .mm-steps {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 40px 0;
+      display: grid;
+      gap: 20px;
+    }
+    .mm-step {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 20px;
+      align-items: start;
+      padding: 24px;
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-radius: 12px;
+    }
+    .mm-step__num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--teal-pale);
+      color: var(--teal);
+      font-family: var(--font-disp);
+      font-weight: 600;
+      font-size: 20px;
+    }
+    .mm-step__body p { margin: 0; font-size: 16px; line-height: 1.65; color: var(--soft); }
+    .mm-step__body strong {
+      display: block;
+      color: var(--navy);
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 17px;
+      margin-bottom: 4px;
+    }
+  </style>
+ 
+  <!-- How It Works + Coverage Chips -->
+<section class="mm-section">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">How In-Home ABA Works in Georgia</h2>
+      <div class="mm-rt">
+        <p>Georgia is geographically big and demographically split. Atlanta and its near-suburbs operate like a major metro. Drive 90 minutes in any direction and the landscape changes — fewer providers, longer drives to a pediatric specialist, county seats serving as the only real service hub for a 50-mile radius.</p>
+        
+          <p>Our Mastermind Behavior in-home ABA therapy model is built for exactly that. A Board Certified Behavior Analyst completes the assessment in your home, watches what happens in actual settings (the carpool drop-off meltdown, the iPad transition, the way bedtime falls apart), and a Behavior Technician runs direct sessions in your house — usually 10 to 30 hours a week, with weekly BCBA supervision and parent training built in.</p>
+      </div>
+ 
+      <div class="mm-coverage-check">
+        <p class="mm-coverage-check__label">Quick coverage check</p>
+        <p class="mm-coverage-check__title">Which best describes your situation?</p>
+        <div class="mm-chips">
+          <a href="#cov-medicaid" class="mm-chip">Georgia Medicaid</a>
+          <a href="#cov-private" class="mm-chip">Private insurance</a>
+          <a href="#cov-selffunded" class="mm-chip">Self-funded employer plan</a>
+          <a href="#cov-other" class="mm-chip">Income over Medicaid</a>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- Insurance -->
+  <section class="mm-section mm-section--warm">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">Insurance and Coverage in Georgia</h2>
+ 
+      <div class="mm-tldr">
+        <p class="mm-tldr__label">Quick answer</p>
+        <p>Most GA families are covered. <strong>Medicaid</strong> covers 25–40 hrs/week with no dollar cap. <strong>Private plans</strong> covered through age 20 (federal parity may waive caps). We verify your specific plan completely free.</p>
+      </div>
+ 
+      <div class="mm-rt">
+        <table>
+          <tbody>
+            <tr>
+              <td><strong>Coverage element</strong></td>
+              <td><strong>Georgia detail</strong></td>
+            </tr>
+            <tr>
+              <td><strong>State mandate</strong></td>
+              <td>Ava's Law (HB 429, effective July 1, 2015), amended by SB 118 (signed 2018, effective January 1, 2019) — codified at O.C.G.A. § 33-24-59.10</td>
+            </tr>
+            <tr>
+              <td><strong>Coverage</strong></td>
+              <td>Diagnostic assessments and ABA therapy, plus speech, OT, PT, and counseling for autism spectrum disorder</td>
+            </tr>
+            <tr>
+              <td><strong>Annual dollar cap</strong></td>
+              <td>$35,000/year for ABA services (Federal MHPAEA parity may make this unenforceable on plans subject to parity — verify per plan)</td>
+            </tr>
+            <tr>
+              <td><strong>Age limit</strong></td>
+              <td>Coverage mandated through age 20 (i.e., individuals 20 and under)</td>
+            </tr>
+            <tr>
+              <td><strong>Plans covered</strong></td>
+              <td>Individual grandfathered plans; fully insured large group plans; fully insured small group grandfathered plans</td>
+            </tr>
+            <tr>
+              <td><strong>Plans not covered</strong></td>
+              <td>Self-funded employer plans (federal MHPAEA parity may apply if the plan covers mental health); individual non-grandfathered and small group non-grandfathered plans</td>
+            </tr>
+            <tr>
+              <td><strong>Medicaid</strong></td>
+              <td>GA Medicaid (DCH) covers ABA for individuals under 21 since January 1, 2018, via EPSDT. Up to 40 hours/week for under-6, 25 hours/week for ages 6–20. Requires DSM-5 ASD diagnosis from a licensed professional and prior authorization through the assigned Care Management Organization.</td>
+            </tr>
+            <tr>
+              <td><strong>Medicaid CMOs</strong></td>
+              <td>Peach State Health Plan, CareSource, Amerigroup (Anthem), WellCare</td>
+            </tr>
+            <tr>
+              <td><strong>BCBA licensure</strong></td>
+              <td>Georgia Behavior Analyst Licensing Board operational; behavior analysts are required to be state-licensed. Our BCBAs serving GA families hold both BACB certification and a current GA license.</td>
+            </tr>
+            <tr>
+              <td><strong>Major private insurers covering ABA</strong></td>
+              <td>Anthem BCBS GA, Aetna, UnitedHealthcare, Cigna, Ambetter</td>
+            </tr>
+            <tr>
+              <td><strong>Other programs</strong></td>
+              <td>Katie Beckett Medicaid Waiver, Family Support Services, Georgia TEFRA — alternative pathways for children with disabilities whose family income exceeds standard Medicaid limits</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="mm-rt" style="max-width:1200px; margin-top:48px;">
+        <h3>What this means for your specific plan</h3>
+        <p id="cov-private"><strong>Private (fully insured) plan in Georgia</strong> — Ava's Law applies; ABA covered up to age 20 with a $35,000 annual cap. Federal MHPAEA parity may render that cap unenforceable depending on plan structure. We verify exact coverage during the free benefits check.</p>
+        <p id="cov-selffunded"><strong>Self-funded employer plan</strong> — Ava's Law doesn't apply, but federal Mental Health Parity does. If the plan covers mental health, ABA is generally covered on parity terms. Many large GA self-funded plans cover ABA; check the SPD or HR.</p>
+        <p id="cov-medicaid"><strong>Georgia Medicaid</strong> — comprehensive coverage through your CMO. Up to 40 hrs/week under age 6, up to 25 hrs/week ages 6–20. DSM-5 diagnosis and prior auth required, but no $35K cap. For most GA families, Medicaid is the broader benefit.</p>
+        <p id="cov-other"><strong>Income over Medicaid limits</strong> — look at the Katie Beckett Waiver, TEFRA, and Family Support Services. Pathways designed for children with significant disabilities whose family income exceeds standard Medicaid eligibility. We'll talk you through it on the consultation call.</p>
+      </div>
+      <div class="mm-cta-row">
+  <a href="/contact" class="mm-btn mm-btn--primary">Schedule a free consultation</a>
+  <a href="tel:732.813.7333" class="mm-btn mm-btn--secondary">Call 732.813.7333</a>
+</div>
+    </div>
+  </section>
+ 
+  <!-- Clinical Model -->
+  <section class="mm-section">
+    <div class="mm-section__inner mm-section__inner--narrow">
+      <h2 class="mm-h2">What to Expect — The Clinical Model</h2>
+      <p class="mm-rt" style="margin-bottom:36px;">The path from your first call to a BT in your living room runs five steps:</p>
+ 
+      <ol class="mm-steps">
+        <li class="mm-step">
+          <div class="mm-step__num">1</div>
+          <div class="mm-step__body">
+            <strong>Free consultation.</strong>
+            <p>A 20-minute call where we listen to what's going on, walk through your coverage options, and tell you honestly whether ABA is the right fit.</p>
+          </div>
+        </li>
+        <li class="mm-step">
+          <div class="mm-step__num">2</div>
+          <div class="mm-step__body">
+            <strong>BCBA assessment.</strong>
+            <p>The BCBA runs standardized assessments — typically the Vineland alongside a skill-based assessment like the VB-MAPP or AFLS — to determine your child's current skill level and overall level of functioning. Done in your home, in real settings, not in a clinic with toys we brought in.</p>
+          </div>
+        </li>
+        <li class="mm-step">
+          <div class="mm-step__num">3</div>
+          <div class="mm-step__body">
+            <strong>Individualized treatment plan.</strong>
+            <p>The BCBA pulls together the standardized assessments, parent interview, and direct observation to build a plan with specific goals — skill acquisition and, where applicable, behavior reduction — to work toward over the next six months. At the six-month mark we reassess and continue.</p>
+          </div>
+        </li>
+        <li class="mm-step">
+          <div class="mm-step__num">4</div>
+          <div class="mm-step__body">
+            <strong>In-home sessions.</strong>
+            <p>A Behavior Technician runs sessions in your house, usually 10 to 30 hours a week. The BCBA supervises directly, reviews data, and adjusts the plan as your child progresses.</p>
+          </div>
+        </li>
+        <li class="mm-step">
+          <div class="mm-step__num">5</div>
+          <div class="mm-step__body">
+            <strong><a href="https://www.mastermindbehavior.com/parent-training">Parent training</a>.</strong>
+            <p>Built in from the start. The point isn't to make ABA happen for one hour a day — it's to give you the tools so the techniques keep going during the carpool, at Publix, at grandma's on Sunday.</p>
+          </div>
+        </li>
+      </ol>
+ 
+      <div class="mm-rt">
+        <p><strong>A few details specific to GA practice:</strong></p>
+        <ul>
+          <li>Georgia Medicaid requires a documented DSM-5 ASD diagnosis from a licensed physician, psychologist, or designated qualified professional before ABA can begin. Wait times for developmental peds in GA can run six to nine months — we'll talk you through diagnostic resources on the consultation call.</li>
+          <li>CMO prior authorization is its own multi-step process. Initial authorization typically covers the assessment and a discrete number of treatment hours; reauthorization happens every six months based on data and progress.</li>
+          <li>Behavior Analyst licensure is required to practice ABA in Georgia. Verifying that your provider's BCBAs are state-licensed is a meaningful question to ask, and the answer should be yes.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</div>

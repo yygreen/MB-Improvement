@@ -1,0 +1,183 @@
+<div class="mm-embed mm-t1">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
+    .mm-embed { box-sizing: border-box; }
+    .mm-embed *, .mm-embed *::before, .mm-embed *::after { box-sizing: inherit; }
+
+    .mm-embed {
+      --navy:     #1a2744;
+      --teal:     #3ba5a8;
+      --teal-pale:#e8f6f6;
+      --warm:     #f9f6f1;
+      --cta:      #db5b4f;
+      --text:     #2c2c2c;
+      --soft:     #5a5a5a;
+      --rule:     #e6e2da;
+      --font-body: 'Manrope', system-ui, -apple-system, sans-serif;
+    }
+    .mm-t1 { font-family: var(--font-body, 'Manrope', sans-serif); color: var(--text, #2c2c2c); }
+
+    .mm-hero {
+      background: radial-gradient(ellipse at 80% 0%, rgba(59,165,168,0.15) 0%, transparent 55%),
+                  linear-gradient(180deg, var(--warm, #f9f6f1) 0%, #fff 100%);
+      padding: clamp(36px, 5vw, 64px) clamp(20px, 5vw, 48px) clamp(28px, 4vw, 48px);
+    }
+    .mm-hero__inner { max-width: 900px; margin: 0 auto; }
+    .mm-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--teal, #3ba5a8); margin-bottom: 28px;
+    }
+    .mm-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--teal, #3ba5a8); }
+    .mm-t1 h1 {
+      font-family: var(--font-body); font-weight: 600;
+      font-size: clamp(32px, 5vw, 52px); line-height: 1.08; letter-spacing: -0.015em;
+      color: var(--navy, #1a2744); margin: 0 0 28px 0;
+    }
+    .mm-hero__intro { font-size: clamp(16px, 1.5vw, 20px); line-height: 1.65; color: var(--soft, #5a5a5a); max-width: 62ch; margin: 0 0 36px 0; }
+    .mm-hero__intro p { margin: 0 0 1.1em 0; }
+    .mm-hero__intro p:last-child { margin-bottom: 0; }
+    .mm-hero__intro a, .mm-rt a {
+      color: var(--navy, #1a2744); text-decoration: underline;
+      text-decoration-color: var(--teal, #3ba5a8); text-underline-offset: 3px; text-decoration-thickness: 2px;
+    }
+    .mm-cta-row { display: flex; flex-wrap: wrap; gap: 14px; }
+    .mm-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 16px 28px; font-family: var(--font-body); font-size: 15px; font-weight: 600;
+      letter-spacing: 0.01em; border-radius: 999px; border: 2px solid transparent;
+      text-decoration: none; cursor: pointer;
+      transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+    .mm-btn--primary { background: var(--cta, #db5b4f); color: #fff; border-color: var(--cta, #db5b4f); }
+    .mm-btn--primary:hover { background: #b34a40; border-color: #b34a40; transform: translateY(-1px); }
+    .mm-btn--secondary { background: transparent; color: var(--navy, #1a2744); border-color: var(--cta, #db5b4f); }
+    .mm-btn--secondary:hover { background: var(--cta, #db5b4f); color: #fff; border-color: var(--cta, #db5b4f); }
+
+    .mm-section { padding: clamp(48px, 7vw, 88px) clamp(20px, 5vw, 48px); }
+    .mm-section--warm { background: var(--warm, #f9f6f1); }
+    .mm-section__inner { max-width: 900px; margin: 0 auto; }
+    .mm-h2 {
+      font-family: var(--font-body); font-weight: 600;
+      font-size: clamp(26px, 3.6vw, 40px); line-height: 1.15; letter-spacing: -0.01em;
+      color: var(--navy, #1a2744); margin: 0 0 28px 0;
+    }
+    .mm-h3 { font-family: var(--font-body); font-weight: 600; font-size: 20px; line-height: 1.3; color: var(--navy, #1a2744); margin: 1.8em 0 0.4em 0; }
+    .mm-rt { font-size: 17px; line-height: 1.7; color: var(--text, #2c2c2c); }
+    .mm-rt p { margin: 0 0 1.1em 0; }
+    .mm-rt p:last-child { margin-bottom: 0; }
+    .mm-rt strong { color: var(--navy, #1a2744); font-weight: 600; }
+
+    .mm-rt table {
+      width: 100%; border-collapse: collapse; margin: 24px 0;
+      font-size: 15px; background: #fff; border-radius: 12px; overflow: hidden;
+      box-shadow: 0 1px 0 var(--rule, #e6e2da), 0 12px 40px rgba(26,39,68,0.04);
+    }
+    .mm-rt tbody tr { border-bottom: 1px solid var(--rule, #e6e2da); }
+    .mm-rt tbody tr:last-child { border-bottom: none; }
+    .mm-rt tbody tr:first-child { background: var(--navy, #1a2744); color: #fff; }
+    .mm-rt tbody tr:first-child strong { color: #fff; }
+    .mm-rt td { padding: 14px 18px; text-align: left; vertical-align: top; line-height: 1.55; }
+    .mm-rt tbody td:first-child { width: 30%; }
+    @media (max-width: 600px) { .mm-rt tbody td:first-child { width: 40%; } }
+
+    .mm-faq .mm-h3 { margin-top: 1.4em; }
+    .mm-cta-close { background: #f9f6f1; text-align: center; }
+    .mm-cta-close .mm-h2 { margin-bottom: 16px; }
+    .mm-cta-close .mm-cta-row { justify-content: center; margin-top: 28px; }
+  </style>
+
+  <section class="mm-hero">
+    <div class="mm-hero__inner">
+      <span class="mm-eyebrow">In-Home ABA in Georgia</span>
+      <h1>Behavior Support in Georgia</h1>
+      <div class="mm-hero__intro">
+        <p>Most families who search for behavior support are past the general advice. The sticker charts did not work. The consequences did not work. Waiting did not work. What is left is a behavior that is running the household, and a family that is exhausted in a way that is hard to explain to anyone outside it.</p>
+        <p><a href="/behavior-support">Behavior support</a> in ABA starts from a different premise: behavior is communication. Before anything gets changed, it gets understood, through careful observation and data, in the place where the behavior actually happens. For our families that place is home, so that is where we work.</p>
+        <p>Mastermind Behavior provides in-home ABA therapy, including behavior support, for children and young people with autism through age 21 across Georgia.</p>
+      </div>
+      <div class="mm-cta-row">
+        <a href="/contact" class="mm-btn mm-btn--primary">Schedule a free consultation</a>
+        <a href="tel:732.813.7333" class="mm-btn mm-btn--secondary">Call 732.813.7333</a>
+      </div>
+    </div>
+  </section>
+  <section class="mm-section mm-section--warm">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">Who does what in Georgia</h2>
+      <div class="mm-rt">
+        <p>If the behavior shows up at school, the school system has its own process. Federal special education law requires the IEP team to consider positive behavioral interventions and supports when behavior interferes with learning, which in practice often means the district conducts a functional behavior assessment and writes a behavior intervention plan for the school day.</p>
+        <p>The school's plan covers school. It does not follow your child home, and home is usually where the hardest hours are. In-home behavior support fills that half of the picture: a functional behavior assessment done in your home, a behavior intervention plan built for your routines, and coaching so the adults respond the same way every time. Findings from the home assessment can also inform the school's process.</p>
+        <p>Georgia also regulates who can do this work. Behavior analysts are required to be state-licensed, and our BCBAs serving Georgia families hold both BACB certification and a current Georgia license. The person writing your child's plan is credentialed for exactly this.</p>
+        <p>For situations that have grown beyond what a home plan can hold, Georgia's Department of Behavioral Health and Developmental Disabilities is the state's door to additional developmental disability supports. We are not that system, but we can work alongside it.</p>
+      </div>
+    </div>
+  </section>
+  <section class="mm-section">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">Coverage in Georgia</h2>
+      <div class="mm-rt">
+        <p>Behavior support is ABA therapy, and Georgia treats it that way for coverage purposes. The rows below are the parts of the state's picture families ask about most. The full detail lives on our <a href="/aba-therapy-in-georgia">Georgia ABA therapy page</a>.</p>
+        <table>
+          <tbody>
+            <tr> <td><strong>Coverage element</strong></td> <td><strong>Georgia detail</strong></td> </tr>
+            <tr> <td><strong>State mandate</strong></td> <td>Ava's Law (HB 429, effective July 1, 2015), amended by SB 118 (signed 2018, effective January 1, 2019) — codified at O.C.G.A. § 33-24-59.10</td> </tr>
+            <tr> <td><strong>Annual dollar cap</strong></td> <td>$35,000/year for ABA services (Federal MHPAEA parity may make this unenforceable on plans subject to parity — verify per plan)</td> </tr>
+            <tr> <td><strong>Medicaid</strong></td> <td>GA Medicaid (DCH) covers ABA for individuals under 21 since January 1, 2018, via EPSDT. Up to 40 hours/week for under-6, 25 hours/week for ages 6–20. Requires DSM-5 ASD diagnosis from a licensed professional and prior authorization through the assigned Care Management Organization.</td> </tr>
+            <tr> <td><strong>BCBA licensure</strong></td> <td>Georgia Behavior Analyst Licensing Board operational; behavior analysts are required to be state-licensed. Our BCBAs serving GA families hold both BACB certification and a current GA license.</td> </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <section class="mm-section mm-section--warm">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">How the process works at home</h2>
+      <div class="mm-rt">
+        <p>It starts with a functional behavior assessment: careful observation and data collection to identify what happens right before the behavior and what happens right after it. Not a theory about your child. A record of your child.</p>
+        <p>The behavior intervention plan is built on that data, using the least restrictive, most positive strategies available. A large part of the plan is teaching rather than stopping: functional communication training gives your child a faster, easier way to get what the behavior was getting, and replacement skills give them something to do instead.</p>
+        <p>Parents are in the plan from the start. Behavior changes when the response to it is consistent, so we coach you on exactly what to do in the moment, and the plan is adjusted as the data comes in.</p>
+        <p>Programs are designed and supervised by a BCBA and delivered by Behavior Technicians who work with your child consistently rather than rotating through. Assessment takes about four weeks, and there is no onboarding waitlist.</p>
+        <p>Behavior support often runs alongside our other Georgia services: <a href="/parent-training-georgia">parent training</a> deepens the coaching side, <a href="/early-intervention-georgia">early intervention</a> serves the youngest children, and <a href="/transition-planning-georgia">transition planning</a> picks up the teen years.</p>
+        <p>Our Georgia team works from the Macon office at 4658 Presidential Pkwy, <a href="/aba-therapy-in-georgia">serving families across the state</a>.</p>
+      </div>
+    </div>
+  </section>
+  <section class="mm-section">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">Where we serve</h2>
+      <div class="mm-rt">
+        <p><strong>In-home means your home.</strong> We provide in-home behavior support across Georgia, including <a href="/areas-we-serve/macon">Macon</a>, <a href="/areas-we-serve/savannah">Savannah</a>, <a href="/areas-we-serve/warner-robins">Warner Robins</a>, <a href="/areas-we-serve/perry">Perry</a>, <a href="/areas-we-serve/milledgeville">Milledgeville</a>, <a href="/areas-we-serve/dublin">Dublin</a>, <a href="/areas-we-serve/brunswick">Brunswick</a>, <a href="/areas-we-serve/thomasville">Thomasville</a>, <a href="/areas-we-serve/tifton">Tifton</a>, <a href="/areas-we-serve/buford">Buford</a>, <a href="/areas-we-serve/snellville">Snellville</a>, and <a href="/areas-we-serve/norcross">Norcross</a>. See every community we serve on our <a href="/aba-therapy-in-georgia">Georgia page</a>.</p>
+      </div>
+    </div>
+  </section>
+  <section class="mm-section mm-section--warm mm-faq">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">Questions families ask</h2>
+      <div class="mm-rt">
+        <h3 class="mm-h3">What is a functional behavior assessment?</h3>
+        <p>A structured way of finding out what a behavior is doing for your child. We observe and collect data on what happens before and after the behavior until the pattern is clear, and the intervention plan is built on that evidence.</p>
+        <h3 class="mm-h3">Is behavior support covered by insurance in Georgia?</h3>
+        <p>Behavior support is delivered as ABA therapy, which Ava's Law requires most state-regulated plans to cover. Georgia Medicaid covers ABA for individuals under 21. The coverage table above has the detail.</p>
+        <h3 class="mm-h3">My child already has a behavior plan at school. Is this the same thing?</h3>
+        <p>No. The school's plan is built for the school day. Ours is built for your home and your routines, and the two can inform each other. Findings from a home assessment can be shared with the school team.</p>
+        <h3 class="mm-h3">Do you use punishment?</h3>
+        <p>The plan is built on the least restrictive, most positive strategies available. The core of the work is teaching skills that make the behavior unnecessary, and reinforcing them.</p>
+        <h3 class="mm-h3">Who writes the plan?</h3>
+        <p>A Board Certified Behavior Analyst who also holds a current Georgia behavior analyst license. Behavior Technicians deliver day-to-day sessions under that BCBA's supervision.</p>
+        <h3 class="mm-h3">How soon can we start?</h3>
+        <p>There is no onboarding waitlist. Assessment takes about four weeks.</p>
+      </div>
+    </div>
+  </section>
+  <section class="mm-section mm-cta-close">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">Get help where the behavior happens</h2>
+      <div class="mm-cta-row">
+        <a href="/contact" class="mm-btn mm-btn--primary">Schedule a free consultation</a>
+        <a href="tel:732.813.7333" class="mm-btn mm-btn--secondary">Call 732.813.7333</a>
+      </div>
+    </div>
+  </section>
+</div>

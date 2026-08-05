@@ -1,0 +1,24 @@
+<tr> <td><strong>Coverage element</strong></td> <td><strong>Georgia detail</strong></td> </tr>
+=====
+<tr> <td><strong>State mandate</strong></td> <td>Ava's Law (HB 429, effective July 1, 2015), amended by SB 118 (signed 2018, effective January 1, 2019) — codified at O.C.G.A. § 33-24-59.10</td> </tr>
+=====
+<tr> <td><strong>Coverage</strong></td> <td>Diagnostic assessments and ABA therapy, plus speech, OT, PT, and counseling for autism spectrum disorder</td> </tr>
+=====
+<tr> <td><strong>Annual dollar cap</strong></td> <td>$35,000/year for ABA services (Federal MHPAEA parity may make this unenforceable on plans subject to parity — verify per plan)</td> </tr>
+=====
+<tr> <td><strong>Age limit</strong></td> <td>Coverage mandated through age 20 (i.e., individuals 20 and under)</td> </tr>
+=====
+<tr> <td><strong>Plans covered</strong></td> <td>Individual grandfathered plans; fully insured large group plans; fully insured small group grandfathered plans</td> </tr>
+=====
+<tr> <td><strong>Plans not covered</strong></td> <td>Self-funded employer plans (federal MHPAEA parity may apply if the plan covers mental health); individual non-grandfathered and small group non-grandfathered plans</td> </tr>
+=====
+<tr> <td><strong>Medicaid</strong></td> <td>GA Medicaid (DCH) covers ABA for individuals under 21 since January 1, 2018, via EPSDT. Up to 40 hours/week for under-6, 25 hours/week for ages 6–20. Requires DSM-5 ASD diagnosis from a licensed professional and prior authorization through the assigned Care Management Organization.</td> </tr>
+=====
+<tr> <td><strong>Medicaid CMOs</strong></td> <td>Peach State Health Plan, CareSource, Amerigroup (Anthem), WellCare</td> </tr>
+=====
+<tr> <td><strong>BCBA licensure</strong></td> <td>Georgia Behavior Analyst Licensing Board operational; behavior analysts are required to be state-licensed. Our BCBAs serving GA families hold both BACB certification and a current GA license.</td> </tr>
+=====
+<tr> <td><strong>Major private insurers covering ABA</strong></td> <td>Anthem BCBS GA, Aetna, UnitedHealthcare, Cigna, Ambetter</td> </tr>
+=====
+<tr> <td><strong>Other programs</strong></td> <td>Katie Beckett Medicaid Waiver, Family Support Services, Georgia TEFRA — alternative pathways for children with disabilities whose family income exceeds standard Medicaid limits</td> </tr>
+=====

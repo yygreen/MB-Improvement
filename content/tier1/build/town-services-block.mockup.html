@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>City-page services block — mockup</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+  :root {
+    --navy: #1a2744; --teal: #3ba5a8; --teal-pale: #e8f6f6; --warm: #f9f6f1;
+    --cta: #db5b4f; --text: #2c2c2c; --soft: #5a5a5a; --rule: #e6e2da;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: 'Manrope', system-ui, sans-serif; color: var(--text); background: #edeae4; }
+  .frame { max-width: 1000px; margin: 32px auto 64px; }
+  .label {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    color: #8a8578; margin: 40px 20px 10px;
+  }
+  .page { background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 14px 44px rgba(26,39,68,0.10); }
+
+  /* faded stand-ins for the town page's own content */
+  .ghost { padding: 36px clamp(20px, 5vw, 48px); }
+  .ghost .bar { height: 14px; border-radius: 7px; background: #eceae5; margin: 0 0 12px; }
+  .ghost .bar.title { height: 30px; width: 55%; background: #e3e0d8; margin-bottom: 22px; }
+  .ghost .bar.w80 { width: 80%; } .ghost .bar.w92 { width: 92%; } .ghost .bar.w70 { width: 70%; }
+  .ghost .tag {
+    display: inline-block; font-size: 12px; font-weight: 600; color: #b0aca1;
+    border: 1px dashed #d8d4c9; border-radius: 6px; padding: 4px 10px; margin-bottom: 18px;
+  }
+
+  /* ================= THE BLOCK ================= */
+  .mm-svc {
+    background: var(--warm);
+    border-top: 1px solid var(--rule);
+    padding: clamp(36px, 5vw, 56px) clamp(20px, 5vw, 48px);
+  }
+  .mm-svc__inner { max-width: 900px; margin: 0 auto; }
+  .mm-svc h2 {
+    font-weight: 600; font-size: clamp(22px, 3vw, 30px); line-height: 1.15;
+    letter-spacing: -0.01em; color: var(--navy); margin: 0 0 10px;
+  }
+  .mm-svc .mm-svc__lede {
+    font-size: 16px; line-height: 1.6; color: var(--soft);
+    margin: 0 0 22px; max-width: 62ch;
+  }
+  .mm-svc nav { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+  .mm-svc a {
+    display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    background: #fff; border: 1px solid var(--rule); border-radius: 12px;
+    padding: 16px 18px; text-decoration: none;
+    font-size: 15px; font-weight: 600; color: var(--navy);
+    transition: border-color .15s ease, transform .15s ease, box-shadow .15s ease;
+  }
+  .mm-svc a::after { content: '\2192'; color: var(--teal); font-weight: 700; }
+  .mm-svc a:hover {
+    border-color: var(--teal); transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(26,39,68,0.07);
+  }
+  /* ============================================= */
+
+  .note {
+    font-size: 13.5px; line-height: 1.6; color: #6d685c;
+    margin: 14px 20px 0; max-width: 900px;
+  }
+  .note strong { color: #4c473c; }
+  code { background: #e7e4dc; border-radius: 4px; padding: 1px 5px; font-size: 12.5px; }
+</style>
+</head>
+<body>
+<div class="frame">
+
+  <div class="label">In context — as it sits on a town page (example: Edison, NJ)</div>
+  <div class="page">
+    <div class="ghost">
+      <span class="tag">town page's existing unique content — untouched, stays above the block</span>
+      <div class="bar title"></div>
+      <div class="bar w92"></div><div class="bar w80"></div><div class="bar w92"></div><div class="bar w70"></div>
+    </div>
+
+    <section class="mm-svc">
+      <div class="mm-svc__inner">
+        <h2>ABA services in New Jersey</h2>
+        <p class="mm-svc__lede">All four are delivered in your home by a BCBA-led team, anywhere we serve in New Jersey.</p>
+        <nav aria-label="ABA services">
+          <a href="/early-intervention-new-jersey">Early Intervention</a>
+          <a href="/parent-training-new-jersey">Parent Training</a>
+          <a href="/behavior-support-new-jersey">Behavior Support</a>
+          <a href="/transition-planning-new-jersey">Transition Planning</a>
+        </nav>
+      </div>
+    </section>
+
+    <div class="ghost">
+      <span class="tag">footer</span>
+      <div class="bar w70"></div>
+    </div>
+  </div>
+  <p class="note"><strong>~30 visible words</strong>, repeated identically on every town page in the state.
+  Only two things vary, both data-driven: the state name (heading + sentence) and the
+  <code>{{state-key}}</code> suffix in the four hrefs. The town name never appears in the block,
+  and the sentence is fixed — one line, never per-town, never per-service.</p>
+
+  <div class="label">Georgia variant — same template, state-key resolves the links</div>
+  <div class="page">
+    <section class="mm-svc" style="border-top:none;">
+      <div class="mm-svc__inner">
+        <h2>ABA services in Georgia</h2>
+        <p class="mm-svc__lede">All four are delivered in your home by a BCBA-led team, anywhere we serve in Georgia.</p>
+        <nav aria-label="ABA services">
+          <a href="/early-intervention-georgia">Early Intervention</a>
+          <a href="/parent-training-georgia">Parent Training</a>
+          <a href="/behavior-support-georgia">Behavior Support</a>
+          <a href="/transition-planning-georgia">Transition Planning</a>
+        </nav>
+      </div>
+    </section>
+  </div>
+
+  <div class="label">North Carolina variant</div>
+  <div class="page">
+    <section class="mm-svc" style="border-top:none;">
+      <div class="mm-svc__inner">
+        <h2>ABA services in North Carolina</h2>
+        <p class="mm-svc__lede">All four are delivered in your home by a BCBA-led team, anywhere we serve in North Carolina.</p>
+        <nav aria-label="ABA services">
+          <a href="/early-intervention-north-carolina">Early Intervention</a>
+          <a href="/parent-training-north-carolina">Parent Training</a>
+          <a href="/behavior-support-north-carolina">Behavior Support</a>
+          <a href="/transition-planning-north-carolina">Transition Planning</a>
+        </nav>
+      </div>
+    </section>
+  </div>
+
+  <p class="note">Cards use the site's tokens (navy <code>#1a2744</code>, teal <code>#3ba5a8</code>,
+  warm <code>#f9f6f1</code>, rule <code>#e6e2da</code>, Manrope) so the block reads as native chrome.
+  Built once as an HtmlEmbed on the Areas We Serve collection template, wrapped in conditional
+  visibility on <code>state-key is set</code> — an item with a missing key shows nothing instead of a dead link.</p>
+
+</div>
+</body>
+</html>

@@ -169,6 +169,32 @@ All nine profile URLs fetched. **The prior audit's finding is confirmed and stil
 Staging is identical (`mastermindbehavior.webflow.io/bcbas/audrey-poggi` →
 `<title>MasterMindBehavior.com</title>`), so no fix is staged and awaiting publish.
 
+### RESOLVED — the Clinical Team byline is correct and must not be "fixed"
+
+**Confirmed with the client, 2026-08-04: the BCBAs did not individually author these
+posts, and they do not want to be named.** Collective attribution to the Clinical Team
+is therefore accurate, and it is what they want. Issue 3 above was a false positive —
+it inferred a defect from a pattern without checking whether the pattern was intended.
+
+The live implementation already matches that intent, on both surfaces:
+
+- `BlogPosting.author` resolves by `@id` to the sitewide `MedicalOrganization` node,
+  not to any `Person`. Authorship is claimed by the organization.
+- The rendered byline reads "Mastermind Behavior Clinical Team".
+- The nine `/bcbas/*` pages serve `noindex,follow`, so no individual is being surfaced
+  to search in an authorship role.
+
+**Do not attribute posts to named BCBAs.** Doing so would assert, on a healthcare site,
+that a named clinician wrote content they did not write — false attribution against the
+explicit wishes of the people named. The eight `w-dyn-empty` blocks below are the
+expected result of a correct configuration, not a bug to be closed by populating them.
+
+The only thing still arguably worth doing is cosmetic and optional: on the eight BCBA
+pages the empty block renders as the heading "Articles by this author" above Webflow's
+literal "No items found." That reads as broken to a human visitor. Since the pages are
+noindexed, this is a UX detail rather than an SEO one — hide the section when the list
+is empty, rather than filling it.
+
 ### "Articles by this author" block
 
 **The block renders on all nine pages. It is empty on eight of the nine.**
@@ -342,7 +368,7 @@ a publish failure.
 |---|---|---|---|
 | 1 | ~~No BlogPosting schema on any of 337 posts~~ **FIXED** — see Change log | ~~High~~ | Live; 50 posts verified valid |
 | 2 | ~~`/areas-we-serve/perry-043a7` still in sitemap (301s to `/perry`)~~ **FIXED** — see Change log | ~~Medium~~ | Sitemap now 578 entries, 0 non-200 |
-| 3 | 337 of 337 posts attributed to the generic Clinical Team; 8 BCBAs have zero articles | **Medium** | Pagination walk = 337; 8/9 pages `w-dyn-empty` |
+| 3 | ~~337 of 337 posts attributed to the generic Clinical Team; 8 BCBAs have zero articles~~ **NOT AN ISSUE — deliberate.** See below | ~~Medium~~ | Confirmed with the client 2026-08-04 |
 | 4 | All 9 noindexed `/bcbas/*` URLs are still submitted in `sitemap.xml` | **Low** | 9/9 `includeInSitemap: true` |
 | 5 | ~~7 root pages carry no schema~~ **FIXED** — see Change log | ~~Low~~ | 7/7 live and verified |
 | 6 | Sitemap carries no `lastmod` on any of 579 entries | **Low** | 0 occurrences |
@@ -1906,3 +1932,815 @@ Deliberately **not published**. Staging still shows the previous state for this 
 
 To finish: rewrite the second embed (`7c08cadb-3d4f-0168-4cee-601897904faa`) with its markup
 only, then render at 1440/390.
+
+---
+
+## Change log — collision check made media-aware; pages 2 and 3 of 6 live on staging
+
+### The collision check was wrong in both directions
+
+The previous check compared selector text while ignoring `@media` context. Replaced with
+`tools/css-consolidation/collision-check.mjs`, which keys on `(at-rule context, selector)`
+and strips comments through a string-aware scanner before parsing.
+
+Its seven flags — `.icon-grid` / `.right-grid` / `.right-image` on `early-intervention`,
+`behavior-support` and `skill-development` — were **all false positives**. Every one is an
+override rule inside a media query against a shared rule at base level, which is the
+intended cascade, not a collision. Those three pages are collision-free.
+
+It had also missed two real ones. Both `.mm-embed h2` rules were still present in
+`in-home`'s override *on disk*, though the previous session recorded removing them. The
+artefact had drifted from what was written to Webflow.
+
+| | old check | media-aware check |
+| --- | --- | --- |
+| real collisions | 2 missed | 2 found |
+| false positives | 7 | 0 |
+
+### The unscoped selectors were all already dead
+
+Swept all six overrides: six unscoped selectors on three pages. They trace to grouped
+selectors in the source CSS of the form `.mm-embed .icon-grid, .approach-grid { … }` — the
+split left the second half unanchored.
+
+**Measured before changing them.** Every unscoped rule was already a no-op. At `(0,1,0)` it
+loses to the base `.mm-embed .approach-grid` at `(0,2,0)`, and media queries add no
+specificity, so source order never mattered. Confirmed in headless Chromium across all six
+production pages.
+
+That means `parent-training` ships two live mobile bugs today: `.approach-grid` renders
+**3 columns at 390px** and `.right-grid` renders **2 columns at 390px** (152px + 98px).
+The author wrote the collapse rules; they never applied.
+
+Scoped rather than deleted, honouring the authors' evident intent. Two assumptions, flagged
+for reversal: honour author intent over byte-identical production, and match the other five
+at 768px.
+
+Scoping `.approach-grid` then *created* a real collision against the shared sheet — the same
+class of bug as the `h2` one, where the fix creates the collision. Dropped from the override.
+
+### `/parent-training` and `/transition-planning` — done and verified
+
+Both now: `Service Page Styles` instance on the page wrapper, hero embed carrying only the
+page override, body embed carrying markup only.
+
+| Page | Before | After |
+| --- | --- | --- |
+| `parent-training` | 98,372 B | 73,791 B |
+| `transition-planning` | 95,466 B | 69,705 B |
+
+Each page had **two byte-identical copies** of its stylesheet (23,062 B and 23,563 B
+respectively); both now load the 20,141 B shared sheet once plus a ~1.7 KB override.
+
+Every embed rewrite was diffed byte-for-byte against the published staging HTML. All four
+markup blocks identical — no transcription error.
+
+### A trap worth recording: the on-disk artefacts had drifted
+
+`parent-training`'s hero embed was written in the previous session with the *old* override,
+so correcting the file on disk did not correct the page. The first staging render still
+showed `.approach-grid` at 2 columns at 768px. **The artefact is not the source of truth —
+the live embed is.** Caught only because the grid columns were measured rather than assumed.
+
+Also: Webflow's staging CDN serves stale HTML for a minute or so after publish. The first
+re-fetch showed the old override. Cache-bust the URL before believing a verification.
+
+### Layout diff, staging vs production
+
+The harness (`layout-diff.mjs`) now compares **parent-relative** geometry and keys rows by
+structural path, so a change is attributed to the element that changed rather than to
+everything below it.
+
+Desktop (1440px) is unchanged on both pages apart from majority pins. Every difference
+traces to a recorded decision:
+
+- `.approach-card` `display: block → flex`, `h3` 22px → 20px, grid gap 28px → 24px —
+  majority pins `parent-training` had drifted from
+- hero headline 48px → 36px at ≤768px — the deliberate mobile-headline override
+- `.approach-grid` 3→1 col and `.right-grid` 2→1 col on mobile — **the two live bugs, fixed**
+- `.icon-grid` 2→1 col at 390px on both pages — the revived author intent
+
+One visible change worth a second opinion: `transition-planning` was one of only two pages
+declaring `aspect-ratio: 16/9` on `.benefit-image`. The majority of four has none, so the
+shared sheet drops it and the rows fall back to their 280px min-height (387px → 200px at
+768px). Intended by the unification, but it is a real change to a real page.
+
+Production remains untouched — custom domains still show the 2026-07-31 publish.
+
+### Remaining
+
+Three pages: `early-intervention`, `behavior-support`, `skill-development` — now confirmed
+collision-free and with their overrides scoped, so each is the plain four-step recipe.
+`behavior-support` and `transition-planning` each had one unscoped `.icon-grid` fixed here.
+
+---
+
+## Change log — correction: the majority rule was invalid; shared sheet rebased on in-home
+
+### The clone family has a parent, and it is not a democracy
+
+Webflow page IDs are Mongo ObjectIds. Decoding their embedded timestamps:
+
+| Created | Page |
+| --- | --- |
+| 2026-03-23 14:03 | `in-home-aba-therapy` |
+| 2026-03-30 08:40 | `early-intervention` |
+| 2026-03-30 08:51 | `skill-development` |
+| 2026-03-30 11:19 | `behavior-support` |
+| 2026-03-30 12:17 | `parent-training` |
+| 2026-03-30 12:42 | `transition-planning` |
+
+in-home was built **a week earlier**; the other five were minted inside a four-hour
+window on one morning. That is build-one, clone-five.
+
+So the "majority of five" is **one decision copy-pasted five times and then frozen**,
+while in-home carried on being refined. Majority rule counts the stale snapshot five
+times and the maintained original once. It is not a vote; it is an echo.
+
+### What majority rule was discarding
+
+26 conflicting properties resolved against in-home, and they are not random drift:
+
+- **`font-weight: 800` on six selectors** — `.hero-headline`, `h2`, `.benefit-copy h3`,
+  `.step-title`, `.timeline-title`, `.tip-card h3`. Nobody sets 800 in six places by accident.
+- **Ten defensive `!important` rules** — `.btn-primary { border / cursor / line-height }`,
+  `:hover { color / text-decoration }`, `.area-card { color: inherit }`. This is what gets
+  added *after* discovering the Webflow host stylesheet bleeding through.
+- **Deliberate image framing** — `hero-image 4/3` with `max-width: 1200px` / `max-height:
+  900px`, `benefit-image 16/9`.
+
+The cost was concrete and measurable. in-home had `.area-card { color: inherit !important }`;
+the five clones did not, and rendered browser-default link blue on the navy section.
+Unification **deleted the fix from the reference page instead of propagating it**, taking
+the defect from five pages of six to six of six.
+
+| `.area-card` colour | production | staging (before) | staging (after) |
+| --- | --- | --- | --- |
+| `in-home` | white | **rgb(0,0,238)** | white |
+| `parent-training` | rgb(0,0,238) | rgb(0,0,238) | **white** |
+| `transition-planning` | rgb(0,0,238) | rgb(0,0,238) | **white** |
+
+The previous sessions had already half-seen this. Majority was overridden exactly twice —
+the bare `h2` and the 36px mobile headline — and *both times* the answer landed on
+in-home's value, under the note that "the majority reflects what was copy-pasted most
+often, not what is correct." The insight was right; it was never generalised.
+
+### The corrected rule
+
+> **in-home wins wherever it has an opinion.** Majority-of-five applies only to selectors
+> in-home does not have at all — sections that exist only on the clone pages, where the
+> drift is genuine.
+
+Of 157 shared rules, 129 have an in-home counterpart and are now rebased on it; 28 do not
+and remain on majority-of-five. Implemented as `tools/css-consolidation/rebase-shared.mjs`,
+which is idempotent — a second run reports 0 changed, 0 added, 0 dropped.
+
+The reference is `in-home-aba-therapy.merged.css`. It was validated before use, not assumed:
+in-home's two embed copies are **not** identical (18,210 B and 18,183 B — they disagree about
+`.benefit-image`, and the later embed wins). Re-deriving the cascade from the raw copies and
+diffing against `merged.css` gives 136 keys on both sides, 0 missing, 0 differing, 0 extra.
+
+### Result
+
+The component was rewritten once; all instances follow. Verified against **production
+in-home** rather than against each page's own production self:
+
+- `in-home` — **zero property differences**. The reference page is restored exactly.
+- `parent-training`, `transition-planning` — every change is a 700 → 800 weight adopting
+  in-home's typography, plus the two mobile grid bugs fixed.
+- `transition-planning` keeps `aspect-ratio: 16/9`. The visible regression flagged in the
+  previous entry is reversed: in-home declares 16/9, so it is now the shared value.
+
+Production remains untouched.
+
+### Two harness bugs found while verifying this
+
+The layout diff claimed "269 changed, 258 removed" on in-home. Both causes were mine:
+
+1. The row key ended in a **global index**, which reintroduced the exact problem the
+   structural keying existed to remove — one inserted node shifts every later key.
+2. The structural path was walked up to `<body>`, making the key sensitive to anything
+   **outside** the embed. Prepending the component shifts an ancestor's ordinal, so every
+   descendant key changed and the diff reported 100% churn.
+
+Keys are now rooted at the `.mm-embed` element and each segment carries the element's
+ordinal among its like-tagged siblings. A verification harness that cries wolf is worse
+than none — it trains you to skim the number.
+
+### One deliberate deviation from the reference, still open
+
+in-home's hero trust badges were restructured in an earlier session from its own
+2 / 1 / gap / 1 rendering to the clones' `.trust-badges` + two `.trust-badge-row` pattern,
+on the grounds that in-home's rendering was visibly ragged. Under the corrected rule that
+is backwards — but the reference's own output was the defect here. Left as-is and flagged:
+it is the one place where a clone pattern deliberately beats the reference.
+
+### Remaining
+
+`early-intervention`, `behavior-support`, `skill-development` — unchanged by this correction
+except that they will now inherit in-home's values when migrated.
+
+---
+
+## Change log — all six pages migrated; family complete
+
+`early-intervention`, `behavior-support` and `skill-development` migrated on the
+in-home-referenced shared sheet. The family is done.
+
+| Page | Before | After | Saved |
+| --- | --- | --- | --- |
+| `in-home-aba-therapy` | 87,889 | 73,275 | 14,614 |
+| `parent-training` | 97,882 | 74,444 | 23,438 |
+| `transition-planning` | 95,020 | 70,224 | 24,796 |
+| `early-intervention` | 101,267 | 74,106 | 27,161 |
+| `behavior-support` | 100,296 | 75,684 | 24,612 |
+| `skill-development` | 97,907 | 72,544 | 25,363 |
+| **Total** | | | **~140 KB** |
+
+Every page now carries exactly one shared stylesheet plus a 1–2 KB override. All ten
+embed markup blocks were diffed byte-for-byte against the published staging HTML —
+all identical, no transcription error.
+
+Live Designer state was confirmed equal to production before writing, at zero cost, by
+diffing the already-published staging HTML rather than reading the embeds back.
+
+### Two more pages had non-identical stylesheet copies
+
+Like `in-home`, two pages carried two *different* copies of their sheet:
+
+- `early-intervention` — 25,284 vs 25,283 B, whitespace only.
+- `skill-development` — the hero copy had `.right-grid { align-items: start }` and
+  `.right-image { aspect-ratio: 3/4 }`; the body copy had `center` and `4/3`. The body
+  embed loads later and wins, so `center` / `4/3` is what production renders and what
+  the shared sheet carries. The `3/4` variant was deliberately not revived.
+
+That is three of six pages whose two copies disagree. "Duplicated stylesheet" was never
+quite accurate — they were *drifting* duplicates, and the later embed silently won.
+
+### `early-intervention` is structurally different
+
+Its hero uses a `div` for the eyebrow and a bare `h1` for the headline, where the other
+five use an `h1` carrying `.hero-eyebrow` plus a paragraph carrying `.hero-headline`.
+Both need rules in its override. Its headline was raised 700 → 800 to match the
+reference; leaving it would have made it the only page with a lighter headline.
+
+### One visible change to review
+
+`early-intervention` was the only page with `display: flex; align-items: center` on
+`.benefit-image` (box 260px, `aspect-ratio: auto`). It now uses the reference construct —
+`display: block`, `min-height: 280px`, `aspect-ratio: 16/9`, box 320px — like the other
+five. `.benefit-image` was genuinely inconsistent across the family in production:
+two pages at 16/9, three at auto/280, and this one at flex/260.
+
+Images do not load in the verification sandbox, so the image *fill* behaviour inside that
+box could not be measured directly. Worth eyeballing the "Skills We Build in Early
+Intervention" rows on staging before this goes to production.
+
+### A self-inflicted verification failure worth recording
+
+The first check reported `early-intervention`'s hero markup as non-identical. It was not:
+the first 2,584 characters — its entire length — matched exactly. The override comment
+authored for that page contained the literal text `<div>` and `<h1 …>`, and the
+div-balancing extractor counted them as real tags, running past the wrapper.
+
+Valid CSS, harmless in a browser, and still wrong: a literal tag inside a style block
+trips naive markup tooling. The comment was reworded without angle brackets, and the
+extractor now blanks `<style>` blocks before balancing.
+
+### Remaining
+
+Nothing on the six service pages. Next is the token layer — see the queued work:
+Design Tokens component, the `.mm-*` / `.mb-*` palette split, the print stylesheet's
+hardcoded hexes, and the Resource Page Styles pair.
+
+---
+
+## Change log — `.tip-card` hover fixed; deviations now survive a rebase
+
+### Where `.tip-card` actually lives
+
+Only `/in-home-aba-therapy` has `.tip-card` markup — three cards. The other five carried
+the CSS but no elements, so the rule was dead there. The snapping hover was a one-page
+glitch, not a family-wide one.
+
+All three card types animate the same hover — `translateY(-4px)` plus a shadow swap — but
+declared it three different ways:
+
+| | transition | result |
+| --- | --- | --- |
+| `.tip-card` | *none* | snapped |
+| `.icon-card` | `all 0.3s` | animated |
+| `.approach-card` | `transform 0.3s, box-shadow 0.3s` | animated |
+
+`.tip-card` now matches `.approach-card`, which transitions exactly the two properties the
+hover changes. `.icon-card`'s `all 0.3s` is visually identical here and was left alone —
+nothing to gain from churning a rule that already behaves correctly.
+
+Verified on staging: `tip-card 0.3s, 0.3s`; `icon-card 0.3s`; `approach-card 0.3s, 0.3s`.
+
+### A fix a tool would have silently undone
+
+This is a **deliberate deviation from the reference** — in-home declares no transition, so
+the next `rebase-shared.mjs --apply` would have dropped it again and nobody would have
+noticed until the hover snapped once more.
+
+`rebase-shared.mjs` now carries an `EXCEPTIONS` map, keyed by `context||selector`, layered
+on top of the reference values. Each entry records its reason at the point of the
+exception. The script stays idempotent: after applying, a re-run reports 0 changed,
+0 added, 0 dropped.
+
+This is the same failure mode as the on-disk overrides drifting from the live embeds,
+one layer up. A correction that only survives because nothing re-ran the generator is not
+a correction — it is a race.
+
+### Closed
+
+The two other open items were reviewed and accepted as-is: `early-intervention`'s
+`.benefit-image` on the reference construct, and `in-home`'s restructured trust badges.
+
+---
+
+## Change log — site-wide sweep; a correction about what componentising actually saves
+
+### The six were not the whole story
+
+Scanned all 28 published full pages. Sixteen carry substantial inline CSS; twelve
+(home, about-us, contact, blog, careers, areas-we-serve, bcba-team, podcast, legal)
+carry none and need nothing.
+
+### Componentising cross-page duplication saves no bytes
+
+The `Resource Hub Styles` component was created for
+`building-skills-independence` + `understanding-aba-therapy`, whose 11,358 B sheets
+were byte-identical. Both pages then got **604 B larger**.
+
+A Webflow component is authored once but still **inlines into every page that instances
+it**. Each of those pages had only ONE copy of the sheet, so there was no page weight to
+recover — the component buys maintainability (one edit, no future drift) and the added
+header comment cost bytes.
+
+> Duplication **across** pages → maintainability only.
+> Duplication **within** a page → real bytes.
+
+The six service pages benefited because each carried *two* copies. That distinction was
+implicit before and is now explicit, in `merge-page-sheets.mjs`.
+
+### `/services` — 20,585 B recovered
+
+The single largest CSS payload on the site: two near-duplicate sheets in one page
+(19,619 + 20,172 B, 90% identical), one per embed. Merged into one 19,458 B sheet.
+
+**92,153 B → 71,568 B. Zero differing elements at 1440/768/390.**
+
+Two bugs in the merge tool, both caught by the render diff rather than by reading CSS:
+
+1. **Keyed on the comma group, not the selector.** `.a, .b { … }` in one sheet and
+   `.a { … }` in the other produce different keys, so the grouped rule was classed
+   "earlier-only", emitted first, and then overridden. Now keyed per selector.
+2. **"Later wins" is only true at equal importance.** The earlier copy declared
+   `.hero-cta { background: #db5b4f !important }`; the later copy had dropped the
+   `!important`. Both sheets carry `.mm-embed a { background-color: transparent
+   !important }`, so taking the later value made the button **transparent**. 15
+   declarations were affected. The merge is now importance-aware.
+
+Neither would have been visible by inspection. A diff that renders is worth more than a
+diff that reads.
+
+### Remaining, with honest value
+
+| Target | Recoverable | Kind |
+| --- | --- | --- |
+| `financial-aid-resources` sheets 2/3 (77% overlap) | ~3,845 B | within-page, real |
+| `first-90-days-of-aba-therapy` (23%) | ~1,702 B | within-page, real |
+| `aba-therapy-in-georgia` (25%) | ~1,128 B | within-page, real |
+| `insurance-terminology` + `financial-aid` 10,383 B block | 0 B | cross-page, maintainability |
+| NJ + NC (both sheets byte-identical) | 0 B | cross-page, maintainability |
+| `autism-screening-checklist` | 0 B | single unique sheet, nothing to share |
+
+`aba-therapy-in-georgia` differs from the byte-identical NJ/NC pair, consistent with the
+queued Georgia-only `align-content: start` city-grid bug.
+
+### A third palette
+
+The hub family uses `#002833` navy, `#34abc7` teal, `#6b6872` muted, `#e3dee3` rule —
+distinct from both the `.mm-*` prose set and the `.mb-*` widget set. Only `#db5b4f`
+(CTA red) is shared. The token reconciliation is a three-way problem, not two.
+
+---
+
+## Change log — Insurance Widget componentised; remaining work scoped
+
+### The `.mb-iw` block was an entire duplicated embed, not just a sheet
+
+`insurance-terminology` and `financial-aid-resources` carried a **byte-identical 27,335 B
+embed** — stylesheet *and* markup — the `.mb-iw` insurance coverage checker
+(`id="insurance-widget"`). This is the queued "1eb2d944 shared block", and it also settles
+the queued "verify `.mb-scr` ↔ `.mb-iw`" item: `.mb-iw` is the insurance widget, a
+different component from the screener's `.mb-scr`.
+
+Because the whole embed matched, it was promoted with `transform_element_to_component` and
+instanced on the second page — **no content re-emission at all**, just structural
+operations. The duplicate embed was then removed.
+
+Both pages: byte count unchanged, exactly one widget each, **0 differing elements at
+1440/768/390**. The only textual difference is Webflow's publish timestamp.
+
+Method note: the instance was inserted *before* the duplicate and published for
+verification *before* the duplicate was removed, so a mis-identified embed would have
+surfaced as a visible second widget rather than as a deletion.
+
+### The state hubs use a fourth token vocabulary
+
+`aba-therapy-in-georgia` / `-new-jersey` / `-north-carolina` declare
+`--soft` / `--mute` / `--rule` / `--cta` / `--teal-pale`, distinct again from the `.mm-*`
+prose, `.mb-*` widget and `.mm-hub` sets. Their palettes agree on hex values with the
+service pages (`#1a2744`, `#3ba5a8`, `#e8734a`) but under different names, so the token
+work is a naming reconciliation here rather than a colour one.
+
+Georgia's sheets differ from the NJ/NC pair mostly by **formatting** — pretty-printed vs
+compact — not by content. That accounts for the 6,048 vs 5,400 B gap and means the
+"Georgia has diverged" reading was overstated.
+
+The queued `align-content: start` city-grid bug is **not** in these three pages' embeds.
+It is most likely in the `/areas-we-serve/*` CMS template, which is out of scope.
+
+### Remaining, with cost/benefit stated honestly
+
+| Target | Recoverable | Markup to rewrite |
+| --- | --- | --- |
+| `financial-aid-resources` e3+e4 merge | ~3,845 B | ~30 KB |
+| `first-90-days-of-aba-therapy` merge | ~1,702 B | ~25 KB |
+| `aba-therapy-in-georgia` sheet merge | ~1,128 B | ~12 KB |
+| NJ + NC shared CSS component | 0 B | ~25 KB |
+| `autism-screening-checklist` | 0 B | nothing to do — single unique sheet |
+
+`merge-page-sheets.mjs` is verified and handles these; each is the same mechanical recipe
+already applied to `/services`. The remaining byte savings total ~6.7 KB against the
+20,585 B recovered from `services` alone, so the ratio of rewrite risk to gain is now
+markedly worse than anything done so far.
+
+---
+
+## Change log — palette decision: dominant wins; `.mm-hub` tokenised
+
+### Decision
+
+The site converges on the **dominant `.mm-*` palette** — `#1a2744` navy, `#3ba5a8` teal,
+`#2c2c2c` text, `#e5e5e5` border, `#db5b4f` CTA. User's call, made against a rendered
+side-by-side of both systems applied to real components.
+
+### A correction that changed the size of the job
+
+The comparison first told the user that dominant covered **12 pages including both
+resource hubs**. Measured, that was wrong twice: the hubs run a **third** palette of their
+own, and dominant covers **10**.
+
+| Palette | Pages |
+| --- | --- |
+| `.mm-*` dominant | **10** — six service pages, `services`, three state hubs |
+| `.mb-*` brand | 4 |
+| `.mm-hub` | **2** — `#002833` / `#34abc7` / `#6b6872` / `#e3dee3` |
+
+The decision was unaffected — dominant is still the majority — but the migration is
+**six pages, not four**. The comparison document was corrected in place.
+
+Also surfaced by the count: **three pages already run two palettes at once.**
+`insurance-terminology`, `financial-aid-resources` and `autism-screening-checklist` carry
+dominant `.mm-*` for page chrome *and* brand `.mb-*` for the embedded widget — two
+different teals on one screen. That is where the split is most visible today.
+
+### Two findings that make "migrate to brand" harder than it looked
+
+Recorded because they would have been discovered mid-migration otherwise:
+
+- **The brand set contains no red.** Every CTA on the site is `#db5b4f`. Brand's nearest,
+  `--mb-warm #bf5247`, is a muted brick used for *warnings* in the widget. On brand, buttons
+  would become the same teal as links.
+- **Brand teal fails contrast on brand navy.** `#186c78` on `#18313a` is not legible, and
+  every navy section carries accent links. Migrating to brand would require *adding* a
+  lightened accent token that exists in neither set.
+
+Both argue for the direction chosen.
+
+### `.mm-hub` tokenised — the prerequisite
+
+The hub sheet declared **no tokens at all**: `#002833` ×12, `#6b6872` ×7, `#db5b4f` ×7,
+`#34abc7` ×6, `#e3dee3` ×5, all raw. It was the one family that could not participate in
+any palette change.
+
+64 literals replaced by `var()` references, mechanically, at unchanged values. Token names
+deliberately mirror the dominant set so the migration is a value change rather than a
+rename. Alpha variants got `-rgb` triple tokens, since `rgba()` cannot reference a hex token
+and the variants must move with their base.
+
+**Only four tokens actually differ from dominant.** `--cta`, `--cta-hover`, `--warm` and
+`--teal-light` already match it exactly — the hub's divergence is narrower than the raw hex
+counts suggested.
+
+Declared on `:root` rather than `.mm-hub` because the sheet also carries unscoped rules
+(`.hub-card-grid`, `.hub-article-card`) styling native Webflow CMS lists *outside* the hub,
+which need the tokens too. Safe because neither hub page declares the `.mm-*` set — noted
+in the sheet, since `:root` is last-wins if that ever changes.
+
+Verified: **0 differing elements** on both pages at 1440/768/390, and `h1`, accent and
+border computed colours identical before and after. Snapshot kept at
+`tools/css-consolidation/resource-hub.tokenised.css`.
+
+### A verification near-miss
+
+The first post-publish check reported 0 differences — against a **stale CDN copy that did
+not yet contain the tokenised sheet**. It was comparing cached content with itself. Caught
+by asserting on a marker string from the new sheet before trusting the diff; the check now
+polls until the marker appears. A green diff against the wrong input is worse than a red one.
+
+### Still open before the widget migrates
+
+The brand set carries **semantic** state colours — `--mb-good #006078`, `--mb-warm #bf5247`
+and their soft tints — driving the widget's `.is-good` / `.is-warm` result panels. The
+dominant set has **no semantic colours**; `--accent` and `--cta` are brand colours, not
+states. Migrating the widget needs those added, or the good/warn distinction collapses.
+
+---
+
+## Change log — hub flipped to the dominant palette
+
+Both hub pages now render the dominant `.mm-*` colours. A four-value edit to one
+component, propagating to both instances.
+
+| Token | was | now |
+| --- | --- | --- |
+| `--navy` | `#002833` | `#1a2744` |
+| `--teal` | `#34abc7` | `#3ba5a8` |
+| `--text-light` | `#6b6872` | `#5a5a5a` |
+| `--border` | `#e3dee3` | `#e5e5e5` |
+| `--teal-pale` | `#e8f5f8` | `#e8f6f6` — collapsed into `--teal-light`, which it duplicated to within two units |
+
+`--cta`, `--cta-hover`, `--warm` and `--teal-light` already matched dominant.
+`--surface-alt` and `--warm-alt` are hub-specific neutrals with no dominant
+equivalent and were deliberately left alone.
+
+**Colour only, no geometry.** Element count and document height unchanged at all three
+viewports; every difference is a colour substitution:
+
+| change | elements |
+| --- | --- |
+| navy `#002833` → `#1a2744` | 33 |
+| teal `#34abc7` → `#3ba5a8` | 24 |
+| muted `#6b6872` → `#5a5a5a` | 18 |
+
+The live result reproduced the locally predicted figures **exactly** on both pages —
+predicted before publishing, then confirmed against staging rather than inspected
+after the fact.
+
+The tokenise-then-flip split is what made that possible: the refactor was provable at
+zero diff, so the flip's diff contains nothing but the intended change. A combined
+edit would have mixed the two and left nothing to check against.
+
+`resource-hub.tokenised.css` superseded by `resource-hub.dominant.css`.
+
+### The container was recycled mid-session
+
+The working tree reset to `75bd4eb` — the starting commit — and `/tmp` was cleared.
+Every commit survived on the remote, and `git reset --hard origin/<branch>` restored
+the checkout intact; `collision-check` and `rebase-shared` both still pass, the latter
+idempotently. Committing and pushing after each verified step is what made this a
+non-event rather than a lost session.
+
+### Remaining on the palette migration
+
+Four pages still on `.mb-*`: `insurance-terminology`, `financial-aid-resources`,
+`autism-screening-checklist`, `first-90-days-of-aba-therapy`. Blocked on one decision —
+the brand set carries **semantic** state colours (`--mb-good`, `--mb-warm` and soft
+tints) driving the widget's good/warning result panels, and the dominant set has no
+semantic colours at all. They need adding, or the distinction collapses.
+
+## Change log — Insurance Widget migrated to the dominant palette
+
+The semantic-colour question above is answered, and it turned out to be the smaller
+half of the problem.
+
+**The semantic pair maps cleanly.** `--mb-good` → `--teal-dark #2d8a8d`, `--mb-good-soft`
+→ `--teal-light #e8f6f6`, and the warning pair onto the red family. Good stays teal,
+warning stays red, so a parent can still tell "we accept your plan" from "let's check
+together" at a glance. No new semantic vocabulary was needed after all — dominant
+already had colours in both families, they just had decorative names.
+
+**The real problem was `--mb-primary` carrying two jobs.** The widget used one teal for
+button fills *and* for small accents. Dominant splits that work between two colours:
+teal for eyebrows, labels and icons; the CTA red for every button on the site. Mapping
+`--mb-primary` wholesale onto `--teal` would have put white text on `#3ba5a8` at
+**2.9:1** — the widget's main call to action, below AA. So `--mb-action` /
+`--mb-action-strong` were added (`--cta` / `--cta-hover`) and the four button rules moved
+onto them. The widget's buttons now match `.btn-primary` and `.btn-secondary` exactly,
+which is the point of the exercise.
+
+**Three contrast decisions, all measured:**
+
+| what | naive mapping | ratio | shipped instead | ratio |
+|---|---|---|---|---|
+| `.mb-hint` (14px body text) | `--accent #e8734a` | 3.0:1 ✗ | `--cta-hover #b34a40` | 5.3:1 ✓ |
+| selected chip label on `--teal-light` | `--teal-dark #2d8a8d` | 3.7:1 ✗ | `--navy #1a2744` | 13.4:1 ✓ |
+| `.mb-cta-secondary` label | `--teal-dark` | 3.7:1 ✗ | `--navy` | 13.4:1 ✓ |
+
+Today's `#bf5247` hint was 4.65:1, so the shipped value is also an improvement on what
+was there. `.mb-eyebrow` was deliberately left on `--teal` at 2.9:1: 12px uppercase
+letterspaced is exactly the `.section-label` / `.hero-eyebrow` role, and that ratio is
+what the other ten pages already ship. It is a site-wide issue to raise on its own
+terms, not something to fix on one widget and nowhere else.
+
+**Five colours had no token at all** — `#b6c9cd` hover borders (×3), `#95a7ac`
+placeholder, and the two result-panel border tints `#c2e0e4` / `#f2cfc8`. All five are
+tokens now. The panel borders have no dominant equivalent, so they are derived: the
+soft fill mixed 30% toward its base colour, the same weight the originals used.
+
+**Method.** `migrate-widget.mjs` applies 21 literal, anchored string substitutions
+against the live sheet, so anything not named in the map is byte-identical by
+construction. It reports a MISS for any rule that fails to match, and asserts no
+old-palette value survives outside a comment.
+
+**Verified.** Element count 77 → 77 and document height 10502 → 10502 unchanged at
+1440/768/390. Of the nine compared fields only `color` and `bg` differ — `dx`, `dy`,
+`w`, `h`, `cols`, `font` and `display` are identical everywhere. All twelve distinct
+colour transitions are in the map. On staging, both result panels were driven live and
+every measured colour matched prediction; the widget's JS paths (missing input, accepted
+plan, not-accepted-in-state) all still work.
+
+One edit covered both pages, because the widget is a component. Two of the four `.mb-*`
+pages are done; `autism-screening-checklist` and `first-90-days-of-aba-therapy` are not
+— they have their own `.mb-*` sheets, not this one.
+
+**Not done here:** `--mb-font` is still the system stack while the rest of the site is
+Manrope. That changes text metrics, not colours, and belongs in its own verified step.
+
+## Change log — the screener and the remaining brand sheets
+
+Three page-level sheets carry their own copy of the same twelve-token brand
+palette: the screener on `autism-screening-checklist` (21.8 kB, `.mb-scr`), and two
+on `first-90-days-of-aba-therapy` — a quick-intake widget (7.4 kB, `.mb-qi`) and a
+9.5 kB `.mb-iw` sheet. `migrate-mb-sheet.mjs` generalises the widget migration to
+all three: every rewrite is a regex with an exact expected hit count, and a
+mismatch is a hard failure rather than a warning, because a sheet that does not
+match the assumed shape must not be half-migrated in silence.
+
+**Two defects the first generated sheet carried, both mine.**
+
+The new tokens' comments quote the hexes they replace ("was hardcoded `#c2e0e4`"),
+and the rule pass ran *after* they were inserted — so it rewrote those hexes inside
+my own comments, producing `was hardcoded var(--mb-good-line)`. The fix is ordering:
+rule rewrites first, new tokens second, with a comment saying why.
+
+The second was live. `.mb-cta-secondary`'s label sets both `color` and
+`-webkit-text-fill-color`, and my substitution only caught `color`. On WebKit
+`-webkit-text-fill-color` wins, so the label would have rendered teal-dark in Safari
+and navy everywhere else — a browser-dependent split from one missed declaration.
+Both are fixed in the generator, not patched in the output.
+
+**One role the widget did not have.** `--mb-primary-strong` is the screener's link
+colour, used for `.mb-pathway a`, `.mb-aba a` and `.mb-callout`. Dominant's
+`--teal-dark` is 4.09:1 on white, short of AA for body text. Dominant has exactly two
+values that clear 4.5:1 and are not near-black: `--cta-hover #b34a40` (5.29:1) and
+`--navy` (14.8:1). Navy reads as ordinary text next to `--text #2c2c2c`, so links take
+`--mb-link: #b34a40`. Two roles that are buttons, not links — the secondary CTA label
+and the selected chip label — take navy instead, as they do on the widget.
+
+`.mb-steps li::before`, the numbered step circle, keeps `--teal` with white text.
+That is `.step-number-inner`'s exact role on the ten service pages, so it matches the
+site rather than diverging from it.
+
+**Verified.** autism: 30 → 30 elements, docHeight 9439 → 9439 (and unchanged at 768
+and 390); first-90: 115 → 115, docHeight 8410 → 8410. Only `color`, `bg` and `border`
+differ — no `dx`, `dy`, `w`, `h`, `cols`, `font` or `display` anywhere. (`border`
+tracks `color` on elements with no border set, because `border-color` defaults to
+`currentColor`.) On staging the screener was driven end to end — age band, eight
+checkboxes, submit — and every measured colour matched prediction: `.mb-go` #db5b4f,
+eyebrow #3ba5a8, step bold and selected chip #1a2744, warm panel #fef0eb with a
+#e8beb8 border, icon #b34a40, step circle #3ba5a8, `.mb-aba a` #b34a40.
+
+**Still on the old palette:** the printable summary sheet inside the screener's second
+embed — seven hardcoded hexes (`#18313a` ×1, `#5b6f76` ×3, `#dce7e9` ×3) built as a
+JavaScript string for a print window. It is a separate printed document, not part of
+the page render.
+
+## Palette migration — final state and the two remainders
+
+After publishing, a sweep of every consolidated page for the old brand palette
+(the twelve `--mb-*` values plus the five colours that were hardcoded):
+
+| page | old-palette values in live CSS |
+|---|---|
+| insurance-terminology | 0 |
+| financial-aid-resources | 0 |
+| services | 0 |
+| in-home-aba-therapy | 0 |
+| aba-therapy-in-new-jersey | 0 |
+| understanding-aba-therapy | 0 |
+| building-skills-independence | 0 |
+| autism-screening-checklist | 7 |
+| first-90-days-of-aba-therapy | 2 |
+
+The site is on one palette. Two remainders, both deliberate:
+
+**The screener's printable summary** (7 values). `#18313a` ×1, `#5b6f76` ×3,
+`#dce7e9` ×3, built as a JavaScript string inside a 38 kB embed for a separate
+print window. Against dominant these become `#2c2c2c`, `#5a5a5a` and `#e5e5e5` —
+differences that are imperceptible on paper. Changing them means hand-transcribing
+38 kB of working JavaScript through the API for no visual effect, and a
+transcription slip would break the print feature outright. Worth doing if the goal
+is that a grep for the old palette returns nothing; not worth doing for how the
+handout looks.
+
+**The guide modal's shell** on first-90-days (`rgba(24,49,58,.55)` scrim and a
+`#18313a` close button). It is not in either embed — it lives in the page's custom
+code, which the Data API does not expose. It needs a Designer edit:
+`rgba(26,39,68,.55)` for the scrim and `#2c2c2c` for the close button. The modal's
+`#f9f6f1` background is already dominant's `--warm`.
+
+**Also not colour, and not done:** all four `.mb-*` sheets still use the system font
+stack while the rest of the site is Manrope. That changes text metrics, so it is a
+separate step with its own verification — not something to fold into a colour pass.
+
+**Structural, for later:** first-90-days carries a third copy of the insurance
+widget, 96% identical to the component but with a 560px card instead of 1200px.
+Making it a component variant would delete ~28 kB of duplicated markup, styles and
+logic, and would mean a plan-list change stops needing two edits. It is a layout
+and component-API change, not a palette one.
+
+## Change log — colour drift across all 16 in-scope pages
+
+Auditing every colour literal in the embed stylesheets on all 16 pages against the
+dominant token set turned up 62 off-palette literals. Sorting them by *why* they
+are off-palette matters more than the count:
+
+**Not drift, left alone.** `#e6e2da` appears 10 times and only ever as `--rule` —
+a warm hairline that pairs with the warm backgrounds. Consistent use makes it an
+unnamed member of the palette, not a mistake; flattening it to `--border #e5e5e5`
+would put neutral hairlines on warm fills. Likewise `#002833` and `#34abc7`, which
+are fallbacks inside `var(--base-color-brand--blue-dark, …)`. Those embeds read
+Webflow's own Designer brand variables, a fourth colour system; overriding them
+from a stylesheet would fight the Designer rather than unify with it. Recognising
+these as deliberate removed five embed rewrites, 91 kB, from the work.
+
+**The finding that mattered:** three different button-hover reds were live for the
+same button role — `#b34a40` on the six service pages and all four migrated
+widgets, `#c64d42` on the state pages and two resource pages, `#c45045` on
+services. No page shows two of them side by side, which is exactly why nobody
+would catch it by eye.
+
+**Applied so far:** the three state pages. All 22 of their button hovers now use
+`#b34a40`. Site-wide, 13 of 16 pages carry only that value.
+
+**Method.** Webflow renders an HtmlEmbed verbatim inside `div.w-embed`, so each
+embed's code can be reconstructed from the rendered page. That let me build every
+corrected embed offline and verify it is byte-identical to the live code apart from
+the colour — lengths match exactly — instead of reading each one back first. Batching
+several embeds into one settings read is deliberate too: an oversized tool result is
+written to a file, so the matching happens on disk rather than in context.
+
+**Remaining:** `services` (`#c45045` ×4 plus `#eef0f4`), `insurance-terminology`
+(`#c64d42` ×4), `financial-aid-resources` (`#c64d42` ×8 plus `#fdebe2`), and the
+shared Service Page Styles component (`#f8f6f1`, one unit off `--warm`, invisible).
+All are derived and staged as ready-to-paste files under
+`tools/css-consolidation/drift/`, each with its element mapping in the README.
+
+**Held for a decision:** `#ff8c5a` on `.placeholder-note`, six service pages. Moving
+it to `--accent #e8734a` is a visible change, so it is a call rather than a sweep.
+
+### Colour-drift convergence: complete
+
+The remaining work in the section above is applied. `services` (`#c45045` ×4 plus
+`#eef0f4`), `financial-aid-resources` (`#c64d42` ×8 plus `#fdebe2`) and the shared
+Service Page Styles component (`#f8f6f1`) are converged, closing out the run that
+had already taken the three state pages and `insurance-terminology`.
+
+Financial-aid's four element ids were unresolved at handoff and were recovered with
+the documented method: one batched settings read for all four embeds, deliberately
+oversized so the result was written to a file, then matched offline against the
+`.orig.html` copies with `match.py`. All four matched exactly, and the per-embed red
+counts reconciled to the eight seen on the rendered page.
+
+**Verification.** Swept all 586 pages in the staging sitemap, not just the 16 in
+scope: zero occurrences of `#c64d42`, `#c45045`, `#f8f6f1`, `#fdebe2` or `#eef0f4`.
+One button-hover red site-wide, `#b34a40`. Each corrected embed was then checked
+byte-for-byte against its authoritative `.fixed.html` on the rendered page, polling
+for a marker first so the comparison could not run against cached content. The
+component was verified on all six service pages it feeds.
+
+**A correction worth recording.** The first write of the two large financial-aid
+embeds was not byte-identical: the `─` runs padding the section-separator comments
+were transcribed a few characters short, and in one case one character long. No
+selector, hex value or word of copy differed — the divergence was confined to HTML
+comments and invisible in rendering — but it broke the byte-identity invariant this
+workstream relies on, and would have made a future `embeds.py` rebuild disagree with
+the files on disk for no discoverable reason. Corrected by measuring the exact run
+lengths, verifying the candidate lines against the authoritative file offline before
+spending a write, and re-applying. The lesson generalises: when a payload has to be
+reproduced by hand rather than piped, verify the reproduction against the source
+before sending it, not only after.
+
+**Held, unchanged, and confirmed still present:** `#ff8c5a` on `.placeholder-note`
+(six service pages) still needs a decision rather than a sweep; `#e6e2da` as `--rule`
+remains the warm hairline; `#f7f6f5` / `#fbf9f9` remain the two resource-hub tokens.
+
+**Publishing.** Staging only, throughout. The custom domains were never published;
+a sweep of the production sitemap mid-run still showed the old values, which is the
+expected and intended state until that decision is made.

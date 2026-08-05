@@ -1,0 +1,181 @@
+<div class="mm-embed mm-t1">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
+    .mm-embed { box-sizing: border-box; }
+    .mm-embed *, .mm-embed *::before, .mm-embed *::after { box-sizing: inherit; }
+
+    .mm-embed {
+      --navy:     #1a2744;
+      --teal:     #3ba5a8;
+      --teal-pale:#e8f6f6;
+      --warm:     #f9f6f1;
+      --cta:      #db5b4f;
+      --text:     #2c2c2c;
+      --soft:     #5a5a5a;
+      --rule:     #e6e2da;
+      --font-body: 'Manrope', system-ui, -apple-system, sans-serif;
+    }
+    .mm-t1 { font-family: var(--font-body, 'Manrope', sans-serif); color: var(--text, #2c2c2c); }
+
+    .mm-hero {
+      background: radial-gradient(ellipse at 80% 0%, rgba(59,165,168,0.15) 0%, transparent 55%),
+                  linear-gradient(180deg, var(--warm, #f9f6f1) 0%, #fff 100%);
+      padding: clamp(36px, 5vw, 64px) clamp(20px, 5vw, 48px) clamp(28px, 4vw, 48px);
+    }
+    .mm-hero__inner { max-width: 900px; margin: 0 auto; }
+    .mm-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--teal, #3ba5a8); margin-bottom: 28px;
+    }
+    .mm-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--teal, #3ba5a8); }
+    .mm-t1 h1 {
+      font-family: var(--font-body); font-weight: 600;
+      font-size: clamp(32px, 5vw, 52px); line-height: 1.08; letter-spacing: -0.015em;
+      color: var(--navy, #1a2744); margin: 0 0 28px 0;
+    }
+    .mm-hero__intro { font-size: clamp(16px, 1.5vw, 20px); line-height: 1.65; color: var(--soft, #5a5a5a); max-width: 62ch; margin: 0 0 36px 0; }
+    .mm-hero__intro p { margin: 0 0 1.1em 0; }
+    .mm-hero__intro p:last-child { margin-bottom: 0; }
+    .mm-hero__intro a, .mm-rt a {
+      color: var(--navy, #1a2744); text-decoration: underline;
+      text-decoration-color: var(--teal, #3ba5a8); text-underline-offset: 3px; text-decoration-thickness: 2px;
+    }
+    .mm-cta-row { display: flex; flex-wrap: wrap; gap: 14px; }
+    .mm-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 16px 28px; font-family: var(--font-body); font-size: 15px; font-weight: 600;
+      letter-spacing: 0.01em; border-radius: 999px; border: 2px solid transparent;
+      text-decoration: none; cursor: pointer;
+      transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+    .mm-btn--primary { background: var(--cta, #db5b4f); color: #fff; border-color: var(--cta, #db5b4f); }
+    .mm-btn--primary:hover { background: #b34a40; border-color: #b34a40; transform: translateY(-1px); }
+    .mm-btn--secondary { background: transparent; color: var(--navy, #1a2744); border-color: var(--cta, #db5b4f); }
+    .mm-btn--secondary:hover { background: var(--cta, #db5b4f); color: #fff; border-color: var(--cta, #db5b4f); }
+
+    .mm-section { padding: clamp(48px, 7vw, 88px) clamp(20px, 5vw, 48px); }
+    .mm-section--warm { background: var(--warm, #f9f6f1); }
+    .mm-section__inner { max-width: 900px; margin: 0 auto; }
+    .mm-h2 {
+      font-family: var(--font-body); font-weight: 600;
+      font-size: clamp(26px, 3.6vw, 40px); line-height: 1.15; letter-spacing: -0.01em;
+      color: var(--navy, #1a2744); margin: 0 0 28px 0;
+    }
+    .mm-h3 { font-family: var(--font-body); font-weight: 600; font-size: 20px; line-height: 1.3; color: var(--navy, #1a2744); margin: 1.8em 0 0.4em 0; }
+    .mm-rt { font-size: 17px; line-height: 1.7; color: var(--text, #2c2c2c); }
+    .mm-rt p { margin: 0 0 1.1em 0; }
+    .mm-rt p:last-child { margin-bottom: 0; }
+    .mm-rt strong { color: var(--navy, #1a2744); font-weight: 600; }
+
+    .mm-rt table {
+      width: 100%; border-collapse: collapse; margin: 24px 0;
+      font-size: 15px; background: #fff; border-radius: 12px; overflow: hidden;
+      box-shadow: 0 1px 0 var(--rule, #e6e2da), 0 12px 40px rgba(26,39,68,0.04);
+    }
+    .mm-rt tbody tr { border-bottom: 1px solid var(--rule, #e6e2da); }
+    .mm-rt tbody tr:last-child { border-bottom: none; }
+    .mm-rt tbody tr:first-child { background: var(--navy, #1a2744); color: #fff; }
+    .mm-rt tbody tr:first-child strong { color: #fff; }
+    .mm-rt td { padding: 14px 18px; text-align: left; vertical-align: top; line-height: 1.55; }
+    .mm-rt tbody td:first-child { width: 30%; }
+    @media (max-width: 600px) { .mm-rt tbody td:first-child { width: 40%; } }
+
+    .mm-faq .mm-h3 { margin-top: 1.4em; }
+    .mm-cta-close { background: #f9f6f1; text-align: center; }
+    .mm-cta-close .mm-h2 { margin-bottom: 16px; }
+    .mm-cta-close .mm-cta-row { justify-content: center; margin-top: 28px; }
+  </style>
+
+  <section class="mm-hero">
+    <div class="mm-hero__inner">
+      <span class="mm-eyebrow">In-Home ABA in North Carolina</span>
+      <h1>Parent Training in North Carolina</h1>
+      <div class="mm-hero__intro">
+        <p>A child with autism in North Carolina can have a long list of professionals: a CDSA service coordinator in the early years, a school team, a BCBA, a care manager at your health plan. Every one of them eventually hands the moment back to you. Bedtime is yours. The grocery store is yours. The morning routine is yours.</p>
+        <p><a href="/parent-training">Parent training</a> in ABA exists for exactly that reason. It is hands-on coaching, in your home, that teaches you the same evidence-based strategies your child's team uses, so progress made in sessions does not evaporate when the session ends.</p>
+        <p>Mastermind Behavior provides in-home ABA therapy, with parent training built into the model, for families across North Carolina.</p>
+      </div>
+      <div class="mm-cta-row">
+        <a href="/contact" class="mm-btn mm-btn--primary">Schedule a free consultation</a>
+        <a href="tel:732.813.7333" class="mm-btn mm-btn--secondary">Call 732.813.7333</a>
+      </div>
+    </div>
+  </section>
+  <section class="mm-section mm-section--warm">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">Where parent training fits in North Carolina's system</h2>
+      <div class="mm-rt">
+        <p>North Carolina surrounds a child with autism with systems: the Infant-Toddler Program before three, the school district and IEP after, and Medicaid plans managed through LME/MCOs, Tailored Plans, or Standard Plans. Each has its own professionals, paperwork, and timeline.</p>
+        <p>You are the one constant in all of them, and that is leverage, not just load: the person present for every routine, every transition, and every hard moment is also the person best positioned to change them. Parent training turns that position into practical skill.</p>
+        <p>It is also, in most cases, part of your child's covered care rather than an extra. When parent training is written into your child's ABA treatment plan, it is typically delivered and billed as part of ABA therapy itself, which North Carolina's mandate requires state-regulated plans to cover and NC Medicaid covers for children under 21.</p>
+      </div>
+    </div>
+  </section>
+  <section class="mm-section">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">Coverage in North Carolina</h2>
+      <div class="mm-rt">
+        <p>Parent training rarely appears as its own line in a policy. It travels inside ABA coverage, so the question that matters is whether ABA is covered, and in North Carolina the answer is usually yes. The full detail lives on our <a href="/aba-therapy-in-north-carolina">North Carolina ABA therapy page</a>.</p>
+        <table>
+          <tbody>
+            <tr><td><strong>Coverage element</strong></td><td><strong>North Carolina detail</strong></td></tr>
+            <tr><td><strong>State mandate</strong></td><td>SB 676, codified at G.S. § 58-3-192 — enacted October 15, 2015, effective July 1, 2016</td></tr>
+            <tr><td><strong>Coverage</strong></td><td>Adaptive behavior treatment for autism spectrum disorder, including ABA</td></tr>
+            <tr><td><strong>NC Medicaid (children)</strong></td><td>Covers ABA as RB-BHT (Research-Based Behavioral Health Treatment) for children under 21 via EPSDT, delivered through the LME/MCO, Tailored Plan, or Standard Health Plan you're enrolled in</td></tr>
+            <tr><td><strong>LME/MCOs</strong></td><td>Alliance Health, Trillium Health Resources, Vaya Health, Partners Health Management</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <section class="mm-section mm-section--warm">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">How the coaching works</h2>
+      <div class="mm-rt">
+        <p>The method is Behavioral Skills Training, which is the opposite of a parenting lecture. Your BCBA explains a strategy, models it inside the routine where you need it, then coaches while you practice it yourself. Feedback lands in the moment, at the kitchen table or the front door, not in a debrief a week later.</p>
+        <p>The strategies come from your child's own program: reinforcement that actually works for your child, antecedent strategies that head off hard moments, prompting, structured routines, visual supports, and simple ways to track whether things are improving.</p>
+        <p>Coaching is provided by your child's BCBA, the person who designs the program and knows the data, and it happens during your real routines rather than a staged version of them.</p>
+        <p>Parent training rarely stands alone. North Carolina families pair it with <a href="/early-intervention-north-carolina">early intervention</a> in the youngest years, <a href="/behavior-support-north-carolina">behavior support</a> when specific behaviors press hardest, and <a href="/transition-planning-north-carolina">transition planning</a> as the teen years arrive.</p>
+        <p>We serve families across North Carolina; our <a href="/aba-therapy-in-north-carolina">North Carolina page</a> lists every community.</p>
+      </div>
+    </div>
+  </section>
+  <section class="mm-section">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">Where we serve</h2>
+      <div class="mm-rt">
+        <p><strong>In-home means your home.</strong> We provide parent training and in-home ABA across North Carolina, including <a href="/areas-we-serve/charlotte">Charlotte</a>, <a href="/areas-we-serve/raleigh">Raleigh</a>, <a href="/areas-we-serve/greensboro-nc">Greensboro</a>, <a href="/areas-we-serve/durham">Durham</a>, <a href="/areas-we-serve/winston-salem">Winston-Salem</a>, <a href="/areas-we-serve/fayetteville-nc">Fayetteville</a>, <a href="/areas-we-serve/cary">Cary</a>, <a href="/areas-we-serve/wilmington">Wilmington</a>, <a href="/areas-we-serve/concord">Concord</a>, <a href="/areas-we-serve/jacksonville">Jacksonville</a>, <a href="/areas-we-serve/asheville">Asheville</a>, and <a href="/areas-we-serve/gastonia">Gastonia</a>. See every community we serve on our <a href="/aba-therapy-in-north-carolina">North Carolina page</a>.</p>
+      </div>
+    </div>
+  </section>
+  <section class="mm-section mm-section--warm mm-faq">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">Questions families ask</h2>
+      <div class="mm-rt">
+        <h3 class="mm-h3">Is parent training covered by insurance in North Carolina?</h3>
+        <p>When it is part of your child's ABA treatment plan, it is typically covered as part of ABA therapy. North Carolina's mandate requires state-regulated plans to cover adaptive behavior treatment, and NC Medicaid covers ABA for children under 21. We check your specific plan with you before starting.</p>
+        <h3 class="mm-h3">Do both parents have to participate?</h3>
+        <p>We coach the people who are actually in the routines. For some families that is one parent. For others it is both, a grandparent, or another caregiver. The goal is consistency across the adults your child spends time with.</p>
+        <h3 class="mm-h3">Is this a class?</h3>
+        <p>No. There is no curriculum binder and no classroom. It is one-to-one coaching in your own home, during your own routines, on the specific situations you face.</p>
+        <h3 class="mm-h3">My child already receives ABA. Why add this?</h3>
+        <p>Because your child's week has far more hours in it than any therapy schedule. When the adults at home use the same prompts, reinforcement, and structured routines as the session team, skills generalize instead of staying locked to sessions.</p>
+        <h3 class="mm-h3">What if a strategy does not work for us?</h3>
+        <p>That is information, not failure. Your BCBA adjusts the plan based on what the data and your experience show. The program serves your family, not the other way around.</p>
+        <h3 class="mm-h3">How soon can we start?</h3>
+        <p>There is no onboarding waitlist. Assessment takes about four weeks.</p>
+      </div>
+    </div>
+  </section>
+  <section class="mm-section mm-cta-close">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">Therapy doesn't end when the session does</h2>
+      <div class="mm-cta-row">
+        <a href="/contact" class="mm-btn mm-btn--primary">Schedule a free consultation</a>
+        <a href="tel:732.813.7333" class="mm-btn mm-btn--secondary">Call 732.813.7333</a>
+      </div>
+    </div>
+  </section>
+</div>

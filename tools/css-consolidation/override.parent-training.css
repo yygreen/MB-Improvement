@@ -11,10 +11,8 @@
   .mm-embed .right-grid-left h2 { margin-bottom: 28px; }
 @media (max-width: 768px) {
   .mm-embed .why-early-grid { grid-template-columns: 1fr; gap: 40px; }
-  .right-grid { grid-template-columns: 1fr; gap: 40px; }
-  .approach-grid { grid-template-columns: 1fr 1fr; }
+  .mm-embed .right-grid { grid-template-columns: 1fr; gap: 40px; }
 }
 @media (max-width: 480px) {
-  .icon-grid { grid-template-columns: 1fr; }
-  .approach-grid { grid-template-columns: 1fr; }
+  .mm-embed .icon-grid { grid-template-columns: 1fr; }
 }
