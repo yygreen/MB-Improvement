@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tier 1 nav-pathway blocks — staged state review</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: 'Manrope', system-ui, sans-serif; color: #2c2c2c; background: #edeae4; }
+  .frame { max-width: 1100px; margin: 32px auto 64px; padding: 0 16px; }
+  h1 { font-size: 22px; color: #1a2744; margin: 0 0 6px; }
+  .intro { font-size: 14px; color: #6d685c; margin: 0 0 28px; max-width: 76ch; line-height: 1.6; }
+  .label { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #8a8578; margin: 36px 4px 10px; line-height: 1.7; }
+  .page { background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 14px 44px rgba(26,39,68,0.10); }
+  /* site-navy section, as rendered by the shared stylesheet */
+  .section-navy { background: #1a2744; padding: clamp(48px, 6vw, 80px) clamp(20px, 5vw, 48px); }
+  .section-navy .container { max-width: 1100px; margin: 0 auto; }
+  .areas-header { text-align: center; margin-bottom: 36px; }
+  .section-navy .section-label { font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8fa0bd; margin: 0 0 14px; }
+  .section-navy h2 { font-weight: 700; font-size: clamp(28px, 3.6vw, 40px); color: #fff; margin: 0 0 14px; }
+  .section-navy .section-subtitle { font-size: 16px; line-height: 1.65; color: #b9c3d6; max-width: 60ch; margin: 0 auto; }
+  .areas-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-top: 8px; }
+  .area-card { display: block; background: #232f4e; border: 1px solid #33405f; border-radius: 12px; padding: 34px 22px; text-align: center; text-decoration: none; transition: border-color .15s ease, transform .15s ease; }
+  .area-card:hover { border-color: #3ba5a8; transform: translateY(-2px); }
+  .area-card h3 { font-size: 20px; font-weight: 700; color: #fff; margin: 0 0 10px; }
+  .area-card p { font-size: 14px; color: #aab4c8; margin: 0 0 14px; }
+  .area-link { font-size: 14px; font-weight: 600; color: #5fc6c9; }
+</style>
+</head>
+<body>
+<div class="frame">
+<h1>Tier 1 nav-pathway blocks — what is staged right now</h1>
+<p class="intro">Live on the staging subdomain only (production untouched), 2026-08-05. Every link below points at the staging site, so the cards are clickable. The four service pages reuse their existing "Find Your Local Team" section with retargeted cards; the two services without state pages keep a small strip under the hero; the three state hubs carry the approved four-card services block under the hero.</p>
+<div class="label">/early-intervention — existing "Find Your Local Team" section, cards retargeted to the Early Intervention state pages (lower page position, above the closing CTA)</div>
+<div class="page"><section class="section section-navy">
+  <div class="container">
+    <div class="areas-header">
+      <div class="section-label">Where we are</div>
+      <h2>Find Your Local Team</h2>
+      <p class="section-subtitle">We specialize in early intervention for families across New Jersey, Georgia, and North Carolina.</p>
+    </div>
+    <div class="areas-grid">
+      <a href="https://mastermindbehavior.webflow.io/early-intervention-new-jersey" class="area-card">
+        <h3>New Jersey</h3>
+        <p>Serving families statewide</p>
+        <span class="area-link">Early Intervention in New Jersey →</span>
+      </a>
+      <a href="https://mastermindbehavior.webflow.io/early-intervention-georgia" class="area-card">
+        <h3>Georgia</h3>
+        <p>Serving families statewide</p>
+        <span class="area-link">Early Intervention in Georgia →</span>
+      </a>
+      <a href="https://mastermindbehavior.webflow.io/early-intervention-north-carolina" class="area-card">
+        <h3>North Carolina</h3>
+        <p>Serving families statewide</p>
+        <span class="area-link">Early Intervention in North Carolina →</span>
+      </a>
+    </div>
+  </div>
+</section></div>
+<div class="label">/parent-training — existing "Find Your Local Team" section, cards retargeted to the Parent Training state pages (lower page position, above the closing CTA)</div>
+<div class="page"><section class="section section-navy">
+  <div class="container">
+    <div class="areas-header">
+      <div class="section-label">Where we are</div>
+      <h2>Find Your Local Team</h2>
+      <p class="section-subtitle">BCBA-led parent coaching for families across New Jersey, Georgia, and North Carolina.</p>
+    </div>
+    <div class="areas-grid">
+      <a href="https://mastermindbehavior.webflow.io/parent-training-new-jersey" class="area-card">
+        <h3>New Jersey</h3>
+        <p>Serving families statewide</p>
+        <span class="area-link">Parent Training in New Jersey →</span>
+      </a>
+      <a href="https://mastermindbehavior.webflow.io/parent-training-georgia" class="area-card">
+        <h3>Georgia</h3>
+        <p>Serving families statewide</p>
+        <span class="area-link">Parent Training in Georgia →</span>
+      </a>
+      <a href="https://mastermindbehavior.webflow.io/parent-training-north-carolina" class="area-card">
+        <h3>North Carolina</h3>
+        <p>Serving families statewide</p>
+        <span class="area-link">Parent Training in North Carolina →</span>
+      </a>
+    </div>
+  </div>
+</section></div>
+<div class="label">/behavior-support — existing "Find Your Local Team" section, cards retargeted to the Behavior Support state pages (lower page position, above the closing CTA)</div>
+<div class="page"><section class="section section-navy">
+  <div class="container">
+    <div class="areas-header">
+      <div class="section-label">Where we are</div>
+      <h2>Find Your Local Team</h2>
+      <p class="section-subtitle">We deliver behavior support in your home across New Jersey, Georgia, and North Carolina.</p>
+    </div>
+    <div class="areas-grid">
+      <a href="https://mastermindbehavior.webflow.io/behavior-support-new-jersey" class="area-card">
+        <h3>New Jersey</h3>
+        <p>Serving families statewide</p>
+        <span class="area-link">Behavior Support in New Jersey →</span>
+      </a>
+      <a href="https://mastermindbehavior.webflow.io/behavior-support-georgia" class="area-card">
+        <h3>Georgia</h3>
+        <p>Serving families statewide</p>
+        <span class="area-link">Behavior Support in Georgia →</span>
+      </a>
+      <a href="https://mastermindbehavior.webflow.io/behavior-support-north-carolina" class="area-card">
+        <h3>North Carolina</h3>
+        <p>Serving families statewide</p>
+        <span class="area-link">Behavior Support in North Carolina →</span>
+      </a>
+    </div>
+  </div>
+</section></div>
+<div class="label">/transition-planning — existing "Find Your Local Team" section, cards retargeted to the Transition Planning state pages (lower page position, above the closing CTA)</div>
+<div class="page"><section class="section section-navy">
+  <div class="container">
+    <div class="areas-header">
+      <div class="section-label">Where we are</div>
+      <h2>Find Your Local Team</h2>
+      <p class="section-subtitle">We support school transitions and independence planning for families across New Jersey, Georgia, and North Carolina.</p>
+    </div>
+    <div class="areas-grid">
+      <a href="https://mastermindbehavior.webflow.io/transition-planning-new-jersey" class="area-card">
+        <h3>New Jersey</h3>
+        <p>Serving families statewide</p>
+        <span class="area-link">Transition Planning in New Jersey →</span>
+      </a>
+      <a href="https://mastermindbehavior.webflow.io/transition-planning-georgia" class="area-card">
+        <h3>Georgia</h3>
+        <p>Serving families statewide</p>
+        <span class="area-link">Transition Planning in Georgia →</span>
+      </a>
+      <a href="https://mastermindbehavior.webflow.io/transition-planning-north-carolina" class="area-card">
+        <h3>North Carolina</h3>
+        <p>Serving families statewide</p>
+        <span class="area-link">Transition Planning in North Carolina →</span>
+      </a>
+    </div>
+  </div>
+</section></div>
+<div class="label">/in-home-aba-therapy and /skill-development — "Available in:" strip directly under the hero, linking the three state hubs (keep-or-drop call still open)</div>
+<div class="page"><style>
+  .mm-availin { background: #f9f6f1; border-top: 1px solid #e6e2da; padding: 28px clamp(20px, 5vw, 48px); font-family: 'Manrope', system-ui, sans-serif; }
+  .mm-availin__inner { max-width: 900px; margin: 0 auto; display: flex; align-items: center; flex-wrap: wrap; gap: 12px 18px; }
+  .mm-availin__label { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #8a8578; }
+  .mm-availin nav { display: flex; flex-wrap: wrap; gap: 10px; }
+  .mm-availin a { display: inline-flex; align-items: center; gap: 8px; background: #fff; border: 1px solid #e6e2da; border-radius: 10px; padding: 10px 14px; text-decoration: none; font-size: 14px; font-weight: 600; color: #1a2744; transition: border-color .15s ease, transform .15s ease, box-shadow .15s ease; }
+  .mm-availin a::after { content: '\2192'; color: #3ba5a8; font-weight: 700; }
+  .mm-availin a:hover { border-color: #3ba5a8; transform: translateY(-1px); box-shadow: 0 6px 18px rgba(26,39,68,0.07); }
+</style>
+<section class="mm-availin">
+  <div class="mm-availin__inner">
+    <span class="mm-availin__label">Available in:</span>
+    <nav aria-label="In-home ABA by state">
+      <a href="https://mastermindbehavior.webflow.io/aba-therapy-in-new-jersey">New Jersey</a>
+      <a href="https://mastermindbehavior.webflow.io/aba-therapy-in-georgia">Georgia</a>
+      <a href="https://mastermindbehavior.webflow.io/aba-therapy-in-north-carolina">North Carolina</a>
+    </nav>
+  </div>
+</section>
+</div>
+<div class="label">/aba-therapy-in-new-jersey — four-service block directly under the hub hero</div>
+<div class="page"><style>
+  .mm-svc { background: #f9f6f1; border-top: 1px solid #e6e2da; padding: clamp(36px, 5vw, 56px) clamp(20px, 5vw, 48px); font-family: 'Manrope', system-ui, sans-serif; }
+  .mm-svc__inner { max-width: 900px; margin: 0 auto; }
+  .mm-svc h2 { font-weight: 600; font-size: clamp(22px, 3vw, 30px); line-height: 1.15; letter-spacing: -0.01em; color: #1a2744; margin: 0 0 10px; }
+  .mm-svc .mm-svc__lede { font-size: 16px; line-height: 1.6; color: #5a5a5a; margin: 0 0 22px; max-width: 62ch; }
+  .mm-svc nav { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+  .mm-svc a { display: flex; align-items: center; justify-content: space-between; gap: 10px; background: #fff; border: 1px solid #e6e2da; border-radius: 12px; padding: 16px 18px; text-decoration: none; font-size: 15px; font-weight: 600; color: #1a2744; transition: border-color .15s ease, transform .15s ease, box-shadow .15s ease; }
+  .mm-svc a::after { content: '\2192'; color: #3ba5a8; font-weight: 700; }
+  .mm-svc a:hover { border-color: #3ba5a8; transform: translateY(-1px); box-shadow: 0 6px 18px rgba(26,39,68,0.07); }
+</style>
+<section class="mm-svc">
+  <div class="mm-svc__inner">
+    <h2>ABA services in New Jersey</h2>
+    <p class="mm-svc__lede">All four are delivered in your home by a BCBA-led team, anywhere we serve in New Jersey.</p>
+    <nav aria-label="ABA services">
+        <a href="https://mastermindbehavior.webflow.io/early-intervention-new-jersey">Early Intervention</a>
+        <a href="https://mastermindbehavior.webflow.io/parent-training-new-jersey">Parent Training</a>
+        <a href="https://mastermindbehavior.webflow.io/behavior-support-new-jersey">Behavior Support</a>
+        <a href="https://mastermindbehavior.webflow.io/transition-planning-new-jersey">Transition Planning</a>
+    </nav>
+  </div>
+</section>
+</div>
+<div class="label">/aba-therapy-in-georgia — four-service block directly under the hub hero</div>
+<div class="page"><style>
+  .mm-svc { background: #f9f6f1; border-top: 1px solid #e6e2da; padding: clamp(36px, 5vw, 56px) clamp(20px, 5vw, 48px); font-family: 'Manrope', system-ui, sans-serif; }
+  .mm-svc__inner { max-width: 900px; margin: 0 auto; }
+  .mm-svc h2 { font-weight: 600; font-size: clamp(22px, 3vw, 30px); line-height: 1.15; letter-spacing: -0.01em; color: #1a2744; margin: 0 0 10px; }
+  .mm-svc .mm-svc__lede { font-size: 16px; line-height: 1.6; color: #5a5a5a; margin: 0 0 22px; max-width: 62ch; }
+  .mm-svc nav { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+  .mm-svc a { display: flex; align-items: center; justify-content: space-between; gap: 10px; background: #fff; border: 1px solid #e6e2da; border-radius: 12px; padding: 16px 18px; text-decoration: none; font-size: 15px; font-weight: 600; color: #1a2744; transition: border-color .15s ease, transform .15s ease, box-shadow .15s ease; }
+  .mm-svc a::after { content: '\2192'; color: #3ba5a8; font-weight: 700; }
+  .mm-svc a:hover { border-color: #3ba5a8; transform: translateY(-1px); box-shadow: 0 6px 18px rgba(26,39,68,0.07); }
+</style>
+<section class="mm-svc">
+  <div class="mm-svc__inner">
+    <h2>ABA services in Georgia</h2>
+    <p class="mm-svc__lede">All four are delivered in your home by a BCBA-led team, anywhere we serve in Georgia.</p>
+    <nav aria-label="ABA services">
+        <a href="https://mastermindbehavior.webflow.io/early-intervention-georgia">Early Intervention</a>
+        <a href="https://mastermindbehavior.webflow.io/parent-training-georgia">Parent Training</a>
+        <a href="https://mastermindbehavior.webflow.io/behavior-support-georgia">Behavior Support</a>
+        <a href="https://mastermindbehavior.webflow.io/transition-planning-georgia">Transition Planning</a>
+    </nav>
+  </div>
+</section>
+</div>
+<div class="label">/aba-therapy-in-north-carolina — four-service block directly under the hub hero</div>
+<div class="page"><style>
+  .mm-svc { background: #f9f6f1; border-top: 1px solid #e6e2da; padding: clamp(36px, 5vw, 56px) clamp(20px, 5vw, 48px); font-family: 'Manrope', system-ui, sans-serif; }
+  .mm-svc__inner { max-width: 900px; margin: 0 auto; }
+  .mm-svc h2 { font-weight: 600; font-size: clamp(22px, 3vw, 30px); line-height: 1.15; letter-spacing: -0.01em; color: #1a2744; margin: 0 0 10px; }
+  .mm-svc .mm-svc__lede { font-size: 16px; line-height: 1.6; color: #5a5a5a; margin: 0 0 22px; max-width: 62ch; }
+  .mm-svc nav { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+  .mm-svc a { display: flex; align-items: center; justify-content: space-between; gap: 10px; background: #fff; border: 1px solid #e6e2da; border-radius: 12px; padding: 16px 18px; text-decoration: none; font-size: 15px; font-weight: 600; color: #1a2744; transition: border-color .15s ease, transform .15s ease, box-shadow .15s ease; }
+  .mm-svc a::after { content: '\2192'; color: #3ba5a8; font-weight: 700; }
+  .mm-svc a:hover { border-color: #3ba5a8; transform: translateY(-1px); box-shadow: 0 6px 18px rgba(26,39,68,0.07); }
+</style>
+<section class="mm-svc">
+  <div class="mm-svc__inner">
+    <h2>ABA services in North Carolina</h2>
+    <p class="mm-svc__lede">All four are delivered in your home by a BCBA-led team, anywhere we serve in North Carolina.</p>
+    <nav aria-label="ABA services">
+        <a href="https://mastermindbehavior.webflow.io/early-intervention-north-carolina">Early Intervention</a>
+        <a href="https://mastermindbehavior.webflow.io/parent-training-north-carolina">Parent Training</a>
+        <a href="https://mastermindbehavior.webflow.io/behavior-support-north-carolina">Behavior Support</a>
+        <a href="https://mastermindbehavior.webflow.io/transition-planning-north-carolina">Transition Planning</a>
+    </nav>
+  </div>
+</section>
+</div>
+</div>
+</body>
+</html>
