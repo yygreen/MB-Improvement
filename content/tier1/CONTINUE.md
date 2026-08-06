@@ -127,6 +127,16 @@ the same publish — that part is fine and intended.
   columns; domain rankings via `resource_organic` with display_filter.
   phrase_organic returns NOTHING FOUND for low-volume state phrases.
 - After any publish, poll the newest page for 200 before trusting diffs.
+- /services does NOT load the shared "Service Page Styles" component; every
+  other service page does. It carries a standalone copy of an older sheet, so
+  "delete the local rule and let the shared one take over" is the WRONG fix
+  there — it converges by value instead. See BUILD-RECORD-HERO-DRIFT.md.
+- `tools/css-consolidation/rebase-shared.mjs` rebases onto a PRE-convergence
+  snapshot of in-home-aba-therapy, so a run would have reverted the whole
+  2026-08-04 hero convergence. It now refuses to run (exit 2) while the
+  reference is stale. Re-snapshot the reference before rebasing again.
+- The repo mirror of the shared sheet goes stale whenever the Designer is
+  edited. Refresh it with `tools/tier1/sync-shared-from-live.py --apply`.
 - GSC MCP may be unavailable; cannibalization checks so far are
   Semrush-only — carry that flag in records.
 
