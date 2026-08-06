@@ -108,3 +108,33 @@ less. Do not let a production publish happen before Taylor sign-off.
 2. Everything already listed in CONTINUE.md: Taylor sign-off, sign-off
    cleanup (edits, FAQPage schema, OG images, sitemap inclusion),
    BACKFILL 992 typed confirmation, IEP-sentence client email.
+
+## Navigation and footer added to the 12 state pages (2026-08-05)
+
+Found while answering "can you include the navigation and the footer on
+those 12 pages": the Tier 1 pages had NEITHER. Each page body contained a
+single HtmlEmbed and nothing else - no nav, no footer, no Global Styles.
+They rendered as bare content documents at ~26KB.
+
+Fix: three component instances added per page via
+data_component_tool > insert_component_instance, in the order every other
+page on the site uses:
+
+  Global Styles  d36a88a9-0b45-2553-76ef-3200b3336cad   (before the embed)
+  navigation     c29251c3-4c95-fee7-6218-95199d7ddce2   (before the embed)
+  [page embed, untouched]
+  footer         39e67c04-e408-f054-1a24-d4728ad220c8   (after the embed)
+
+Verified on all 12 after the staging publish: navbar_wrapper present,
+footer_link present, still exactly one h1, pages now ~43KB. verify-staged
+(embeds byte-verbatim, titles, metas, Service JSON-LD, link 200s),
+verify-linkblocks and link-audit all still pass.
+
+Notes:
+- The embed content itself was not touched, so the banked embeds and the
+  byte-verbatim checks are unaffected.
+- The footer carries the three state-hub links site-wide, so every Tier 1
+  page now links its hubs even though the four service pages' body links
+  were retargeted away from them.
+- The nav is the standard site nav; the 12 pages are still NOT listed in
+  it, per the standing decision reconfirmed this session.

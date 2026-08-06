@@ -26,13 +26,26 @@
   .area-card h3 { font-size: 20px; font-weight: 700; color: #fff; margin: 0 0 10px; }
   .area-card p { font-size: 14px; color: #aab4c8; margin: 0 0 14px; }
   .area-link { font-size: 14px; font-weight: 600; color: #5fc6c9; }
+
+  .page.pad { padding: 28px clamp(20px, 4vw, 40px); }
+  table.grid { width: 100%; border-collapse: collapse; font-size: 15px; }
+  table.grid th, table.grid td { padding: 11px 12px; text-align: left; border-bottom: 1px solid #ece9e2; }
+  table.grid thead th { font-size: 12px; letter-spacing: .07em; text-transform: uppercase; color: #8a8578; border-bottom: 2px solid #ece9e2; }
+  table.grid tbody th { font-weight: 700; color: #1a2744; white-space: nowrap; }
+  table.grid a { color: #b34a40; font-weight: 600; text-decoration: none; }
+  table.grid a:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
 <div class="frame">
 <h1>Tier 1 nav-pathway blocks — what is staged right now</h1>
-<p class="intro">Seven placements, live on the staging subdomain only (production untouched), 2026-08-05. Every link points at staging, so the cards are clickable. Four service pages reuse their existing "Find Your Local Team" section with retargeted cards; three state hubs carry the approved four-card services block under the hero. The two duplicate strips on /in-home-aba-therapy and /skill-development were dropped on your call, so those pages are back to their original markup.</p>
-<div class="label">/early-intervention — the page's existing "Find Your Local Team" section, cards retargeted to the Early Intervention state pages (unchanged position, lower page)</div>
+<p class="intro">Live on the staging subdomain only (production untouched), 2026-08-05. Every link points at staging, so everything here is clickable. Seven link placements: four service pages reuse their existing "Find Your Local Team" section with retargeted cards, and three state hubs carry the approved four-card services block under the hero. The two duplicate strips on /in-home-aba-therapy and /skill-development were dropped on your call. The 12 state pages have also just been given the site navigation and footer, which they were missing entirely.</p>
+<div class="label">The 12 state pages &mdash; now with the site navigation and footer (added this session; they had neither before)</div>
+<div class="page pad">
+<table class="grid"><thead><tr><th></th><th>New Jersey</th><th>Georgia</th><th>North Carolina</th></tr></thead>
+<tbody><tr><th>Early Intervention</th><td><a href="https://mastermindbehavior.webflow.io/early-intervention-new-jersey">New Jersey</a></td><td><a href="https://mastermindbehavior.webflow.io/early-intervention-georgia">Georgia</a></td><td><a href="https://mastermindbehavior.webflow.io/early-intervention-north-carolina">North Carolina</a></td></tr><tr><th>Parent Training</th><td><a href="https://mastermindbehavior.webflow.io/parent-training-new-jersey">New Jersey</a></td><td><a href="https://mastermindbehavior.webflow.io/parent-training-georgia">Georgia</a></td><td><a href="https://mastermindbehavior.webflow.io/parent-training-north-carolina">North Carolina</a></td></tr><tr><th>Behavior Support</th><td><a href="https://mastermindbehavior.webflow.io/behavior-support-new-jersey">New Jersey</a></td><td><a href="https://mastermindbehavior.webflow.io/behavior-support-georgia">Georgia</a></td><td><a href="https://mastermindbehavior.webflow.io/behavior-support-north-carolina">North Carolina</a></td></tr><tr><th>Transition Planning</th><td><a href="https://mastermindbehavior.webflow.io/transition-planning-new-jersey">New Jersey</a></td><td><a href="https://mastermindbehavior.webflow.io/transition-planning-georgia">Georgia</a></td><td><a href="https://mastermindbehavior.webflow.io/transition-planning-north-carolina">North Carolina</a></td></tr></tbody></table>
+</div>
+<div class="label">/early-intervention &mdash; existing "Find Your Local Team" section, cards retargeted to the Early Intervention state pages</div>
 <div class="page"><section class="section section-navy">
   <div class="container">
     <div class="areas-header">
@@ -59,7 +72,7 @@
     </div>
   </div>
 </section></div>
-<div class="label">/parent-training — the page's existing "Find Your Local Team" section, cards retargeted to the Parent Training state pages (unchanged position, lower page)</div>
+<div class="label">/parent-training &mdash; existing "Find Your Local Team" section, cards retargeted to the Parent Training state pages</div>
 <div class="page"><section class="section section-navy">
   <div class="container">
     <div class="areas-header">
@@ -86,7 +99,7 @@
     </div>
   </div>
 </section></div>
-<div class="label">/behavior-support — the page's existing "Find Your Local Team" section, cards retargeted to the Behavior Support state pages (unchanged position, lower page)</div>
+<div class="label">/behavior-support &mdash; existing "Find Your Local Team" section, cards retargeted to the Behavior Support state pages</div>
 <div class="page"><section class="section section-navy">
   <div class="container">
     <div class="areas-header">
@@ -113,7 +126,7 @@
     </div>
   </div>
 </section></div>
-<div class="label">/transition-planning — the page's existing "Find Your Local Team" section, cards retargeted to the Transition Planning state pages (unchanged position, lower page)</div>
+<div class="label">/transition-planning &mdash; existing "Find Your Local Team" section, cards retargeted to the Transition Planning state pages</div>
 <div class="page"><section class="section section-navy">
   <div class="container">
     <div class="areas-header">
@@ -140,7 +153,7 @@
     </div>
   </div>
 </section></div>
-<div class="label">/aba-therapy-in-new-jersey — four-service block directly under the New Jersey hub hero</div>
+<div class="label">/aba-therapy-in-new-jersey &mdash; four-service block under the New Jersey hub hero</div>
 <div class="page"><style>
   .mm-svc { background: #f9f6f1; border-top: 1px solid #e6e2da; padding: clamp(36px, 5vw, 56px) clamp(20px, 5vw, 48px); font-family: 'Manrope', system-ui, sans-serif; }
   .mm-svc__inner { max-width: 900px; margin: 0 auto; }
@@ -164,7 +177,7 @@
   </div>
 </section>
 </div>
-<div class="label">/aba-therapy-in-georgia — four-service block directly under the Georgia hub hero</div>
+<div class="label">/aba-therapy-in-georgia &mdash; four-service block under the Georgia hub hero</div>
 <div class="page"><style>
   .mm-svc { background: #f9f6f1; border-top: 1px solid #e6e2da; padding: clamp(36px, 5vw, 56px) clamp(20px, 5vw, 48px); font-family: 'Manrope', system-ui, sans-serif; }
   .mm-svc__inner { max-width: 900px; margin: 0 auto; }
@@ -188,7 +201,7 @@
   </div>
 </section>
 </div>
-<div class="label">/aba-therapy-in-north-carolina — four-service block directly under the North Carolina hub hero</div>
+<div class="label">/aba-therapy-in-north-carolina &mdash; four-service block under the North Carolina hub hero</div>
 <div class="page"><style>
   .mm-svc { background: #f9f6f1; border-top: 1px solid #e6e2da; padding: clamp(36px, 5vw, 56px) clamp(20px, 5vw, 48px); font-family: 'Manrope', system-ui, sans-serif; }
   .mm-svc__inner { max-width: 900px; margin: 0 auto; }
