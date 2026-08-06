@@ -1,5 +1,5 @@
 {
-  "note": "Nav-pathway link blocks (ship plan step 2). Service pages with state variants: the existing Find Your Local Team section's three cards are retargeted to the service's state pages (kind fylt-retarget, banked full embed under fylt/). in-home/skill-development keep an 'Available in:' strip under the hero; hubs keep the approved four-card services block under the hero. Staging subdomain only, 2026-08-05.",
+  "note": "Nav-pathway link blocks (ship plan step 2), 7 placements. Service pages with state variants: the existing Find Your Local Team section's three cards retargeted to that service's state pages (kind fylt-retarget, full embed banked under fylt/). State hubs: the approved four-card services block directly under the hero. The two 'Available in:' strips on in-home-aba-therapy and skill-development were DROPPED on user decision 2026-08-05 (they duplicated the hub links already in each page's Find Your Local Team section); those pages are back to their original markup. Staging subdomain only.",
   "blocks": [
     {
       "slug": "early-intervention",
@@ -32,20 +32,6 @@
       "kind": "fylt-retarget",
       "banked": "fylt/transition-planning.embed.html",
       "note": "Standalone under-hero section removed; the page's existing Find Your Local Team card links now point at this service's state pages (6-line edit inside the content embed)."
-    },
-    {
-      "slug": "in-home-aba-therapy",
-      "pageId": "69c1484f66f2d6de1a2426a3",
-      "embedElement": "e1fcddab-7366-7c9d-cb6c-585801bff687",
-      "kind": "availin-strip",
-      "targets": "state hubs (no per-state service pages exist)"
-    },
-    {
-      "slug": "skill-development",
-      "pageId": "69ca397abe9c9c6557ec6273",
-      "embedElement": "9251a929-ee75-a7aa-a892-6228c89337f0",
-      "kind": "availin-strip",
-      "targets": "state hubs (no per-state service pages exist)"
     },
     {
       "slug": "aba-therapy-in-new-jersey",

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify the 9 staged nav-pathway link blocks against their banked files.
+"""Verify the staged nav-pathway link-block placements against banked files.
 
 For each entry in content/tier1/build/linkblocks/manifest.json:
 - fetch the staging page
@@ -115,4 +115,4 @@ if fails:
     for f in fails:
         print(" -", f)
     sys.exit(1)
-print("all 9 link blocks verified on staging")
+print(f"all {len(manifest)} link-block placements verified on staging")

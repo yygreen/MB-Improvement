@@ -71,9 +71,10 @@ counts, verification results, citation status: see
    the 4 service pages with state variants have their EXISTING "Find Your
    Local Team" section retargeted to the service's state pages (6-line
    embed edit, gen-fylt-retarget.py, banked under build/linkblocks/fylt/);
-   in-home/skill-development keep an "Available in:" strip under the hero
-   (user keep/drop call open); hubs keep the four-card block under the
-   hero. See build/BUILD-RECORD-linkblocks.md and
+   the 3 hubs carry the four-card block under the hero. SEVEN placements
+   total: the in-home/skill-development strips were DROPPED on user
+   decision (duplicated existing hub links). See
+   build/BUILD-RECORD-linkblocks.md and
    build/linkblocks/ (embeds, manifest.json with element ids, generator
    tools/tier1/gen-link-blocks.py, verifier tools/tier1/verify-linkblocks.py).
    Session decision to review: in-home-aba-therapy and skill-development

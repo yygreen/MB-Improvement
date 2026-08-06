@@ -25,10 +25,12 @@ town-services-block mockup tokens; the third from the site's own
    (elements 63c83328/b03d4857/d066ab8b/dd02e3db no longer exist).
    NOTE: these four pages no longer body-link the state hubs; hub links
    remain in the site-wide footer on every page.
-2. **"Available in:" strip** on /in-home-aba-therapy and /skill-development
-   (no per-state pages; links the three state hubs). User keep/drop call
-   pending: these duplicate the hub links in each page's existing
-   "Find Your Local Team" section.
+2. ~~"Available in:" strip on /in-home-aba-therapy and /skill-development~~
+   **DROPPED 2026-08-05** on user decision: they duplicated the hub links
+   already in each page's "Find Your Local Team" section. Both embeds were
+   removed; those two pages are back to their original markup, and their
+   entries and banked files are out of the manifest. The generator still
+   emits strips for reference but nothing consumes them.
 3. **Four-card services block** on each of the 3 state hubs: heading
    "ABA services in {State}", the approved fixed byline sentence, and the
    four service links for that state.
