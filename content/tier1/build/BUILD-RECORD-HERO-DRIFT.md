@@ -224,25 +224,35 @@ Exit 1 on any finding in the gated families; other systems print as info.
 
 ## Status
 
-Done and in the repo, needing no Webflow access:
-  - both fix payloads generated and gated (see the two sections above)
-  - the mirror re-synced from live
-  - the rebase guard, so the convergence cannot be silently reverted
+APPLIED AND VERIFIED ON STAGING (2026-08-06).
 
-STILL BLOCKED on applying fixes 1 and 2 to the site: the Webflow MCP connection
-re-authorised mid-session to a different workspace and still lists only "Chesed
-24/7" and "Kosher Mezuzah". Site 6627fd62e242d50407cfe12d returns 404 "The site
-cannot be found" for every call. Nothing has been written to Webflow.
+Webflow access was restored, both payloads written, published with
+`publishToWebflowSubdomain: true, customDomains: []`. Production untouched.
 
-When access is restored, the apply is mechanical:
-  1. set the `code` setting of embed `code-embed-6` on /early-intervention to
-     `content/tier1/build/herofix/early-intervention.embed.fixed.html`
-  2. set the `code` setting of embed `code-embed-3` on /services to
-     `content/tier1/build/herofix/services.embed.fixed.html`
-  3. publish to STAGING ONLY (`publishToWebflowSubdomain: true, customDomains: []`)
-  4. re-run both generators against staging - each re-reads the live page, so a
-     clean second run is the byte-identity check that the payload landed intact
-  5. `PLAYWRIGHT_DIR=<dir> python3 tools/tier1/hero-type-lint.py` - expect 0
-     findings in the gated families, and /services to drop from 5 differences to
-     roughly 1 (its hero is centre-aligned by design, so it will not reach 0)
-  6. screenshot /services: it is the one with a visible size change
+  page                 embed element                          result
+  /early-intervention  af8a739b-e0b2-8c41-6abb-48d8a22f6958   4,960 B
+  /services            94c8b4ae-8958-11d9-d4e0-4a065b54886e  21,662 B
+
+Byte-identity confirmed after publish: the rendered embed on staging equals the
+generated .fixed file exactly for both pages, so the transcription into the API
+call introduced nothing. This is the check the "never hand-retype" rule exists
+for - the payload is large and the write is a single opaque string.
+
+hero-type-lint against staging: **0 findings in the gated families**.
+/early-intervention now measures 52px / 56 / weight 600 / #1a2744 at x=120,
+matching the reference exactly.
+
+/services went from 5 differences to **0**, not the ~1 predicted. The prediction
+was wrong: its `.mm-embed .hero { text-align: center }` sits INSIDE the 768px
+media query, so the hero was never centre-aligned at desktop width. It converges
+completely.
+
+Remaining informational (unchanged, still awaiting a convergence decision):
+bcba-team 1, about-us 9, areas-we-serve 9, contact 6.
+
+Screenshots taken at 1440 and 390 for both pages; heroes render correctly at
+both widths. /services mobile now takes its size from the clamp rather than the
+removed `34px !important`, and looks right.
+
+NOT DONE, deliberately: nothing published to production. Taylor's clinical
+sign-off still gates that, per the standing constraints.
