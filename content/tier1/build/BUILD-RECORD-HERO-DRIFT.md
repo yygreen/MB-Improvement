@@ -116,12 +116,24 @@ hardening a PARAGRAPH; `.mm-embed .hero-headline` (0,2,0) already beats a bare
 `h1` host rule, and all five sibling pages prove it by rendering the canonical
 rule with no `!important` at all.
 
-FIX (five edits): promote `<p class="hero-headline">` to `<h1>`, demote
+Fourth contributor, and the one that nearly shipped a no-op: the page ALSO has
+
+    .mm-embed .hero h1 { font-size: 40px; line-height: 1.18; font-weight: 700; }
+    @media (max-width: 768px) { .mm-embed .hero h1 { font-size: 34px; } }
+
+That pair is invisible today - the h1 is the eyebrow, and `.hero h1.hero-eyebrow`
+(0,3,1) outranks it there - but it becomes the winning rule the instant the
+headline is promoted to an h1, because (0,2,1) beats the canonical
+`.mm-embed .hero-headline` (0,2,0). The first version of this payload converged
+the headline correctly and would have rendered exactly the same 40px/700 page.
+Found by the specificity gate described below, not by reading the diff.
+
+FIX (six edits): promote `<p class="hero-headline">` to `<h1>`, demote
 `<h1 class="hero-eyebrow">` to `<div>`, converge the headline declarations to the
 canonical fluid clamp, converge the eyebrow declarations (letter-spacing 1.5px ->
 0.08em, margin-bottom 20px -> 28px, which is the eyebrow gap drift), drop the
-`font-size: 34px !important` mobile override, and add `padding: 0` to
-`.mm-embed .hero .container`.
+`font-size: 34px !important` mobile override, delete the bare-h1 pair, and add
+`padding: 0` to `.mm-embed .hero .container`.
 
 PAYLOAD GENERATED: `tools/tier1/gen-hero-fix-services.py`, same scrape-and-gate
 approach, with `/parent-training` as the canonical donor so the converged values
@@ -170,6 +182,31 @@ So the script now refuses to run when the mirror is converged and the reference
 is not, exiting 2 with an explanation rather than corrupting the mirror. Verified:
 it fires today. The real repair is to re-snapshot the reference from live; the
 guard is there so nobody rebases before that happens.
+
+## The specificity gate
+
+`tools/tier1/herofix_lib.py` - `assert_rule_wins()`. After a generator promotes
+an element into a new tag, it asserts that the rule it INTENDS to win actually
+wins: it collects every selector in the cascade that could match the new element,
+computes specificity, and fails if any outranks the intended one (or ties it and
+is declared later).
+
+This exists because promoting an element changes which rules apply to it, and the
+newly-applicable rule can be one that was dormant and therefore invisible in
+review. Both payloads pass it now; both were negative-tested by reinstating the
+removed rules and confirming the gate rejects them:
+
+    specificity gate failed: '.mm-embed .hero h1' (0, 2, 1) beats
+    '.mm-embed .hero-headline' (0, 2, 0) for <h1 class="hero-headline">.
+
+For /early-intervention the check runs against the real cascade - shared sheet
+first, then the page embed - because the winning rule lives in the shared sheet
+and the losing rules in the page. For /services it runs on the embed alone, since
+that page loads no shared sheet.
+
+The selector matcher relaxes `>`/`+`/`~` to descendant, so it can over-report a
+match but never miss one; a gate that misses is useless, one that over-reports is
+merely noisy and names the selector.
 
 ## Tooling added
 

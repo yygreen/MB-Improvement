@@ -63,7 +63,9 @@ explicit look before it goes anywhere near production.
 import pathlib
 import re
 import sys
-import urllib.request
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from herofix_lib import assert_rule_wins, extract_embed, fetch  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 OUT = ROOT / "content/tier1/build/herofix"
@@ -84,24 +86,12 @@ CONVERGE = {
 }
 # the mobile headline override, inside a max-width media query
 MOBILE_HEADLINE = re.compile(r"\n?[ \t]*\.mm-embed \.hero-headline \{ font-size: 34px[^}]*\}")
-
-
-def fetch(url):
-    req = urllib.request.Request(url, headers={"User-Agent": "mb-herofix/1"})
-    with urllib.request.urlopen(req, timeout=60) as r:
-        return r.read().decode("utf-8", "replace")
-
-
-def extract_embed(html, cls):
-    """Return the inner HTML of the div carrying `cls`, by brace-matching divs."""
-    start = html.index(f'<div class="{cls} w-embed"')
-    i = html.index(">", start) + 1
-    depth = 1
-    for m in re.finditer(r"</?div\b", html[i:]):
-        depth += -1 if html[i + m.start():i + m.start() + 5] == "</div" else 1
-        if depth == 0:
-            return html[i:i + m.start()]
-    sys.exit(f"unbalanced divs inside .{cls}")
+# The pair of bare-h1 rules. Invisible today (the h1 is the eyebrow, and
+# `.hero h1.hero-eyebrow` outranks them there) but they become the winning rule
+# the instant the headline is promoted to an h1: (0,2,1) beats the canonical
+# `.mm-embed .hero-headline` (0,2,0). Without removing them the whole fix is a
+# no-op on screen. Caught by assert_rule_wins, not by eye.
+BARE_H1 = re.compile(r"\n?[ \t]*\.mm-embed \.hero h1 \{[^}]*\}")
 
 
 def rule_body(css, selector):
@@ -127,6 +117,7 @@ def main():
     assert orig.count(CONTAINER_OLD) == 1, "hero container rule not as expected"
     assert ".mm-embed .hero-eyebrow {" in orig, "no element-agnostic eyebrow rule"
     assert len(MOBILE_HEADLINE.findall(orig)) == 1, "mobile headline override not found"
+    assert len(BARE_H1.findall(orig)) == 2, "expected 2 bare-h1 rules"
     # THE point of this script: /services must still be the odd page out. If it
     # ever starts loading the shared sheet, deleting rules becomes correct and
     # this value-convergence approach is the wrong tool.
@@ -151,8 +142,9 @@ def main():
         have = rule_body(fixed, local)
         assert "!important" not in want, f"canonical {canon} unexpectedly has !important"
         fixed = fixed.replace(f"{local} {{{have}}}", f"{local} {{{want}}}", 1)
-    # 3. mobile override
+    # 3. mobile override, and the bare-h1 pair that would otherwise win
     fixed = MOBILE_HEADLINE.sub("", fixed)
+    fixed = BARE_H1.sub("", fixed)
     # 5. container gutter reset
     fixed = fixed.replace(CONTAINER_OLD, CONTAINER_NEW, 1)
 
@@ -172,10 +164,22 @@ def main():
     assert fixed.count("<section") == orig.count("<section"), "sections changed"
     assert fixed.count("{") == fixed.count("}"), "unbalanced braces in the CSS"
 
+    assert not BARE_H1.findall(fixed), "bare-h1 rules survived"
+
     def selectors(css):
         return {m.group(1).strip() for m in re.finditer(r"(\.mm-embed [^{]+)\{", css)}
     lost = selectors(orig) - selectors(fixed)
-    assert not lost, f"selectors disappeared: {lost}"
+    # the bare-h1 selector is meant to go; nothing else may
+    assert lost <= {".mm-embed .hero h1"}, f"selectors disappeared: {lost}"
+
+    # THE gate: after promoting the paragraph to an h1, the canonical rule must
+    # actually be the one that wins on the new element. Everything above can be
+    # correct and the page still render unchanged if some other selector outranks
+    # it - which is exactly what the bare-h1 pair did.
+    assert_rule_wins(fixed, ".mm-embed .hero-headline", tag="h1",
+                     classes=["hero-headline"],
+                     ancestor_classes=["mm-embed", "hero", "container",
+                                       "hero-grid", "hero-copy"])
 
     # copy that is not part of the swap must be untouched, character for character
     strip = lambda s: re.sub(r"<[^>]+>", "", s[s.index("</style>"):])

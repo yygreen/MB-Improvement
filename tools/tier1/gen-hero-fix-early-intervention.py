@@ -34,12 +34,17 @@ Apply the .fixed file as the `code` setting of embed "code-embed-6" on the
 import pathlib
 import re
 import sys
-import urllib.request
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from herofix_lib import assert_rule_wins, extract_embed, fetch  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 OUT = ROOT / "content/tier1/build/herofix"
 PAGE = "https://www.mastermindbehavior.com/early-intervention"
 EMBED_CLASS = "code-embed-6"
+# the shared sheet's canonical rule is the one that must win; it loads before the
+# page embed, so the cascade check has to see both, in that order
+SHARED_MARK = ".mm-embed .hero-headline { font-family: var(--font-display); font-size: clamp("
 
 OLD_COMMENT_MARK = "The headline is 800 to match the reference page"
 NEW_COMMENT = """/* Page-specific overrides for /early-intervention.
@@ -62,27 +67,19 @@ H1_RULE = re.compile(
 )
 
 
-def fetch(url):
-    req = urllib.request.Request(url, headers={"User-Agent": "mb-herofix/1"})
-    with urllib.request.urlopen(req, timeout=60) as r:
-        return r.read().decode("utf-8", "replace")
-
-
-def extract_embed(html, cls):
-    """Return the inner HTML of the div carrying `cls`, by brace-matching divs."""
-    start = html.index(f'<div class="{cls} w-embed"')
-    i = html.index(">", start) + 1
-    depth = 1
-    for m in re.finditer(r"</?div\b", html[i:]):
-        depth += -1 if html[i + m.start():i + m.start() + 5] == "</div" else 1
-        if depth == 0:
-            return html[i:i + m.start()]
-    sys.exit(f"unbalanced divs inside .{cls}")
+def shared_sheet(html):
+    """The page's shared "Service Page Styles" block, as an embed-shaped string."""
+    for m in re.finditer(r"<style[^>]*>", html):
+        body = html[m.end():html.index("</style>", m.end())]
+        if SHARED_MARK in body:
+            return f"<style>{body}</style>"
+    sys.exit("page no longer loads the shared sheet - re-check this fix")
 
 
 def main():
     html = fetch(PAGE)
     orig = extract_embed(html, EMBED_CLASS)
+    shared = shared_sheet(html)
 
     # --- gates on the INPUT: fail loudly if the live page is not what we expect
     assert orig.count("<h1") == 1, "expected exactly one h1 in the hero embed"
@@ -117,6 +114,16 @@ def main():
     assert (fixed[fixed.index("</style>"):]
             == orig[orig.index("</style>"):].replace(
                 "<h1>", '<h1 class="hero-headline">', 1)), "markup changed elsewhere"
+
+    # THE gate: the canonical shared rule must actually win on the newly-classed
+    # h1. Checked against the real cascade - shared sheet first, then this page's
+    # embed - because the winner lives in the shared sheet and the losers here.
+    # Without the removals above, the page's own bare-h1 rules outrank it.
+    cascade = shared[:-len("</style>")] + fixed[fixed.index("<style>") + 7:]
+    assert_rule_wins(cascade, ".mm-embed .hero-headline", tag="h1",
+                     classes=["hero-headline"],
+                     ancestor_classes=["mm-embed", "hero", "container",
+                                       "hero-grid", "hero-copy"])
 
     OUT.mkdir(parents=True, exist_ok=True)
     (OUT / "early-intervention.embed.orig.html").write_text(orig)
