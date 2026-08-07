@@ -306,3 +306,42 @@ Left alone.
 All 12 carry an explicit `robots: noindex`. That is deliberate for staging and
 is the mitigation already tracked in CONTINUE - it MUST be removed before any
 production publish, or the pages ship invisible to search.
+
+## noindex removal: NOT reachable from the Data API (2026-08-07)
+
+Asked to remove the noindex from the 12. I could not, and it is not a
+permissions problem - there is no API surface for it. What I checked:
+
+- page settings (`get_page_metadata`): exposes seo{title,description},
+  openGraph, draft, slug, parentFolderId, jsonLdSchema. No noindex/searchable
+  field, and `bulk_update_pages` has `additionalProperties: false`, so an extra
+  key is rejected rather than passed through.
+- page head custom code (`get_page_freeform_code`): EMPTY on the pages checked.
+- site head custom code: no conditional noindex for these slugs. The only
+  robots script there fires on `_page=` query strings (pagination).
+- the meta renders at Webflow's own emission point, right after
+  `<meta content="Webflow" name="generator">` and BEFORE the site custom code
+  block - i.e. server-emitted by Webflow, not injected by anything we control.
+- the 12 are also absent from sitemap.xml (0 of 12 present, 593 URLs total).
+
+Both symptoms together - robots noindex plus sitemap exclusion - are exactly
+what Webflow's native per-page "Prevent search engines from indexing this page"
+toggle does. That toggle is Designer/site-settings only.
+
+So it is a manual step: Pages panel -> the page -> settings (gear) -> SEO
+settings -> untick "Prevent search engines from indexing this page". Twelve
+times, once per page.
+
+DO NOT try to defeat it with page head code. Adding
+`<meta name="robots" content="index, follow">` leaves two robots metas on the
+page and crawlers honour the most restrictive one, so the page stays noindexed
+while looking fixed.
+
+### Consequence to weigh before flipping it
+
+This is the "rides a publish" hazard. The noindex is the only thing keeping the
+12 out of the index if someone runs a full-site PRODUCTION publish. Removing it
+before Taylor's clinical sign-off means the next production publish - by anyone,
+for any unrelated reason - makes twelve clinically unreviewed pages indexable.
+Staging itself is safe either way: `robots.txt` on the webflow.io subdomain is
+`User-agent: * / Disallow: /`, so nothing there is crawlable regardless.
