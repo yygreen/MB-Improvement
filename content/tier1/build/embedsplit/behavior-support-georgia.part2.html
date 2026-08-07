@@ -1,5 +1,8 @@
 <div class="mm-embed mm-t1">
   <style>
+    /* the FAQ is white and the closing CTA beige - stated, not inherited */
+    .mm-faq { background: #fff; }
+    .mm-cta-close { background: var(--warm, #f9f6f1); }
     .mm-acc { border-top: 1px solid var(--rule, #e6e2da); }
     .mm-acc__item { border-bottom: 1px solid var(--rule, #e6e2da); }
     .mm-acc__q {
@@ -22,7 +25,7 @@
     .mm-acc__a p:last-child { margin-bottom: 0; }
     @media (max-width: 600px) { .mm-acc__q { font-size: 17px; } }
   </style>
-  <section class="mm-section mm-section--warm mm-faq">
+  <section class="mm-section mm-faq">
     <div class="mm-section__inner">
       <h2 class="mm-h2">Questions families ask</h2>
       <div class="mm-acc">

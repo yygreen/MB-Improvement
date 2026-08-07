@@ -23,7 +23,25 @@
                   linear-gradient(180deg, var(--warm, #f9f6f1) 0%, #fff 100%);
       padding: clamp(36px, 5vw, 64px) clamp(20px, 5vw, 48px) clamp(28px, 4vw, 48px);
     }
-    .mm-hero__inner { max-width: 900px; margin: 0 auto; }
+    .mm-hero__inner { max-width: 1200px; margin: 0 auto; }
+    .mm-hero__grid {
+      display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+      gap: clamp(32px, 5vw, 64px); align-items: center;
+    }
+    .mm-hero__text { min-width: 0; }
+    .mm-hero__media {
+      position: relative; border-radius: 20px; overflow: hidden;
+      aspect-ratio: 4/3; background: #f0ebe3;
+    }
+    .mm-hero__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .mm-hero__placeholder {
+      width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 20px; font-size: 14px; font-weight: 500; color: #8a8a8a;
+      background: linear-gradient(135deg, var(--teal-pale, #e8f6f6) 0%, #f0ebe3 100%);
+    }
+    @media (max-width: 900px) {
+      .mm-hero__grid { grid-template-columns: 1fr; gap: 40px; }
+    }
     .mm-eyebrow {
       display: inline-flex; align-items: center; gap: 8px;
       font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
@@ -90,16 +108,23 @@
 
   <section class="mm-hero">
     <div class="mm-hero__inner">
-      <span class="mm-eyebrow">In-Home ABA in North Carolina</span>
-      <h1>Behavior Support in North Carolina</h1>
-      <div class="mm-hero__intro">
-        <p>Most families who search for behavior support are past the general advice. The sticker charts did not work. The consequences did not work. Waiting did not work. What is left is a behavior that is running the household, and a family that is exhausted in a way that is hard to explain to anyone outside it.</p>
-        <p><a href="/behavior-support">Behavior support</a> in ABA starts from a different premise: behavior is communication. Before anything gets changed, it gets understood, through careful observation and data, in the place where the behavior actually happens. For our families that place is home, so that is where we work.</p>
-        <p>Mastermind Behavior provides in-home ABA therapy, including behavior support, for children and young people with autism through age 21 across North Carolina.</p>
-      </div>
-      <div class="mm-cta-row">
-        <a href="/contact" class="mm-btn mm-btn--primary">Schedule a free consultation</a>
-        <a href="tel:732.813.7333" class="mm-btn mm-btn--secondary">Call 732.813.7333</a>
+      <div class="mm-hero__grid">
+        <div class="mm-hero__text">
+          <span class="mm-eyebrow">In-Home ABA in North Carolina</span>
+          <h1>Behavior Support in North Carolina</h1>
+          <div class="mm-hero__intro">
+            <p>Most families who search for behavior support are past the general advice. The sticker charts did not work. The consequences did not work. Waiting did not work. What is left is a behavior that is running the household, and a family that is exhausted in a way that is hard to explain to anyone outside it.</p>
+            <p><a href="/behavior-support">Behavior support</a> in ABA starts from a different premise: behavior is communication. Before anything gets changed, it gets understood, through careful observation and data, in the place where the behavior actually happens. For our families that place is home, so that is where we work.</p>
+            <p>Mastermind Behavior provides in-home ABA therapy, including behavior support, for children and young people with autism through age 21 across North Carolina.</p>
+          </div>
+          <div class="mm-cta-row">
+            <a href="/contact" class="mm-btn mm-btn--primary">Schedule a free consultation</a>
+            <a href="tel:732.813.7333" class="mm-btn mm-btn--secondary">Call 732.813.7333</a>
+          </div>
+        </div>
+        <div class="mm-hero__media">
+          <div class="mm-hero__placeholder">Hero image placeholder</div>
+        </div>
       </div>
     </div>
   </section>
@@ -141,14 +166,6 @@
         <p>Programs are designed and supervised by a BCBA and delivered by Behavior Technicians who work with your child consistently rather than rotating through. Assessment takes about four weeks, and there is no onboarding waitlist.</p>
         <p>Behavior support often runs alongside our other North Carolina services: <a href="/parent-training-north-carolina">parent training</a> deepens the coaching side, <a href="/early-intervention-north-carolina">early intervention</a> serves the youngest children, and <a href="/transition-planning-north-carolina">transition planning</a> picks up the teen years.</p>
         <p>We serve families across North Carolina; our <a href="/aba-therapy-in-north-carolina">North Carolina page</a> lists every community.</p>
-      </div>
-    </div>
-  </section>
-  <section class="mm-section">
-    <div class="mm-section__inner">
-      <h2 class="mm-h2">Where we serve</h2>
-      <div class="mm-rt">
-        <p><strong>In-home means your home.</strong> We provide in-home behavior support across North Carolina, including <a href="/areas-we-serve/charlotte">Charlotte</a>, <a href="/areas-we-serve/raleigh">Raleigh</a>, <a href="/areas-we-serve/greensboro-nc">Greensboro</a>, <a href="/areas-we-serve/durham">Durham</a>, <a href="/areas-we-serve/winston-salem">Winston-Salem</a>, <a href="/areas-we-serve/fayetteville-nc">Fayetteville</a>, <a href="/areas-we-serve/cary">Cary</a>, <a href="/areas-we-serve/wilmington">Wilmington</a>, <a href="/areas-we-serve/concord">Concord</a>, <a href="/areas-we-serve/jacksonville">Jacksonville</a>, <a href="/areas-we-serve/asheville">Asheville</a>, and <a href="/areas-we-serve/gastonia">Gastonia</a>. See every community we serve on our <a href="/aba-therapy-in-north-carolina">North Carolina page</a>.</p>
       </div>
     </div>
   </section>

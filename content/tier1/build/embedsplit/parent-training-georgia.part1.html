@@ -23,7 +23,25 @@
                   linear-gradient(180deg, var(--warm, #f9f6f1) 0%, #fff 100%);
       padding: clamp(36px, 5vw, 64px) clamp(20px, 5vw, 48px) clamp(28px, 4vw, 48px);
     }
-    .mm-hero__inner { max-width: 900px; margin: 0 auto; }
+    .mm-hero__inner { max-width: 1200px; margin: 0 auto; }
+    .mm-hero__grid {
+      display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+      gap: clamp(32px, 5vw, 64px); align-items: center;
+    }
+    .mm-hero__text { min-width: 0; }
+    .mm-hero__media {
+      position: relative; border-radius: 20px; overflow: hidden;
+      aspect-ratio: 4/3; background: #f0ebe3;
+    }
+    .mm-hero__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .mm-hero__placeholder {
+      width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 20px; font-size: 14px; font-weight: 500; color: #8a8a8a;
+      background: linear-gradient(135deg, var(--teal-pale, #e8f6f6) 0%, #f0ebe3 100%);
+    }
+    @media (max-width: 900px) {
+      .mm-hero__grid { grid-template-columns: 1fr; gap: 40px; }
+    }
     .mm-eyebrow {
       display: inline-flex; align-items: center; gap: 8px;
       font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
@@ -90,16 +108,23 @@
 
   <section class="mm-hero">
     <div class="mm-hero__inner">
-      <span class="mm-eyebrow">In-Home ABA in Georgia</span>
-      <h1>Parent Training in Georgia</h1>
-      <div class="mm-hero__intro">
-        <p>A child with autism in Georgia can have a long list of professionals: a Babies Can't Wait coordinator in the early years, a school team, a BCBA, a care manager at a Medicaid CMO. Every one of them eventually hands the moment back to you. Bedtime is yours. The grocery store is yours. The morning routine is yours.</p>
-        <p><a href="/parent-training">Parent training</a> in ABA exists for exactly that reason. It is hands-on coaching, in your home, that teaches you the same evidence-based strategies your child's team uses, so progress made in sessions does not evaporate when the session ends.</p>
-        <p>Mastermind Behavior provides in-home ABA therapy, with parent training built into the model, for families across Georgia.</p>
-      </div>
-      <div class="mm-cta-row">
-        <a href="/contact" class="mm-btn mm-btn--primary">Schedule a free consultation</a>
-        <a href="tel:732.813.7333" class="mm-btn mm-btn--secondary">Call 732.813.7333</a>
+      <div class="mm-hero__grid">
+        <div class="mm-hero__text">
+          <span class="mm-eyebrow">In-Home ABA in Georgia</span>
+          <h1>Parent Training in Georgia</h1>
+          <div class="mm-hero__intro">
+            <p>A child with autism in Georgia can have a long list of professionals: a Babies Can't Wait coordinator in the early years, a school team, a BCBA, a care manager at a Medicaid CMO. Every one of them eventually hands the moment back to you. Bedtime is yours. The grocery store is yours. The morning routine is yours.</p>
+            <p><a href="/parent-training">Parent training</a> in ABA exists for exactly that reason. It is hands-on coaching, in your home, that teaches you the same evidence-based strategies your child's team uses, so progress made in sessions does not evaporate when the session ends.</p>
+            <p>Mastermind Behavior provides in-home ABA therapy, with parent training built into the model, for families across Georgia.</p>
+          </div>
+          <div class="mm-cta-row">
+            <a href="/contact" class="mm-btn mm-btn--primary">Schedule a free consultation</a>
+            <a href="tel:732.813.7333" class="mm-btn mm-btn--secondary">Call 732.813.7333</a>
+          </div>
+        </div>
+        <div class="mm-hero__media">
+          <div class="mm-hero__placeholder">Hero image placeholder</div>
+        </div>
       </div>
     </div>
   </section>
@@ -139,14 +164,6 @@
         <p>Coaching is provided by your child's BCBA, the person who designs the program and knows the data, and it happens during your real routines rather than a staged version of them.</p>
         <p>Parent training rarely stands alone. Georgia families pair it with <a href="/early-intervention-georgia">early intervention</a> in the youngest years, <a href="/behavior-support-georgia">behavior support</a> when specific behaviors press hardest, and <a href="/transition-planning-georgia">transition planning</a> as the teen years arrive.</p>
         <p>Our Georgia team works from the Macon office at 4658 Presidential Pkwy, <a href="/aba-therapy-in-georgia">serving families across the state</a>.</p>
-      </div>
-    </div>
-  </section>
-  <section class="mm-section">
-    <div class="mm-section__inner">
-      <h2 class="mm-h2">Where we serve</h2>
-      <div class="mm-rt">
-        <p><strong>In-home means your home.</strong> We provide parent training and in-home ABA across Georgia, including <a href="/areas-we-serve/macon">Macon</a>, <a href="/areas-we-serve/savannah">Savannah</a>, <a href="/areas-we-serve/warner-robins">Warner Robins</a>, <a href="/areas-we-serve/perry">Perry</a>, <a href="/areas-we-serve/milledgeville">Milledgeville</a>, <a href="/areas-we-serve/dublin">Dublin</a>, <a href="/areas-we-serve/brunswick">Brunswick</a>, <a href="/areas-we-serve/thomasville">Thomasville</a>, <a href="/areas-we-serve/tifton">Tifton</a>, <a href="/areas-we-serve/buford">Buford</a>, <a href="/areas-we-serve/snellville">Snellville</a>, and <a href="/areas-we-serve/norcross">Norcross</a>. See every community we serve on our <a href="/aba-therapy-in-georgia">Georgia page</a>.</p>
       </div>
     </div>
   </section>

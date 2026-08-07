@@ -58,6 +58,9 @@ FORBIDDEN = ["—", "–", "RBT", "clinic", "guarantee"]
 # where it was; this is the only markup that uses these rules, and keeping them here
 # means pages already split do not need their part 1 rewritten to gain the accordion.
 ACC_CSS = """  <style>
+    /* the FAQ is white and the closing CTA beige - stated, not inherited */
+    .mm-faq { background: #fff; }
+    .mm-cta-close { background: var(--warm, #f9f6f1); }
     .mm-acc { border-top: 1px solid var(--rule, #e6e2da); }
     .mm-acc__item { border-bottom: 1px solid var(--rule, #e6e2da); }
     .mm-acc__q {
@@ -119,6 +122,90 @@ def accordion(faq_section, slug):
     return out
 
 
+# Hero layout copied from /in-home-aba-therapy: text left, image right, 1.05fr to
+# 1fr, collapsing to one column at 900px. Measured off that page rather than
+# guessed. The image is a placeholder until real art is chosen.
+HERO_CSS = """    .mm-hero__grid {
+      display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+      gap: clamp(32px, 5vw, 64px); align-items: center;
+    }
+    .mm-hero__text { min-width: 0; }
+    .mm-hero__media {
+      position: relative; border-radius: 20px; overflow: hidden;
+      aspect-ratio: 4/3; background: #f0ebe3;
+    }
+    .mm-hero__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .mm-hero__placeholder {
+      width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 20px; font-size: 14px; font-weight: 500; color: #8a8a8a;
+      background: linear-gradient(135deg, var(--teal-pale, #e8f6f6) 0%, #f0ebe3 100%);
+    }
+    @media (max-width: 900px) {
+      .mm-hero__grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+"""
+
+PLACEHOLDER = """        <div class="mm-hero__media">
+          <div class="mm-hero__placeholder">Hero image placeholder</div>
+        </div>"""
+
+
+def restyle_hero(part1, slug):
+    """Wrap the hero's contents in a two-column grid with a placeholder image."""
+    m = re.search(r'(<section class="mm-hero">\s*<div class="mm-hero__inner">)(.*?)'
+                  r'(\s*</div>\s*</section>)', part1, re.S)
+    assert m, f"{slug}: hero not found"
+    inner = m.group(2)
+    assert '<div class="mm-hero__grid">' not in inner, f"{slug}: hero already gridded"
+    assert inner.count("<h1>") == 1, f"{slug}: hero should hold exactly one h1"
+    # re-indent the existing hero content one level deeper, inside the text column
+    # the hero content sat 6 spaces deep; inside the grid + text column it is 10
+    text = "\n".join(("    " + ln if ln.strip() else ln) for ln in inner.strip("\n").split("\n"))
+    grid = ('\n      <div class="mm-hero__grid">\n'
+            '        <div class="mm-hero__text">\n'
+            f"{text}\n"
+            "        </div>\n"
+            f"{PLACEHOLDER}\n"
+            "      </div>")
+    # the captured tail begins with the whitespace that preceded </div></section>
+    out_tail = part1[m.end(2):].lstrip("\n ")
+    part1 = part1[:m.start(2)] + grid + "\n    " + out_tail
+    out = part1
+
+    # widen the hero column: a two-column hero needs the reference page's 1200,
+    # not the 900 that suits single-column prose. Body sections stay at 900.
+    old = ".mm-hero__inner { max-width: 900px; margin: 0 auto; }"
+    assert out.count(old) == 1, f"{slug}: hero inner rule not as expected"
+    out = out.replace(old, ".mm-hero__inner { max-width: 1200px; margin: 0 auto; }", 1)
+    # add the grid rules right after it
+    anchor = ".mm-hero__inner { max-width: 1200px; margin: 0 auto; }\n"
+    out = out.replace(anchor, anchor + HERO_CSS, 1)
+
+    assert out.count('<div class="mm-hero__grid">') == 1
+    assert out.count('class="mm-hero__placeholder"') == 1
+    assert out.count("<h1>") == 1, f"{slug}: h1 lost in the hero rewrite"
+    return out
+
+
+def drop_inline_towns(part1, slug):
+    """Remove the 'Where we serve' section whose prose lists towns inline.
+
+    The navy Town Grid component now sits directly below this embed and lists
+    every town as a real link, so the paragraph of inline town links is a
+    duplicate of it in weaker form.
+    """
+    m = re.search(r'\n  <section class="mm-section">\s*<div class="mm-section__inner">\s*'
+                  r'<h2 class="mm-h2">Where we serve</h2>.*?</section>', part1, re.S)
+    assert m, f"{slug}: 'Where we serve' section not found"
+    body = m.group(0)
+    assert "/areas-we-serve/" in body, f"{slug}: matched section has no town links"
+    assert body.count("<section") == 1, f"{slug}: match swallowed another section"
+    out = part1[:m.start()] + part1[m.end():]
+    assert "/areas-we-serve/" not in out, f"{slug}: inline town links remain"
+    assert "Where we serve" not in out, f"{slug}: heading remains"
+    return out
+
+
 def sections(markup):
     return re.findall(r'<section class="([^"]*)"', markup)
 
@@ -144,18 +231,24 @@ def split(markup, slug):
     assert tail.rstrip().endswith("</div>"), f"{slug}: tail lost the wrapper close"
 
     part1 = head.rstrip() + "\n</div>\n"
+    part1 = drop_inline_towns(part1, slug)
+    part1 = restyle_hero(part1, slug)
 
     # split the tail into the FAQ section and everything after it (the closing CTA),
     # rewrite the FAQ as an accordion, and prepend the accordion-only stylesheet
     cta_at = tail.index('  <section class="mm-section mm-cta-close">')
     faq, rest = tail[:cta_at], tail[cta_at:]
+    faq = faq.replace('<section class="mm-section mm-section--warm mm-faq">',
+                      '<section class="mm-section mm-faq">', 1)
     part2 = OPEN + "\n" + ACC_CSS + accordion(faq.rstrip(), slug) + "\n" + rest.lstrip("\n")
 
     # --- gates
-    assert sections(part1) + sections(part2) == sections(markup), \
-        f"{slug}: sections reordered or lost"
+    assert len(sections(part1)) == len(sections(markup)) - 3, \
+        f"{slug}: expected part 1 to lose the inline-towns section to part 2's two"
     assert len(sections(part2)) == 2, f"{slug}: part 2 should be FAQ + CTA only"
     assert "mm-faq" in sections(part2)[0] and "mm-cta-close" in sections(part2)[1]
+    assert "mm-section--warm" not in sections(part2)[0], f"{slug}: FAQ still beige"
+    assert "Where we serve" not in part1 and "Where we serve" not in part2
     assert "<style>" in part1, f"{slug}: base stylesheet must stay in part 1"
     # part 2 carries ONLY the accordion rules - never a copy of the base sheet
     assert part2.count("<style>") == 1, f"{slug}: part 2 should have one style block"
@@ -166,8 +259,9 @@ def split(markup, slug):
         assert p.count("<div") == p.count("</div>"), f"{slug}: {name} unbalanced divs"
         assert p.count("<section") == p.count("</section>"), f"{slug}: {name} sections"
     # no copy may change, appear or vanish
-    assert visible(part1) + " " + visible(part2) == visible(markup), \
-        f"{slug}: visible copy changed"
+    expect = visible(drop_inline_towns(markup, slug)) + " Hero image placeholder"
+    got = visible(part1) + " " + visible(part2)
+    assert sorted(got.split()) == sorted(expect.split()), f"{slug}: visible copy changed"
     for w in FORBIDDEN:
         assert w not in visible(part2), f"{slug}: forbidden token {w!r} in part 2"
     return part1, part2
