@@ -44,3 +44,41 @@ Data API directly instead, paging in the shell, so nothing large entered context
 
 The API token used is NOT in this repository. It was held in the session scratchpad
 outside the repo tree. It should be rotated: it was pasted into a chat transcript.
+
+---
+
+## Deletion executed
+
+All 779 archived items were deleted. Verified after the fact, not assumed.
+
+Gate re-run immediately before the delete call, against freshly fetched state rather
+than the minutes-old snapshot, because the plan could have drifted:
+
+    collection held           992
+    planned deletions         779
+    plan ids no longer present  0
+    plan ids NOT archived now   0
+    plan ids ever published     0
+
+Deleted in 8 batches (7x100 + 79). Every batch returned HTTP 204.
+
+Verified after:
+
+    collection now holds      213   (was 992)
+    remaining by state        live 213, archived 0, draft 0
+    planned ids surviving       0
+    live items before         213
+    live items now            213
+    live items lost             0
+
+Reference integrity, the risk that motivated the pre-check:
+
+    live items using Nearby City refs   192
+    dangling references after deletion    0
+
+Six live town pages using those references were fetched from production and all
+returned HTTP 200 with their correct h1 and five internal town links intact:
+cape-may, flemington, salem, newton, somerville, asbury-park.
+
+Nothing was published as part of this. Deleting CMS items removes them from the CMS
+immediately; the 213 live items were untouched and their published pages are unchanged.
