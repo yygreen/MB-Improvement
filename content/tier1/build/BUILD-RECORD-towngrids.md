@@ -154,3 +154,27 @@ Staging renders the hero button as "Call 732.427.8412" while the payload says
 head) rewriting numbers for call tracking - it does the same to the number in the
 global nav. The authored source is correct and the program's
 "732.813.7333 only" rule is not violated; the swap happens in the browser.
+
+## Hero trim + width alignment (2026-08-07)
+
+Hero copy: three paragraphs beside an image was too much. The hero keeps the hook
+and the one-line positioning sentence. The middle paragraph is NOT deleted - on
+every page it carries the only link to the matching service page
+(/early-intervention, /parent-training, ...), so deleting it would drop that
+internal link entirely. It moves to the top of the first body section, where it
+reads as a lead-in. Gated: the middle paragraph must contain a link, must appear
+exactly once after the move, and the hero must be left with exactly two.
+
+Widths: the hero ran 1200 and body sections 900 centred, so hero text began about
+160px left of every heading below it. Sections now share the hero's 1200
+container. Widening alone would leave prose running the full 1200, so paragraphs
+and the accordion carry a 62ch measure inside it. Tables deliberately keep the
+full width.
+
+Measured on staging at 1440px - everything on one left edge:
+
+    eyebrow 120, h1 120, hero copy 120, all five h2 120, body prose 120,
+    accordion 120, table width 1200
+
+x=120 is also where /aba-therapy-in-new-jersey starts its content, so the state
+pages and the hub now share a left edge.
