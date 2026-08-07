@@ -365,6 +365,58 @@ def unify_type(part1, slug):
         f"{slug}: an off-scale paragraph size survived"
     return out
 
+# H1 and eyebrow, decided from Semrush data (2026-08-07).
+#
+# The state+service phrases these pages are named after have NO measurable
+# search volume: "behavior support north carolina", "parent training north
+# carolina" and "aba behavior support north carolina" all return no data, and
+# "transition planning north carolina" is 0. So no H1 wording wins traffic here.
+# The qualifier is added for CLARITY - "Behavior Support in North Carolina" reads
+# like school PBIS or mental health - not for volume.
+#
+# Word order follows how people actually search: "aba parent training" (880)
+# beats "parent training aba" (590), so the qualifier leads.
+#
+# Deliberately NOT "ABA Therapy in {state}". That is the hub's exact target
+# ("aba therapy north carolina", 480/mo) and the hub does not yet rank top-12 for
+# it. Putting the full string in four sub-page H1s would spend relevance on
+# zero-volume phrases while diluting the one that matters.
+H1_SERVICE = {
+    "early-intervention": "ABA Early Intervention",
+    "parent-training": "ABA Parent Training",
+    "behavior-support": "ABA Behavior Support",
+    "transition-planning": "ABA Transition Planning",
+}
+
+# The eyebrow used to read "In-Home ABA in {state}", which after the H1 change
+# repeated both the category and the state directly above itself. It now carries
+# only what the H1 does not: the delivery model. Eyebrow says how, H1 says what
+# and where, no overlap.
+EYEBROW = "In-Home Therapy"
+
+
+def headline(part1, slug):
+    """Prefix the H1 with the ABA qualifier and de-duplicate the eyebrow."""
+    service = next(k for k in H1_SERVICE if slug.startswith(k))
+    state = slug[len(service) + 1:].replace("-", " ").title()
+    old_h1 = f"<h1>{service.replace('-', ' ').title()} in {state}</h1>"
+    new_h1 = f"<h1>{H1_SERVICE[service]} in {state}</h1>"
+    assert part1.count(old_h1) == 1, f"{slug}: h1 not found verbatim: {old_h1}"
+    out = part1.replace(old_h1, new_h1, 1)
+
+    old_eb = f'<span class="mm-eyebrow">In-Home ABA in {state}</span>'
+    assert out.count(old_eb) == 1, f"{slug}: eyebrow not found verbatim"
+    out = out.replace(old_eb, f'<span class="mm-eyebrow">{EYEBROW}</span>', 1)
+
+    for w in FORBIDDEN:
+        assert w not in new_h1 and w not in EYEBROW, f"{slug}: forbidden token"
+    assert out.count("<h1") == 1, f"{slug}: h1 count changed"
+    assert out.count('class="mm-eyebrow"') == 1, f"{slug}: eyebrow count changed"
+    # the eyebrow must no longer repeat the H1's terms
+    assert "ABA" not in EYEBROW and state not in EYEBROW
+    return out
+
+
 def sections(markup):
     return re.findall(r'<section class="([^"]*)"', markup)
 
@@ -395,6 +447,7 @@ def split(markup, slug):
     part1 = trim_hero(part1, slug)
     part1 = align_widths(part1, slug)
     part1 = unify_type(part1, slug)
+    part1 = headline(part1, slug)
 
     # split the tail into the FAQ section and everything after it (the closing CTA),
     # rewrite the FAQ as an accordion, and prepend the accordion-only stylesheet
@@ -424,10 +477,16 @@ def split(markup, slug):
     # no copy may change, appear or vanish
     service = next(k for k in CTA_LEDE if slug.startswith(k))
     state = slug[len(service) + 1:].replace("-", " ").title()
-    expect = (visible(drop_inline_towns(markup, slug)) + " Hero image placeholder "
-              + CTA_LEDE[service].format(state=state))
+    # The H1 and eyebrow are deliberately rewritten, so `expect` gets the same
+    # substitution - applied to the untouched source, not to the pipeline output,
+    # so every other word still has to survive the split unchanged.
+    expect = (visible(headline(drop_inline_towns(markup, slug), slug))
+              + " Hero image placeholder " + CTA_LEDE[service].format(state=state))
     got = visible(part1) + " " + visible(part2)
     assert sorted(got.split()) == sorted(expect.split()), f"{slug}: visible copy changed"
+    # and the rewrite itself is asserted positively, not just "nothing else moved"
+    assert f"<h1>{H1_SERVICE[service]} in {state}</h1>" in part1, f"{slug}: h1 not applied"
+    assert f'<span class="mm-eyebrow">{EYEBROW}</span>' in part1, f"{slug}: eyebrow not applied"
     for w in FORBIDDEN:
         assert w not in visible(part2), f"{slug}: forbidden token {w!r} in part 2"
     return part1, part2
