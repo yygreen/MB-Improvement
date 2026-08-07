@@ -13,3 +13,14 @@
      auto, which paints strokes thicker and compounded the 600 -> 700 substitution. */
   body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 </style>
+<style>
+  /* Eyebrow colour, one value sitewide: #3ba5a8, the reference teal on
+     /in-home-aba-therapy and 18 of the 33 eyebrows already on the site.
+     Five classes were corrected at source via the style API: .mm-eyebrow,
+     .g90-eyebrow, .author-profile_eyebrow, .author-box_eyebrow and
+     .mm-eyebrow-line. The sixth, .mm-topics-eyebrow, is declared inside the
+     /blog topics embed rather than as a Webflow class, so it is overridden here.
+     body-prefixed for (0,1,1): the embed's own rule is (0,1,0) in a body style
+     block, which wins on document order against an equal-specificity head rule. */
+  body .mm-topics-eyebrow { color: #3ba5a8; }
+</style>

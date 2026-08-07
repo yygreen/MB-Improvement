@@ -42,3 +42,41 @@ Measured before, at 52px, string "Handgloves Meet Therapy 123":
 The `-webkit-font-smoothing: antialiased` rule in the same block fixes the second,
 compounding cause: 11 pages sat on the browser default of `auto`, which paints strokes
 thicker. All 36 now report antialiased.
+
+## Eyebrow colour unification
+
+Before: four colours across 33 eyebrow elements on 25 pages.
+
+    #3ba5a8  rgb(59,165,168)  x18   hubs, service pages, /in-home-aba-therapy, /services
+    #34abc7  rgb(52,171,199)  x10   /blog topics + all nine /bcbas/ author eyebrows
+    #2f8487  rgb(47,132,135)  x2    /bcba-team
+    #186c78  rgb(24,108,120)  x1    /first-90-days-of-aba-therapy
+
+After: 33 of 33 at #3ba5a8, the reference teal.
+
+Five classes were corrected AT SOURCE via the style API, not patched over:
+
+    .mm-eyebrow              #2f8487 -> #3ba5a8, plus 26->28px margin, 10->8px gap,
+                             and font-family added (it had none, so the text was
+                             falling back to system-ui)
+    .mm-eyebrow-line         28x1px -> 24x2px
+    .g90-eyebrow             #186c78 -> #3ba5a8
+    .author-profile_eyebrow  #34abc7 -> #3ba5a8
+    .author-box_eyebrow      hsla(191.43,58.57%,49.22%) -> #3ba5a8
+
+The sixth, .mm-topics-eyebrow, is declared inside the /blog topics embed rather than
+as a Webflow class. It is overridden in the site head block, prefixed with `body` for
+(0,1,1): the embed's own rule is (0,1,0) inside a body <style>, which beats an
+equal-specificity head rule on document order. Verified by measurement, not by
+reading the CSS back.
+
+NOT CHANGED, and left for a decision: the /blog topics embed uses #34abc7 for three
+other things in the same block, the card top-borders, the card CTA text, and the
+filter-status link. The brief was eyebrows, so only the eyebrow moved. That block's
+eyebrow now differs from the cards beneath it.
+
+.mm-eyebrow is shared with the state hubs, /insurance-terminology,
+/financial-aid-resources and /autism-screening-checklist, whose embeds already
+override it to exactly these values. Confirmed by before/after geometry snapshot:
+those seven pages are byte-identical across the change. The class edit only had an
+effect where the class was actually being used unoverridden, which is /bcba-team.
