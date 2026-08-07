@@ -1,20 +1,55 @@
 <div class="mm-embed mm-t1">
+  <style>
+    .mm-acc { border-top: 1px solid var(--rule, #e6e2da); }
+    .mm-acc__item { border-bottom: 1px solid var(--rule, #e6e2da); }
+    .mm-acc__q {
+      list-style: none; cursor: pointer;
+      display: flex; align-items: flex-start; justify-content: space-between; gap: 20px;
+      padding: 20px 0; font-family: var(--font-body); font-weight: 600;
+      font-size: 19px; line-height: 1.35; color: var(--navy, #1a2744);
+      transition: color 0.15s ease;
+    }
+    .mm-acc__q::-webkit-details-marker { display: none; }
+    .mm-acc__q:hover { color: var(--teal, #3ba5a8); }
+    .mm-acc__q::after {
+      content: ''; flex: 0 0 auto; width: 10px; height: 10px; margin-top: 6px;
+      border-right: 2px solid var(--teal, #3ba5a8); border-bottom: 2px solid var(--teal, #3ba5a8);
+      transform: rotate(45deg); transition: transform 0.2s ease;
+    }
+    .mm-acc__item[open] .mm-acc__q::after { transform: rotate(-135deg); margin-top: 10px; }
+    .mm-acc__a { padding: 0 0 22px 0; font-size: 17px; line-height: 1.7; color: var(--text, #2c2c2c); }
+    .mm-acc__a p { margin: 0 0 1.1em 0; }
+    .mm-acc__a p:last-child { margin-bottom: 0; }
+    @media (max-width: 600px) { .mm-acc__q { font-size: 17px; } }
+  </style>
   <section class="mm-section mm-section--warm mm-faq">
     <div class="mm-section__inner">
       <h2 class="mm-h2">Questions families ask</h2>
-      <div class="mm-rt">
-        <h3 class="mm-h3">What is a functional behavior assessment?</h3>
-        <p>A structured way of finding out what a behavior is doing for your child. We observe and collect data on what happens before and after the behavior until the pattern is clear, and the intervention plan is built on that evidence.</p>
-        <h3 class="mm-h3">Is behavior support covered by insurance in Georgia?</h3>
-        <p>Behavior support is delivered as ABA therapy, which Ava's Law requires most state-regulated plans to cover. Georgia Medicaid covers ABA for individuals under 21. The coverage table above has the detail.</p>
-        <h3 class="mm-h3">My child already has a behavior plan at school. Is this the same thing?</h3>
-        <p>No. The school's plan is built for the school day. Ours is built for your home and your routines, and the two can inform each other. Findings from a home assessment can be shared with the school team.</p>
-        <h3 class="mm-h3">Do you use punishment?</h3>
-        <p>The plan is built on the least restrictive, most positive strategies available. The core of the work is teaching skills that make the behavior unnecessary, and reinforcing them.</p>
-        <h3 class="mm-h3">Who writes the plan?</h3>
-        <p>A Board Certified Behavior Analyst who also holds a current Georgia behavior analyst license. Behavior Technicians deliver day-to-day sessions under that BCBA's supervision.</p>
-        <h3 class="mm-h3">How soon can we start?</h3>
-        <p>There is no onboarding waitlist. Assessment takes about four weeks.</p>
+      <div class="mm-acc">
+        <details class="mm-acc__item">
+          <summary class="mm-acc__q">What is a functional behavior assessment?</summary>
+          <div class="mm-acc__a"><p>A structured way of finding out what a behavior is doing for your child. We observe and collect data on what happens before and after the behavior until the pattern is clear, and the intervention plan is built on that evidence.</p></div>
+        </details>
+        <details class="mm-acc__item">
+          <summary class="mm-acc__q">Is behavior support covered by insurance in Georgia?</summary>
+          <div class="mm-acc__a"><p>Behavior support is delivered as ABA therapy, which Ava's Law requires most state-regulated plans to cover. Georgia Medicaid covers ABA for individuals under 21. The coverage table above has the detail.</p></div>
+        </details>
+        <details class="mm-acc__item">
+          <summary class="mm-acc__q">My child already has a behavior plan at school. Is this the same thing?</summary>
+          <div class="mm-acc__a"><p>No. The school's plan is built for the school day. Ours is built for your home and your routines, and the two can inform each other. Findings from a home assessment can be shared with the school team.</p></div>
+        </details>
+        <details class="mm-acc__item">
+          <summary class="mm-acc__q">Do you use punishment?</summary>
+          <div class="mm-acc__a"><p>The plan is built on the least restrictive, most positive strategies available. The core of the work is teaching skills that make the behavior unnecessary, and reinforcing them.</p></div>
+        </details>
+        <details class="mm-acc__item">
+          <summary class="mm-acc__q">Who writes the plan?</summary>
+          <div class="mm-acc__a"><p>A Board Certified Behavior Analyst who also holds a current Georgia behavior analyst license. Behavior Technicians deliver day-to-day sessions under that BCBA's supervision.</p></div>
+        </details>
+        <details class="mm-acc__item">
+          <summary class="mm-acc__q">How soon can we start?</summary>
+          <div class="mm-acc__a"><p>There is no onboarding waitlist. Assessment takes about four weeks.</p></div>
+        </details>
       </div>
     </div>
   </section>
