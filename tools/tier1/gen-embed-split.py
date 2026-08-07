@@ -61,8 +61,7 @@ ACC_CSS = """  <style>
     /* the FAQ is white and the closing CTA beige - stated, not inherited */
     .mm-faq { background: #fff; }
     .mm-cta-close { background: var(--warm, #f9f6f1); }
-    /* same measure as body prose, so the accordion lines up with the sections above */
-    .mm-acc { border-top: 1px solid var(--rule, #e6e2da); max-width: 62ch; }
+    .mm-acc { border-top: 1px solid var(--rule, #e6e2da); }
     .mm-acc__item { border-bottom: 1px solid var(--rule, #e6e2da); }
     .mm-acc__q {
       list-style: none; cursor: pointer;
@@ -179,25 +178,30 @@ def trim_hero(part1, slug):
 
 
 ALIGN_CSS = """    .mm-section__inner { max-width: 1200px; margin: 0 auto; }
-    /* prose keeps a readable measure inside the wider container, so every
-       section's text starts at the same x as the hero instead of being centred
-       in a narrower box */
-    .mm-rt > p, .mm-rt > ul, .mm-rt > ol { max-width: 62ch; }
 """
 
 
 def align_widths(part1, slug):
-    """Match every section's container to the hero's, so left edges line up.
+    """Match every section's container to the hero's, in width as well as position.
 
     Before this the hero ran 1200 wide and body sections 900, centred - so the
-    hero's text started ~160px left of every heading below it. Widening the
-    sections alone would leave prose running the full 1200, which is unreadable,
-    hence the per-paragraph measure. Tables deliberately keep the full width.
+    hero's text started ~160px left of every heading below it. A first attempt
+    fixed the left edge but capped prose at 62ch, which aligned the columns
+    without widening them and left the copy sitting in the left two-thirds of an
+    empty container. There is now no measure cap: copy fills the 1200 container,
+    matching the hero. Line length is long by typographic convention, which is the
+    accepted trade for the sections reading as one width.
     """
     old = "    .mm-section__inner { max-width: 900px; margin: 0 auto; }\n"
     assert part1.count(old) == 1, f"{slug}: section inner rule not as expected"
     out = part1.replace(old, ALIGN_CSS, 1)
+    # the hero intro carries its own 62ch cap in the source embeds; drop it so the
+    # hero copy fills its column rather than stopping short inside it
+    hero_cap = " max-width: 62ch;"
+    assert out.count(hero_cap) == 1, f"{slug}: expected one hero measure cap"
+    out = out.replace(hero_cap, "", 1)
     assert ".mm-section__inner { max-width: 1200px" in out
+    assert "max-width: 62ch" not in out, f"{slug}: a measure cap survived"
     return out
 
 
