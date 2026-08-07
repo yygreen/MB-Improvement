@@ -61,7 +61,8 @@ ACC_CSS = """  <style>
     /* the FAQ is white and the closing CTA beige - stated, not inherited */
     .mm-faq { background: #fff; }
     .mm-cta-close { background: var(--warm, #f9f6f1); }
-    .mm-acc { border-top: 1px solid var(--rule, #e6e2da); }
+    /* same measure as body prose, so the accordion lines up with the sections above */
+    .mm-acc { border-top: 1px solid var(--rule, #e6e2da); max-width: 62ch; }
     .mm-acc__item { border-bottom: 1px solid var(--rule, #e6e2da); }
     .mm-acc__q {
       list-style: none; cursor: pointer;
@@ -144,6 +145,61 @@ HERO_CSS = """    .mm-hero__grid {
       .mm-hero__grid { grid-template-columns: 1fr; gap: 40px; }
     }
 """
+
+def trim_hero(part1, slug):
+    """Shorten the hero to hook + positioning line; relocate the middle paragraph.
+
+    Every page's hero runs three paragraphs: an emotional hook, a substantive
+    paragraph carrying the only link to the matching service page, and a one-line
+    positioning sentence. Three is too much copy beside an image, but the middle
+    one is not disposable - deleting it would drop that internal link entirely, so
+    it moves to the top of the first body section instead.
+    """
+    m = re.search(r'(<div class="mm-hero__intro">)(.*?)(</div>)', part1, re.S)
+    assert m, f"{slug}: hero intro not found"
+    paras = re.findall(r'<p>.*?</p>', m.group(2), re.S)
+    assert len(paras) == 3, f"{slug}: expected 3 hero paragraphs, got {len(paras)}"
+    keep, move = [paras[0], paras[2]], paras[1]
+    assert "<a href=" in move, f"{slug}: middle paragraph has no link, re-check the choice"
+
+    ind = "\n            "
+    intro = m.group(1) + ind + ind.join(keep) + "\n          " + m.group(3)
+    out = part1[:m.start()] + intro + part1[m.end():]
+
+    body = re.search(r'<section class="mm-section mm-section--warm">\s*'
+                     r'<div class="mm-section__inner">\s*<h2 class="mm-h2">.*?</h2>\s*'
+                     r'<div class="mm-rt">\s*', out, re.S)
+    assert body, f"{slug}: first body section not found"
+    out = out[:body.end()] + move + "\n        " + out[body.end():]
+
+    assert out.count(move) == 1, f"{slug}: relocated paragraph duplicated"
+    left = re.search(r'<div class="mm-hero__intro">(.*?)</div>', out, re.S).group(1)
+    assert len(re.findall(r'<p>.*?</p>', left, re.S)) == 2, f"{slug}: hero not left with two"
+    return out
+
+
+ALIGN_CSS = """    .mm-section__inner { max-width: 1200px; margin: 0 auto; }
+    /* prose keeps a readable measure inside the wider container, so every
+       section's text starts at the same x as the hero instead of being centred
+       in a narrower box */
+    .mm-rt > p, .mm-rt > ul, .mm-rt > ol { max-width: 62ch; }
+"""
+
+
+def align_widths(part1, slug):
+    """Match every section's container to the hero's, so left edges line up.
+
+    Before this the hero ran 1200 wide and body sections 900, centred - so the
+    hero's text started ~160px left of every heading below it. Widening the
+    sections alone would leave prose running the full 1200, which is unreadable,
+    hence the per-paragraph measure. Tables deliberately keep the full width.
+    """
+    old = "    .mm-section__inner { max-width: 900px; margin: 0 auto; }\n"
+    assert part1.count(old) == 1, f"{slug}: section inner rule not as expected"
+    out = part1.replace(old, ALIGN_CSS, 1)
+    assert ".mm-section__inner { max-width: 1200px" in out
+    return out
+
 
 PLACEHOLDER = """        <div class="mm-hero__media">
           <div class="mm-hero__placeholder">Hero image placeholder</div>
@@ -233,6 +289,8 @@ def split(markup, slug):
     part1 = head.rstrip() + "\n</div>\n"
     part1 = drop_inline_towns(part1, slug)
     part1 = restyle_hero(part1, slug)
+    part1 = trim_hero(part1, slug)
+    part1 = align_widths(part1, slug)
 
     # split the tail into the FAQ section and everything after it (the closing CTA),
     # rewrite the FAQ as an accordion, and prepend the accordion-only stylesheet

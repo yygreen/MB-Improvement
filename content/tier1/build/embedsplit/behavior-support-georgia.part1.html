@@ -75,7 +75,11 @@
 
     .mm-section { padding: clamp(48px, 7vw, 88px) clamp(20px, 5vw, 48px); }
     .mm-section--warm { background: var(--warm, #f9f6f1); }
-    .mm-section__inner { max-width: 900px; margin: 0 auto; }
+    .mm-section__inner { max-width: 1200px; margin: 0 auto; }
+    /* prose keeps a readable measure inside the wider container, so every
+       section's text starts at the same x as the hero instead of being centred
+       in a narrower box */
+    .mm-rt > p, .mm-rt > ul, .mm-rt > ol { max-width: 62ch; }
     .mm-h2 {
       font-family: var(--font-body); font-weight: 600;
       font-size: clamp(26px, 3.6vw, 40px); line-height: 1.15; letter-spacing: -0.01em;
@@ -114,7 +118,6 @@
           <h1>Behavior Support in Georgia</h1>
           <div class="mm-hero__intro">
             <p>Most families who search for behavior support are past the general advice. The sticker charts did not work. The consequences did not work. Waiting did not work. What is left is a behavior that is running the household, and a family that is exhausted in a way that is hard to explain to anyone outside it.</p>
-            <p><a href="/behavior-support">Behavior support</a> in ABA starts from a different premise: behavior is communication. Before anything gets changed, it gets understood, through careful observation and data, in the place where the behavior actually happens. For our families that place is home, so that is where we work.</p>
             <p>Mastermind Behavior provides in-home ABA therapy, including behavior support, for children and young people with autism through age 21 across Georgia.</p>
           </div>
           <div class="mm-cta-row">
@@ -132,6 +135,7 @@
     <div class="mm-section__inner">
       <h2 class="mm-h2">Who does what in Georgia</h2>
       <div class="mm-rt">
+        <p><a href="/behavior-support">Behavior support</a> in ABA starts from a different premise: behavior is communication. Before anything gets changed, it gets understood, through careful observation and data, in the place where the behavior actually happens. For our families that place is home, so that is where we work.</p>
         <p>If the behavior shows up at school, the school system has its own process. Federal special education law requires the IEP team to consider positive behavioral interventions and supports when behavior interferes with learning, which in practice often means the district conducts a functional behavior assessment and writes a behavior intervention plan for the school day.</p>
         <p>The school's plan covers school. It does not follow your child home, and home is usually where the hardest hours are. In-home behavior support fills that half of the picture: a functional behavior assessment done in your home, a behavior intervention plan built for your routines, and coaching so the adults respond the same way every time. Findings from the home assessment can also inform the school's process.</p>
         <p>Georgia also regulates who can do this work. Behavior analysts are required to be state-licensed, and our BCBAs serving Georgia families hold both BACB certification and a current Georgia license. The person writing your child's plan is credentialed for exactly this.</p>

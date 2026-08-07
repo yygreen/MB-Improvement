@@ -75,7 +75,11 @@
 
     .mm-section { padding: clamp(48px, 7vw, 88px) clamp(20px, 5vw, 48px); }
     .mm-section--warm { background: var(--warm, #f9f6f1); }
-    .mm-section__inner { max-width: 900px; margin: 0 auto; }
+    .mm-section__inner { max-width: 1200px; margin: 0 auto; }
+    /* prose keeps a readable measure inside the wider container, so every
+       section's text starts at the same x as the hero instead of being centred
+       in a narrower box */
+    .mm-rt > p, .mm-rt > ul, .mm-rt > ol { max-width: 62ch; }
     .mm-h2 {
       font-family: var(--font-body); font-weight: 600;
       font-size: clamp(26px, 3.6vw, 40px); line-height: 1.15; letter-spacing: -0.01em;
@@ -114,7 +118,6 @@
           <h1>Transition Planning in North Carolina</h1>
           <div class="mm-hero__intro">
             <p>North Carolina's transition story has a twist most states do not have: Medicaid here covers ABA for adults over 21. That does not make transition planning optional. School still ends. The children's coverage rules still change. But it changes what the years after 21 can look like, and it makes the planning years count double.</p>
-            <p><a href="/transition-planning">Transition planning in ABA</a> means teaching the skills adult life will ask for while there is still time to teach them: self-advocacy, daily living routines, handling unstructured time, communicating with people who do not already know your child. We work on them in your home and in your community, where they will actually be used.</p>
             <p>Mastermind Behavior provides in-home ABA therapy for children and young people with autism through age 21, across North Carolina.</p>
           </div>
           <div class="mm-cta-row">
@@ -132,6 +135,7 @@
     <div class="mm-section__inner">
       <h2 class="mm-h2">What North Carolina requires, and when</h2>
       <div class="mm-rt">
+        <p><a href="/transition-planning">Transition planning in ABA</a> means teaching the skills adult life will ask for while there is still time to teach them: self-advocacy, daily living routines, handling unstructured time, communicating with people who do not already know your child. We work on them in your home and in your community, where they will actually be used.</p>
         <p>On the school side, North Carolina follows the federal timeline. Under IDEA, transition services must be in place in the IEP by the time your child turns 16, and your child must be invited to IEP meetings where transition is discussed. Many teams begin earlier, and nothing stops you from asking for that.</p>
         <p>On the adult services side, long-term developmental disability supports run through the NC Innovations Waiver, administered through your regional LME/MCO. Demand for waiver slots runs far ahead of supply and waits are long, which is why families are urged to get on the list years before adulthood rather than at the end of school.</p>
         <p>Now the twist. On the coverage side, the private-plan mandate runs to age 19, and NC Medicaid covers ABA for children under 21 through EPSDT. But North Carolina is one of the few states where Medicaid also covers ABA for adults over 21, approved by CMS effective July 1, 2021. For families whose child is on Medicaid, turning 21 is a change in process, not automatically the end of ABA coverage.</p>

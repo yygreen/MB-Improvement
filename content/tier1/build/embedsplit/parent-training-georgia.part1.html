@@ -75,7 +75,11 @@
 
     .mm-section { padding: clamp(48px, 7vw, 88px) clamp(20px, 5vw, 48px); }
     .mm-section--warm { background: var(--warm, #f9f6f1); }
-    .mm-section__inner { max-width: 900px; margin: 0 auto; }
+    .mm-section__inner { max-width: 1200px; margin: 0 auto; }
+    /* prose keeps a readable measure inside the wider container, so every
+       section's text starts at the same x as the hero instead of being centred
+       in a narrower box */
+    .mm-rt > p, .mm-rt > ul, .mm-rt > ol { max-width: 62ch; }
     .mm-h2 {
       font-family: var(--font-body); font-weight: 600;
       font-size: clamp(26px, 3.6vw, 40px); line-height: 1.15; letter-spacing: -0.01em;
@@ -114,7 +118,6 @@
           <h1>Parent Training in Georgia</h1>
           <div class="mm-hero__intro">
             <p>A child with autism in Georgia can have a long list of professionals: a Babies Can't Wait coordinator in the early years, a school team, a BCBA, a care manager at a Medicaid CMO. Every one of them eventually hands the moment back to you. Bedtime is yours. The grocery store is yours. The morning routine is yours.</p>
-            <p><a href="/parent-training">Parent training</a> in ABA exists for exactly that reason. It is hands-on coaching, in your home, that teaches you the same evidence-based strategies your child's team uses, so progress made in sessions does not evaporate when the session ends.</p>
             <p>Mastermind Behavior provides in-home ABA therapy, with parent training built into the model, for families across Georgia.</p>
           </div>
           <div class="mm-cta-row">
@@ -132,6 +135,7 @@
     <div class="mm-section__inner">
       <h2 class="mm-h2">Where parent training fits in Georgia's system</h2>
       <div class="mm-rt">
+        <p><a href="/parent-training">Parent training</a> in ABA exists for exactly that reason. It is hands-on coaching, in your home, that teaches you the same evidence-based strategies your child's team uses, so progress made in sessions does not evaporate when the session ends.</p>
         <p>Georgia surrounds a child with autism with systems: Babies Can't Wait before three, the school district and IEP after, a Care Management Organization if your child's ABA runs through Medicaid, and pathways like Katie Beckett for families whose income sits above standard Medicaid limits. Each has its own professionals, paperwork, and timeline.</p>
         <p>You are the one constant in all of them, and that is leverage, not just load: the person present for every routine, every transition, and every hard moment is also the person best positioned to change them. Parent training turns that position into practical skill.</p>
         <p>It is also, in most cases, part of your child's covered care rather than an extra. When parent training is written into your child's ABA treatment plan, it is typically delivered and billed as part of ABA therapy itself, which Ava's Law requires most state-regulated plans to cover and Georgia Medicaid covers for individuals under 21.</p>

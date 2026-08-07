@@ -75,7 +75,11 @@
 
     .mm-section { padding: clamp(48px, 7vw, 88px) clamp(20px, 5vw, 48px); }
     .mm-section--warm { background: var(--warm, #f9f6f1); }
-    .mm-section__inner { max-width: 900px; margin: 0 auto; }
+    .mm-section__inner { max-width: 1200px; margin: 0 auto; }
+    /* prose keeps a readable measure inside the wider container, so every
+       section's text starts at the same x as the hero instead of being centred
+       in a narrower box */
+    .mm-rt > p, .mm-rt > ul, .mm-rt > ol { max-width: 62ch; }
     .mm-h2 {
       font-family: var(--font-body); font-weight: 600;
       font-size: clamp(26px, 3.6vw, 40px); line-height: 1.15; letter-spacing: -0.01em;
@@ -114,7 +118,6 @@
           <h1>Early Intervention in North Carolina</h1>
           <div class="mm-hero__intro">
             <p>It usually starts with a feeling before it starts with a form: fewer words than the checklist says, play that looks different, a name that gets no response. What happens next in North Carolina depends on which door you knock on first, because the state runs one system for children under three and a different one after that.</p>
-            <p><a href="/early-intervention">Early intervention in ABA</a> means starting while the brain is doing its fastest learning. Children who begin before age five consistently show the greatest gains, and the work looks nothing like an office visit: it is deliberate, play-based teaching in your kitchen and living room, where your child is already comfortable.</p>
             <p>Mastermind Behavior provides in-home ABA therapy for young children with autism across North Carolina.</p>
           </div>
           <div class="mm-cta-row">
@@ -132,6 +135,7 @@
     <div class="mm-section__inner">
       <h2 class="mm-h2">How early intervention works in North Carolina</h2>
       <div class="mm-rt">
+        <p><a href="/early-intervention">Early intervention in ABA</a> means starting while the brain is doing its fastest learning. Children who begin before age five consistently show the greatest gains, and the work looks nothing like an office visit: it is deliberate, play-based teaching in your kitchen and living room, where your child is already comfortable.</p>
         <p>North Carolina's public early intervention program is the NC Infant-Toddler Program, run by the Early Intervention Section of the Division of Child and Family Well-Being under Part C of IDEA. It serves children younger than three who have a developmental delay or an established condition, with services delivered through sixteen local Children's Developmental Services Agencies, CDSAs. Referrals can be made by phone, fax, letter, in person, or with the program's referral form.</p>
         <p>At age three, the Infant-Toddler Program ends and responsibility moves to your local school district, where your child may qualify for preschool special education under an IEP. The handoff takes planning, and starting that planning early is the best way to keep services from gapping.</p>
         <p>In-home ABA runs on a separate track from both systems. It is funded through your health coverage rather than a program calendar, so it does not switch systems at three. North Carolina's mandate requires state-regulated plans to cover adaptive behavior treatment for autism, and NC Medicaid covers ABA for children under 21 through EPSDT. For a family in the under-three years, ABA can usually start alongside the Infant-Toddler Program and continue straight through the age-three transition.</p>

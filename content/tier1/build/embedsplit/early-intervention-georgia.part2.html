@@ -3,7 +3,8 @@
     /* the FAQ is white and the closing CTA beige - stated, not inherited */
     .mm-faq { background: #fff; }
     .mm-cta-close { background: var(--warm, #f9f6f1); }
-    .mm-acc { border-top: 1px solid var(--rule, #e6e2da); }
+    /* same measure as body prose, so the accordion lines up with the sections above */
+    .mm-acc { border-top: 1px solid var(--rule, #e6e2da); max-width: 62ch; }
     .mm-acc__item { border-bottom: 1px solid var(--rule, #e6e2da); }
     .mm-acc__q {
       list-style: none; cursor: pointer;

@@ -75,7 +75,11 @@
 
     .mm-section { padding: clamp(48px, 7vw, 88px) clamp(20px, 5vw, 48px); }
     .mm-section--warm { background: var(--warm, #f9f6f1); }
-    .mm-section__inner { max-width: 900px; margin: 0 auto; }
+    .mm-section__inner { max-width: 1200px; margin: 0 auto; }
+    /* prose keeps a readable measure inside the wider container, so every
+       section's text starts at the same x as the hero instead of being centred
+       in a narrower box */
+    .mm-rt > p, .mm-rt > ul, .mm-rt > ol { max-width: 62ch; }
     .mm-h2 {
       font-family: var(--font-body); font-weight: 600;
       font-size: clamp(26px, 3.6vw, 40px); line-height: 1.15; letter-spacing: -0.01em;
@@ -114,7 +118,6 @@
           <h1>Transition Planning in New Jersey</h1>
           <div class="mm-hero__intro">
             <p>Your child is fourteen. The IEP meeting last spring included a section you had not seen before, about life after high school, and it felt early. It is not early. New Jersey builds transition planning into the IEP years before most families feel ready to think about it, and the state does this for a reason: the systems your child moves into as an adult work nothing like the ones they are in now.</p>
-            <p><a href="/transition-planning">Transition planning in ABA</a> means teaching the specific skills that adult life will ask for, starting while there is still time to teach them. Self-advocacy. Daily living routines. Managing unstructured time. Communicating needs to someone who does not already know your child. We work on these in your home and in the community where your child will actually use them, because a skill that only appears in a therapy room is not a skill your child gets to keep.</p>
             <p>Mastermind Behavior provides in-home ABA therapy for children and young people with autism through age 21, across New Jersey.</p>
           </div>
           <div class="mm-cta-row">
@@ -133,6 +136,7 @@
     <div class="mm-section__inner">
       <h2 class="mm-h2">What New Jersey requires, and when</h2>
       <div class="mm-rt">
+        <p><a href="/transition-planning">Transition planning in ABA</a> means teaching the specific skills that adult life will ask for, starting while there is still time to teach them. Self-advocacy. Daily living routines. Managing unstructured time. Communicating needs to someone who does not already know your child. We work on these in your home and in the community where your child will actually use them, because a skill that only appears in a therapy room is not a skill your child gets to keep.</p>
         <p>New Jersey starts earlier than federal law does. IDEA requires transition services in the IEP by age 16. New Jersey regulation requires transition planning to be addressed in the IEP in place for the school year in which your child turns 14, or earlier if the IEP team decides it is appropriate (N.J.A.C. 6A:14-3.7(e)11). Your child must be invited to that meeting, and to every IEP meeting after it. Age-appropriate transition assessments follow at 16.</p>
         <p>That is the school side. The adult services side runs on a completely different clock, and the gap between the two is what catches families out.</p>
         <p>Until age 21, developmental disability services in New Jersey run through the Children's System of Care, administered by PerformCare under the Department of Children and Families. From 21 onward, they run through the Division of Developmental Disabilities under the Department of Human Services. These are separate agencies with separate applications and separate eligibility determinations.</p>
