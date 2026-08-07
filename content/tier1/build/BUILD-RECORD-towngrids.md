@@ -258,9 +258,21 @@ rule also appears in part 2's stylesheet. It counts the element now.
 
 ## Rollout status
 
-    NORTH CAROLINA   4/4 complete, verified, with bylines
-    NEW JERSEY       4/4 complete, verified; town grid component at 1200
-    GEORGIA          0/4 pages; town grid component still at 1100
+    NORTH CAROLINA   4/4 complete
+    NEW JERSEY       4/4 complete
+    GEORGIA          4/4 complete
+
+ROLLOUT COMPLETE - 12/12 verified on staging, every check passing:
+
+    two embeds per page, town grid between them (order verified by offset)
+    both payloads byte-identical to the generated files
+    6 accordion items per page
+    closing CTA byline present
+    town grid container at 1200 on all three components
+    exactly one h1 per page
+    zero /areas-we-serve/ links outside the town grid
+
+All three Town Grid components (NJ, GA, NC) now carry max-width 1200.
 
 8/12 verified on staging: two embeds each, both payloads byte-identical to the
 generated files, closing byline rendering, town grid container at 1200, and no
