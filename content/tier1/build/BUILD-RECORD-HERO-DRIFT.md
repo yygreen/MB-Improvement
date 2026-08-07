@@ -256,3 +256,53 @@ removed `34px !important`, and looks right.
 
 NOT DONE, deliberately: nothing published to production. Taylor's clinical
 sign-off still gates that, per the standing constraints.
+
+---
+
+# Metadata audit of the 12 state pages (2026-08-07)
+
+Asked: "meta description and title and json all entered for the 12?"
+
+Audited by scraping the rendered staging pages, not by trusting page settings.
+
+| field | before | after |
+| --- | --- | --- |
+| `<title>` | 12/12, unique, 62-73 chars | unchanged |
+| `meta description` | 12/12, unique, 115-142 chars | unchanged |
+| JSON-LD | 12/12, one `Service` block each | unchanged |
+| og:title / og:description / og:image / og:type | **0/12** | 12/12 |
+| twitter:title / twitter:description / twitter:image / twitter:card | **0/12** | 12/12 |
+
+Titles, descriptions and JSON-LD were already complete. Open Graph was missing
+ENTIRELY - the 12 emitted no `og:` tags at all, where every established page
+emits a full block. Their page settings carried an openGraph object with only
+`imageUrl`/`imageAssetId` null and neither `titleCopied` nor `descriptionCopied`,
+so Webflow had nothing to render.
+
+Backfilled with `bulk_update_pages`: `titleCopied: true`,
+`descriptionCopied: true`, plus the site's standard share image
+(`66acc623619ab98795f4c99a_Mastermind.png`). Published to staging only and
+re-verified from the rendered HTML: all 12 now carry the full OG and Twitter
+block, and each og:title/og:description matches its page title/description
+exactly.
+
+## Trap refined
+
+CONTINUE records that `update_page_settings` silently drops jsonLdSchema.
+`bulk_update_pages` does NOT - JSON-LD was re-queried on all 12 immediately
+after the write and survived intact on every page. The trap is specific to the
+single-page call. Verify anyway; it costs one call.
+
+## Not a gap
+
+Established pages also emit `og:url`; the 12 do not. That is not a site
+convention - `/aba-therapy-in-new-jersey` has no `og:url` either, and it is
+emitted after the site verification metas, so it comes from per-page custom head
+code rather than page settings. OG consumers fall back to the fetched URL.
+Left alone.
+
+## Still open
+
+All 12 carry an explicit `robots: noindex`. That is deliberate for staging and
+is the mitigation already tracked in CONTINUE - it MUST be removed before any
+production publish, or the pages ship invisible to search.
