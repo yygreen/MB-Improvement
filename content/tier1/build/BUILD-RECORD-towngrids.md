@@ -285,3 +285,47 @@ The behavior-support byline originally ended "...would involve, anywhere in
 states rather than just the one it was spotted on. The sentence now ends on the
 plan. The generator carries a note so nobody re-adds the state to this one line:
 every phrasing that bolted it on read worse than leaving it off.
+
+## Type scale collapsed (2026-08-07)
+
+Raised by the user: too many differing paragraph sizes. Measured rather than
+assumed, and the cause was one global Webflow rule:
+
+    p { font-size: 1.125rem }   /* 18px */
+
+It targets the ELEMENT, so it beats any size inherited from a container, but
+loses to a size set on a p that carries a class. So:
+
+    .mm-hero__intro   declared a 20px lead   ->  its <p> rendered 18
+    .mm-rt            declared 17            ->  its <p> rendered 18
+    .mm-acc__a        declared 17            ->  its <p> rendered 18
+    .mm-cta-close__lede  is a classed p      ->  actually got its 17
+
+Four paragraph sizes on screen, none of them chosen, and the hero lead was never
+larger than body copy despite the sheet saying so.
+
+Fixed by sizing the paragraphs themselves. The scale is now:
+
+    18px  body    hero lead, prose, accordion question and answer,
+                  closing byline, town grid lede
+    15px  dense   table cells, buttons, town grid links, placeholder
+    13px  label   eyebrow, town grid label
+
+Also removed: the accordion's mobile-only 17px step, and `.mm-h3` /
+`.mm-faq .mm-h3`, dead since the FAQ became an accordion (no payload contains an
+h3). The generator asserts no h3 exists and no off-scale size survives.
+
+The town grid h2 was aligned to the section h2 clamp, 3.4vw/38 -> 3.6vw/40.
+
+Measured on staging at 1440px, distinct rendered sizes across both embeds and the
+town grid:
+
+    before   52, 40, 38, 19, 18, 17, 16, 15, 14, 13, 12   (11)
+    after    52, 40, 18, 15, 13                            (5)
+
+NOTE the hero lead now deliberately matches body at 18px. The sheet used to ask
+for 20 and never got it, so nothing changed on screen; restoring a distinct lead
+is a one-line change but would add a sixth size.
+
+Applied so far: early-intervention-north-carolina and the NC town grid component.
+Remaining: the other 11 pages and the NJ and GA town grid components.
