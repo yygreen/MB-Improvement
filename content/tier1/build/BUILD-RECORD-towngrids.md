@@ -234,3 +234,30 @@ anchored on the town grid - the builder rejects that), move_element the town gri
 `before` the new embed, write part 2, then truncate part 1. Writing part 2 before
 part 1 matters: the reverse order leaves the page with no FAQ and no closing CTA
 if the second call fails.
+
+## CTA byline (2026-08-07)
+
+A paragraph between the closing headline and the buttons, per service with the
+state name inserted so the twelve pages do not close on the same sentence.
+
+    early-intervention   "Tell us what you are seeing at home and we will walk you
+                          through what starts when in {state}..."
+    parent-training      "Bring the routine that is hardest right now..."
+    behavior-support     "Describe what is happening at home... anywhere in {state}."
+    transition-planning  "Tell us where your child sits in the {state} timeline..."
+
+Each describes what the conversation IS rather than what it will achieve - the
+copy gates forbid outcome guarantees, and a closing CTA is exactly where that
+temptation lives. Gated against the same forbidden-token list as the rest.
+
+Touches part 2 only (confirmed: no part 1 file changed), so pages already split
+needed just their second embed rewritten.
+
+Gate that needed tightening: counting the class name matched twice, because the
+rule also appears in part 2's stylesheet. It counts the element now.
+
+## Rollout status
+
+    NORTH CAROLINA   4/4 complete, verified, with bylines
+    NEW JERSEY       0/4 pages; town grid component ALREADY widened to 1200
+    GEORGIA          0/4 pages; town grid component still at 1100
