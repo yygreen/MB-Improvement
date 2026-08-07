@@ -1,0 +1,15 @@
+
+<!-- Manrope 600. Webflow's self-hosted Manrope ships only the 500 and 700 weights, so
+     every font-weight:600 on the site was resolving UP to the 700 face: CSS font
+     matching searches upward first for any weight above 500. Measured on 22 of 36 main
+     pages, where weight 600 and weight 700 rendered identical advance widths. This
+     restores the real 600 face site-wide. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap">
+<style>
+  /* The reference hero (/in-home-aba-therapy) renders antialiased. Eleven pages,
+     including /bcba-team and every /bcbas/ profile, were on the browser default of
+     auto, which paints strokes thicker and compounded the 600 -> 700 substitution. */
+  body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+</style>
