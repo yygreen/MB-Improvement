@@ -103,10 +103,12 @@ CTA_LEDE = {
     "parent-training":
         "Bring the routine that is hardest right now. We will talk through what "
         "coaching in your own home would look like for your family in {state}.",
+    # behavior-support deliberately does NOT name the state. Every phrasing that
+    # bolted it on read as filler ("anywhere in {state}"), and the sentence is
+    # stronger ending on the plan than on geography.
     "behavior-support":
         "Describe what is happening at home and we will talk through how an "
-        "assessment works and what a plan built around your routines would "
-        "involve, anywhere in {state}.",
+        "assessment works and what a plan built around your routines would involve.",
     "transition-planning":
         "Tell us where your child sits in the {state} timeline and we will talk "
         "through what is worth starting now and what can wait.",

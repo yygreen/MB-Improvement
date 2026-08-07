@@ -259,5 +259,17 @@ rule also appears in part 2's stylesheet. It counts the element now.
 ## Rollout status
 
     NORTH CAROLINA   4/4 complete, verified, with bylines
-    NEW JERSEY       0/4 pages; town grid component ALREADY widened to 1200
+    NEW JERSEY       4/4 complete, verified; town grid component at 1200
     GEORGIA          0/4 pages; town grid component still at 1100
+
+8/12 verified on staging: two embeds each, both payloads byte-identical to the
+generated files, closing byline rendering, town grid container at 1200, and no
+page carrying the withdrawn "anywhere in {state}" wording.
+
+## Byline correction
+
+The behavior-support byline originally ended "...would involve, anywhere in
+{state}." The clause read as filler and was withdrawn on request, for all three
+states rather than just the one it was spotted on. The sentence now ends on the
+plan. The generator carries a note so nobody re-adds the state to this one line:
+every phrasing that bolted it on read worse than leaving it off.
