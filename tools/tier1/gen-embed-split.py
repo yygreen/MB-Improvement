@@ -61,6 +61,10 @@ ACC_CSS = """  <style>
     /* the FAQ is white and the closing CTA beige - stated, not inherited */
     .mm-faq { background: #fff; }
     .mm-cta-close { background: var(--warm, #f9f6f1); }
+    .mm-cta-close__lede {
+      font-size: 17px; line-height: 1.7; color: var(--soft, #5a5a5a);
+      max-width: 60ch; margin: 0 auto;
+    }
     .mm-acc { border-top: 1px solid var(--rule, #e6e2da); }
     .mm-acc__item { border-bottom: 1px solid var(--rule, #e6e2da); }
     .mm-acc__q {
@@ -84,6 +88,53 @@ ACC_CSS = """  <style>
     @media (max-width: 600px) { .mm-acc__q { font-size: 17px; } }
   </style>
 """
+
+
+# A byline under the closing headline. Written per service, with the state name
+# inserted, so twelve pages do not all close on the same sentence. Each one
+# lowers the barrier to the click rather than promising a result: the copy gates
+# forbid outcome guarantees, and these are deliberately about what the
+# conversation is, not what it will achieve.
+CTA_LEDE = {
+    "early-intervention":
+        "Tell us what you are seeing at home and we will walk you through what "
+        "starts when in {state}. There is no onboarding waitlist, and assessment "
+        "takes about four weeks.",
+    "parent-training":
+        "Bring the routine that is hardest right now. We will talk through what "
+        "coaching in your own home would look like for your family in {state}.",
+    "behavior-support":
+        "Describe what is happening at home and we will talk through how an "
+        "assessment works and what a plan built around your routines would "
+        "involve, anywhere in {state}.",
+    "transition-planning":
+        "Tell us where your child sits in the {state} timeline and we will talk "
+        "through what is worth starting now and what can wait.",
+}
+
+def cta_byline(part2, slug):
+    """Add a paragraph under the closing CTA headline, above the buttons."""
+    service = next(k for k in CTA_LEDE if slug.startswith(k))
+    state = slug[len(service) + 1:].replace("-", " ").title()
+    lede = CTA_LEDE[service].format(state=state)
+    for w in FORBIDDEN:
+        assert w not in lede, f"{slug}: forbidden token {w!r} in the CTA byline"
+    assert "guarantee" not in lede.lower()
+
+    m = re.search(r'(<section class="mm-section mm-cta-close">.*?</h2>\n)(\s*)'
+                  r'(<div class="mm-cta-row">)', part2, re.S)
+    assert m, f"{slug}: closing CTA shape not as expected"
+    out = (part2[:m.end(1)]
+           + f'      <p class="mm-cta-close__lede">{lede}</p>\n'
+           + m.group(2) + part2[m.start(3):])
+
+    # count the ELEMENT, not the class name - the name also appears in the sheet
+    tag = '<p class="mm-cta-close__lede">'
+    assert out.count(tag) == 1, f"{slug}: byline not added exactly once"
+    assert out.index(tag) < out.index('<div class="mm-cta-row">'), \
+        f"{slug}: byline must sit above the buttons"
+    assert out.count("<h2") == part2.count("<h2"), f"{slug}: heading count changed"
+    return out
 
 
 def accordion(faq_section, slug):
@@ -303,6 +354,7 @@ def split(markup, slug):
     faq = faq.replace('<section class="mm-section mm-section--warm mm-faq">',
                       '<section class="mm-section mm-faq">', 1)
     part2 = OPEN + "\n" + ACC_CSS + accordion(faq.rstrip(), slug) + "\n" + rest.lstrip("\n")
+    part2 = cta_byline(part2, slug)
 
     # --- gates
     assert len(sections(part1)) == len(sections(markup)) - 3, \
@@ -321,7 +373,10 @@ def split(markup, slug):
         assert p.count("<div") == p.count("</div>"), f"{slug}: {name} unbalanced divs"
         assert p.count("<section") == p.count("</section>"), f"{slug}: {name} sections"
     # no copy may change, appear or vanish
-    expect = visible(drop_inline_towns(markup, slug)) + " Hero image placeholder"
+    service = next(k for k in CTA_LEDE if slug.startswith(k))
+    state = slug[len(service) + 1:].replace("-", " ").title()
+    expect = (visible(drop_inline_towns(markup, slug)) + " Hero image placeholder "
+              + CTA_LEDE[service].format(state=state))
     got = visible(part1) + " " + visible(part2)
     assert sorted(got.split()) == sorted(expect.split()), f"{slug}: visible copy changed"
     for w in FORBIDDEN:
