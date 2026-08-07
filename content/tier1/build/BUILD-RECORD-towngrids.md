@@ -178,3 +178,34 @@ Measured on staging at 1440px - everything on one left edge:
 
 x=120 is also where /aba-therapy-in-new-jersey starts its content, so the state
 pages and the hub now share a left edge.
+
+## Width, corrected (2026-08-07)
+
+The previous pass aligned left edges but capped prose at 62ch, so the copy moved
+without widening - it sat in the left two-thirds of an empty 1200 container. All
+measure caps are gone now: the per-paragraph cap, the accordion cap in embed 2,
+and the hero intro's own 62ch, which lives in the SOURCE embeds and so had to be
+stripped in `align_widths` rather than in the generator's own text.
+
+Measuring width rather than only position also caught a third block: the town
+grid component sat at left 170 / width 1100 between two 1200 embeds. Its
+`.mm-towns__inner` is now 1200 too, in `gen-town-grids.py` and in the NC
+component.
+
+Measured on staging at 1440px:
+
+    EMBED 1  hero inner    120  1200
+    EMBED 1  section 1-3   120  1200
+    EMBED 1  body para     120  1200
+    EMBED 1  table         120  1200
+    TOWN GRID              120  1200
+    EMBED 2  section 1-2   120  1200
+    EMBED 2  accordion     120  1200
+    EMBED 2  answer para   120  1200
+
+The hero copy stays 582 - it is the left column of the two-column hero, not a
+measure cap.
+
+NOTE for the rollout: the Town Grid components for NEW JERSEY and GEORGIA still
+carry `max-width: 1100px`. Each is a component, so one edit fixes all four pages
+in that state.
