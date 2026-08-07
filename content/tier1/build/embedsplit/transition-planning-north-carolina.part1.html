@@ -1,0 +1,154 @@
+<div class="mm-embed mm-t1">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
+    .mm-embed { box-sizing: border-box; }
+    .mm-embed *, .mm-embed *::before, .mm-embed *::after { box-sizing: inherit; }
+
+    .mm-embed {
+      --navy:     #1a2744;
+      --teal:     #3ba5a8;
+      --teal-pale:#e8f6f6;
+      --warm:     #f9f6f1;
+      --cta:      #db5b4f;
+      --text:     #2c2c2c;
+      --soft:     #5a5a5a;
+      --rule:     #e6e2da;
+      --font-body: 'Manrope', system-ui, -apple-system, sans-serif;
+    }
+    .mm-t1 { font-family: var(--font-body, 'Manrope', sans-serif); color: var(--text, #2c2c2c); }
+
+    .mm-hero {
+      background: radial-gradient(ellipse at 80% 0%, rgba(59,165,168,0.15) 0%, transparent 55%),
+                  linear-gradient(180deg, var(--warm, #f9f6f1) 0%, #fff 100%);
+      padding: clamp(36px, 5vw, 64px) clamp(20px, 5vw, 48px) clamp(28px, 4vw, 48px);
+    }
+    .mm-hero__inner { max-width: 900px; margin: 0 auto; }
+    .mm-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--teal, #3ba5a8); margin-bottom: 28px;
+    }
+    .mm-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--teal, #3ba5a8); }
+    .mm-t1 h1 {
+      font-family: var(--font-body); font-weight: 600;
+      font-size: clamp(32px, 5vw, 52px); line-height: 1.08; letter-spacing: -0.015em;
+      color: var(--navy, #1a2744); margin: 0 0 28px 0;
+    }
+    .mm-hero__intro { font-size: clamp(16px, 1.5vw, 20px); line-height: 1.65; color: var(--soft, #5a5a5a); max-width: 62ch; margin: 0 0 36px 0; }
+    .mm-hero__intro p { margin: 0 0 1.1em 0; }
+    .mm-hero__intro p:last-child { margin-bottom: 0; }
+    .mm-hero__intro a, .mm-rt a {
+      color: var(--navy, #1a2744); text-decoration: underline;
+      text-decoration-color: var(--teal, #3ba5a8); text-underline-offset: 3px; text-decoration-thickness: 2px;
+    }
+    .mm-cta-row { display: flex; flex-wrap: wrap; gap: 14px; }
+    .mm-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 16px 28px; font-family: var(--font-body); font-size: 15px; font-weight: 600;
+      letter-spacing: 0.01em; border-radius: 999px; border: 2px solid transparent;
+      text-decoration: none; cursor: pointer;
+      transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+    .mm-btn--primary { background: var(--cta, #db5b4f); color: #fff; border-color: var(--cta, #db5b4f); }
+    .mm-btn--primary:hover { background: #b34a40; border-color: #b34a40; transform: translateY(-1px); }
+    .mm-btn--secondary { background: transparent; color: var(--navy, #1a2744); border-color: var(--cta, #db5b4f); }
+    .mm-btn--secondary:hover { background: var(--cta, #db5b4f); color: #fff; border-color: var(--cta, #db5b4f); }
+
+    .mm-section { padding: clamp(48px, 7vw, 88px) clamp(20px, 5vw, 48px); }
+    .mm-section--warm { background: var(--warm, #f9f6f1); }
+    .mm-section__inner { max-width: 900px; margin: 0 auto; }
+    .mm-h2 {
+      font-family: var(--font-body); font-weight: 600;
+      font-size: clamp(26px, 3.6vw, 40px); line-height: 1.15; letter-spacing: -0.01em;
+      color: var(--navy, #1a2744); margin: 0 0 28px 0;
+    }
+    .mm-h3 { font-family: var(--font-body); font-weight: 600; font-size: 20px; line-height: 1.3; color: var(--navy, #1a2744); margin: 1.8em 0 0.4em 0; }
+    .mm-rt { font-size: 17px; line-height: 1.7; color: var(--text, #2c2c2c); }
+    .mm-rt p { margin: 0 0 1.1em 0; }
+    .mm-rt p:last-child { margin-bottom: 0; }
+    .mm-rt strong { color: var(--navy, #1a2744); font-weight: 600; }
+
+    .mm-rt table {
+      width: 100%; border-collapse: collapse; margin: 24px 0;
+      font-size: 15px; background: #fff; border-radius: 12px; overflow: hidden;
+      box-shadow: 0 1px 0 var(--rule, #e6e2da), 0 12px 40px rgba(26,39,68,0.04);
+    }
+    .mm-rt tbody tr { border-bottom: 1px solid var(--rule, #e6e2da); }
+    .mm-rt tbody tr:last-child { border-bottom: none; }
+    .mm-rt tbody tr:first-child { background: var(--navy, #1a2744); color: #fff; }
+    .mm-rt tbody tr:first-child strong { color: #fff; }
+    .mm-rt td { padding: 14px 18px; text-align: left; vertical-align: top; line-height: 1.55; }
+    .mm-rt tbody td:first-child { width: 30%; }
+    @media (max-width: 600px) { .mm-rt tbody td:first-child { width: 40%; } }
+
+    .mm-faq .mm-h3 { margin-top: 1.4em; }
+    .mm-cta-close { background: #f9f6f1; text-align: center; }
+    .mm-cta-close .mm-h2 { margin-bottom: 16px; }
+    .mm-cta-close .mm-cta-row { justify-content: center; margin-top: 28px; }
+  </style>
+
+  <section class="mm-hero">
+    <div class="mm-hero__inner">
+      <span class="mm-eyebrow">In-Home ABA in North Carolina</span>
+      <h1>Transition Planning in North Carolina</h1>
+      <div class="mm-hero__intro">
+        <p>North Carolina's transition story has a twist most states do not have: Medicaid here covers ABA for adults over 21. That does not make transition planning optional. School still ends. The children's coverage rules still change. But it changes what the years after 21 can look like, and it makes the planning years count double.</p>
+        <p><a href="/transition-planning">Transition planning in ABA</a> means teaching the skills adult life will ask for while there is still time to teach them: self-advocacy, daily living routines, handling unstructured time, communicating with people who do not already know your child. We work on them in your home and in your community, where they will actually be used.</p>
+        <p>Mastermind Behavior provides in-home ABA therapy for children and young people with autism through age 21, across North Carolina.</p>
+      </div>
+      <div class="mm-cta-row">
+        <a href="/contact" class="mm-btn mm-btn--primary">Schedule a free consultation</a>
+        <a href="tel:732.813.7333" class="mm-btn mm-btn--secondary">Call 732.813.7333</a>
+      </div>
+    </div>
+  </section>
+  <section class="mm-section mm-section--warm">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">What North Carolina requires, and when</h2>
+      <div class="mm-rt">
+        <p>On the school side, North Carolina follows the federal timeline. Under IDEA, transition services must be in place in the IEP by the time your child turns 16, and your child must be invited to IEP meetings where transition is discussed. Many teams begin earlier, and nothing stops you from asking for that.</p>
+        <p>On the adult services side, long-term developmental disability supports run through the NC Innovations Waiver, administered through your regional LME/MCO. Demand for waiver slots runs far ahead of supply and waits are long, which is why families are urged to get on the list years before adulthood rather than at the end of school.</p>
+        <p>Now the twist. On the coverage side, the private-plan mandate runs to age 19, and NC Medicaid covers ABA for children under 21 through EPSDT. But North Carolina is one of the few states where Medicaid also covers ABA for adults over 21, approved by CMS effective July 1, 2021. For families whose child is on Medicaid, turning 21 is a change in process, not automatically the end of ABA coverage.</p>
+        <p>The IEP still ends when school does, and whatever your child can do independently by then is what they carry forward. That is the case for starting the skills work early, with the adult-services paperwork moving in parallel rather than after.</p>
+      </div>
+    </div>
+  </section>
+  <section class="mm-section">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">Coverage in North Carolina</h2>
+      <div class="mm-rt">
+        <p>The rows below are the clocks that matter most in the transition years, including the one that keeps running. The full North Carolina picture lives on our <a href="/aba-therapy-in-north-carolina">North Carolina ABA therapy page</a>.</p>
+        <table>
+          <tbody>
+            <tr><td><strong>Coverage element</strong></td><td><strong>North Carolina detail</strong></td></tr>
+            <tr><td><strong>State mandate</strong></td><td>SB 676, codified at G.S. § 58-3-192 — enacted October 15, 2015, effective July 1, 2016</td></tr>
+            <tr><td><strong>Age limit</strong></td><td>Coverage mandated for individuals under 19</td></tr>
+            <tr><td><strong>NC Medicaid (children)</strong></td><td>Covers ABA as RB-BHT (Research-Based Behavioral Health Treatment) for children under 21 via EPSDT, delivered through the LME/MCO, Tailored Plan, or Standard Health Plan you're enrolled in</td></tr>
+            <tr><td><strong>NC Medicaid (adults 21+)</strong></td><td>RB-BHT for adults over 21 — approved by CMS effective July 1, 2021. NC is one of the few states with adult ABA Medicaid coverage. Requests go through the assigned plan.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <section class="mm-section mm-section--warm">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">How we work with teens in North Carolina</h2>
+      <div class="mm-rt">
+        <p>Everything we do happens in your home and in the places your child already goes, and for a teenager that increasingly means the places adult life will happen: the kitchen, the store, the bus ride, the plan that changes at the last minute.</p>
+        <p>Programs are designed and supervised by a BCBA and delivered by Behavior Technicians who work with your child consistently rather than rotating through. Assessment takes about four weeks, and there is no onboarding waitlist, which matters most in the years when time is the scarcest resource.</p>
+        <p>Your BCBA can contribute to the IEP process.</p>
+        <p>Transition planning connects to our other North Carolina services: <a href="/behavior-support-north-carolina">behavior support</a> when specific behaviors stand in the way, <a href="/parent-training-north-carolina">parent training</a> so the skills hold at home, and <a href="/early-intervention-north-carolina">early intervention</a> for the youngest children.</p>
+        <p>We serve families across North Carolina; our <a href="/aba-therapy-in-north-carolina">North Carolina page</a> lists every community.</p>
+      </div>
+    </div>
+  </section>
+  <section class="mm-section">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">Where we serve</h2>
+      <div class="mm-rt">
+        <p><strong>In-home means your home.</strong> We provide transition-focused ABA across North Carolina, including <a href="/areas-we-serve/charlotte">Charlotte</a>, <a href="/areas-we-serve/raleigh">Raleigh</a>, <a href="/areas-we-serve/greensboro-nc">Greensboro</a>, <a href="/areas-we-serve/durham">Durham</a>, <a href="/areas-we-serve/winston-salem">Winston-Salem</a>, <a href="/areas-we-serve/fayetteville-nc">Fayetteville</a>, <a href="/areas-we-serve/cary">Cary</a>, <a href="/areas-we-serve/wilmington">Wilmington</a>, <a href="/areas-we-serve/concord">Concord</a>, <a href="/areas-we-serve/jacksonville">Jacksonville</a>, <a href="/areas-we-serve/asheville">Asheville</a>, and <a href="/areas-we-serve/gastonia">Gastonia</a>. See every community we serve on our <a href="/aba-therapy-in-north-carolina">North Carolina page</a>.</p>
+      </div>
+    </div>
+  </section>
+</div>

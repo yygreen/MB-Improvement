@@ -1,0 +1,154 @@
+<div class="mm-embed mm-t1">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
+    .mm-embed { box-sizing: border-box; }
+    .mm-embed *, .mm-embed *::before, .mm-embed *::after { box-sizing: inherit; }
+
+    .mm-embed {
+      --navy:     #1a2744;
+      --teal:     #3ba5a8;
+      --teal-pale:#e8f6f6;
+      --warm:     #f9f6f1;
+      --cta:      #db5b4f;
+      --text:     #2c2c2c;
+      --soft:     #5a5a5a;
+      --rule:     #e6e2da;
+      --font-body: 'Manrope', system-ui, -apple-system, sans-serif;
+    }
+    .mm-t1 { font-family: var(--font-body, 'Manrope', sans-serif); color: var(--text, #2c2c2c); }
+
+    .mm-hero {
+      background: radial-gradient(ellipse at 80% 0%, rgba(59,165,168,0.15) 0%, transparent 55%),
+                  linear-gradient(180deg, var(--warm, #f9f6f1) 0%, #fff 100%);
+      padding: clamp(36px, 5vw, 64px) clamp(20px, 5vw, 48px) clamp(28px, 4vw, 48px);
+    }
+    .mm-hero__inner { max-width: 900px; margin: 0 auto; }
+    .mm-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--teal, #3ba5a8); margin-bottom: 28px;
+    }
+    .mm-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--teal, #3ba5a8); }
+    .mm-t1 h1 {
+      font-family: var(--font-body); font-weight: 600;
+      font-size: clamp(32px, 5vw, 52px); line-height: 1.08; letter-spacing: -0.015em;
+      color: var(--navy, #1a2744); margin: 0 0 28px 0;
+    }
+    .mm-hero__intro { font-size: clamp(16px, 1.5vw, 20px); line-height: 1.65; color: var(--soft, #5a5a5a); max-width: 62ch; margin: 0 0 36px 0; }
+    .mm-hero__intro p { margin: 0 0 1.1em 0; }
+    .mm-hero__intro p:last-child { margin-bottom: 0; }
+    .mm-hero__intro a, .mm-rt a {
+      color: var(--navy, #1a2744); text-decoration: underline;
+      text-decoration-color: var(--teal, #3ba5a8); text-underline-offset: 3px; text-decoration-thickness: 2px;
+    }
+    .mm-cta-row { display: flex; flex-wrap: wrap; gap: 14px; }
+    .mm-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 16px 28px; font-family: var(--font-body); font-size: 15px; font-weight: 600;
+      letter-spacing: 0.01em; border-radius: 999px; border: 2px solid transparent;
+      text-decoration: none; cursor: pointer;
+      transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+    .mm-btn--primary { background: var(--cta, #db5b4f); color: #fff; border-color: var(--cta, #db5b4f); }
+    .mm-btn--primary:hover { background: #b34a40; border-color: #b34a40; transform: translateY(-1px); }
+    .mm-btn--secondary { background: transparent; color: var(--navy, #1a2744); border-color: var(--cta, #db5b4f); }
+    .mm-btn--secondary:hover { background: var(--cta, #db5b4f); color: #fff; border-color: var(--cta, #db5b4f); }
+
+    .mm-section { padding: clamp(48px, 7vw, 88px) clamp(20px, 5vw, 48px); }
+    .mm-section--warm { background: var(--warm, #f9f6f1); }
+    .mm-section__inner { max-width: 900px; margin: 0 auto; }
+    .mm-h2 {
+      font-family: var(--font-body); font-weight: 600;
+      font-size: clamp(26px, 3.6vw, 40px); line-height: 1.15; letter-spacing: -0.01em;
+      color: var(--navy, #1a2744); margin: 0 0 28px 0;
+    }
+    .mm-h3 { font-family: var(--font-body); font-weight: 600; font-size: 20px; line-height: 1.3; color: var(--navy, #1a2744); margin: 1.8em 0 0.4em 0; }
+    .mm-rt { font-size: 17px; line-height: 1.7; color: var(--text, #2c2c2c); }
+    .mm-rt p { margin: 0 0 1.1em 0; }
+    .mm-rt p:last-child { margin-bottom: 0; }
+    .mm-rt strong { color: var(--navy, #1a2744); font-weight: 600; }
+
+    .mm-rt table {
+      width: 100%; border-collapse: collapse; margin: 24px 0;
+      font-size: 15px; background: #fff; border-radius: 12px; overflow: hidden;
+      box-shadow: 0 1px 0 var(--rule, #e6e2da), 0 12px 40px rgba(26,39,68,0.04);
+    }
+    .mm-rt tbody tr { border-bottom: 1px solid var(--rule, #e6e2da); }
+    .mm-rt tbody tr:last-child { border-bottom: none; }
+    .mm-rt tbody tr:first-child { background: var(--navy, #1a2744); color: #fff; }
+    .mm-rt tbody tr:first-child strong { color: #fff; }
+    .mm-rt td { padding: 14px 18px; text-align: left; vertical-align: top; line-height: 1.55; }
+    .mm-rt tbody td:first-child { width: 30%; }
+    @media (max-width: 600px) { .mm-rt tbody td:first-child { width: 40%; } }
+
+    .mm-faq .mm-h3 { margin-top: 1.4em; }
+    .mm-cta-close { background: #f9f6f1; text-align: center; }
+    .mm-cta-close .mm-h2 { margin-bottom: 16px; }
+    .mm-cta-close .mm-cta-row { justify-content: center; margin-top: 28px; }
+  </style>
+
+  <section class="mm-hero">
+    <div class="mm-hero__inner">
+      <span class="mm-eyebrow">In-Home ABA in Georgia</span>
+      <h1>Early Intervention in Georgia</h1>
+      <div class="mm-hero__intro">
+        <p>It usually starts with a feeling before it starts with a form: fewer words than the checklist says, play that looks different, a name that gets no response. What happens next in Georgia depends on which door you knock on first, because the state runs one system for children under three and a different one after that.</p>
+        <p><a href="/early-intervention">Early intervention in ABA</a> means starting while the brain is doing its fastest learning. Children who begin before age five consistently show the greatest gains, and the work looks nothing like an office visit: it is deliberate, play-based teaching in your kitchen and living room, where your child is already comfortable.</p>
+        <p>Mastermind Behavior provides in-home ABA therapy for young children with autism across Georgia.</p>
+      </div>
+      <div class="mm-cta-row">
+        <a href="/contact" class="mm-btn mm-btn--primary">Schedule a free consultation</a>
+        <a href="tel:732.813.7333" class="mm-btn mm-btn--secondary">Call 732.813.7333</a>
+      </div>
+    </div>
+  </section>
+  <section class="mm-section mm-section--warm">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">How early intervention works in Georgia</h2>
+      <div class="mm-rt">
+        <p>Georgia's public early intervention program is Babies Can't Wait, run by the Department of Public Health under Part C of IDEA. It serves infants and toddlers with special needs from birth to three, and referrals can be made by phone, email, fax, letter, or in person. For many families it is the first evaluation and the first services their child receives.</p>
+        <p>At age three, Babies Can't Wait ends and responsibility moves to your local school district, where your child may qualify for preschool special education under an IEP. The program publishes its own transition-at-three materials because the handoff takes planning. Starting that planning early is the best way to keep services from gapping.</p>
+        <p>In-home ABA runs on a separate track from both systems. It is funded through your health coverage rather than a program calendar, so it does not switch systems at three. Ava's Law requires most state-regulated plans to cover diagnostic assessments and ABA therapy, and Georgia Medicaid covers ABA for individuals under 21, at up to 40 hours per week for children under six. For a family in the under-three years, ABA can usually start alongside Babies Can't Wait and continue straight through the age-three transition.</p>
+        <p>None of this replaces Babies Can't Wait. We are a private provider, not part of the state system, and families commonly use both at once. What we add is intensity, consistency, and a program built specifically around autism.</p>
+      </div>
+    </div>
+  </section>
+  <section class="mm-section">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">Coverage in Georgia</h2>
+      <div class="mm-rt">
+        <p>The short version: most state-regulated Georgia plans must cover ABA, and Georgia Medicaid covers it for individuals under 21, with its highest weekly-hours allowance in the under-six years. The full picture lives on our <a href="/aba-therapy-in-georgia">Georgia ABA therapy page</a>.</p>
+        <table>
+          <tbody>
+            <tr> <td><strong>Coverage element</strong></td> <td><strong>Georgia detail</strong></td> </tr>
+            <tr> <td><strong>State mandate</strong></td> <td>Ava's Law (HB 429, effective July 1, 2015), amended by SB 118 (signed 2018, effective January 1, 2019) — codified at O.C.G.A. § 33-24-59.10</td> </tr>
+            <tr> <td><strong>Coverage</strong></td> <td>Diagnostic assessments and ABA therapy, plus speech, OT, PT, and counseling for autism spectrum disorder</td> </tr>
+            <tr> <td><strong>Medicaid</strong></td> <td>GA Medicaid (DCH) covers ABA for individuals under 21 since January 1, 2018, via EPSDT. Up to 40 hours/week for under-6, 25 hours/week for ages 6–20. Requires DSM-5 ASD diagnosis from a licensed professional and prior authorization through the assigned Care Management Organization.</td> </tr>
+            <tr> <td><strong>Other programs</strong></td> <td>Katie Beckett Medicaid Waiver, Family Support Services, Georgia TEFRA — alternative pathways for children with disabilities whose family income exceeds standard Medicaid limits</td> </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <section class="mm-section mm-section--warm">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">How we work with young children in Georgia</h2>
+      <div class="mm-rt">
+        <p>For a two-year-old, the skills that matter are home skills: first words, pointing, imitation, tolerating a routine, getting dressed. So that is where we teach them, in the rooms where they will be used, woven into play your child actually wants to be part of.</p>
+        <p>Sessions are shorter and more frequent than they would be for an older child, matched to a toddler's attention. The teaching leans on natural environment methods, and parent coaching runs through all of it so progress keeps moving between sessions.</p>
+        <p>Programs are designed and supervised by a BCBA and delivered by Behavior Technicians who stay with your child consistently. Assessment takes about four weeks, and there is no onboarding waitlist. In the years when months matter most, that is not a small thing.</p>
+        <p>As children grow, Georgia families also come to us for <a href="/parent-training-georgia">parent training</a>, <a href="/behavior-support-georgia">behavior support</a>, and eventually <a href="/transition-planning-georgia">transition planning</a>.</p>
+        <p>Our Georgia team works from the Macon office at 4658 Presidential Pkwy, <a href="/aba-therapy-in-georgia">serving families across the state</a>.</p>
+      </div>
+    </div>
+  </section>
+  <section class="mm-section">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">Where we serve</h2>
+      <div class="mm-rt">
+        <p><strong>In-home means your home.</strong> We provide early intervention ABA across Georgia, including <a href="/areas-we-serve/macon">Macon</a>, <a href="/areas-we-serve/savannah">Savannah</a>, <a href="/areas-we-serve/warner-robins">Warner Robins</a>, <a href="/areas-we-serve/perry">Perry</a>, <a href="/areas-we-serve/milledgeville">Milledgeville</a>, <a href="/areas-we-serve/dublin">Dublin</a>, <a href="/areas-we-serve/brunswick">Brunswick</a>, <a href="/areas-we-serve/thomasville">Thomasville</a>, <a href="/areas-we-serve/tifton">Tifton</a>, <a href="/areas-we-serve/buford">Buford</a>, <a href="/areas-we-serve/snellville">Snellville</a>, and <a href="/areas-we-serve/norcross">Norcross</a>. See every community we serve on our <a href="/aba-therapy-in-georgia">Georgia page</a>.</p>
+      </div>
+    </div>
+  </section>
+</div>

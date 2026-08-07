@@ -78,3 +78,47 @@ link to "Current Areas We Serve" - one click per component.
   the first pass used the navy body colour and rendered invisible.
 - The page's own copy also contains /areas-we-serve/ links, so counting town
   links must be scoped to inside `mm-towns__inner`, not the whole document.
+
+## Embed split so the town grid sits mid-page (2026-08-07)
+
+Asked for: one embed, then the navy town block, then a second embed carrying the
+FAQ and the closing CTA.
+
+Before, all 12 rendered as
+
+    nav -> [one embed: hero .. where-we-serve, FAQ, closing CTA] -> Town Grid -> footer
+
+so the navy slab landed after the page had already asked for the call. A Webflow
+component cannot be nested inside an HtmlEmbed, so the only way to place it
+mid-page is to cut the embed in two and put the component between the halves.
+
+`tools/tier1/gen-embed-split.py` generates both halves from the banked embeds
+(verified byte-identical to live for all 12 before generating) and gates:
+sections are not reordered or lost, part 2 is exactly FAQ + CTA, divs and
+sections balance, and the visible copy of part1 + part2 equals the original
+character for character.
+
+### The stylesheet stays in part 1 only
+
+Every `.mm-*` rule lives in one inline <style> at the top of the embed, and it is
+the only style block on the page carrying `.mm-section`. CSS applies by selector,
+not DOM position, and both halves keep the `.mm-embed mm-t1` wrapper the rules
+are scoped to - so part 2 needs no copy. Duplicating it would add ~4.7 KB per
+page and create a second source of truth that could drift. Verified on staging:
+the FAQ and CTA in embed 2 render fully styled.
+
+### Two ordering traps
+
+1. `data_element_builder` refuses `creation_position: after` when the anchor is a
+   ComponentInstance - "Cannot insert elements directly into a component
+   instance" - even though this is a sibling insert, not a nested one. Workaround:
+   create the new embed after the EXISTING embed, then `move_element` the Town
+   Grid component to sit `before` it. move_element has no such restriction.
+2. Write part 2 into the new embed BEFORE truncating the original to part 1. The
+   reverse order leaves the page with no FAQ and no closing CTA if the second
+   call fails.
+
+Verified on /early-intervention-north-carolina: render order is
+hero -> sections -> TOWN GRID -> faq -> cta-close, both embeds byte-identical to
+their generated files, visible copy unchanged against the original embed, and
+still exactly one h1.

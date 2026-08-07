@@ -1,0 +1,154 @@
+<div class="mm-embed mm-t1">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
+    .mm-embed { box-sizing: border-box; }
+    .mm-embed *, .mm-embed *::before, .mm-embed *::after { box-sizing: inherit; }
+
+    .mm-embed {
+      --navy:     #1a2744;
+      --teal:     #3ba5a8;
+      --teal-pale:#e8f6f6;
+      --warm:     #f9f6f1;
+      --cta:      #db5b4f;
+      --text:     #2c2c2c;
+      --soft:     #5a5a5a;
+      --rule:     #e6e2da;
+      --font-body: 'Manrope', system-ui, -apple-system, sans-serif;
+    }
+    .mm-t1 { font-family: var(--font-body, 'Manrope', sans-serif); color: var(--text, #2c2c2c); }
+
+    .mm-hero {
+      background: radial-gradient(ellipse at 80% 0%, rgba(59,165,168,0.15) 0%, transparent 55%),
+                  linear-gradient(180deg, var(--warm, #f9f6f1) 0%, #fff 100%);
+      padding: clamp(36px, 5vw, 64px) clamp(20px, 5vw, 48px) clamp(28px, 4vw, 48px);
+    }
+    .mm-hero__inner { max-width: 900px; margin: 0 auto; }
+    .mm-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--teal, #3ba5a8); margin-bottom: 28px;
+    }
+    .mm-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--teal, #3ba5a8); }
+    .mm-t1 h1 {
+      font-family: var(--font-body); font-weight: 600;
+      font-size: clamp(32px, 5vw, 52px); line-height: 1.08; letter-spacing: -0.015em;
+      color: var(--navy, #1a2744); margin: 0 0 28px 0;
+    }
+    .mm-hero__intro { font-size: clamp(16px, 1.5vw, 20px); line-height: 1.65; color: var(--soft, #5a5a5a); max-width: 62ch; margin: 0 0 36px 0; }
+    .mm-hero__intro p { margin: 0 0 1.1em 0; }
+    .mm-hero__intro p:last-child { margin-bottom: 0; }
+    .mm-hero__intro a, .mm-rt a {
+      color: var(--navy, #1a2744); text-decoration: underline;
+      text-decoration-color: var(--teal, #3ba5a8); text-underline-offset: 3px; text-decoration-thickness: 2px;
+    }
+    .mm-cta-row { display: flex; flex-wrap: wrap; gap: 14px; }
+    .mm-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 16px 28px; font-family: var(--font-body); font-size: 15px; font-weight: 600;
+      letter-spacing: 0.01em; border-radius: 999px; border: 2px solid transparent;
+      text-decoration: none; cursor: pointer;
+      transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+    .mm-btn--primary { background: var(--cta, #db5b4f); color: #fff; border-color: var(--cta, #db5b4f); }
+    .mm-btn--primary:hover { background: #b34a40; border-color: #b34a40; transform: translateY(-1px); }
+    .mm-btn--secondary { background: transparent; color: var(--navy, #1a2744); border-color: var(--cta, #db5b4f); }
+    .mm-btn--secondary:hover { background: var(--cta, #db5b4f); color: #fff; border-color: var(--cta, #db5b4f); }
+
+    .mm-section { padding: clamp(48px, 7vw, 88px) clamp(20px, 5vw, 48px); }
+    .mm-section--warm { background: var(--warm, #f9f6f1); }
+    .mm-section__inner { max-width: 900px; margin: 0 auto; }
+    .mm-h2 {
+      font-family: var(--font-body); font-weight: 600;
+      font-size: clamp(26px, 3.6vw, 40px); line-height: 1.15; letter-spacing: -0.01em;
+      color: var(--navy, #1a2744); margin: 0 0 28px 0;
+    }
+    .mm-h3 { font-family: var(--font-body); font-weight: 600; font-size: 20px; line-height: 1.3; color: var(--navy, #1a2744); margin: 1.8em 0 0.4em 0; }
+    .mm-rt { font-size: 17px; line-height: 1.7; color: var(--text, #2c2c2c); }
+    .mm-rt p { margin: 0 0 1.1em 0; }
+    .mm-rt p:last-child { margin-bottom: 0; }
+    .mm-rt strong { color: var(--navy, #1a2744); font-weight: 600; }
+
+    .mm-rt table {
+      width: 100%; border-collapse: collapse; margin: 24px 0;
+      font-size: 15px; background: #fff; border-radius: 12px; overflow: hidden;
+      box-shadow: 0 1px 0 var(--rule, #e6e2da), 0 12px 40px rgba(26,39,68,0.04);
+    }
+    .mm-rt tbody tr { border-bottom: 1px solid var(--rule, #e6e2da); }
+    .mm-rt tbody tr:last-child { border-bottom: none; }
+    .mm-rt tbody tr:first-child { background: var(--navy, #1a2744); color: #fff; }
+    .mm-rt tbody tr:first-child strong { color: #fff; }
+    .mm-rt td { padding: 14px 18px; text-align: left; vertical-align: top; line-height: 1.55; }
+    .mm-rt tbody td:first-child { width: 30%; }
+    @media (max-width: 600px) { .mm-rt tbody td:first-child { width: 40%; } }
+
+    .mm-faq .mm-h3 { margin-top: 1.4em; }
+    .mm-cta-close { background: #f9f6f1; text-align: center; }
+    .mm-cta-close .mm-h2 { margin-bottom: 16px; }
+    .mm-cta-close .mm-cta-row { justify-content: center; margin-top: 28px; }
+  </style>
+
+  <section class="mm-hero">
+    <div class="mm-hero__inner">
+      <span class="mm-eyebrow">In-Home ABA in New Jersey</span>
+      <h1>Early Intervention in New Jersey</h1>
+      <div class="mm-hero__intro">
+        <p>Somewhere between the eighteen-month checkup and the third birthday, most families who end up on this page noticed something: fewer words than expected, play that looks different, a name that gets no response. What happens next in New Jersey depends on which door you knock on first, because the state runs one system for children under three and a completely different one after that.</p>
+        <p><a href="/early-intervention">Early intervention in ABA</a> means starting while the brain is doing its fastest learning. Children who begin before age five consistently show the greatest gains, and the work itself looks nothing like an office visit: it is play, built deliberately, in your kitchen and living room, where your child is already comfortable.</p>
+        <p>Mastermind Behavior provides in-home ABA therapy for young children with autism across New Jersey.</p>
+      </div>
+      <div class="mm-cta-row">
+        <a href="/contact" class="mm-btn mm-btn--primary">Schedule a free consultation</a>
+        <a href="tel:732.813.7333" class="mm-btn mm-btn--secondary">Call 732.813.7333</a>
+      </div>
+    </div>
+  </section>
+  <section class="mm-section mm-section--warm">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">How early intervention works in New Jersey</h2>
+      <div class="mm-rt">
+        <p>New Jersey's public early intervention program is the New Jersey Early Intervention System, NJEIS, run by the Department of Health under Part C of IDEA. It serves children under age three with developmental delays or disabilities, and it is where many families get their first evaluation and their first services. NJEIS operates a system of payment that includes family cost participation.</p>
+        <p>At age three, NJEIS ends. Responsibility moves to your local school district, the family service plan that guided services is replaced by an IEP if your child qualifies for preschool special education, and the people around the table change. Families describe the handoff as starting over. Planning for it early, while your child is still in NJEIS, is the best way to keep services from gapping.</p>
+        <p>In-home ABA runs on a separate track from both systems. It is funded through your health coverage rather than through NJEIS or the school district, which means it does not switch systems at three and does not end when a program calendar says so. New Jersey's insurance mandate covers diagnostic assessments and ABA therapy for autism, and NJ FamilyCare covers ABA for children under 21. For a family in the middle of the under-three years, that usually means ABA can start alongside NJEIS and continue without interruption straight through the age-three transition.</p>
+        <p>None of this replaces NJEIS. We are a private provider, not part of the state system, and families commonly use both at once. What we add is intensity, consistency, and a program built specifically around autism.</p>
+      </div>
+    </div>
+  </section>
+  <section class="mm-section">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">Coverage in New Jersey</h2>
+      <div class="mm-rt">
+        <p>The short version: New Jersey requires most regulated health plans to cover ABA, and NJ FamilyCare covers it for children under 21. The rows below are the parts that matter most in the early years. The full picture lives on our <a href="/aba-therapy-in-new-jersey">New Jersey ABA therapy page</a>.</p>
+        <table>
+          <tbody>
+            <tr><td><strong>Coverage element</strong></td><td><strong>New Jersey detail</strong></td></tr>
+            <tr><td><strong>State mandate</strong></td><td>P.L. 2009, c. 115 ("Health Benefits Coverage for Autism and Other Developmental Disabilities") — signed August 2009, effective February 9, 2010</td></tr>
+            <tr><td><strong>Coverage</strong></td><td>Diagnostic assessments and ABA therapy, plus related services for autism spectrum disorder</td></tr>
+            <tr><td><strong>NJ FamilyCare (Medicaid)</strong></td><td>Covers ABA for children under 21 via EPSDT, effective April 2020. Income up to 355% FPL for children under 19. We're enrolled with the major NJ FamilyCare MCOs.</td></tr>
+            <tr><td><strong>Other pathways</strong></td><td>NJ Children's System of Care, NJ Early Intervention System (NJEIS) for children under 3</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <section class="mm-section mm-section--warm">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">How we work with young children in New Jersey</h2>
+      <div class="mm-rt">
+        <p>Sessions happen where your child already lives and plays. For a two-year-old or a four-year-old that matters more than at any other age: the skills that count right now, first words, pointing, imitation, tolerating a routine, getting dressed, are home skills, and home is where they are learned and kept.</p>
+        <p>The work is play-based and built on natural environment teaching. Sessions are shorter and more frequent than they would be for an older child, because that is what a toddler's attention can actually use. Parent coaching is woven through all of it, so the strategies keep working between sessions.</p>
+        <p>Programs are designed and supervised by a BCBA and delivered by Behavior Technicians who work with your child consistently rather than rotating through. Assessment takes about four weeks, and there is no onboarding waitlist. In the years when months matter most, that is not a small thing.</p>
+        <p>Early intervention is where many families start with us, not where the relationship ends. As children grow, New Jersey families also come to us for <a href="/parent-training-new-jersey">parent training</a>, <a href="/behavior-support-new-jersey">behavior support</a>, and eventually <a href="/transition-planning-new-jersey">transition planning</a>.</p>
+        <p>Our New Jersey team works from the Lakewood office at 410 Monmouth Ave, <a href="/aba-therapy-in-new-jersey">serving families across the state</a>.</p>
+      </div>
+    </div>
+  </section>
+  <section class="mm-section">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">Where we serve</h2>
+      <div class="mm-rt">
+        <p><strong>In-home means your home.</strong> We provide early intervention ABA across New Jersey, including <a href="/areas-we-serve/newark">Newark</a>, <a href="/areas-we-serve/jersey-city">Jersey City</a>, <a href="/areas-we-serve/paterson">Paterson</a>, <a href="/areas-we-serve/elizabeth">Elizabeth</a>, <a href="/areas-we-serve/lakewood">Lakewood</a>, <a href="/areas-we-serve/edison">Edison</a>, <a href="/areas-we-serve/woodbridge">Woodbridge</a>, <a href="/areas-we-serve/toms-river">Toms River</a>, <a href="/areas-we-serve/trenton">Trenton</a>, <a href="/areas-we-serve/clifton">Clifton</a>, <a href="/areas-we-serve/cherry-hill">Cherry Hill</a>, and <a href="/areas-we-serve/brick">Brick</a>. See every community we serve on our <a href="/aba-therapy-in-new-jersey">New Jersey page</a>.</p>
+      </div>
+    </div>
+  </section>
+</div>
