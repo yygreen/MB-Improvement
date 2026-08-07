@@ -209,3 +209,28 @@ measure cap.
 NOTE for the rollout: the Town Grid components for NEW JERSEY and GEORGIA still
 carry `max-width: 1100px`. Each is a component, so one edit fixes all four pages
 in that state.
+
+## Rollout progress (2026-08-07)
+
+NORTH CAROLINA COMPLETE - all 4 pages verified on staging: two embeds each,
+town grid between them, both payloads byte-identical to the generated files,
+accordion live, town grid container at 1200, exactly one h1 per page.
+
+    early-intervention-north-carolina    done
+    parent-training-north-carolina       done
+    behavior-support-north-carolina      done
+    transition-planning-north-carolina   done
+
+REMAINING: the 8 New Jersey and Georgia pages, plus their two Town Grid
+components, which still carry `max-width: 1100px`.
+
+Component ids for the rest of the rollout:
+    Town Grid NJ   b9c3e0ea-22fc-0b54-2f3e-85eb8aa8d263
+    Town Grid GA   108392e7-... (read from a Georgia page tree)
+    Town Grid NC   69c4d422-8f49-77f9-6024-b3da71dd561d   (already at 1200)
+
+Per page the sequence is: create an HtmlEmbed AFTER the existing one (never
+anchored on the town grid - the builder rejects that), move_element the town grid
+`before` the new embed, write part 2, then truncate part 1. Writing part 2 before
+part 1 matters: the reverse order leaves the page with no FAQ and no closing CTA
+if the second call fails.
