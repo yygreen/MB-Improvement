@@ -329,3 +329,75 @@ is a one-line change but would add a sixth size.
 
 Applied so far: early-intervention-north-carolina and the NC town grid component.
 Remaining: the other 11 pages and the NJ and GA town grid components.
+
+
+## H1 leads with ABA; eyebrow drops to the delivery model
+
+The four H1s across all twelve pages now read:
+
+    ABA Early Intervention in {State}
+    ABA Parent Training in {State}
+    ABA Behavior Support in {State}
+    ABA Transition Planning in {State}
+
+This is a clarity call, not a volume one, and Semrush is the reason to say so
+plainly rather than claim a ranking benefit that is not there:
+
+    behavior support north carolina          no data
+    parent training north carolina           no data
+    aba behavior support north carolina      no data
+    transition planning north carolina       0
+    aba therapy north carolina               480   <- the HUB's term
+
+So the state+service phrases carry no measurable demand. What the ABA prefix buys
+is comprehension: a visitor landing cold on "Behavior Support in Georgia" has no
+signal that it is ABA rather than school behavior consulting or counselling.
+
+Deliberately NOT "ABA Therapy in {State}". That string is the hub's exact target,
+and a phrase_organic pull for "aba therapy north carolina" shows Mastermind
+outside the top 12 (actionbehavior.com, succeedaba.com, goldenstepsaba.com hold
+1-3). Putting the hub's phrase in four sub-page H1s would spend relevance on
+zero-volume terms while diluting the one page that has to win it.
+
+Word order was checked too: "aba parent training" (880) beats "parent training
+aba" (590), which is the order used.
+
+REJECTED, and worth recording: the phrasing first proposed was "Behavior Support
+for ABA Therapy in {State}". That is clinically backwards. It reads as behavior
+support being provided TO ABA therapy; behavior support is a component OF ABA.
+
+### The eyebrow
+
+It read "In-Home ABA in {State}", which after the H1 change repeated both the
+category and the state directly above itself. It now reads "In-Home Therapy".
+The eyebrow says HOW, the H1 says WHAT and WHERE, and nothing appears twice. The
+eyebrow was kept rather than dropped because it carries the teal rule motif that
+matches the hub hero.
+
+### Gate that had to change
+
+The visible-copy gate compares part1 + part2 against the source embed, so a
+deliberate rewrite fails it by construction. It now applies the same H1/eyebrow
+substitution to the expected string - derived from the untouched source, not from
+the pipeline output - so every other word still has to survive the split
+unchanged, and it asserts the new H1 and eyebrow positively rather than only
+proving that nothing else moved.
+
+### Verified on staging
+
+All 12 pages: part1, part2 and the town grid each found byte-identical in the
+rendered page; exactly one h1; eyebrow exactly ["In-Home Therapy"]; embed 1 before
+the grid before embed 2 by document offset; zero inline /areas-we-serve/ links
+outside the grid. 0 failures.
+
+Measured at 1440px on one page per state, the type scale is now uniform:
+
+    behavior-support-north-carolina   52 40 18 15 13   embed 120/1200  grid 120/1200
+    parent-training-new-jersey        52 40 18 15 13   embed 120/1200  grid 120/1200
+    transition-planning-georgia       52 40 18 15 13   embed 120/1200  grid 120/1200
+
+(A 16px reading also appears in a naive sweep; it is the three <style> elements
+themselves, which render nothing.)
+
+The collapsed type scale and the 1200px width are therefore now live on all
+twelve pages and all three town grid components, not just the NC pair.
