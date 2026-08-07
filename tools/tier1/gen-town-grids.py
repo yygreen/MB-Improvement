@@ -43,9 +43,9 @@ SERVICES = [("early-intervention", "Early Intervention", "early intervention"),
 CSS = """  .mm-towns { background: #1a2744; padding: clamp(48px, 6vw, 80px) clamp(20px, 5vw, 48px); font-family: 'Manrope', system-ui, sans-serif; }
   .mm-towns__inner { max-width: 1200px; margin: 0 auto; }
   .mm-towns__head { text-align: center; margin: 0 0 40px; }
-  .mm-towns__label { font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8fa0bd; margin: 0 0 14px; }
-  .mm-towns h2 { font-weight: 700; font-size: clamp(26px, 3.4vw, 38px); line-height: 1.15; letter-spacing: -0.015em; color: #fff; margin: 0 0 14px; }
-  .mm-towns__lede { font-size: 16px; line-height: 1.65; color: #b9c3d6; margin: 0 auto; max-width: 62ch; }
+  .mm-towns__label { font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8fa0bd; margin: 0 0 14px; }
+  .mm-towns h2 { font-weight: 700; font-size: clamp(26px, 3.6vw, 40px); line-height: 1.15; letter-spacing: -0.015em; color: #fff; margin: 0 0 14px; }
+  .mm-towns__lede { font-size: 18px; line-height: 1.65; color: #b9c3d6; margin: 0 auto; max-width: 62ch; }
   .mm-towns__lede a { color: #5fc6c9; font-weight: 600; text-decoration: none; }
   .mm-towns__lede a:hover { text-decoration: underline; }
   .mm-towns nav { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 10px 18px; }

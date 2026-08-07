@@ -62,7 +62,7 @@ ACC_CSS = """  <style>
     .mm-faq { background: #fff; }
     .mm-cta-close { background: var(--warm, #f9f6f1); }
     .mm-cta-close__lede {
-      font-size: 17px; line-height: 1.7; color: var(--soft, #5a5a5a);
+      font-size: 18px; line-height: 1.7; color: var(--soft, #5a5a5a);
       max-width: 60ch; margin: 0 auto;
     }
     .mm-acc { border-top: 1px solid var(--rule, #e6e2da); }
@@ -71,7 +71,7 @@ ACC_CSS = """  <style>
       list-style: none; cursor: pointer;
       display: flex; align-items: flex-start; justify-content: space-between; gap: 20px;
       padding: 20px 0; font-family: var(--font-body); font-weight: 600;
-      font-size: 19px; line-height: 1.35; color: var(--navy, #1a2744);
+      font-size: 18px; line-height: 1.35; color: var(--navy, #1a2744);
       transition: color 0.15s ease;
     }
     .mm-acc__q::-webkit-details-marker { display: none; }
@@ -82,10 +82,11 @@ ACC_CSS = """  <style>
       transform: rotate(45deg); transition: transform 0.2s ease;
     }
     .mm-acc__item[open] .mm-acc__q::after { transform: rotate(-135deg); margin-top: 10px; }
-    .mm-acc__a { padding: 0 0 22px 0; font-size: 17px; line-height: 1.7; color: var(--text, #2c2c2c); }
-    .mm-acc__a p { margin: 0 0 1.1em 0; }
+    .mm-acc__a { padding: 0 0 22px 0; line-height: 1.7; color: var(--text, #2c2c2c); }
+    /* size the P itself: a global Webflow rule sets p to 1.125rem, which beats
+       anything inherited from the container - see the note in the base sheet */
+    .mm-acc__a p { font-size: 18px; margin: 0 0 1.1em 0; }
     .mm-acc__a p:last-child { margin-bottom: 0; }
-    @media (max-width: 600px) { .mm-acc__q { font-size: 17px; } }
   </style>
 """
 
@@ -190,7 +191,7 @@ HERO_CSS = """    .mm-hero__grid {
     .mm-hero__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .mm-hero__placeholder {
       width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
-      text-align: center; padding: 20px; font-size: 14px; font-weight: 500; color: #8a8a8a;
+      text-align: center; padding: 20px; font-size: 15px; font-weight: 500; color: #8a8a8a;
       background: linear-gradient(135deg, var(--teal-pale, #e8f6f6) 0%, #f0ebe3 100%);
     }
     @media (max-width: 900px) {
@@ -319,6 +320,51 @@ def drop_inline_towns(part1, slug):
     return out
 
 
+
+TYPE_SCALE = {
+    # The paragraph scale was drifting because of one global Webflow rule:
+    #     p { font-size: 1.125rem }   (18px)
+    # It targets the ELEMENT, so it beats any size inherited from a container -
+    # but loses to a size set on a p that carries a class. The result was
+    # accidental: .mm-rt declared 17 and rendered 18, .mm-hero__intro declared a
+    # 20px lead and rendered 18, while .mm-cta-close__lede (a classed p) actually
+    # got its 17. Four paragraph sizes on screen, none of them chosen.
+    #
+    # Fixed by sizing the paragraphs themselves and collapsing the scale to two:
+    #     18px  body - hero lead, prose, accordion, closing byline, town lede
+    #     15px  dense - table cells, buttons, town links
+    # plus one label size, 13px, for the eyebrow and the town grid label.
+    ".mm-hero__intro { font-size: clamp(16px, 1.5vw, 20px); line-height: 1.65; color: var(--soft, #5a5a5a); margin: 0 0 36px 0; }":
+        ".mm-hero__intro { line-height: 1.65; color: var(--soft, #5a5a5a); margin: 0 0 36px 0; }",
+    ".mm-hero__intro p { margin: 0 0 1.1em 0; }":
+        ".mm-hero__intro p { font-size: 18px; margin: 0 0 1.1em 0; }",
+    ".mm-rt { font-size: 17px; line-height: 1.7; color: var(--text, #2c2c2c); }":
+        ".mm-rt { line-height: 1.7; color: var(--text, #2c2c2c); }",
+    ".mm-rt p { margin: 0 0 1.1em 0; }":
+        ".mm-rt p { font-size: 18px; margin: 0 0 1.1em 0; }",
+}
+
+# dead once the FAQ became an accordion: no payload contains an h3 any more
+DEAD_RULES = [
+    "    .mm-h3 { font-family: var(--font-body); font-weight: 600; font-size: 20px; line-height: 1.3; color: var(--navy, #1a2744); margin: 1.8em 0 0.4em 0; }\n",
+    "    .mm-faq .mm-h3 { margin-top: 1.4em; }\n",
+]
+
+
+def unify_type(part1, slug):
+    """Collapse the paragraph scale to one body size and one dense size."""
+    out = part1
+    for old, new in TYPE_SCALE.items():
+        assert out.count(old) == 1, f"{slug}: type rule not found verbatim: {old[:50]}"
+        out = out.replace(old, new, 1)
+    for dead in DEAD_RULES:
+        assert out.count(dead) == 1, f"{slug}: dead rule not found verbatim"
+        out = out.replace(dead, "", 1)
+    assert "<h3" not in out, f"{slug}: an h3 exists, so .mm-h3 is not dead after all"
+    assert "font-size: 17px" not in out and "font-size: 20px" not in out, \
+        f"{slug}: an off-scale paragraph size survived"
+    return out
+
 def sections(markup):
     return re.findall(r'<section class="([^"]*)"', markup)
 
@@ -348,6 +394,7 @@ def split(markup, slug):
     part1 = restyle_hero(part1, slug)
     part1 = trim_hero(part1, slug)
     part1 = align_widths(part1, slug)
+    part1 = unify_type(part1, slug)
 
     # split the tail into the FAQ section and everything after it (the closing CTA),
     # rewrite the FAQ as an accordion, and prepend the accordion-only stylesheet

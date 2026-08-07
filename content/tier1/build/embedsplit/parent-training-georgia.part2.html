@@ -4,7 +4,7 @@
     .mm-faq { background: #fff; }
     .mm-cta-close { background: var(--warm, #f9f6f1); }
     .mm-cta-close__lede {
-      font-size: 17px; line-height: 1.7; color: var(--soft, #5a5a5a);
+      font-size: 18px; line-height: 1.7; color: var(--soft, #5a5a5a);
       max-width: 60ch; margin: 0 auto;
     }
     .mm-acc { border-top: 1px solid var(--rule, #e6e2da); }
@@ -13,7 +13,7 @@
       list-style: none; cursor: pointer;
       display: flex; align-items: flex-start; justify-content: space-between; gap: 20px;
       padding: 20px 0; font-family: var(--font-body); font-weight: 600;
-      font-size: 19px; line-height: 1.35; color: var(--navy, #1a2744);
+      font-size: 18px; line-height: 1.35; color: var(--navy, #1a2744);
       transition: color 0.15s ease;
     }
     .mm-acc__q::-webkit-details-marker { display: none; }
@@ -24,10 +24,11 @@
       transform: rotate(45deg); transition: transform 0.2s ease;
     }
     .mm-acc__item[open] .mm-acc__q::after { transform: rotate(-135deg); margin-top: 10px; }
-    .mm-acc__a { padding: 0 0 22px 0; font-size: 17px; line-height: 1.7; color: var(--text, #2c2c2c); }
-    .mm-acc__a p { margin: 0 0 1.1em 0; }
+    .mm-acc__a { padding: 0 0 22px 0; line-height: 1.7; color: var(--text, #2c2c2c); }
+    /* size the P itself: a global Webflow rule sets p to 1.125rem, which beats
+       anything inherited from the container - see the note in the base sheet */
+    .mm-acc__a p { font-size: 18px; margin: 0 0 1.1em 0; }
     .mm-acc__a p:last-child { margin-bottom: 0; }
-    @media (max-width: 600px) { .mm-acc__q { font-size: 17px; } }
   </style>
   <section class="mm-section mm-faq">
     <div class="mm-section__inner">
