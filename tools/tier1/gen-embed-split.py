@@ -280,6 +280,18 @@ HERO_IMG = {
     "transition-planning-north-carolina": (
         "https://cdn.prod.website-files.com/6627fd62e242d50407cfe12d/6a78e3a0736b942eb8a7bb57_transition-planning-north-carolina-hero.webp",
         "Young adult loads the dishwasher while a parent reads at the kitchen table"),
+    "early-intervention-new-jersey": (
+        "https://cdn.prod.website-files.com/6627fd62e242d50407cfe12d/6a78e6e6ada099bf0ebef310_early-intervention-new-jersey-hero.webp",
+        "Mother smiles as her toddler works a wooden shape box at the kitchen table"),
+    "parent-training-new-jersey": (
+        "https://cdn.prod.website-files.com/6627fd62e242d50407cfe12d/6a78e6e61af92c90aa0cfab6_parent-training-new-jersey-hero.webp",
+        "Boy hands groceries to his mother while a Behavior Technician watches from the hallway"),
+    "behavior-support-new-jersey": (
+        "https://cdn.prod.website-files.com/6627fd62e242d50407cfe12d/6a78e6e658560a803d64112e_behavior-support-new-jersey-hero.webp",
+        "Behavior Technician kneels by the front door showing a boy two picture cards"),
+    "transition-planning-new-jersey": (
+        "https://cdn.prod.website-files.com/6627fd62e242d50407cfe12d/6a78e6e60955b2e9f1a6acec_transition-planning-new-jersey-hero.webp",
+        "Teenager makes his own lunch at the counter while a parent reads nearby"),
 }
 
 

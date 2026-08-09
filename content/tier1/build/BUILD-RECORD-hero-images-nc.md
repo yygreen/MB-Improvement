@@ -45,3 +45,27 @@ Full of Joy") was approved in chat but is not in the Drive folder yet.
 
 verify-staged.py byte-compare of the rendered pages against the banked
 part1 files runs at the next publish - held until the production decision.
+
+## Addendum: New Jersey set + staging publish (same day)
+
+Four more frames added to the Drive folder (10:26, 10:30, 10:37, 10:40 PM),
+identified as the NJ set and built the same way: EI shape box, PT grocery
+unpacking with BT observing, BS picture cards at the front door, TP teen
+making his own lunch. One minor note accepted: plain "BLUE JAYS" block
+lettering on the BS backpack - text only, no logo or trade dress, unlike the
+rejected Tide/Gain and book-cover frames. Asset ids 6a78e6e6ada099bf0ebef310
+(EI), 6a78e6e61af92c90aa0cfab6 (PT), 6a78e6e658560a803d64112e (BS),
+6a78e6e60955b2e9f1a6acec (TP); CDN bytes cmp-identical.
+
+Published to the staging subdomain (publishToWebflowSubdomain true,
+customDomains []) after the user directed staging twice post-hold. All 8
+pages verified: banked part1 renders verbatim (every non-style line), img
+present, placeholder div gone. verify-staged.py shows h1/eyebrow diffs
+against the PRE-SPLIT embed bank - stale expectations from before the
+deliberate H1/eyebrow rewrite, not regressions; the embedsplit bank is the
+current source of truth. Hero screenshots of all 8 sent to the user.
+
+Georgia remains on placeholders: its porch frame was rejected (published
+book cover) and the approved "A Day Full of Joy" replacement is not in the
+Drive folder. The 9:37 and 9:56 frames read as GA (crepe myrtle, wicker
+porch) and could serve GA EI / GA BS if the user confirms.
