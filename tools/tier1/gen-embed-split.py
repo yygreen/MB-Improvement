@@ -267,7 +267,20 @@ PLACEHOLDER = """        <div class="mm-hero__media">
 # placeholder, so pages can take real images one state at a time. The urls must
 # be Webflow-hosted: an image loaded from anywhere else is a third-party request
 # on a healthcare page and outlives nobody's control but the host's.
-HERO_IMG = {}
+HERO_IMG = {
+    "early-intervention-north-carolina": (
+        "https://cdn.prod.website-files.com/6627fd62e242d50407cfe12d/6a78e39f714680f3b5abd614_early-intervention-north-carolina-hero.webp",
+        "Mother sitting on the kitchen floor as her toddler stacks colorful nesting cups"),
+    "parent-training-north-carolina": (
+        "https://cdn.prod.website-files.com/6627fd62e242d50407cfe12d/6a78e3a0156a4015be093e13_parent-training-north-carolina-hero.webp",
+        "Mother helps her daughter zip her jacket in the hallway while a Behavior Technician looks on"),
+    "behavior-support-north-carolina": (
+        "https://cdn.prod.website-files.com/6627fd62e242d50407cfe12d/6a78e3a087d56fcc1023613c_behavior-support-north-carolina-hero.webp",
+        "Behavior Technician offers a boy two picture cards to choose between in his living room"),
+    "transition-planning-north-carolina": (
+        "https://cdn.prod.website-files.com/6627fd62e242d50407cfe12d/6a78e3a0736b942eb8a7bb57_transition-planning-north-carolina-hero.webp",
+        "Young adult loads the dishwasher while a parent reads at the kitchen table"),
+}
 
 
 def hero_media(slug):
