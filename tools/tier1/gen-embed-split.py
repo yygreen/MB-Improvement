@@ -263,6 +263,32 @@ PLACEHOLDER = """        <div class="mm-hero__media">
           <div class="mm-hero__placeholder">Hero image placeholder</div>
         </div>"""
 
+# slug -> (Webflow asset url, alt text). A slug with no entry keeps the
+# placeholder, so pages can take real images one state at a time. The urls must
+# be Webflow-hosted: an image loaded from anywhere else is a third-party request
+# on a healthcare page and outlives nobody's control but the host's.
+HERO_IMG = {}
+
+
+def hero_media(slug):
+    """The hero's right-hand column: a real image if we have one, else the box."""
+    if slug not in HERO_IMG:
+        return PLACEHOLDER
+    src, alt = HERO_IMG[slug]
+    assert src.startswith("https://cdn.prod.website-files.com/"), \
+        f"{slug}: hero image must be a Webflow-hosted asset, got {src!r}"
+    assert '"' not in src and '"' not in alt, f"{slug}: quote would break the attribute"
+    # alt text is client-facing copy and clears the same gates as the rest
+    assert 3 <= len(alt.split()) <= 20, f"{slug}: alt text length {len(alt.split())} words"
+    for w in FORBIDDEN:
+        assert w not in alt, f"{slug}: forbidden token {w!r} in alt text"
+    # the 4/3 box is fixed by HERO_CSS; stating it stops the layout shifting while
+    # the image loads. eager because the hero is above the fold on every page.
+    return ('        <div class="mm-hero__media">\n'
+            f'          <img src="{src}" alt="{alt}" width="1200" height="900"'
+            ' loading="eager" decoding="async">\n'
+            '        </div>')
+
 
 def restyle_hero(part1, slug):
     """Wrap the hero's contents in a two-column grid with a placeholder image."""
@@ -279,7 +305,7 @@ def restyle_hero(part1, slug):
             '        <div class="mm-hero__text">\n'
             f"{text}\n"
             "        </div>\n"
-            f"{PLACEHOLDER}\n"
+            f"{hero_media(slug)}\n"
             "      </div>")
     # the captured tail begins with the whitespace that preceded </div></section>
     out_tail = part1[m.end(2):].lstrip("\n ")
@@ -296,7 +322,12 @@ def restyle_hero(part1, slug):
     out = out.replace(anchor, anchor + HERO_CSS, 1)
 
     assert out.count('<div class="mm-hero__grid">') == 1
-    assert out.count('class="mm-hero__placeholder"') == 1
+    assert out.count('class="mm-hero__media"') == 1
+    # exactly one of the two, never both and never neither
+    assert (out.count('class="mm-hero__placeholder"')
+            + out.count("<img src=")) == 1, f"{slug}: hero media column is wrong"
+    if slug in HERO_IMG:
+        assert f'src="{HERO_IMG[slug][0]}"' in out, f"{slug}: hero image not applied"
     assert out.count("<h1>") == 1, f"{slug}: h1 lost in the hero rewrite"
     return out
 
@@ -480,8 +511,10 @@ def split(markup, slug):
     # The H1 and eyebrow are deliberately rewritten, so `expect` gets the same
     # substitution - applied to the untouched source, not to the pipeline output,
     # so every other word still has to survive the split unchanged.
+    # a real hero image adds no visible text; the placeholder box adds its label
+    inserted = "" if slug in HERO_IMG else " Hero image placeholder"
     expect = (visible(headline(drop_inline_towns(markup, slug), slug))
-              + " Hero image placeholder " + CTA_LEDE[service].format(state=state))
+              + inserted + " " + CTA_LEDE[service].format(state=state))
     got = visible(part1) + " " + visible(part2)
     assert sorted(got.split()) == sorted(expect.split()), f"{slug}: visible copy changed"
     # and the rewrite itself is asserted positively, not just "nothing else moved"
