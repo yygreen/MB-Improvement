@@ -69,3 +69,17 @@ Georgia remains on placeholders: its porch frame was rejected (published
 book cover) and the approved "A Day Full of Joy" replacement is not in the
 Drive folder. The 9:37 and 9:56 frames read as GA (crepe myrtle, wicker
 porch) and could serve GA EI / GA BS if the user confirms.
+
+## Addendum 2: Georgia partial set (same day)
+
+Per "why does it still show placeholder": the 9:37 and 9:56 frames carry the
+GA cues (crepe myrtle, wicker porch, brick) and were wired as GA EI and GA BS.
+Asset ids 6a78ecd60e6cceed2985ac3b (EI), 6a78ecd6bd634cf4b1f16b08 (BS); CDN
+bytes cmp-identical; regeneration changed exactly the two GA part1 files;
+published to the staging subdomain; both pages verified verbatim.
+
+STILL ON PLACEHOLDERS: /parent-training-georgia and
+/transition-planning-georgia. No clean frames exist - the GA porch frame was
+rejected (recognizable published book cover) and its approved "A Day Full of
+Joy" replacement was never added to the Drive folder; there is no fourth GA
+frame at all. 10 of 12 pages now carry hero images.
