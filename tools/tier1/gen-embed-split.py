@@ -280,6 +280,12 @@ HERO_IMG = {
     "transition-planning-north-carolina": (
         "https://cdn.prod.website-files.com/6627fd62e242d50407cfe12d/6a78e3a0736b942eb8a7bb57_transition-planning-north-carolina-hero.webp",
         "Young adult loads the dishwasher while a parent reads at the kitchen table"),
+    "parent-training-georgia": (
+        "https://cdn.prod.website-files.com/6627fd62e242d50407cfe12d/6a78eedf6cbd4007454bb684_parent-training-georgia-hero.webp",
+        "Father reads to his son on the porch at dusk while a Behavior Technician sits nearby"),
+    "transition-planning-georgia": (
+        "https://cdn.prod.website-files.com/6627fd62e242d50407cfe12d/6a78eedfc4ed60382a36306e_transition-planning-georgia-hero.webp",
+        "Young adult loads the dishwasher while a parent reads at the kitchen table"),
     "early-intervention-georgia": (
         "https://cdn.prod.website-files.com/6627fd62e242d50407cfe12d/6a78ecd60e6cceed2985ac3b_early-intervention-georgia-hero.webp",
         "Mother reads an animal picture book with her toddler on the living room rug"),

@@ -83,3 +83,20 @@ STILL ON PLACEHOLDERS: /parent-training-georgia and
 rejected (recognizable published book cover) and its approved "A Day Full of
 Joy" replacement was never added to the Drive folder; there is no fourth GA
 frame at all. 10 of 12 pages now carry hero images.
+
+## Addendum 3: Georgia complete - 12 of 12 (same day)
+
+The user renamed four Drive files to assign the GA set explicitly. The EI and
+BS names matched the frames already wired. parent-training-georgia.png is the
+new "A Day Full of Joy" porch frame (1448x1086, native 4:3, generic invented
+cover - the IP fix for the rejected "Snowy Day" version). The user assigned
+transition-planning-georgia to the dishwasher frame, which ALSO serves
+/transition-planning-north-carolina: the same photo now fronts both TP pages.
+Encoded as a separate asset (q83, distinct hash) so either page can be
+re-imaged independently. Asset ids 6a78eedf6cbd4007454bb684 (PT),
+6a78eedfc4ed60382a36306e (TP); CDN bytes cmp-identical.
+
+Published to the staging subdomain; ALL 12 pages verified: banked part1
+renders verbatim, img present, placeholder gone. The hero-image rollout is
+complete on staging. Open item: swap one of the two TP pages to a fresh frame
+when one exists, so the twin heroes diverge.
