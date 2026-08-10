@@ -19,3 +19,14 @@ weaker placements; approve, drop, or ask for a mid-body rewrite per post.
 
 Approval unlocks phase 4: sharded CMS edits, byte-diff verified, manifests,
 republish, render verification.
+
+## Shipped (2026-08-09, per "ship the 45")
+
+Four sharded agents applied all 45 edits: 45/45 located verbatim and
+applied, 0 NOTFOUND, no duplicates across manifests (banked here). Each
+edit changed exactly the one approved sentence; the two posts carrying
+embedded insurance-check widgets were preserved byte-for-byte outside the
+edit. Items republished individually; staging site published; 15 randomly
+sampled posts verified rendering their new state-service link inside the
+article body. Per-target counts match the proposals exactly. The edits
+reach production custom domains on the next production publish.
