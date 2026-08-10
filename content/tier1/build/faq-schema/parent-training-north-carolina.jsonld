@@ -1,0 +1,80 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "ABA Parent Training in North Carolina",
+      "serviceType": "Applied Behavior Analysis parent training",
+      "provider": {
+        "@type": "Organization",
+        "name": "Mastermind Behavior",
+        "telephone": "+1-732-813-7333",
+        "url": "https://www.mastermindbehavior.com"
+      },
+      "areaServed": {
+        "@type": "State",
+        "name": "North Carolina"
+      },
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Parents and caregivers"
+      },
+      "url": "https://www.mastermindbehavior.com/parent-training-north-carolina"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is parent training covered by insurance in North Carolina?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "When it is part of your child's ABA treatment plan, it is typically covered as part of ABA therapy. North Carolina's mandate requires state-regulated plans to cover adaptive behavior treatment, and NC Medicaid covers ABA for children under 21. We check your specific plan with you before starting."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do both parents have to participate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We coach the people who are actually in the routines. For some families that is one parent. For others it is both, a grandparent, or another caregiver. The goal is consistency across the adults your child spends time with."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this a class?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. There is no curriculum binder and no classroom. It is one-to-one coaching in your own home, during your own routines, on the specific situations you face."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "My child already receives ABA. Why add this?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Because your child's week has far more hours in it than any therapy schedule. When the adults at home use the same prompts, reinforcement, and structured routines as the session team, skills generalize instead of staying locked to sessions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if a strategy does not work for us?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "That is information, not failure. Your BCBA adjusts the plan based on what the data and your experience show. The program serves your family, not the other way around."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How soon can we start?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "There is no onboarding waitlist. Assessment takes about four weeks."
+          }
+        }
+      ]
+    }
+  ]
+}

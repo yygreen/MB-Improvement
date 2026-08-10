@@ -1,0 +1,81 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Transition Planning ABA Therapy in North Carolina",
+      "serviceType": "Applied Behavior Analysis transition planning",
+      "provider": {
+        "@type": "Organization",
+        "name": "Mastermind Behavior",
+        "telephone": "+1-732-813-7333",
+        "url": "https://www.mastermindbehavior.com"
+      },
+      "areaServed": {
+        "@type": "State",
+        "name": "North Carolina"
+      },
+      "audience": {
+        "@type": "PeopleAudience",
+        "suggestedMinAge": 14,
+        "suggestedMaxAge": 21
+      },
+      "url": "https://www.mastermindbehavior.com/transition-planning-north-carolina"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "When does transition planning start in North Carolina?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Federal law requires transition services to be in the IEP by age 16. Teams can address it earlier when appropriate, and asking for that is reasonable."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the Innovations Waiver and when should we apply?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It is North Carolina's Medicaid waiver for long-term developmental disability supports, administered through your regional LME/MCO. Waits are long, so getting on the list early in the transition years is the safer path."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens when my child turns 21?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "School services end at graduation or aging out, and children's Medicaid coverage rules change. North Carolina is one of the few states where Medicaid covers ABA for adults over 21, so continued therapy can be possible depending on your coverage. Talk to us about what continuity can look like for your family."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the insurance mandate cover my teenager?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The state mandate applies to individuals under 19 on state-regulated plans. Medicaid coverage runs broader, as the table above shows."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can ABA therapy continue through the transition years?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We work with children and young people through age 21. Whether it continues uninterrupted depends on your coverage, which is covered above."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How soon can we start?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "There is no onboarding waitlist. Assessment takes about four weeks."
+          }
+        }
+      ]
+    }
+  ]
+}

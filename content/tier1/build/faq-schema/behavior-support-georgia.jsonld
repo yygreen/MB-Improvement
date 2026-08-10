@@ -1,0 +1,80 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Behavior Support ABA Therapy in Georgia",
+      "serviceType": "Applied Behavior Analysis behavior support",
+      "provider": {
+        "@type": "Organization",
+        "name": "Mastermind Behavior",
+        "telephone": "+1-732-813-7333",
+        "url": "https://www.mastermindbehavior.com"
+      },
+      "areaServed": {
+        "@type": "State",
+        "name": "Georgia"
+      },
+      "audience": {
+        "@type": "PeopleAudience",
+        "suggestedMaxAge": 21
+      },
+      "url": "https://www.mastermindbehavior.com/behavior-support-georgia"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a functional behavior assessment?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A structured way of finding out what a behavior is doing for your child. We observe and collect data on what happens before and after the behavior until the pattern is clear, and the intervention plan is built on that evidence."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is behavior support covered by insurance in Georgia?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Behavior support is delivered as ABA therapy, which Ava's Law requires most state-regulated plans to cover. Georgia Medicaid covers ABA for individuals under 21. The coverage table above has the detail."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "My child already has a behavior plan at school. Is this the same thing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The school's plan is built for the school day. Ours is built for your home and your routines, and the two can inform each other. Findings from a home assessment can be shared with the school team."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you use punishment?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The plan is built on the least restrictive, most positive strategies available. The core of the work is teaching skills that make the behavior unnecessary, and reinforcing them."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who writes the plan?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A Board Certified Behavior Analyst who also holds a current Georgia behavior analyst license. Behavior Technicians deliver day-to-day sessions under that BCBA's supervision."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How soon can we start?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "There is no onboarding waitlist. Assessment takes about four weeks."
+          }
+        }
+      ]
+    }
+  ]
+}

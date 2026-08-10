@@ -1,0 +1,81 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Transition Planning ABA Therapy in New Jersey",
+      "serviceType": "Applied Behavior Analysis transition planning",
+      "provider": {
+        "@type": "Organization",
+        "name": "Mastermind Behavior",
+        "telephone": "+1-732-813-7333",
+        "url": "https://www.mastermindbehavior.com"
+      },
+      "areaServed": {
+        "@type": "State",
+        "name": "New Jersey"
+      },
+      "audience": {
+        "@type": "PeopleAudience",
+        "suggestedMinAge": 14,
+        "suggestedMaxAge": 21
+      },
+      "url": "https://www.mastermindbehavior.com/transition-planning-new-jersey"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "When does transition planning start in New Jersey?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It must be addressed in the IEP in place for the school year in which your child turns 14, or earlier if the IEP team determines it is appropriate. That is two years ahead of the federal requirement."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does my child attend the IEP meeting?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Once transition planning is part of the IEP, your child must be invited to the meeting and is a member of the IEP team."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens when my child turns 21?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Special education ends at graduation or at age 21. Eligibility for the Children's System of Care ends the day before the 21st birthday. If your child is found eligible for DDD and is Medicaid eligible, DDD services begin at 21."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When should we apply to DDD?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Your child can be evaluated for functional eligibility from age 18, and DDD offers transition assistance from 16. Applying at 18 rather than close to 21 leaves room for the determination to be completed before school-based services end."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can ABA therapy continue through the transition years?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We work with children and young people through age 21. Whether that continues uninterrupted depends on your coverage, which is covered above."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How soon can we start?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "There is no onboarding waitlist. Assessment takes about four weeks."
+          }
+        }
+      ]
+    }
+  ]
+}
