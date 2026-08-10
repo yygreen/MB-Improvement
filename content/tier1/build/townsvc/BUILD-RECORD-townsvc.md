@@ -48,3 +48,14 @@ Per item, derived from `state`: state-key, show-services-block=true, and
 the four service-link paths. 213 live towns (NJ 115 / GA 78 / NC 20);
 exclude any a-state=true items. Chunks of <=100, then publish items, then
 staging publish + link-audit sampling every state.
+
+## Background softened (same day)
+
+Client: the flat beige band with a border-top "looks weird" against the
+rounded CTA card above; suggested a white-to-beige gradient. Shipped:
+border-top dropped, background now
+radial-gradient(ellipse at 80% 0%, rgba(59,165,168,0.08), transparent 55%)
+over linear-gradient(180deg, #fff 0%, #f9f6f1 60%), top padding widened to
+clamp(44px, 6vw, 72px). The teal radial deliberately mirrors the Tier 1
+hero treatment so the block shares a visual language with the pages it
+links to. Verified in context on staging (jersey-city); screenshot sent.
