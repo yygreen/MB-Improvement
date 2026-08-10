@@ -278,8 +278,8 @@ HERO_IMG = {
         "https://cdn.prod.website-files.com/6627fd62e242d50407cfe12d/6a78e3a087d56fcc1023613c_behavior-support-north-carolina-hero.webp",
         "Behavior Technician offers a boy two picture cards to choose between in his living room"),
     "transition-planning-north-carolina": (
-        "https://cdn.prod.website-files.com/6627fd62e242d50407cfe12d/6a78e3a0736b942eb8a7bb57_transition-planning-north-carolina-hero.webp",
-        "Young adult loads the dishwasher while a parent reads at the kitchen table"),
+        "https://cdn.prod.website-files.com/6627fd62e242d50407cfe12d/6a79a8c3033509da5ec42053_transition-planning-north-carolina-hero-v2.webp",
+        "Young adult sorts laundry and checks a phone checklist while a parent reads nearby"),
     "parent-training-georgia": (
         "https://cdn.prod.website-files.com/6627fd62e242d50407cfe12d/6a78eedf6cbd4007454bb684_parent-training-georgia-hero.webp",
         "Father reads to his son on the porch at dusk while a Behavior Technician sits nearby"),
