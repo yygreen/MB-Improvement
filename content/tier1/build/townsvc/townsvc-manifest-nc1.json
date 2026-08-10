@@ -1,0 +1,30 @@
+{
+  "state": "north-carolina",
+  "window": "0-19",
+  "eligible": [
+    {"id": "6a577f3016870cec9d2838ac", "slug": "asheville"},
+    {"id": "6a577f2d5c1fb5f51561ddc5", "slug": "cary"},
+    {"id": "696ed22d05c054699865ff46", "slug": "charlotte"},
+    {"id": "6a577f317138b7243a31326f", "slug": "concord"},
+    {"id": "6a577f27643b98d0a07cd253", "slug": "durham"},
+    {"id": "6a577f39024bda4e146878ac", "slug": "elizabeth-city"},
+    {"id": "6a577f2b16870cec9d28355b", "slug": "fayetteville-nc"},
+    {"id": "6a577f331e786c6af08502ad", "slug": "gastonia"},
+    {"id": "6a577f371e786c6af08504cd", "slug": "goldsboro"},
+    {"id": "6a577f286e4aae84eda07255", "slug": "greensboro-nc"},
+    {"id": "696ed268bd995a8bd0901a2e", "slug": "greenville-urfem"},
+    {"id": "6a577f330187b9426808bfe5", "slug": "hickory"},
+    {"id": "696ed27a9939348d014b78c1", "slug": "jacksonville"},
+    {"id": "6a577f388a6f0ce4b06f3672", "slug": "lumberton-nc"},
+    {"id": "6a577f35acf53d9b4ea87256", "slug": "monroe-nc"},
+    {"id": "696ed1c176ba6e61cb7f5e18", "slug": "mooresville"},
+    {"id": "6a577f36acf53d9b4ea873b3", "slug": "new-bern"},
+    {"id": "696ed17af7d37d4fdf6927cd", "slug": "raleigh"},
+    {"id": "6a577f2e5040597d296549be", "slug": "wilmington"},
+    {"id": "6a577f29f4ea319bb22ee4fd", "slug": "winston-salem"}
+  ],
+  "updated": 19,
+  "skipped_current": 1,
+  "skipped_astate": 0,
+  "published": 20
+}

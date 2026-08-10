@@ -66,3 +66,25 @@ Client flagged the teal radial tinting the block's top edge ("white on the
 top"). Radial removed; background is now a plain
 linear-gradient(180deg, #fff 0%, #f9f6f1 65%) - pure white where it meets
 the CTA card, warm behind the cards. Verified in context on staging.
+
+## Full rollout (2026-08-09, per "roll out to all town pages")
+
+The REST route died on first call - 401, the exposed token had been rotated
+- so the rollout ran through the MCP connection in five state-sharded
+windows (slug-sorted, disjoint offsets) executed by parallel subagents:
+NJ 0-57 and 58-114, GA 0-38 and 39-77, NC 0-19. Each shard wrote only the
+six derived fields, skipped items already current (the 3 demo towns),
+published its items, and wrote a manifest (banked in this directory).
+
+Reconciliation: 213 unique towns across manifests, zero overlaps, per-state
+counts exactly NJ 115 / GA 78 / NC 20, 210 written + 3 already current,
+213 published, zero errors.
+
+Verified after the staging publish: 24 towns sampled across the three
+states (10 NJ / 8 GA / 6 NC, seeded random) - block present after the
+final CTA, bound state name rendering, all four hrefs carrying the
+correct state path, aria-label intact - 24/24 PASS. Edison, the town
+used earlier to prove the block absent without the switch, now renders it.
+
+Staging subdomain only; production untouched. The block reaches production
+whenever the site's next production publish runs, per the agreed ship order.
