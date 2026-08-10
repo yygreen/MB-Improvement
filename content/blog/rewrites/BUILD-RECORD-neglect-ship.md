@@ -1,0 +1,71 @@
+# Ship record: does-emotional-neglect-cause-autism rewrite + charts (2026-08-10)
+
+User-directed: "Can you update this article with the new graphics and the
+rewrite? Mcp connector readded."
+
+## Pre-flight
+
+- Webflow MCP re-verified post-reconnect: list_sites returned only
+  MasterMindBehavior.com (6627fd62e242d50407cfe12d, workspace
+  6633ca35cae5a217eec51194). The mid-session workspace switch is resolved.
+- Amended fig1/fig2 renders eyeballed before upload (third row present,
+  fraternal label correct).
+
+## Asset uploads
+
+create_asset x3 with local MD5s, S3 multipart POST (3x HTTP 201), then CDN
+fetch byte-verified: all three CDN md5s match local. Asset IDs and hashes in
+charts/README.md. Alt text set on all three assets.
+
+## CMS update
+
+Collection: Blog Posts 6627fd62e242d50407cfe157, item 66e7ec0089e32577d87461a5.
+
+Fields written:
+- name: "Does Emotional Neglect Cause Autism? No. Here's Why" (feeds H1 +
+  title tag; 51 chars, from rewrite front-matter)
+- post-summary: the 156-char meta description from front-matter
+- post-body: rewrite converted to rich-text HTML with the three figures
+
+Body deltas vs the rewrite markdown (all within agreed scope):
+- Added the agreed Tick et al. 2016 twin-meta paragraph (PMID 26709141) and a
+  Sandin et al. 2014 family-study paragraph (PMID 24794370) to carry figs 1-3;
+  Sources line extended with Tick and Sandin.
+- US spellings normalized (popularized, behaviors, behavioral, center).
+- The three front-matter internal links woven in: /post/how-to-prevent-autism
+  ("doesn't prevent autism"), /post/early-signs-of-autism-in-babies-and-kids
+  ("early evaluation"), /services ("in-home ABA therapy" in the support FAQ).
+
+Gates run on the generated body before write (all pass): no em/en dashes, no
+RBT, no "clinic" noun ("clinical interviews" in the historical Bettelheim
+paragraph is verbatim from the approved rewrite), no "2.5 times", no
+guarantees, exactly 3 figures on the Webflow CDN host with 3-20 word alt text,
+exactly the 4 intended PubMed links + 3 internal links, balanced tags.
+
+Item published via publish_collection_items (live-item publish; no site
+publish needed or run).
+
+## Post-ship verification (production URL, 18/18 pass)
+
+https://www.mastermindbehavior.com/post/does-emotional-neglect-cause-autism
+
+New opening/bold answer present; old "2.5 times" claim, old section headings
+and broken references TODO all gone; three figure images present; all four
+PubMed links and three internal links present; new title live; FAQ present; no
+em dashes in the body. Playwright screenshots confirm the new H1/standfirst,
+generic "Mastermind Behavior Clinical Team" byline, and fig1 rendering inline
+with the amended third row.
+
+Note: Webflow rewrote the figure srcs to CMS-ingested copies under
+cdn.prod.website-files.com/6627fd62e242d50407cfe155/6a7a3238..._<asset>_<name>
+on save. Expected rich-text behavior; the uploaded assets remain the canonical
+copies.
+
+Open observation (not in this change's scope): the global site header shows
+732.298.6624; the number used across Tier 1 work per instruction is
+732.813.7333. Possibly a call-tracking number. Flagged to the user.
+
+## Remaining for the other six rewrites
+
+Fold agreed PubMed additions into each md, then repeat this pipeline per
+article (no new charts unless requested).
