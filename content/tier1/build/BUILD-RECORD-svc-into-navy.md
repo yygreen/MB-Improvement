@@ -74,3 +74,13 @@ cause. Re-anchored after the grid Block itself rather than after the inner list.
     service hrefs                all four correct and state-matched on each hub
 
 Staging only.
+
+## Padding equalized across the three hubs (2026-08-10)
+
+Client: GA and NC gaps too low, NJ too high; meet in the middle. Measured
+cause: identical mm-svc bottom padding (36px) on all three, but NJ's navy
+section carries a section-2-nj combo class with 100px of its own bottom
+padding, so below-cards totals were GA/NC 36 vs NJ 136. Fix: GA and NC
+mm-svc bottom clamp raised to clamp(48px, 6vw, 80px) (renders 80px at
+desktop); NJ's section-2-nj padding-bottom cut 100px -> 44px (36+44=80).
+Measured after publish: exactly 80px on all three, staging and production.
