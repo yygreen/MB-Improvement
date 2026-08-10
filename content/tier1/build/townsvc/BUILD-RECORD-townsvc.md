@@ -59,3 +59,10 @@ over linear-gradient(180deg, #fff 0%, #f9f6f1 60%), top padding widened to
 clamp(44px, 6vw, 72px). The teal radial deliberately mirrors the Tier 1
 hero treatment so the block shares a visual language with the pages it
 links to. Verified in context on staging (jersey-city); screenshot sent.
+
+## Gradient revision 2 (same day)
+
+Client flagged the teal radial tinting the block's top edge ("white on the
+top"). Radial removed; background is now a plain
+linear-gradient(180deg, #fff 0%, #f9f6f1 65%) - pure white where it meets
+the CTA card, warm behind the cards. Verified in context on staging.
