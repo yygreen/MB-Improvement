@@ -51,20 +51,22 @@ None of this means emotional neglect is harmless. Genuine neglect hurts every ch
 
 If you're reading this with a knot in your stomach about something you did or didn't do: the largest body of evidence in the history of autism research says it wasn't you. The most useful thing you can do with that guilt is trade it for momentum. Early evaluation, evidence-based support, and a team that treats you as part of the solution, because you are.
 
-## FAQ
+## Where can I get support?
 
-**Can trauma cause autism?**
-No. Trauma can cause real and serious problems, including anxiety, attachment difficulties and behavioural changes, and it can co-occur with autism, but it does not cause it. Autism's origins are overwhelmingly genetic and prenatal.
-
-**My child was diagnosed after a difficult period in our family. Is that connected?**
-Almost certainly coincidence of timing. Signs of autism often become noticeable in the second year of life or when social demands increase, periods that for many families overlap with ordinary life stresses.
-
-**Do autistic children need a different kind of emotional support?**
-They need the same warmth every child needs, sometimes delivered differently: more predictability, clearer communication, sensory awareness. That is a skill set parents can learn, and parent training is one of the best-evidenced components of autism care.
-
-**Where can I get support?**
 If you're in New Jersey, Georgia, or North Carolina, our BCBA-led team provides in-home ABA therapy with parents involved at every step. No blame, because there was never anything to blame you for, just a plan.
 
----
+## References
 
-*Sources: Bai et al., JAMA Psychiatry, 2019; Jones & Klin, Nature, 2013; Rutter et al., English and Romanian Adoptees study reports.*
+(All verified against PubMed esummary on 2026-08-10.)
+
+1. Bai D, Yip BHK, Windham GC, et al. [Association of genetic and environmental factors with autism in a 5-country cohort](https://pubmed.ncbi.nlm.nih.gov/31314057/). *JAMA Psychiatry*. 2019;76(10):1035-1043. doi:10.1001/jamapsychiatry.2019.1411
+2. Tick B, Bolton P, Happé F, et al. [Heritability of autism spectrum disorders: a meta-analysis of twin studies](https://pubmed.ncbi.nlm.nih.gov/26709141/). *Journal of Child Psychology and Psychiatry*. 2016;57(5):585-595. doi:10.1111/jcpp.12499
+3. Sandin S, Lichtenstein P, Kuja-Halkola R, et al. [The familial risk of autism](https://pubmed.ncbi.nlm.nih.gov/24794370/). *JAMA*. 2014;311(17):1770-1777. doi:10.1001/jama.2014.4144
+4. Jones W, Klin A. [Attention to eyes is present but in decline in 2-6-month-old infants later diagnosed with autism](https://pubmed.ncbi.nlm.nih.gov/24196715/). *Nature*. 2013;504(7480):427-431. doi:10.1038/nature12715
+5. Rutter M, Andersen-Wood L, Beckett C, et al. [Quasi-autistic patterns following severe early global privation](https://pubmed.ncbi.nlm.nih.gov/10357161/). English and Romanian Adoptees (ERA) Study Team. *Journal of Child Psychology and Psychiatry*. 1999;40(4):537-549.
+
+<!-- 2026-08-10 post-ship edit, user-directed: the three general FAQ entries
+     (trauma, timing, emotional support) removed; the support FAQ promoted to
+     a section; the one-line Sources footer replaced with this References
+     list. Live item updated and republished the same day. -->
+
