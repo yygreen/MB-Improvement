@@ -73,4 +73,26 @@ Start with your paediatrician for any physical symptoms, and with evidence-based
 
 ---
 
-*Sources: Kandeel et al., Open Veterinary Journal, 2024; CDC guidance on MERS and raw camel products; CDC Emerging Infectious Diseases, brucellosis outbreak traced to commercially sold camel milk, Israel, 2021.*
+## References
+
+(All verified against PubMed esummary on 2026-08-10.)
+
+1. Kandeel M, Morsy MA, Al Khodair KM, et al. [Meta-analysis of the efficacy of camel milk consumption for improving autism symptoms in children in randomized clinical trials](https://pubmed.ncbi.nlm.nih.gov/39553772/). *Open Veterinary Journal*. 2024;14(9):2441-2452. doi:10.5455/OVJ.2024.v14.i9.33
+2. Bashir S, Al-Ayadhi LY. [Effect of camel milk on thymus and activation-regulated chemokine in autistic children: double-blind study](https://pubmed.ncbi.nlm.nih.gov/24375082/). *Pediatric Research*. 2014;75(4):559-563. doi:10.1038/pr.2013.248
+3. Al-Ayadhi LY, Halepoto DM, Al-Dress AM, et al. [Behavioral benefits of camel milk in subjects with autism spectrum disorder](https://pubmed.ncbi.nlm.nih.gov/26577969/). *Journal of the College of Physicians and Surgeons Pakistan*. 2015;25(11):819-823.
+4. Sathe N, Andrews JC, McPheeters ML, et al. [Nutritional and dietary interventions for autism spectrum disorder: a systematic review](https://pubmed.ncbi.nlm.nih.gov/28562286/). *Pediatrics*. 2017;139(6):e20170346. doi:10.1542/peds.2017-0346
+5. Adams CM. [Patient report: autism spectrum disorder treated with camel milk](https://pubmed.ncbi.nlm.nih.gov/24349886/). *Global Advances in Health and Medicine*. 2013;2(6):78-80. doi:10.7453/gahmj.2013.094
+6. Kandeel M, El-Deeb W. [The application of natural camel milk products to treat autism-spectrum disorders: risk assessment and meta-analysis of randomized clinical trials](https://pubmed.ncbi.nlm.nih.gov/35669459/). *Bioinorganic Chemistry and Applications*. 2022;2022:6422208. doi:10.1155/2022/6422208. **Retracted**: see [retraction notice](https://pubmed.ncbi.nlm.nih.gov/37829661/), 2023;2023:9807391. doi:10.1155/2023/9807391
+7. Bardenstein S, Gibbs RE, Yagel Y, et al. [Brucellosis outbreak traced to commercially sold camel milk through whole-genome sequencing, Israel](https://pubmed.ncbi.nlm.nih.gov/34013863/). *Emerging Infectious Diseases*. 2021;27(6):1728-1731. doi:10.3201/eid2706.204902
+8. Centers for Disease Control and Prevention. [About Middle East Respiratory Syndrome (MERS)](https://www.cdc.gov/mers/about/index.html). Accessed August 10, 2026.
+
+<!-- SHIPPED 2026-08-10 (item 666af2f3155a33cc52cf004f). The live version
+     differs from the draft above in these agreed ways: US spellings
+     (randomized, pasteurized, analyzed, behavior, pediatrician); the two RCTs
+     named and linked in "What the research has actually done"; the Sathe 2017
+     Pediatrics review sentence added; the 2022 retracted meta cited by name
+     with its notice instead of "an earlier meta-analysis"; the Adams 2013
+     case report named at the top of "Why the stories persist"; the EID
+     brucellosis outbreak linked; the three front-matter internal links woven
+     in; and this References section in place of the one-line Sources footer.
+     See BUILD-RECORD-camel-ship.md. -->
