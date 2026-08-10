@@ -1,0 +1,72 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+  body { margin: 0; background: #fff; font-family: 'Manrope', system-ui, sans-serif; color: #1a2744; }
+  .fig { width: 1400px; padding: 56px 64px 44px; box-sizing: border-box; background: #fff; }
+  h2 { font-size: 34px; font-weight: 700; letter-spacing: -0.01em; margin: 0 0 8px; }
+  .sub { font-size: 21px; color: #5a5a5a; margin: 0 0 40px; font-weight: 500; }
+  .row { display: grid; grid-template-columns: 380px 1fr; align-items: center; gap: 20px; margin-bottom: 30px; }
+  .lbl { font-size: 22px; font-weight: 600; text-align: right; line-height: 1.3; }
+  .lbl small { display: block; font-weight: 500; color: #5a5a5a; font-size: 17px; }
+  .track { position: relative; height: 40px; background: #f6f4ef; border-radius: 4px; }
+  .bar { position: absolute; top: 0; height: 40px; border-radius: 0 4px 4px 0; }
+  .bar.r { border-radius: 4px; }
+  .val { position: absolute; top: 50%; transform: translateY(-50%); font-size: 21px; font-weight: 700; color: #1a2744; white-space: nowrap; }
+  .axis { display: grid; grid-template-columns: 380px 1fr; gap: 20px; margin-top: 6px; }
+  .ticks { display: flex; justify-content: space-between; font-size: 16px; color: #8a8a8a; }
+  .credit { font-size: 16px; color: #8a8a8a; margin-top: 34px; }
+  .keyrow { display: flex; gap: 28px; margin: 0 0 34px; font-size: 18px; color: #2c2c2c; font-weight: 600; }
+  .sw { display: inline-block; width: 14px; height: 14px; border-radius: 4px; margin-right: 8px; vertical-align: -1px; }
+</style></head><body>
+
+<div class="fig" id="fig1">
+  <h2>What explains autism risk in twin studies</h2>
+  <p class="sub">Range of estimates across six meta-analytic models of 13 twin studies (7,000+ pairs)</p>
+  <div class="keyrow"><span><span class="sw" style="background:#009499"></span>Genetics</span>
+  <span><span class="sw" style="background:#c14a3f"></span>Shared family environment, including parenting</span></div>
+  <div class="row"><div class="lbl">Genetics<small>heritability</small></div>
+    <div class="track"><div class="bar r" style="left:64%; width:27%; background:#009499"></div>
+    <div class="val" style="left:92.5%">64&ndash;91%</div></div></div>
+  <div class="row"><div class="lbl">Shared family environment<small>the home twins grow up in</small></div>
+    <div class="track"><div class="bar r" style="left:7%; width:28%; background:#c14a3f"></div>
+    <div class="val" style="left:37%">7&ndash;35%</div></div></div>
+  <div class="axis"><div></div><div class="ticks"><span>0%</span><span>25%</span><span>50%</span><span>75%</span><span>100%</span></div></div>
+  <p class="credit">Data: Tick et al. 2016, Journal of Child Psychology and Psychiatry &mdash; meta-analysis of twin studies of autism. Ranges span the six meta-analytic models.</p>
+</div>
+
+<div class="fig" id="fig2">
+  <h2>Identical twins nearly always share an autism diagnosis</h2>
+  <p class="sub">Twin&ndash;twin correlation for autism, meta-analysis of 13 twin studies</p>
+  <div class="row"><div class="lbl">Identical twins<small>share ~100% of their genes</small></div>
+    <div class="track"><div class="bar" style="left:0; width:98%; background:#009499"></div>
+    <div class="val" style="left:99.5%; color:#1a2744">0.98</div></div></div>
+  <div class="row"><div class="lbl">Fraternal twins<small>share ~50%, same home</small></div>
+    <div class="track"><div class="bar" style="left:0; width:53%; background:#009499"></div>
+    <div class="val" style="left:54.5%">0.53</div></div></div>
+  <div class="axis"><div></div><div class="ticks"><span>0</span><span>0.25</span><span>0.50</span><span>0.75</span><span>1.0</span></div></div>
+  <p class="credit">Both twin types grow up in the same home with the same parents. If parenting drove autism, fraternal twins would match identical twins. Data: Tick et al. 2016, JCPP.</p>
+</div>
+
+<div class="fig" id="fig3">
+  <h2>Autism risk tracks shared genes, not shared households</h2>
+  <p class="sub">Risk relative to the general population, by relationship to a diagnosed child (Sweden, 2+ million children)</p>
+  <div class="row"><div class="lbl">Identical twin<small>100% shared genes</small></div>
+    <div class="track"><div class="bar" style="left:0; width:95%; background:#009499"></div>
+    <div class="val" style="left:auto; right:7%; color:#fff">153&times; the general-population risk</div></div></div>
+  <div class="row"><div class="lbl">Full sibling<small>50% shared genes</small></div>
+    <div class="track"><div class="bar" style="left:0; width:6.4%; background:#009499"></div>
+    <div class="val" style="left:7.8%">10.3&times;</div></div></div>
+  <div class="row"><div class="lbl">Fraternal twin<small>50% shared genes, shared womb</small></div>
+    <div class="track"><div class="bar" style="left:0; width:5.1%; background:#009499"></div>
+    <div class="val" style="left:6.5%">8.2&times;</div></div></div>
+  <div class="row"><div class="lbl">Half sibling<small>25% shared genes</small></div>
+    <div class="track"><div class="bar" style="left:0; width:2%; background:#009499"></div>
+    <div class="val" style="left:3.4%">2.9&ndash;3.3&times;</div></div></div>
+  <div class="row"><div class="lbl">Cousin<small>12.5% shared genes</small></div>
+    <div class="track"><div class="bar" style="left:0; width:1.2%; background:#009499"></div>
+    <div class="val" style="left:2.6%">2.0&times;</div></div></div>
+  <p class="credit">Each step down in genetic closeness halves-or-more the risk, including between relatives raised in different homes. Data: Sandin et al. 2014, JAMA.</p>
+</div>
+
+</body></html>
