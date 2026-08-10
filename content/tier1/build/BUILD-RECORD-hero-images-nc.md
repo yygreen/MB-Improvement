@@ -100,3 +100,15 @@ Published to the staging subdomain; ALL 12 pages verified: banked part1
 renders verbatim, img present, placeholder gone. The hero-image rollout is
 complete on staging. Open item: swap one of the two TP pages to a fresh frame
 when one exists, so the twin heroes diverge.
+
+## Eyebrow unification shipped (2026-08-10)
+
+Per "do it" on the standing recommendation: the three off-spec eyebrow
+classes (g90-eyebrow 13px/700/1.56px, author-profile_eyebrow and
+author-box_eyebrow both 12.8px) were updated to the mm-eyebrow reference
+spec of 13px / 600 / 1.04px letter-spacing. The mb-eyebrow widget label
+was left alone per the recommendation. Published to staging and
+production; computed styles measured 13px/600/1.04px on
+first-90-days-of-aba-therapy, bcba-team, and a blog post's author box.
+Any residual embed-carried eyebrow variants outside these classes can be
+caught by a targeted lint later.
