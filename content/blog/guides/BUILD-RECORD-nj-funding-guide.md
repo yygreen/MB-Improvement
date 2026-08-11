@@ -46,10 +46,16 @@ own wording is reproduced where it IS the coverage rule, and the
 certification is named descriptively rather than by acronym, so the gate
 that bans the acronym still passes.
 
-**The `author` reference is left null.** All 349 existing posts point at
-a BCBA record. The standing rule is not to attribute blog posts to named
-BCBAs, so this one does not. If the template renders an empty byline,
-that is the thing to check before publishing.
+**Author set to the Mastermind Behavior Clinical Team record**
+(`6a2e763ca589b9cdd033a53b`), which is the same record all 349 existing
+posts point at. Worth correcting a wrong assumption recorded earlier in
+this program: those posts are not attributed to named BCBAs. The BCBAs
+collection holds nine records, eight of them real people used on the team
+page, and one non-personal team entity carrying the credential line
+"BCBA-owned ABA provider" and the summary "Content produced by the
+clinical team at Mastermind Behavior, a BCBA-owned in-home ABA provider
+serving NJ, GA, and NC." That last one is the blog author. The
+never-attribute-to-a-named-BCBA rule was never in tension with it.
 
 ## Images
 
