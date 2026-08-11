@@ -110,25 +110,9 @@ It costs you nothing. "Carriers bear the costs of both the preliminary and full 
 
 **Separately, you can complain.** The Department takes consumer complaints about carriers on 1.800.446.7467, weekdays 8:30am to 5:00pm. Formal complaints must be in writing and include "the company name/agent's name, the policy/certificate number(s), any documentation that will substantiate your position, and a brief description of the problems." That is a different process from the appeal, and it does not reach self-funded plans either.
 
-## FAQ
+## Why Mastermind Behavior
 
-**My insurer says I have hit the $36,000 cap. Is that right?**
-Possibly, but do not assume it. If you are on a group health plan subject to federal parity, the Department of Banking and Insurance's position is that the cap generally cannot be applied unless your employer obtained a specific exemption. If you are on an individual market policy, it can be. Establish which you are on before anything else.
-
-**Do I need a doctor to prescribe ABA in New Jersey?**
-For the commercial mandate, Bulletin 10-02 sets no prescription or referral precondition. It conditions coverage on medical necessity and on delivery by or under the direct supervision of a BCBA-D or BCBA. NJ FamilyCare is different: there, services must be recommended by a physician, advanced practice nurse or psychologist.
-
-**My child is two. Should I wait for the school district?**
-No. Refer to Early Intervention now on 1-888-653-4463. The district's obligation starts at the third birthday, and the referral for evaluation has to reach them 120 days before that anyway.
-
-**Is there a waiting list for ABA on NJ FamilyCare?**
-The benefit sits in the Medicaid state plan under EPSDT rather than in a waiver, so it is not slot-limited the way waiver services are. New Jersey's two Division of Developmental Disabilities waiver programs, the Supports Program and the Community Care Program, both start at 21 and are a separate matter from a child's ABA.
-
-**The school says ABA is medical, the insurer says it is educational. Who is right?**
-They are answering different questions, and both can be correct at once. Pursue the IEP on educational need and the insurance claim on medical necessity, separately.
-
-**Where do I start if this is all new?**
-If your child is under three, call Early Intervention. If your child is three or over and on NJ FamilyCare, call PerformCare on 1.877.652.7624. If you have commercial insurance, find out first whether the plan is self-funded, then ask the carrier what it requires for an ABA authorization. Our team provides [in-home ABA therapy](https://www.mastermindbehavior.com/in-home-aba-therapy) across [New Jersey](https://www.mastermindbehavior.com/aba-therapy-in-new-jersey), and you are welcome to [talk it through with us](https://www.mastermindbehavior.com/contact) before you make any calls.
+Almost none of what is on this page is written down anywhere a parent would think to look. It came out of state bulletins, a Medicaid state plan amendment, an insurance department appeals program and the special education code, read line by line and dated so you can see how current it is. That is the same work we do with families every week, because the funding conversation is not an afterthought for us. It is usually the first one. Mastermind Behavior is a BCBA-owned provider delivering [in-home ABA therapy](https://www.mastermindbehavior.com/in-home-aba-therapy) across [New Jersey](https://www.mastermindbehavior.com/aba-therapy-in-new-jersey), Georgia and North Carolina, and we will help you work out which of the four systems above applies to your child, what your plan is actually obliged to cover, and whether a denial is worth appealing. If we are not the right fit for your family, we will tell you that as well. You can [talk it through with us](https://www.mastermindbehavior.com/contact) before you commit to anything.
 
 ## Sources
 

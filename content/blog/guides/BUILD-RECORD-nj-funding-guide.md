@@ -30,7 +30,26 @@ paraphrase a state document into something it did not say.
 1. A stray `<p>---</p>` survived from the markdown rule above the build
    notes. Now stripped, and a gate rejects it if it comes back.
 2. FAQ questions rendered as bold paragraphs rather than `<h3>`, which
-   is what the other 349 posts use. Now converted, and gated.
+   is what the other 349 posts use. Fixed at the time; the FAQ has since
+   been removed at the client's request, so the gate now checks the
+   general case instead: no question may render as a bold paragraph.
+
+## Client edits after first review
+
+**FAQ removed, replaced by a "Why Mastermind Behavior" section** sitting
+between the appeals section and Sources. The FAQ carried the page's only
+calls to action, so all three internal links (`/in-home-aba-therapy`,
+`/aba-therapy-in-new-jersey`, `/contact`) moved into the new section
+rather than being lost. Two gates were added: the section must exist,
+and it must appear before Sources.
+
+The new copy claims nothing about outcomes. The strongest thing it says
+is that we will tell a family if we are not the right fit, which is a
+promise we can keep.
+
+Body after the edit: 17,781 chars, md5 `4e88cc549c47b9bc56fc9846ae37c224`.
+All 28 dataset-verified quotes survive the edit, because nothing quoted
+lived in the FAQ.
 
 ## Decisions worth recording
 

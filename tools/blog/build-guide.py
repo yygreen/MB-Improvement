@@ -98,8 +98,12 @@ if stack:
     err(f'unclosed tags: {stack}')
 if '<p>---</p>' in doc or '<p>--</p>' in doc:
     err('stray horizontal rule left in body')
-if '<h3>' not in doc:
-    err('FAQ questions did not convert to h3')
+if re.search(r'<p><strong>[^<]*\?</strong></p>', doc):
+    err('a question is still rendering as a bold paragraph rather than a heading')
+if '<h2>Why Mastermind Behavior</h2>' not in doc:
+    err('missing the Why Mastermind Behavior section')
+if doc.index('<h2>Why Mastermind Behavior</h2>') > doc.index('<h2>Sources</h2>'):
+    err('Why Mastermind Behavior must come before Sources')
 if re.search(r'<\s+href', doc):
     err('clipped anchor tag (< href)')
 
