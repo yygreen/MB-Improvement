@@ -77,3 +77,33 @@ designs (no paper's own figure used as a template):
 Sources: NIH Office of Dietary Supplements (RDA/UL, fetched and parsed);
 Bandini et al. 2026 EJCAP (RR 0.91, 0.87-0.96); Sandboge et al. 2026 JCPP
 (-0.002, -0.20 to 0.20, from PMC13265620). See ../BUILD-RECORD-vitamind-ship.md.
+
+### Mobile rebuild, same day
+
+Measured on a 390px phone viewport: the article's content column is 358px, so
+the original 1400px-wide charts rendered at 25.6% of their design size, putting
+axis labels and credits at roughly 4px. Unreadable.
+
+Rebuilt on a 900px canvas with the type scaled for that column (39.8% scale):
+axis ticks 27px -> 10.7px effective, credit 26px -> 10.3px, row labels
+34px -> 13.5px, titles 46px -> 18.3px. Structural changes: the left-hand label
+column in the dose chart became a full-width label above each track, the
+per-bar annotations moved into a readable sentence under each track, the
+legend stacks vertically, and the panel results in the second chart are stated
+as plain conclusions with the numbers in parentheses. Axis ticks got
+white-space:nowrap after the last one wrapped and collided with the credit.
+
+Geometry is byte-identical in intent: the gate recomputes every position from
+the same published values and passed unchanged. Replacement assets:
+
+| file | md5 | asset id |
+|---|---|---|
+| vitamin-d-dose-vs-upper-limit-m.webp | dede2473c202b1f45483ff35ea780d0d | 6a7aec07403eb5e5f03e17b6 |
+| vitamin-d-observation-vs-trial-m.webp | 46f2e1dd1dc500a611fda5710d901d15 | 6a7aec07d5516e2a8c1756fe |
+
+Live re-verified on a phone viewport: both at 358px, no horizontal page
+overflow, screenshots legible.
+
+NOTE for the four charts on /post/does-emotional-neglect-cause-autism: they are
+still on the 1400px canvas and have the same mobile legibility problem. They
+need the same treatment.
