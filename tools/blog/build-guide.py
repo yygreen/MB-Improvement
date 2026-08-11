@@ -6,6 +6,9 @@ funding dataset, and the same file is what gets pushed to the CMS.
 """
 import json, re, sys, html, hashlib, pathlib
 
+FIGURES = json.load(open('content/blog/guides/figures/figures.json'))
+used_figures = []
+
 SRC = sys.argv[1]
 DATA = sys.argv[2]
 OUT = sys.argv[3]
@@ -28,6 +31,18 @@ out, lines, i = [], body.split('\n'), 0
 while i < len(lines):
     ln = lines[i]
     if not ln.strip():
+        i += 1; continue
+    if ln.startswith('@figure '):
+        slug = ln.split(None, 1)[1].strip()
+        f = FIGURES.get(slug)
+        if f is None:
+            raise SystemExit(f'unknown figure slug: {slug}')
+        used_figures.append(slug)
+        out.append(
+            '<figure class="w-richtext-align-center w-richtext-figure-type-image" '
+            f'style="max-width:{f["width"]}px"><div>'
+            f'<img width="{f["width"]}" src="{f["url"]}" loading="lazy" '
+            f'alt="{html.escape(f["alt"], quote=True)}"></div></figure>')
         i += 1; continue
     if ln.startswith('## '):
         out.append(f'<h2>{inline(ln[3:].strip())}</h2>'); i += 1; continue
@@ -142,6 +157,23 @@ for q in qs:
 if unmatched:
     for u in unmatched:
         err(f'quoted string not found verbatim in dataset: {u[:90]!r}')
+
+# 4b. figures
+for slug in FIGURES:
+    if slug not in used_figures:
+        err(f'figure defined but never placed: {slug}')
+for slug in used_figures:
+    f = FIGURES[slug]
+    if not f['alt'].strip():
+        err(f'figure {slug} has no alt text')
+    if not f['url'].startswith('https://cdn.prod.website-files.com/'):
+        err(f'figure {slug} is not on the Webflow CDN: {f["url"]}')
+    if f['width'] != 600:
+        err(f'figure {slug} must render at 600px, got {f["width"]}')
+if 'w-richtext-align-fullwidth' in doc:
+    err('a figure is set to full width; the article column is 821px and charts must not stretch')
+if doc.count('<figure') != len(used_figures) or doc.count('</figure>') != len(used_figures):
+    err('figure element count does not match the number of placed figures')
 
 # 5. internal links resolve to known properties
 for href in re.findall(r'href="(https://www\.mastermindbehavior\.com[^"]*)"', doc):

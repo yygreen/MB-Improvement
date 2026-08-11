@@ -152,3 +152,44 @@ This is the third label collision in this program. The lesson each time
 has been the same, and it is now encoded rather than remembered: do not
 position a label by offset near something it must clear. Give it its own
 reserved space and let the layout guarantee the separation.
+
+## Figures staged into the draft (2026-08-11)
+
+Both figures uploaded, embedded at 600px in the house figure pattern, and
+the draft updated. Still unpublished.
+
+Placement: the age axis sits immediately after the dateline, where the
+reader needs the map before any of the four systems are named. The appeal
+clock sits inside "If you are denied", straight after its opening line.
+
+    nj-who-pays-when   asset 6a7b3fd5444dfcb6d1cedc6a  md5 18ca5d9a9c4ef4db5b6744b95d540261
+    nj-appeal-clock    asset 6a7b3fd56c344c8aeb8ac923  md5 307d34ddb1eba378bd4fe07af8fef14a
+
+As expected, Webflow re-ingested both into CMS space on save
+(`cfe155/6a7b4062...`). `figures.json` has been repointed at the ingested
+copies and the body regenerated, so a future rebuild will not trigger a
+second ingestion. Repo body and CMS body now carry identical src values.
+
+Figures are placed by a `@figure <slug>` directive in the markdown, which
+the generator expands from `figures/figures.json`. Gates added: every
+declared figure must be placed and every placed slug must be declared;
+alt text must be non-empty; the URL must be on the Webflow CDN; width
+must be 600; `w-richtext-align-fullwidth` is rejected outright, because
+the last time charts were set full width they stretched across the whole
+821px column and had to be redone.
+
+Body is now 18,916 chars, md5 `088945ffc18c913e15619b7707e08ae2`.
+
+## Hero photograph
+
+The typographic card stays as the fallback. A prompt for a real
+photograph is at `figures/HERO-PROMPT-nj-funding.md`, written to the same
+house spec as the twelve state service heroes.
+
+One exclusion on it is specific to this page and is the reason the prompt
+exists rather than being improvised: no legible text on the paperwork. A
+hero for a funding guide will want to show a denial letter, and a
+generated one invents a carrier name, a policy number and a dollar
+figure. That is a fabricated document on a page whose whole argument is
+that every number is sourced. The prompt says to reject any candidate
+where a word resolves at 200%.

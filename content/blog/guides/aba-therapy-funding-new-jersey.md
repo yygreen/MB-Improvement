@@ -15,6 +15,8 @@ This page sorts them out. Every figure below is taken from a New Jersey or feder
 
 Checked 11 August 2026.
 
+@figure nj-who-pays-when
+
 ## Before anything else: is your plan self-funded?
 
 This is the question that decides whether the rest of the insurance section applies to you at all, and almost nobody thinks to ask it.
@@ -97,6 +99,8 @@ Once you consent to an initial evaluation, "the evaluation, determination of eli
 ## If you are denied
 
 Denials are common and often reversed. The path has dates on it, and missing them is the most avoidable way to lose.
+
+@figure nj-appeal-clock
 
 **Step one: the internal appeal.** You have 180 days from receiving an adverse utilization management determination to file a Stage 1 appeal, and 180 days again for Stage 2. NJ FamilyCare members have 60 days. The carrier should decide Stage 1 within 10 business days, or within 72 hours where urgent or emergency care is involved, and Stage 2 within 20 business days.
 
