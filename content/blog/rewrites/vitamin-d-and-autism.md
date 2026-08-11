@@ -82,4 +82,22 @@ Evidence-based therapy, matched to your child's goals, with parents involved. If
 
 ---
 
-*Sources: Bai et al., JAMA Psychiatry, 2019; Stubbs et al., Medical Hypotheses, 2016; NIH Office of Dietary Supplements, vitamin D tolerable upper intake levels.*
+## References
+
+(All verified against PubMed / NIH ODS on 2026-08-11.)
+
+1. Bandini L, Vinceti B, Urbano T, et al. *European Child & Adolescent Psychiatry*. 2026;35(7):2083-2102. doi:10.1007/s00787-026-03059-7
+2. Aagaard K, Møllegaard Jepsen JR, Sevelsted A, et al. *American Journal of Clinical Nutrition*. 2024;119(2):362-370. doi:10.1016/j.ajcnut.2023.12.002
+3. Sandboge S, Seppälä V, Lintula S, et al. *Journal of Child Psychology and Psychiatry*. 2026;67(7):1004-1014. doi:10.1111/jcpp.70110
+4. Li B, Xu Y, Zhang X, et al. *Nutritional Neuroscience*. 2022;25(4):835-845. doi:10.1080/1028415X.2020.1815332
+5. Song L, Luo X, Jiang Q, et al. *Clinical Psychopharmacology and Neuroscience*. 2020;18(2):203-213. doi:10.9758/cpn.2020.18.2.203
+6. Stubbs G, Henley K, Green J. *Medical Hypotheses*. 2016;88:74-78. doi:10.1016/j.mehy.2016.01.015
+7. Bai D, Yip BHK, Windham GC, et al. *JAMA Psychiatry*. 2019;76(10):1035-1043. doi:10.1001/jamapsychiatry.2019.1411
+8. NIH Office of Dietary Supplements. Vitamin D: fact sheet for health professionals.
+
+<!-- SHIPPED 2026-08-11 (item 665f06a6fe948fefa9ab4258). Live version adds the
+     two randomized trials (Aagaard 2024, Sandboge 2026), the Bandini and Li
+     meta-analyses, the deliberately-included dissenting Song 2020, two custom
+     graphics, and a correction for the 300 IU/kg treatment dose that the live
+     page carried but this draft had not recorded. See
+     BUILD-RECORD-vitamind-ship.md. -->

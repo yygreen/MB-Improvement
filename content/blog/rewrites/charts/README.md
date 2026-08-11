@@ -63,3 +63,17 @@ Geometry gate: every bar edge and whisker end in fig4 is computed from the four
 published statistics via a single linear scale (-10..+10 -> 0..100%); the gate
 recomputes each position and fails on any mismatch. No trajectory or curve was
 drawn, because the per-month fixation values are not in the accessible text.
+
+## Vitamin D graphics added 2026-08-11
+
+Built from vitamin-d-charts.html for /post/vitamin-d-and-autism. Two original
+designs (no paper's own figure used as a template):
+
+| file | md5 | asset id |
+|---|---|---|
+| vitamin-d-dose-vs-upper-limit-inline.webp | b3c7d025acdf161cfb503f414e0c1381 | 6a7ae6db51df9d5b47e85ae3 |
+| vitamin-d-observation-vs-trial-inline.webp | 5747e59ebe91dbab6992a6a4ac2fa704 | 6a7ae6db7980f37222c7c95a |
+
+Sources: NIH Office of Dietary Supplements (RDA/UL, fetched and parsed);
+Bandini et al. 2026 EJCAP (RR 0.91, 0.87-0.96); Sandboge et al. 2026 JCPP
+(-0.002, -0.20 to 0.20, from PMC13265620). See ../BUILD-RECORD-vitamind-ship.md.
