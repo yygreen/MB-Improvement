@@ -82,4 +82,19 @@ Start with evidence-based therapy and a paediatrician you trust. If you're in Ne
 
 ---
 
-*Sources: James et al., Cochrane Database of Systematic Reviews, 2015; Keller et al., Nutrients, 2021; Fraguas et al., Pediatrics, 2019; Taylor et al., Vaccine, 2014.*
+## References
+
+(Verified against PubMed on 2026-08-11.)
+
+1. James S, Stevenson SW, Silove N, Williams K. *Cochrane Database of Systematic Reviews*. 2015;(5):CD010766. doi:10.1002/14651858.CD010766.pub2
+2. Keller A, Rimestad ML, Friis Rohde J, et al. *Nutrients*. 2021;13(2):470. doi:10.3390/nu13020470
+3. Fraguas D, Díaz-Caneja CM, Pina-Camacho L, et al. *Pediatrics*. 2019;144(5):e20183218. doi:10.1542/peds.2018-3218
+4. Taylor LE, Swerdfeger AL, Eslick GD. *Vaccine*. 2014;32(29):3623-3629. doi:10.1016/j.vaccine.2014.04.085
+
+<!-- SHIPPED 2026-08-11 (item 66d59e50f188d3b000f7956b). Cochrane PMID is
+     26114777 (the pub2 version); 26106752 is the superseded original record.
+     Two changes from this draft: the specific 2005 Pennsylvania chelation
+     death was removed because it could not be sourced here, and the Cochrane
+     review's own "reported death" among serious adverse events carries the
+     point instead; and "our clinical team" became "our team" under the
+     no-clinic-implied rule. -->

@@ -71,4 +71,19 @@ Talk to your paediatrician and ask for a developmental screening. If you're in N
 
 ---
 
-*Sources: Taylor et al., Vaccine, 2014; Bai et al., JAMA Psychiatry, 2019; National Toxicology Program cell phone radiofrequency studies.*
+## References
+
+(Verified against PubMed on 2026-08-11.)
+
+1. Taylor LE, Swerdfeger AL, Eslick GD. *Vaccine*. 2014;32(29):3623-3629. doi:10.1016/j.vaccine.2014.04.085
+2. Bai D, Yip BHK, Windham GC, et al. *JAMA Psychiatry*. 2019;76(10):1035-1043. doi:10.1001/jamapsychiatry.2019.1411
+
+<!-- SHIPPED 2026-08-11 (item 66f9067c3738f5db322e0d47). Two deliberate changes
+     from this draft. The NTP and US Navy/Air Force cohort claims were dropped:
+     they are about cancer rather than autism and could not be verified here,
+     so asserting them would have repeated the sourcing failure being fixed.
+     In their place, the article characterizes the actual literature, which a
+     PubMed sweep showed to be ~178 hits dominated by studies USING phones and
+     wearables as research tools, plus a few mechanism papers, and no
+     epidemiology of EMF exposure against autism incidence. That absence is
+     the honest finding and is now stated as such. -->
