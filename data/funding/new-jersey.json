@@ -4,78 +4,76 @@
   "last_full_review": "1970-01-01",
   "mandate": {
     "statute_name": {
-      "value": "UNVERIFIED",
-      "source_url": "",
-      "source_type": "agency_page",
-      "source_title": "",
-      "verified_on": "1970-01-01"
+      "value": "P.L. 2009, c. 115, referred to by the Department of Banking and Insurance as \"Chapter 115\". It requires carriers to cover screening and diagnosis of autism or another developmental disability; medically necessary physical, occupational and speech therapy for those conditions; medically necessary behavioral interventions based on applied behavior analysis and related structured behavioral programs for treatment of autism in individuals under 21; and a benefit for the New Jersey Early Intervention System Family Cost Share expense.",
+      "source_url": "https://www.nj.gov/dobi/bulletins/blt10_02.pdf",
+      "source_type": "doi_bulletin",
+      "source_title": "NJ DOBI Bulletin No. 10-02, Implementation of P.L. 2009, c. 115 With Respect to Certain Benefits for Treatment of Autism and Other Developmental Disabilities (January 14, 2010)",
+      "verified_on": "2026-08-11"
     },
     "citation": {
-      "value": "UNVERIFIED",
-      "source_url": "",
-      "source_type": "agency_page",
-      "source_title": "",
-      "verified_on": "1970-01-01"
+      "value": "N.J.S.A. 17:48-6ii (hospital service corporations); 17:48A-7ff (medical service corporations); 17:48E-35.33 (health service corporations); 17B:26-2.1cc and 17B:27-46.1ii (insurers); 17B:27A-7.16 (individual health benefits plans); 17B:27A-19.20 (small employer health benefits plans); 26:2J-4.34 (HMOs); 52:14-17.29p (State Health Benefits Plan); 52:17.46.6b (School Employees Health Benefits Plan).",
+      "source_url": "https://www.nj.gov/dobi/bulletins/blt10_02.pdf",
+      "source_type": "doi_bulletin",
+      "source_title": "NJ DOBI Bulletin No. 10-02, Implementation of P.L. 2009, c. 115 With Respect to Certain Benefits for Treatment of Autism and Other Developmental Disabilities (January 14, 2010)",
+      "verified_on": "2026-08-11"
     },
     "effective_date": {
-      "value": "UNVERIFIED",
-      "source_url": "",
-      "source_type": "agency_page",
-      "source_title": "",
-      "verified_on": "1970-01-01"
+      "value": "February 9, 2010. Chapter 115 applies to all health insurance policies issued or renewed on or after February 9, 2010 that provide hospital and medical expense benefits, including all health maintenance organization and all health service corporation contracts.",
+      "source_url": "https://www.nj.gov/dobi/bulletins/blt10_02.pdf",
+      "source_type": "doi_bulletin",
+      "source_title": "NJ DOBI Bulletin No. 10-02, Implementation of P.L. 2009, c. 115 With Respect to Certain Benefits for Treatment of Autism and Other Developmental Disabilities (January 14, 2010)",
+      "verified_on": "2026-08-11"
     },
     "applies_to_plan_types": {
-      "value": "UNVERIFIED",
-      "source_url": "",
-      "source_type": "agency_page",
-      "source_title": "",
-      "verified_on": "1970-01-01",
-      "note": "which plans the mandate reaches; name the exclusions"
+      "value": "Hospital, medical and health service corporation contracts, health insurance company policies, and HMO coverage delivered or issued for delivery in New Jersey, in the individual, small employer and larger group markets. Chapter 115 also applies to the State Health Benefits Plan and the School Employees Health Benefits Plan, which Bulletin 10-02 notes are outside DOBI's regulatory authority. It does not reach self-funded employer plans (see the self_funded_exemption block).",
+      "source_url": "https://www.nj.gov/dobi/bulletins/blt10_02.pdf",
+      "source_type": "doi_bulletin",
+      "source_title": "NJ DOBI Bulletin No. 10-02, Implementation of P.L. 2009, c. 115 With Respect to Certain Benefits for Treatment of Autism and Other Developmental Disabilities (January 14, 2010)",
+      "verified_on": "2026-08-11"
     },
     "age_limit": {
-      "value": "UNVERIFIED",
-      "source_url": "",
-      "source_type": "agency_page",
-      "source_title": "",
-      "verified_on": "1970-01-01"
+      "value": "Coverage of behavioral interventions based on applied behavior analysis is required for an individual who is under 21 years of age and diagnosed with autism. The separate requirements to cover screening and diagnosis, and medically necessary physical, occupational and speech therapy, are not stated with an age limit in Bulletin 10-02's summary of the law.",
+      "source_url": "https://www.nj.gov/dobi/bulletins/blt10_02.pdf",
+      "source_type": "doi_bulletin",
+      "source_title": "NJ DOBI Bulletin No. 10-02, Implementation of P.L. 2009, c. 115 With Respect to Certain Benefits for Treatment of Autism and Other Developmental Disabilities (January 14, 2010)",
+      "verified_on": "2026-08-11"
     },
     "annual_dollar_cap": {
-      "value": "UNVERIFIED",
-      "source_url": "",
-      "source_type": "agency_page",
-      "source_title": "",
-      "verified_on": "1970-01-01"
+      "value": "Widely reported as $36,000 per calendar year, but that figure often cannot lawfully be applied. DOBI: \"Although DOBI recognizes that the Legislature intended to limit coverage of ABA services for persons under age 21 diagnosed with autism spectrum disorder to $36,000 per calendar year, carriers may not be able to limit the benefit as described.\" Because New Jersey classifies pervasive developmental disorders as a biologically-based mental illness, the federal Mental Health Parity and Addiction Equity Act of 2008 preempts the cap for group health plans subject to MHPAEA: the limit \"may not be applied unless the employer obtains an exemption under MHPAEA for its group health plan based on the 1% cost increase.\" For nongroup (individual market) policies, federal parity does not apply and DOBI states carriers may apply the per calendar year per person limit.",
+      "source_url": "https://www.nj.gov/dobi/bulletins/blt10_02.pdf",
+      "source_type": "doi_bulletin",
+      "source_title": "NJ DOBI Bulletin No. 10-02, Implementation of P.L. 2009, c. 115 With Respect to Certain Benefits for Treatment of Autism and Other Developmental Disabilities (January 14, 2010)",
+      "verified_on": "2026-08-11"
     },
     "visit_or_hour_limits": {
-      "value": "UNVERIFIED",
-      "source_url": "",
-      "source_type": "agency_page",
-      "source_title": "",
-      "verified_on": "1970-01-01"
+      "value": "No visit or hour cap is set by Chapter 115. Carriers may not reduce the physical, occupational, speech or behavioral therapy benefits otherwise available under the contract because those services were used to treat autism or another developmental disability. A separate set of benefits may be established for these services only on terms the same as or more favorable than those applying to other conditions, and DOBI \"will not approve limits for physical therapy, occupational therapy or speech therapy for treatment of autism or other developmental disabilities that establish a maximum number of days of therapy measured from the date of diagnosis or inception of treatment, or benefit limits established on a per illness or injury basis.\"",
+      "source_url": "https://www.nj.gov/dobi/bulletins/blt10_02.pdf",
+      "source_type": "doi_bulletin",
+      "source_title": "NJ DOBI Bulletin No. 10-02, Implementation of P.L. 2009, c. 115 With Respect to Certain Benefits for Treatment of Autism and Other Developmental Disabilities (January 14, 2010)",
+      "verified_on": "2026-08-11"
     },
     "diagnosis_requirement": {
-      "value": "UNVERIFIED",
-      "source_url": "",
-      "source_type": "agency_page",
-      "source_title": "",
-      "verified_on": "1970-01-01"
+      "value": "DOBI reads \"autism\" in Chapter 115 to mean autism and related conditions grouped under Autism Spectrum Disorder, and treats diagnostic codes using 299 in the DSM-IV-TR or ICD as autism for compliance purposes. Carriers may choose to exclude 299.1 and 299.8 where the diagnosis is clearly Childhood Disintegrative Disorder or Rett's Disorder, but should still consider whether those diagnoses meet the developmental disability definition at N.J.S.A. 30:6D-3, which Chapter 115 also covers.",
+      "source_url": "https://www.nj.gov/dobi/bulletins/blt10_02.pdf",
+      "source_type": "doi_bulletin",
+      "source_title": "NJ DOBI Bulletin No. 10-02, Implementation of P.L. 2009, c. 115 With Respect to Certain Benefits for Treatment of Autism and Other Developmental Disabilities (January 14, 2010)",
+      "verified_on": "2026-08-11"
     },
     "prescription_or_referral_requirement": {
-      "value": "UNVERIFIED",
-      "source_url": "",
-      "source_type": "agency_page",
-      "source_title": "",
-      "verified_on": "1970-01-01"
+      "value": "Bulletin 10-02 sets no prescription or physician referral precondition for the commercial mandate. It conditions the ABA benefit on medical necessity and on who delivers the service: DOBI \"believes carriers should consider behavioral interventions based on ABA and related structured behavior program services eligible for benefits if administered directly by or under the direct supervision of an individual who is credentialed by the national Behavior Analyst Certification Board as either: a Board Certified Behavior Analyst - Doctoral (BCBA-D); or a Board Certified Behavior Analyst (BCBA)\". NJ FamilyCare does impose a recommendation requirement; see the medicaid block.",
+      "source_url": "https://www.nj.gov/dobi/bulletins/blt10_02.pdf",
+      "source_type": "doi_bulletin",
+      "source_title": "NJ DOBI Bulletin No. 10-02, Implementation of P.L. 2009, c. 115 With Respect to Certain Benefits for Treatment of Autism and Other Developmental Disabilities (January 14, 2010)",
+      "verified_on": "2026-08-11"
     }
   },
   "self_funded_exemption": {
     "applies": {
-      "value": "UNVERIFIED",
-      "source_url": "",
+      "value": "Yes, and it is the single most important thing to check before relying on anything else on this page. New Jersey's utilization management appeal rules and the Independent Health Care Appeals Program do not reach self-funded plans: DOBI states its answers \"do not apply to self-funded plans, to policies issued and delivered in a state other than New Jersey, or to limited benefits plans that do not provide hospital or medical expense benefits.\" The same boundary is why a self-funded employer plan is not obliged by Chapter 115.",
+      "source_url": "https://www.nj.gov/dobi/chap352/352umappealsqanda.html",
       "source_type": "agency_page",
-      "source_title": "",
-      "verified_on": "1970-01-01",
-      "note": "SAFETY-CRITICAL: does the state mandate reach self-funded ERISA plans"
+      "source_title": "NJ DOBI, Utilization Management Appeals and the Independent Health Care Appeals Program (Q&A)",
+      "verified_on": "2026-08-11"
     },
     "how_a_family_can_tell": {
       "value": "UNVERIFIED",
@@ -86,20 +84,20 @@
       "note": "plain-language test a parent can actually run"
     },
     "federal_basis": {
-      "value": "UNVERIFIED",
-      "source_url": "",
-      "source_type": "agency_page",
-      "source_title": "",
-      "verified_on": "1970-01-01"
+      "value": "ERISA section 514(b)(2), 29 U.S.C. 1144(b)(2). The saving clause preserves state insurance regulation: \"Except as provided in subparagraph (B), nothing in this subchapter shall be construed to exempt or relieve any person from any law of any State which regulates insurance, banking, or securities.\" The deemer clause then removes self-funded plans from its reach: an employee benefit plan shall not \"be deemed to be an insurance company or other insurer ... or to be engaged in the business of insurance ... for purposes of any law of a State purporting to regulate insurance companies, insurance contracts, banks, trust companies, or investment companies.\" A state mandate binds the insurance contract, so a plan that buys no insurance contract is not bound by it.",
+      "source_url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title29-section1144&num=0&edition=prelim",
+      "source_type": "federal",
+      "source_title": "29 U.S.C. 1144(b)(2), ERISA saving clause and deemer clause",
+      "verified_on": "2026-08-11"
     }
   },
   "medicaid": {
     "program_name": {
-      "value": "UNVERIFIED",
-      "source_url": "",
-      "source_type": "agency_page",
-      "source_title": "",
-      "verified_on": "1970-01-01"
+      "value": "NJ FamilyCare, New Jersey's combined Medicaid and CHIP program. The autism benefit sits in the state plan as the EPSDT Autism Benefit, added by State Plan Amendment NJ-19-0003.",
+      "source_url": "https://www.medicaid.gov/medicaid/spa/downloads/NJ-19-0003.pdf",
+      "source_type": "federal",
+      "source_title": "CMS-approved New Jersey Medicaid State Plan Amendment NJ-19-0003, EPSDT Autism Benefit (approved 09/18/2020, effective 01/01/2019)",
+      "verified_on": "2026-08-11"
     },
     "managed_care_organizations": {
       "value": "UNVERIFIED",
@@ -109,19 +107,18 @@
       "verified_on": "1970-01-01"
     },
     "aba_coverage_basis": {
-      "value": "UNVERIFIED",
-      "source_url": "",
-      "source_type": "agency_page",
-      "source_title": "",
-      "verified_on": "1970-01-01",
-      "note": "e.g. EPSDT"
+      "value": "Early and Periodic Screening, Diagnostic and Treatment. SPA NJ-19-0003 was approved September 18, 2020 with an effective date of January 1, 2019. Covered behavioral intervention services \"should include but are not limited to development of an integrated Applied Behavior Analysis (ABA) plan of care or behavior support plan.\"",
+      "source_url": "https://www.medicaid.gov/medicaid/spa/downloads/NJ-19-0003.pdf",
+      "source_type": "federal",
+      "source_title": "CMS-approved New Jersey Medicaid State Plan Amendment NJ-19-0003, EPSDT Autism Benefit (approved 09/18/2020, effective 01/01/2019)",
+      "verified_on": "2026-08-11"
     },
     "age_limit": {
-      "value": "UNVERIFIED",
-      "source_url": "",
-      "source_type": "agency_page",
-      "source_title": "",
-      "verified_on": "1970-01-01"
+      "value": "Under 21. The state plan says these \"EPSDT services are available to Medicaid beneficiaries under the age of twenty-one with an ASD diagnosis made by a qualified licensed practitioner.\"",
+      "source_url": "https://www.medicaid.gov/medicaid/spa/downloads/NJ-19-0003.pdf",
+      "source_type": "federal",
+      "source_title": "CMS-approved New Jersey Medicaid State Plan Amendment NJ-19-0003, EPSDT Autism Benefit (approved 09/18/2020, effective 01/01/2019)",
+      "verified_on": "2026-08-11"
     },
     "prior_authorization": {
       "value": "UNVERIFIED",
@@ -131,11 +128,11 @@
       "verified_on": "1970-01-01"
     },
     "provider_enrollment_requirement": {
-      "value": "UNVERIFIED",
-      "source_url": "",
-      "source_type": "agency_page",
-      "source_title": "",
-      "verified_on": "1970-01-01"
+      "value": "Delivery is tiered by credential. A BCBA-D or BCBA may practice independently. A Board Certified Assistant Behavior Analyst \"may not practice independently\" and may \"only practice under the supervision of a BCBA/BCBA-D certified provider.\" A behavior technician is \"a paraprofessional practicing under the supervision of a BCaBA, BCBA, or BCBA-D\" who must hold a bachelor's degree plus a year of supervised experience, or a high school diploma or GED plus three years of supervised experience, or be a Registered Behavior Technician certified by the Behavior Analyst Certification Board. Providers must be enrolled as a Medicaid/NJ FamilyCare provider and \"licensed by New Jersey, certified by a nationally accredited credentialing body, or by a recognized provider of continuing education.\"",
+      "source_url": "https://www.medicaid.gov/medicaid/spa/downloads/NJ-19-0003.pdf",
+      "source_type": "federal",
+      "source_title": "CMS-approved New Jersey Medicaid State Plan Amendment NJ-19-0003, EPSDT Autism Benefit (approved 09/18/2020, effective 01/01/2019)",
+      "verified_on": "2026-08-11"
     }
   },
   "waivers": [
@@ -240,39 +237,39 @@
   },
   "appeals": {
     "internal_appeal_deadline": {
-      "value": "UNVERIFIED",
-      "source_url": "",
+      "value": "180 days. DOBI: \"Persons enrolled in a group health plan or in an individual plan have 180 days following the receipt of an adverse UM determination to file a Stage 1 appeal. The time-frame for filing a Stage 2 appeal, if applicable, is 180 days.\" NJ FamilyCare members have 60 days to file a Stage 1 appeal. The carrier should issue a Stage 1 determination within 10 business days, or within 72 hours where the appeal involves urgent or emergency care, and a Stage 2 determination within 20 business days.",
+      "source_url": "https://www.nj.gov/dobi/chap352/352umappealsqanda.html",
       "source_type": "agency_page",
-      "source_title": "",
-      "verified_on": "1970-01-01"
+      "source_title": "NJ DOBI, Utilization Management Appeals and the Independent Health Care Appeals Program (Q&A)",
+      "verified_on": "2026-08-11"
     },
     "external_review_body": {
-      "value": "UNVERIFIED",
-      "source_url": "",
+      "value": "The Independent Health Care Appeals Program, run by the New Jersey Department of Banking and Insurance. Cases are decided by Independent Utilization Review Organizations; since January 1, 2022 the vendor is Maximus Federal Services.",
+      "source_url": "https://www.nj.gov/dobi/division_insurance/managedcare/ihcap.htm",
       "source_type": "agency_page",
-      "source_title": "",
-      "verified_on": "1970-01-01"
+      "source_title": "NJ DOBI, Independent Health Care Appeals Program (IHCAP)",
+      "verified_on": "2026-08-11"
     },
     "external_review_deadline": {
-      "value": "UNVERIFIED",
-      "source_url": "",
+      "value": "Four months. DOBI: appeals \"must be filed within the four-month period after the covered person or health care provider receives the final UM appeal determination.\"",
+      "source_url": "https://www.nj.gov/dobi/chap352/352umappealsqanda.html",
       "source_type": "agency_page",
-      "source_title": "",
-      "verified_on": "1970-01-01"
+      "source_title": "NJ DOBI, Utilization Management Appeals and the Independent Health Care Appeals Program (Q&A)",
+      "verified_on": "2026-08-11"
     },
     "expedited_route": {
-      "value": "UNVERIFIED",
-      "source_url": "",
+      "value": "Yes. Expedited external reviews \"are decided by the IURO within 48 hours from when the appeal request was submitted,\" and are available for admission requests, continued stays, or where the standard review time frame \"would seriously jeopardize your life or health.\" An appeal is normally ineligible if \"the internal appeal process has not been completed,\" but exceptions include where the carrier failed to meet its own timeframes, or where the family or provider applied for expedited external review at the same time as expedited internal review.",
+      "source_url": "https://www.nj.gov/dobi/division_insurance/managedcare/ihcap.htm",
       "source_type": "agency_page",
-      "source_title": "",
-      "verified_on": "1970-01-01"
+      "source_title": "NJ DOBI, Independent Health Care Appeals Program (IHCAP)",
+      "verified_on": "2026-08-11"
     },
     "how_to_file": {
-      "value": "UNVERIFIED",
-      "source_url": "",
+      "value": "Online at https://njihcap.maximus.com, by phone on 888.866.6205, by fax on 585.425.5296, or by mail to Maximus Federal, NJ IHCAP, 3750 Monroe Avenue, Suite 705, Pittsford, NY 14534. There is no charge to the family: \"Carriers bear the costs of both the preliminary and full review.\"",
+      "source_url": "https://www.nj.gov/dobi/division_insurance/managedcare/ihcap.htm",
       "source_type": "agency_page",
-      "source_title": "",
-      "verified_on": "1970-01-01"
+      "source_title": "NJ DOBI, Independent Health Care Appeals Program (IHCAP)",
+      "verified_on": "2026-08-11"
     },
     "regulator_complaint_route": {
       "value": "UNVERIFIED",
