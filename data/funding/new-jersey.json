@@ -1,7 +1,7 @@
 {
   "state": "New Jersey",
   "state_key": "new-jersey",
-  "last_full_review": "1970-01-01",
+  "last_full_review": "2026-08-11",
   "mandate": {
     "statute_name": {
       "value": "P.L. 2009, c. 115, referred to by the Department of Banking and Insurance as \"Chapter 115\". It requires carriers to cover screening and diagnosis of autism or another developmental disability; medically necessary physical, occupational and speech therapy for those conditions; medically necessary behavioral interventions based on applied behavior analysis and related structured behavioral programs for treatment of autism in individuals under 21; and a benefit for the New Jersey Early Intervention System Family Cost Share expense.",
@@ -76,12 +76,11 @@
       "verified_on": "2026-08-11"
     },
     "how_a_family_can_tell": {
-      "value": "UNVERIFIED",
-      "source_url": "",
-      "source_type": "agency_page",
-      "source_title": "",
-      "verified_on": "1970-01-01",
-      "note": "plain-language test a parent can actually run"
+      "value": "Ask the employer's plan administrator whether the plan is self-funded or fully insured, and read the Summary Plan Description, which the plan administrator must give participants free of charge and which \"provides a detailed overview of the plan: how it works, what benefits it provides, how to file a claim for benefits, and any limitations that may apply.\" A denial letter is the other quick tell, because \"the external review process used by the plan depends on whether the plan is self-funded or provides benefits through an insurance company. The claim denial notice from your plan will describe the external process and your rights.\" A denial that points to a federal external review route rather than to New Jersey's IHCAP indicates a self-funded plan.",
+      "source_url": "https://www.dol.gov/agencies/ebsa/about-ebsa/our-activities/resource-center/publications/filing-a-claim-for-your-health-benefits",
+      "source_type": "federal",
+      "source_title": "U.S. Department of Labor, Employee Benefits Security Administration, Filing a Claim for Your Health Benefits",
+      "verified_on": "2026-08-11"
     },
     "federal_basis": {
       "value": "ERISA section 514(b)(2), 29 U.S.C. 1144(b)(2). The saving clause preserves state insurance regulation: \"Except as provided in subparagraph (B), nothing in this subchapter shall be construed to exempt or relieve any person from any law of any State which regulates insurance, banking, or securities.\" The deemer clause then removes self-funded plans from its reach: an employee benefit plan shall not \"be deemed to be an insurance company or other insurer ... or to be engaged in the business of insurance ... for purposes of any law of a State purporting to regulate insurance companies, insurance contracts, banks, trust companies, or investment companies.\" A state mandate binds the insurance contract, so a plan that buys no insurance contract is not bound by it.",
@@ -100,11 +99,11 @@
       "verified_on": "2026-08-11"
     },
     "managed_care_organizations": {
-      "value": "UNVERIFIED",
-      "source_url": "",
+      "value": "Five NJ FamilyCare managed care health plans: Aetna Better Health of New Jersey, Fidelis Care, Horizon NJ Health, UnitedHealthcare Community Plan, and Wellpoint (formerly Amerigroup New Jersey). All five list the same 21 counties except that Aetna, Horizon and UnitedHealthcare and Wellpoint include Hunterdon and Fidelis Care does not.",
+      "source_url": "https://www.nj.gov/humanservices/dmahs/individuals-families/familycare/health-plans/",
       "source_type": "agency_page",
-      "source_title": "",
-      "verified_on": "1970-01-01"
+      "source_title": "NJ Division of Medical Assistance and Health Services, NJ FamilyCare Health Plans",
+      "verified_on": "2026-08-11"
     },
     "aba_coverage_basis": {
       "value": "Early and Periodic Screening, Diagnostic and Treatment. SPA NJ-19-0003 was approved September 18, 2020 with an effective date of January 1, 2019. Covered behavioral intervention services \"should include but are not limited to development of an integrated Applied Behavior Analysis (ABA) plan of care or behavior support plan.\"",
@@ -121,11 +120,11 @@
       "verified_on": "2026-08-11"
     },
     "prior_authorization": {
-      "value": "UNVERIFIED",
-      "source_url": "",
+      "value": "Yes, and where the request goes depends on how the child is covered. For NJ FamilyCare fee for service, prior authorization runs through the Interim Managing Entity on 1.844.276.2444, with a dedicated \"DMAHS and Autism Line (ABA & DIR Services)\" on 609.588.8522 or MAHS.ASDinquiries@dhs.nj.gov, and provider enrollment through Gainwell Technologies Provider Services on 1.800.776.6334. For a child in a managed care plan, authorization goes to that plan; UnitedHealthcare Community Plan, for example, routes ABA and DIR requests through Optum's Provider Express autism portal. Behavioral health access for children also runs through PerformCare on 1.877.652.7624.",
+      "source_url": "https://www.nj.gov/humanservices/dmhas/documents/pdf/resources/providers/DMAHS-BH-Integration-Points-of-Contact.pdf",
       "source_type": "agency_page",
-      "source_title": "",
-      "verified_on": "1970-01-01"
+      "source_title": "NJ DMAHS, BH Integration Points of Contact V3.1, version updated 4/30/2026",
+      "verified_on": "2026-08-11"
     },
     "provider_enrollment_requirement": {
       "value": "Delivery is tiered by credential. A BCBA-D or BCBA may practice independently. A Board Certified Assistant Behavior Analyst \"may not practice independently\" and may \"only practice under the supervision of a BCBA/BCBA-D certified provider.\" A behavior technician is \"a paraprofessional practicing under the supervision of a BCaBA, BCBA, or BCBA-D\" who must hold a bachelor's degree plus a year of supervised experience, or a high school diploma or GED plus three years of supervised experience, or be a Registered Behavior Technician certified by the Behavior Analyst Certification Board. Providers must be enrolled as a Medicaid/NJ FamilyCare provider and \"licensed by New Jersey, certified by a nationally accredited credentialing body, or by a recognized provider of continuing education.\"",
@@ -138,101 +137,137 @@
   "waivers": [
     {
       "name": {
-        "value": "UNVERIFIED",
-        "source_url": "",
+        "value": "Supports Program (SP)",
+        "source_url": "https://www.nj.gov/humanservices/ddd/assets/documents/Navigating%20Autism%20Doc-2023%20Final.pdf",
         "source_type": "agency_page",
-        "source_title": "",
-        "verified_on": "1970-01-01"
+        "source_title": "NJ Division of Developmental Disabilities, Navigating Autism in New Jersey (2023)",
+        "verified_on": "2026-08-11"
       },
       "population": {
-        "value": "UNVERIFIED",
-        "source_url": "",
+        "value": "Adults. The Supports Program is one of two Division of Developmental Disabilities Medicaid waiver programs, and DDD waiver eligibility \"includes: Being a resident of NJ, be a U.S. citizen or qualified alien; Being 21 Years of age or older; Being DDD and Medicaid eligible.\" It \"launched in order to expand access to critical in-home and family supports to about another 11,000 individuals.\" Children under 21 are not served here; they go through the Children's System of Care.",
+        "source_url": "https://www.nj.gov/humanservices/ddd/assets/documents/Navigating%20Autism%20Doc-2023%20Final.pdf",
         "source_type": "agency_page",
-        "source_title": "",
-        "verified_on": "1970-01-01"
+        "source_title": "NJ Division of Developmental Disabilities, Navigating Autism in New Jersey (2023)",
+        "verified_on": "2026-08-11"
       },
       "covers_aba": {
-        "value": "UNVERIFIED",
-        "source_url": "",
+        "value": "Not the route a family with a child uses for ABA. New Jersey covers ABA for children as a Medicaid state plan EPSDT benefit under SPA NJ-19-0003, available to beneficiaries \"under the age of twenty-one,\" while the DDD waiver programs start at 21 and provide community services, in-home supports and service planning by independent Support Coordinators.",
+        "source_url": "https://www.nj.gov/humanservices/ddd/assets/documents/Navigating%20Autism%20Doc-2023%20Final.pdf",
         "source_type": "agency_page",
-        "source_title": "",
-        "verified_on": "1970-01-01"
+        "source_title": "NJ Division of Developmental Disabilities, Navigating Autism in New Jersey (2023)",
+        "verified_on": "2026-08-11"
       },
       "waitlist_status": {
-        "value": "UNVERIFIED",
-        "source_url": "",
+        "value": "Navigating Autism in New Jersey states the waiting list requirement for the Community Care Program, not for the Supports Program. Confirm current Supports Program capacity with DDD before relying on this.",
+        "source_url": "https://www.nj.gov/humanservices/ddd/assets/documents/Navigating%20Autism%20Doc-2023%20Final.pdf",
         "source_type": "agency_page",
-        "source_title": "",
-        "verified_on": "1970-01-01"
+        "source_title": "NJ Division of Developmental Disabilities, Navigating Autism in New Jersey (2023)",
+        "verified_on": "2026-08-11"
       },
       "how_to_apply": {
-        "value": "UNVERIFIED",
-        "source_url": "",
+        "value": "Through the Division of Developmental Disabilities. For a young person aged 18 to 21 the application route moves from PerformCare to DDD, and DDD and Medicaid eligibility must both be established.",
+        "source_url": "https://www.nj.gov/humanservices/ddd/assets/documents/Navigating%20Autism%20Doc-2023%20Final.pdf",
         "source_type": "agency_page",
-        "source_title": "",
-        "verified_on": "1970-01-01"
+        "source_title": "NJ Division of Developmental Disabilities, Navigating Autism in New Jersey (2023)",
+        "verified_on": "2026-08-11"
+      }
+    },
+    {
+      "name": {
+        "value": "Community Care Program (CCP)",
+        "source_url": "https://www.nj.gov/humanservices/ddd/assets/documents/Navigating%20Autism%20Doc-2023%20Final.pdf",
+        "source_type": "agency_page",
+        "source_title": "NJ Division of Developmental Disabilities, Navigating Autism in New Jersey (2023)",
+        "verified_on": "2026-08-11"
+      },
+      "population": {
+        "value": "Adults 21 and over who are DDD and Medicaid eligible. The CCP \"was originally approved to provide a community-based alternative to institutional care. Over 11,000 individuals now use the CCP to live in licensed group homes or received comprehensive in-home supports.\"",
+        "source_url": "https://www.nj.gov/humanservices/ddd/assets/documents/Navigating%20Autism%20Doc-2023%20Final.pdf",
+        "source_type": "agency_page",
+        "source_title": "NJ Division of Developmental Disabilities, Navigating Autism in New Jersey (2023)",
+        "verified_on": "2026-08-11"
+      },
+      "covers_aba": {
+        "value": "Same position as the Supports Program: the CCP funds community living and support services for adults, not the children's EPSDT autism benefit, which sits in the Medicaid state plan for beneficiaries under 21.",
+        "source_url": "https://www.nj.gov/humanservices/ddd/assets/documents/Navigating%20Autism%20Doc-2023%20Final.pdf",
+        "source_type": "agency_page",
+        "source_title": "NJ Division of Developmental Disabilities, Navigating Autism in New Jersey (2023)",
+        "verified_on": "2026-08-11"
+      },
+      "waitlist_status": {
+        "value": "There is a waiting list. CCP eligibility requires that an individual \"Need and utilize at least one CCP service each month; Meet clinical level of care; and Meet DDD's 'emergency' criteria, or be at the top of the CCW waiting list.\"",
+        "source_url": "https://www.nj.gov/humanservices/ddd/assets/documents/Navigating%20Autism%20Doc-2023%20Final.pdf",
+        "source_type": "agency_page",
+        "source_title": "NJ Division of Developmental Disabilities, Navigating Autism in New Jersey (2023)",
+        "verified_on": "2026-08-11"
+      },
+      "how_to_apply": {
+        "value": "Through the Division of Developmental Disabilities, with DDD and Medicaid eligibility both required.",
+        "source_url": "https://www.nj.gov/humanservices/ddd/assets/documents/Navigating%20Autism%20Doc-2023%20Final.pdf",
+        "source_type": "agency_page",
+        "source_title": "NJ Division of Developmental Disabilities, Navigating Autism in New Jersey (2023)",
+        "verified_on": "2026-08-11"
       }
     }
   ],
   "early_intervention": {
     "program_name": {
-      "value": "UNVERIFIED",
-      "source_url": "",
+      "value": "New Jersey Early Intervention System (NJEIS), New Jersey's IDEA Part C system.",
+      "source_url": "https://nj.gov/health/fhs/eis/documents/njeis_faq.pdf",
       "source_type": "agency_page",
-      "source_title": "",
-      "verified_on": "1970-01-01"
+      "source_title": "NJ Department of Health, Early Intervention Services in New Jersey: Frequently Asked Questions",
+      "verified_on": "2026-08-11"
     },
     "age_range": {
-      "value": "UNVERIFIED",
-      "source_url": "",
+      "value": "Birth to age three. N.J.A.C. 6A:14-10.1 covers \"Early intervention programs serving children between birth and age three,\" and the NJEIS FAQ frames the service around \"the first three years of life.\" Eligibility requires either \"measured delays in development of at least 2.0 standard deviations below the mean in one developmental area; or 1.5 standard deviations below the mean in two or more of the developmental areas,\" or a diagnosed physical or mental condition with a high probability of resulting in developmental delay, confirmed in a signed statement from a physician, advanced practice nurse or licensed clinician.",
+      "source_url": "https://nj.gov/health/fhs/eis/documents/njeis_faq.pdf",
       "source_type": "agency_page",
-      "source_title": "",
-      "verified_on": "1970-01-01"
+      "source_title": "NJ Department of Health, Early Intervention Services in New Jersey: Frequently Asked Questions",
+      "verified_on": "2026-08-11"
     },
     "lead_agency": {
-      "value": "UNVERIFIED",
-      "source_url": "",
-      "source_type": "agency_page",
-      "source_title": "",
-      "verified_on": "1970-01-01"
+      "value": "The New Jersey Department of Health. N.J.A.C. 6A:14-10.1: \"Early intervention programs shall be administered by the Department of Health as the lead agency.\"",
+      "source_url": "https://www.nj.gov/education/code/current/title6a/chap14.pdf",
+      "source_type": "regulation",
+      "source_title": "N.J.A.C. 6A:14, Special Education (current text, NJ Department of Education)",
+      "verified_on": "2026-08-11"
     },
     "family_cost_share": {
-      "value": "UNVERIFIED",
-      "source_url": "",
+      "value": "Sliding scale, with a floor of free services. \"If a family's income is below 300% Federal Poverty Level (FPL), they will have no cost participation.\" Families with extraordinary medical expenses of five percent or more of household income can apply for an adjustment. Five things are always free regardless of income, because federal law requires them at public expense: child find and referral, evaluation and assessment, service coordination, IFSP development and review, and procedural safeguards. Beyond those, \"a family may have to assume some or all of the costs, depending on the resources available and the parents' ability to pay. Medicaid or private insurance can be designated payers.\" Chapter 115 separately requires New Jersey carriers to reimburse the Family Cost Share itself.",
+      "source_url": "https://www.nj.gov/health/fhs/eis/for-families/eligibility-cost/",
       "source_type": "agency_page",
-      "source_title": "",
-      "verified_on": "1970-01-01"
+      "source_title": "NJ Department of Health, Early Intervention: System of Payment and Family Cost Participation",
+      "verified_on": "2026-08-11"
     },
     "referral_route": {
-      "value": "UNVERIFIED",
-      "source_url": "",
+      "value": "Self-referral by phone, no doctor's note needed. \"If you suspect that an infant or toddler may be experiencing developmental delays, the referral is made by calling the Regional System Point of Entry toll free number at 1-888-653-4463 and following the menu directions based on the county in which the child (or family) lives.\" Services are then set out in an Individualized Family Service Plan, reviewed every six months, with a full developmental evaluation and IFSP meeting at least once a year.",
+      "source_url": "https://nj.gov/health/fhs/eis/documents/njeis_faq.pdf",
       "source_type": "agency_page",
-      "source_title": "",
-      "verified_on": "1970-01-01"
+      "source_title": "NJ Department of Health, Early Intervention Services in New Jersey: Frequently Asked Questions",
+      "verified_on": "2026-08-11"
     }
   },
   "school_services": {
     "idea_part_c_to_b_transition": {
-      "value": "UNVERIFIED",
-      "source_url": "",
-      "source_type": "agency_page",
-      "source_title": "",
-      "verified_on": "1970-01-01"
+      "value": "The school district takes over at the third birthday, and the paperwork starts four months earlier. N.J.A.C. 6A:14 requires that \"the obligation to make a free, appropriate public education available to each eligible student begins no later than the student's third birthday and that an individualized education program is in effect for the student by that date.\" To make that happen, \"a written request for initial evaluation shall be forwarded by Early Intervention Service providers to the district board of education at least 120 days prior to the preschooler attaining age three,\" and \"a child study team member of the district board of education shall participate in the preschool transition planning conference arranged by the designated service coordinator from the Early Intervention System.\" Once a parent consents to an initial evaluation, \"the evaluation, determination of eligibility for services under this chapter, and, if eligible, development and implementation of the student's IEP shall be completed within 90 calendar days.\" A \"preschool child with a disability\" means a child between the ages of three and five.",
+      "source_url": "https://www.nj.gov/education/code/current/title6a/chap14.pdf",
+      "source_type": "regulation",
+      "source_title": "N.J.A.C. 6A:14, Special Education (current text, NJ Department of Education)",
+      "verified_on": "2026-08-11"
     },
     "aba_in_iep": {
-      "value": "UNVERIFIED",
-      "source_url": "",
-      "source_type": "agency_page",
-      "source_title": "",
-      "verified_on": "1970-01-01"
+      "value": "New Jersey's special education code does not name applied behavior analysis at all: the phrase does not appear anywhere in N.J.A.C. 6A:14. What the code requires instead is that \"the services and placement needed by each student with a disability to receive a free, appropriate public education are based on the student's unique needs and not on the student's disability.\" Whether behavioral services appear in a given IEP is therefore an IEP team decision about that child, not something the code grants or withholds by diagnosis.",
+      "source_url": "https://www.nj.gov/education/code/current/title6a/chap14.pdf",
+      "source_type": "regulation",
+      "source_title": "N.J.A.C. 6A:14, Special Education (current text, NJ Department of Education)",
+      "verified_on": "2026-08-11"
     },
     "note": {
-      "value": "UNVERIFIED",
-      "source_url": "",
-      "source_type": "agency_page",
-      "source_title": "",
-      "verified_on": "1970-01-01",
-      "note": "what schools do and do not have to provide"
+      "value": "School services and insurance-funded therapy answer to different standards and are not substitutes for each other. An IEP exists to deliver a free, appropriate public education under IDEA, and N.J.A.C. 6A:14 is written around educational need. Coverage under Chapter 115 or NJ FamilyCare turns on medical necessity. A district declining to put a service in an IEP is not a finding that the service is unnecessary, and an insurer approving hours is not a finding that the school must provide them.",
+      "source_url": "https://www.nj.gov/education/code/current/title6a/chap14.pdf",
+      "source_type": "regulation",
+      "source_title": "N.J.A.C. 6A:14, Special Education (current text, NJ Department of Education)",
+      "verified_on": "2026-08-11"
     }
   },
   "appeals": {
@@ -272,11 +307,11 @@
       "verified_on": "2026-08-11"
     },
     "regulator_complaint_route": {
-      "value": "UNVERIFIED",
-      "source_url": "",
+      "value": "The New Jersey Department of Banking and Insurance takes consumer complaints against carriers, separately from the appeal itself. The consumer hotline is 1.800.446.7467, open 8:30 am to 5:00 pm Monday through Friday. Formal complaints must be submitted in writing and must include \"the company name/agent's name, the policy/certificate number(s), any documentation that will substantiate your position, and a brief description of the problems.\" Complaints can be filed online through the NAIC portal linked from the DOBI consumer page, or posted to NJDOBI, PO Box 471, Trenton, NJ 08625-0471. This route does not replace the internal appeal or IHCAP, and it does not reach self-funded plans.",
+      "source_url": "https://www.nj.gov/dobi/consumer.htm",
       "source_type": "agency_page",
-      "source_title": "",
-      "verified_on": "1970-01-01"
+      "source_title": "NJ Department of Banking and Insurance, Consumer Information and Complaints",
+      "verified_on": "2026-08-11"
     }
   }
 }
