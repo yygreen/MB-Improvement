@@ -34,3 +34,32 @@ does-emotional-neglect-cause-autism) as full-width rich-text figures with
 descriptive alt text; on save Webflow re-ingested the images under the CMS
 asset space (cfe155/6a7a3238... URLs), which is expected. See
 ../BUILD-RECORD-neglect-ship.md for the full ship record.
+
+## Figure 4 added 2026-08-11
+
+eye-contact-decline-infancy-inline.webp (md5 f67f0e63dc865fd2d4a9f742201a9585,
+asset 6a7ade55a3b1758ceee45cc6): monthly rate of change in eye fixation across
+months 2 to 6, +3.6%/month [95% CI 1.3 to 5.9] in infants not later diagnosed
+vs -4.8%/month [95% CI -7.9 to -1.7] in infants later diagnosed. Diverging bars
+from a zero baseline with 95% CI whiskers. Data: Jones & Klin 2013, Nature
+(PMID 24196715), values read from the PMC full text (PMC4035120), not from the
+abstract, which carries no numbers.
+
+Chosen over three alternatives the client proposed from the source papers:
+- Bai 2019 Figure 1 (pedigree / variance-component derivation): a methods
+  diagram, not a result. Its useful content (maternal effect 0.4-1.6%, "no
+  support for contribution from maternal effects") is already in the body text.
+- CAST group-heritability-by-cutoff bars: a methodological robustness check,
+  and NOT from our reference 2 as assumed. It is Colvert, Tick et al. 2015,
+  JAMA Psychiatry (PMID 25738232), a UK twin study of 6,423 CAST pairs at mean
+  age 7.9 - a different paper that shares an author with Tick 2016.
+- Sibling-recurrence cumulative-probability curve (~13.5% by age 21 vs ~1%):
+  source could NOT be confirmed as Sandin 2014; the values match neither
+  Sandin's relative-risk framing, Risch 2014 (10.1% vs 0.52%), nor Gronborg
+  2013. Not buildable under the no-unverified-data rule, and off-thesis: it
+  answers "what is the risk for my next child", not "did I cause this".
+
+Geometry gate: every bar edge and whisker end in fig4 is computed from the four
+published statistics via a single linear scale (-10..+10 -> 0..100%); the gate
+recomputes each position and fails on any mismatch. No trajectory or curve was
+drawn, because the per-month fixation values are not in the accessible text.

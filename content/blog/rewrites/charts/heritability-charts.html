@@ -18,6 +18,10 @@
   .credit { font-size: 16px; color: #8a8a8a; margin-top: 34px; }
   .keyrow { display: flex; gap: 28px; margin: 0 0 34px; font-size: 18px; color: #2c2c2c; font-weight: 600; }
   .sw { display: inline-block; width: 14px; height: 14px; border-radius: 4px; margin-right: 8px; vertical-align: -1px; }
+  .zero { position: absolute; left: 50%; top: -6px; bottom: -6px; width: 2px; background: #c9c3b6; }
+  .ci { position: absolute; top: 50%; height: 2px; background: #1a2744; opacity: .55; transform: translateY(-50%); }
+  .ci::before, .ci::after { content: ''; position: absolute; top: -6px; height: 14px; width: 2px; background: #1a2744; }
+  .ci::before { left: 0; } .ci::after { right: 0; }
 </style></head><body>
 
 <div class="fig" id="fig1">
@@ -70,6 +74,25 @@
     <div class="track"><div class="bar" style="left:0; width:1.2%; background:#009499"></div>
     <div class="val" style="left:2.6%">2.0&times;</div></div></div>
   <p class="credit">Each step down in genetic closeness halves-or-more the risk, including between relatives raised in different homes. Data: Sandin et al. 2014, JAMA.</p>
+</div>
+
+<div class="fig" id="fig4">
+  <h2>Attention to eyes moves in opposite directions from month 2</h2>
+  <p class="sub">Rate of change in eye fixation per month, ages 2 to 6 months, 110 infants followed from birth</p>
+  <div class="row"><div class="lbl">Infants not later diagnosed<small>eye-looking increasing</small></div>
+    <div class="track">
+      <div class="zero"></div>
+      <div class="bar" style="left:50%; width:18%; background:#009499; border-radius:0 4px 4px 0"></div>
+      <div class="ci" style="left:56.5%; width:23%"></div>
+      <div class="val" style="left:80.5%">+3.6% per month</div></div></div>
+  <div class="row"><div class="lbl">Infants later diagnosed with autism<small>eye-looking declining</small></div>
+    <div class="track">
+      <div class="zero"></div>
+      <div class="bar" style="left:26%; width:24%; background:#c14a3f; border-radius:4px 0 0 4px"></div>
+      <div class="ci" style="left:10.5%; width:31%"></div>
+      <div class="val" style="left:51.5%">&minus;4.8% per month</div></div></div>
+  <div class="axis"><div></div><div class="ticks"><span>&minus;10%</span><span>&minus;5%</span><span>0</span><span>+5%</span><span>+10%</span></div></div>
+  <p class="credit">Both groups began at typical levels of eye-looking; the decline appears months before any pattern of caregiving could plausibly explain it. Bars show mean rate of change, thin lines show the 95% confidence interval. Data: Jones and Klin 2013, Nature.</p>
 </div>
 
 </body></html>
