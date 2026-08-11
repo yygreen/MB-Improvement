@@ -193,3 +193,39 @@ generated one invents a carrier name, a policy number and a dollar
 figure. That is a fabricated document on a page whose whole argument is
 that every number is sourced. The prompt says to reject any candidate
 where a word resolves at 200%.
+
+## Photographic hero swapped in (2026-08-11)
+
+The typographic card is retired. The photograph generated from
+`HERO-PROMPT-nj-funding.md` is now the hero and thumbnail.
+
+    source     Drive, Generated Image August 11, 2026 - 7_59PM.jpg, 1376x768
+    hero       1365x768 webp, exact 16:9 centre crop, no upscale
+               asset 6a7b654003d3b1363eea67fd  md5 11d1307ba5dc32a66fa9fd53c97bce10
+    thumb      600x338 webp
+               asset 6a7b65408b65482014c0f541  md5 27eda3eb3515d496472269b3a9803d90
+
+Delivered below the >=1600x900 house spec at the client's explicit
+instruction. Cropped rather than upscaled, so no interpolated detail.
+
+### Acceptance checks run before upload
+
+The prompt's own checklist, run at 3x and 4x on the source rather than
+eyeballed at page size:
+
+1. **Paperwork.** No word resolves. The sheets carry dashed pseudo-text
+   only, no carrier name, no policy number, no dollar figure. This was
+   the check that mattered: a fabricated document has no place on a page
+   whose argument is that every number is sourced.
+2. **Laptop screen.** Soft grey bars, no legible text and no logo. The
+   prompt excluded screens showing content; this passes on the substance
+   of that rule, which was about not inventing an insurer.
+3. No lanyard, badge, scrubs, clipboard or medical equipment.
+4. Not mistakable for a waiting room. Cast-iron radiator under a
+   double-hung window, plaster walls, wainscoting, wide painted trim,
+   hardwood, mature tree outside. The New Jersey cues all landed.
+5. Expression concentrated, not distressed.
+6. No puzzle-piece imagery, no eye contact with the camera.
+
+Crop verified against 16:9 by assertion in the build step rather than by
+eye.
