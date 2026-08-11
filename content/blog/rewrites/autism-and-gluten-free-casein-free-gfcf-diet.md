@@ -67,4 +67,25 @@ Behavioural therapy with clear goals and progress data, speech and occupational 
 
 ---
 
-*Sources: Keller et al., Nutrients, 2021; Fraguas et al., Pediatrics, 2019.*
+## References
+
+(All verified against PubMed on 2026-08-11.)
+
+1. Keller A, Rimestad ML, Friis Rohde J, et al. *Nutrients*. 2021;13(2):470. doi:10.3390/nu13020470
+2. Fraguas D, Díaz-Caneja CM, Pina-Camacho L, et al. *Pediatrics*. 2019;144(5):e20183218. doi:10.1542/peds.2018-3218
+3. Quan L, Xu X, Cui Y, et al. *Nutrition Reviews*. 2022;80(5):1237-1246. doi:10.1093/nutrit/nuab073
+4. Yu Y, Huang J, Chen X, et al. *Frontiers in Neurology*. 2022;13:844117. doi:10.3389/fneur.2022.844117
+5. Shi J, Cheng Y, Wei Y, et al. *Research in Developmental Disabilities*. 2026;171:105270. doi:10.1016/j.ridd.2026.105270
+6. Sathe N, Andrews JC, McPheeters ML, et al. *Pediatrics*. 2017;139(6):e20170346. doi:10.1542/peds.2017-0346
+
+<!-- SHIPPED 2026-08-11 (item 6762c12bd12eb4471377706a), materially restructured
+     from this draft. The draft assumed the evidence was uniformly negative and
+     led with "six trials found no effect". Checking the agreed citations showed
+     that is not true: Quan 2022 (Nutrition Reviews) and Yu 2022 (Frontiers in
+     Neurology) both report significant benefit. The shipped article therefore
+     presents the disagreement as its subject and explains it by blinding
+     (Quan's included studies were mostly single-blind; Fraguas restricted to
+     double-blind; Keller used clinician-reported outcomes). Title changed from
+     "What Six Trials Found" to "Why the Studies Disagree" to match. Also
+     removed the live page's 732.507.9883 phone number and its advocacy-site
+     references. See BUILD-RECORD-gfcf-ship.md. -->
