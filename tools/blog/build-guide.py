@@ -7,6 +7,16 @@ funding dataset, and the same file is what gets pushed to the CMS.
 import json, re, sys, html, hashlib, pathlib
 
 FIGURES = json.load(open('content/blog/guides/figures/figures.json'))
+ALLOWED_LINKS = {
+    '/in-home-aba-therapy', '/aba-therapy-in-new-jersey', '/contact',
+    '/early-intervention-new-jersey', '/transition-planning-new-jersey',
+    '/behavior-support-new-jersey', '/parent-training-new-jersey',
+    '/insurance-terminology',
+    '/post/how-much-is-aba-therapy-with-insurance',
+    '/post/cost-of-aba-therapy-for-autism',
+    '/post/iep-vs-504-plan-for-autism',
+    '/post/early-signs-of-autism-in-babies-and-kids',
+}
 used_figures = []
 
 SRC = sys.argv[1]
@@ -177,9 +187,15 @@ if doc.count('<figure') != len(used_figures) or doc.count('</figure>') != len(us
 
 # 5. internal links resolve to known properties
 for href in re.findall(r'href="(https://www\.mastermindbehavior\.com[^"]*)"', doc):
-    if href.split('mastermindbehavior.com')[1] not in (
-            '/in-home-aba-therapy', '/aba-therapy-in-new-jersey', '/contact'):
+    if href.split('mastermindbehavior.com')[1] not in ALLOWED_LINKS:
         err(f'unexpected internal link: {href}')
+n_links = len(re.findall(r'href="https://www\.mastermindbehavior\.com', doc))
+n_h2 = doc.count('<h2>')
+if n_links < 6:
+    err(f'only {n_links} internal links in a page with {n_h2} sections; link contextually, not just at the end')
+tail = doc.index('<h2>Why Mastermind Behavior</h2>')
+if len(re.findall(r'href="https://www\.mastermindbehavior\.com', doc[:tail])) < 3:
+    err('internal links are bunched at the end; at least three must sit in the body')
 
 pathlib.Path(OUT).write_text(doc, encoding='utf-8')
 print(f'{len(doc)} chars  md5={hashlib.md5(doc.encode()).hexdigest()}')

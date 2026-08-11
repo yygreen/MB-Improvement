@@ -27,7 +27,7 @@ The reason is federal. ERISA preserves state insurance regulation, then removes 
 
 **How to find out, in two minutes.** Ask your employer's plan administrator whether the plan is self-funded or fully insured. Read the Summary Plan Description, which the administrator must give you free of charge and which sets out "how it works, what benefits it provides, how to file a claim for benefits, and any limitations that may apply." Or look at a denial letter: the US Department of Labor notes that "the external review process used by the plan depends on whether the plan is self-funded or provides benefits through an insurance company. The claim denial notice from your plan will describe the external process and your rights." If your denial points you to a federal external review rather than to New Jersey's appeals program, your plan is self-funded.
 
-Being on a self-funded plan is not a dead end. Those plans have their own federal appeal rights, and many voluntarily cover ABA. It just means the New Jersey rules below are not leverage you have.
+Being on a self-funded plan is not a dead end. Those plans have their own federal appeal rights, and many voluntarily cover ABA. It just means the New Jersey rules below are not leverage you have. If it is the vocabulary in your plan documents that is the obstacle, our [plain English guide to insurance terms](https://www.mastermindbehavior.com/insurance-terminology) works through it.
 
 ## What New Jersey law requires
 
@@ -60,7 +60,7 @@ What that means in practice:
 - **Individual market policy:** federal parity does not apply, and the Department states carriers may apply the limit.
 - **Self-funded plan:** Chapter 115 does not reach you at all. See above.
 
-If a letter tells you that you have hit a $36,000 annual maximum, the first thing to establish is which of those three you are.
+If a letter tells you that you have hit a $36,000 annual maximum, the first thing to establish is which of those three you are. For what families actually end up paying once a plan is applied, see [how much ABA therapy costs with insurance](https://www.mastermindbehavior.com/post/how-much-is-aba-therapy-with-insurance) and our breakdown of [ABA therapy costs](https://www.mastermindbehavior.com/post/cost-of-aba-therapy-for-autism).
 
 ## NJ FamilyCare
 
@@ -74,9 +74,9 @@ The benefit was added by State Plan Amendment NJ-19-0003, approved 18 September 
 
 ## Under three: New Jersey Early Intervention
 
-Before your child's third birthday, the relevant system is not insurance and not the school. It is the New Jersey Early Intervention System, run by the Department of Health.
+Before your child's third birthday, the relevant system is not insurance and not the school. It is the New Jersey Early Intervention System, run by the Department of Health. We set out what that looks like in practice on our page on [early intervention in New Jersey](https://www.mastermindbehavior.com/early-intervention-new-jersey).
 
-**You can refer your own child.** No doctor's note, no waiting for someone else to act. "If you suspect that an infant or toddler may be experiencing developmental delays, the referral is made by calling the Regional System Point of Entry toll free number at 1-888-653-4463 and following the menu directions based on the county in which the child (or family) lives."
+**You can refer your own child.** No doctor's note, no waiting for someone else to act. If you are still at the stage of wondering whether there is anything to refer, start with the [early signs of autism](https://www.mastermindbehavior.com/post/early-signs-of-autism-in-babies-and-kids). "If you suspect that an infant or toddler may be experiencing developmental delays, the referral is made by calling the Regional System Point of Entry toll free number at 1-888-653-4463 and following the menu directions based on the county in which the child (or family) lives."
 
 **Eligibility** runs on either measured delay ("at least 2.0 standard deviations below the mean in one developmental area; or 1.5 standard deviations below the mean in two or more") or a diagnosed condition with a high probability of causing developmental delay, confirmed in writing by a physician, advanced practice nurse or licensed clinician.
 
@@ -88,11 +88,11 @@ Services are set out in an Individualized Family Service Plan, reviewed every si
 
 On your child's third birthday, responsibility for educational services moves to your school district, and the paperwork has to start four months earlier.
 
-New Jersey's special education code requires that "the obligation to make a free, appropriate public education available to each eligible student begins no later than the student's third birthday and that an individualized education program is in effect for the student by that date." To make that possible, "a written request for initial evaluation shall be forwarded by Early Intervention Service providers to the district board of education at least 120 days prior to the preschooler attaining age three." A child study team member from the district must attend the transition planning conference that your early intervention service coordinator arranges.
+New Jersey's special education code requires that "the obligation to make a free, appropriate public education available to each eligible student begins no later than the student's third birthday and that an individualized education program is in effect for the student by that date." To make that possible, "a written request for initial evaluation shall be forwarded by Early Intervention Service providers to the district board of education at least 120 days prior to the preschooler attaining age three." A child study team member from the district must attend the transition planning conference that your early intervention service coordinator arranges. We cover that handover, and the later ones, on our page on [transition planning in New Jersey](https://www.mastermindbehavior.com/transition-planning-new-jersey).
 
 Once you consent to an initial evaluation, "the evaluation, determination of eligibility for services under this chapter, and, if eligible, development and implementation of the student's IEP shall be completed within 90 calendar days."
 
-**On whether ABA belongs in an IEP.** New Jersey's special education code does not mention applied behavior analysis anywhere. What it requires instead is that "the services and placement needed by each student with a disability to receive a free, appropriate public education are based on the student's unique needs and not on the student's disability." Whether behavioral services appear in a given IEP is a decision the IEP team makes about your child.
+**On whether ABA belongs in an IEP.** New Jersey's special education code does not mention applied behavior analysis anywhere. What it requires instead is that "the services and placement needed by each student with a disability to receive a free, appropriate public education are based on the student's unique needs and not on the student's disability." Whether behavioral services appear in a given IEP is a decision the IEP team makes about your child. If you are weighing which document your child should have at all, we compare [an IEP against a 504 plan](https://www.mastermindbehavior.com/post/iep-vs-504-plan-for-autism).
 
 **The distinction that saves families a lot of frustration:** an IEP and an insurance authorization answer different questions. The IEP exists to deliver a free, appropriate public education, so it turns on educational need. Chapter 115 and NJ FamilyCare turn on medical necessity. A district declining to write a service into an IEP is not a finding that the service is unnecessary, and an insurer authorizing hours does not obligate the school to provide them. You can pursue both.
 

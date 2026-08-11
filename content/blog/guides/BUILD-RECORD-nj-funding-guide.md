@@ -229,3 +229,50 @@ eyeballed at page size:
 
 Crop verified against 16:9 by assertion in the build step rather than by
 eye.
+
+## Internal links: a real gap, found by the client (2026-08-11)
+
+The page shipped with three internal links, all of them in the closing
+section. That was wrong. A 3,000 word page with nothing to click until
+the bottom passes no authority to the service pages and gives a reader no
+next step at the moment they need one. The cause was mechanical: the FAQ
+carried the only mid-body links, and removing it left the body bare
+without anyone noticing.
+
+Now ten links, seven of them in the body, each placed where a reader is
+already asking that question:
+
+    self-funded section   /insurance-terminology
+    $36,000 section       /post/how-much-is-aba-therapy-with-insurance
+                          /post/cost-of-aba-therapy-for-autism
+    early intervention    /early-intervention-new-jersey
+                          /post/early-signs-of-autism-in-babies-and-kids
+    school section        /transition-planning-new-jersey
+                          /post/iep-vs-504-plan-for-autism
+    closing               /in-home-aba-therapy, /aba-therapy-in-new-jersey, /contact
+
+All thirteen candidate targets were checked for a 200 before any were
+used. Two gates added so this cannot recur silently: fewer than six
+internal links fails, and fewer than three before the closing section
+fails. The allowlist of link targets moved into a named constant.
+
+## Publish scope error (2026-08-11)
+
+Recorded because it should not be repeated. The intent was staging only.
+The site was published with `publishToWebflowSubdomain: true` and an
+empty `customDomains`, which was correct. Then
+`publish_collection_items` was called to push the link edit, and that
+call is not domain scoped: it published the item to the live domains.
+The page went public at www.mastermindbehavior.com without the client
+having said go.
+
+The rule for next time: after an item is out of draft, any
+`publish_collection_items` call makes it live. To keep a page on staging
+only, leave the item in draft and publish the site to the subdomain, or
+accept that the item publish is a live publish.
+
+## Byte verification against the rendered page
+
+The generated body is an exact prefix of the rendered article text. The
+only difference is a site-wide embed the template appends after the rich
+text field. The article itself renders exactly as generated.
