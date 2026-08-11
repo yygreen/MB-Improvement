@@ -1,0 +1,285 @@
+{
+  "state": "North Carolina",
+  "state_key": "north-carolina",
+  "last_full_review": "1970-01-01",
+  "mandate": {
+    "statute_name": {
+      "value": "UNVERIFIED",
+      "source_url": "",
+      "source_type": "agency_page",
+      "source_title": "",
+      "verified_on": "1970-01-01"
+    },
+    "citation": {
+      "value": "UNVERIFIED",
+      "source_url": "",
+      "source_type": "agency_page",
+      "source_title": "",
+      "verified_on": "1970-01-01"
+    },
+    "effective_date": {
+      "value": "UNVERIFIED",
+      "source_url": "",
+      "source_type": "agency_page",
+      "source_title": "",
+      "verified_on": "1970-01-01"
+    },
+    "applies_to_plan_types": {
+      "value": "UNVERIFIED",
+      "source_url": "",
+      "source_type": "agency_page",
+      "source_title": "",
+      "verified_on": "1970-01-01",
+      "note": "which plans the mandate reaches; name the exclusions"
+    },
+    "age_limit": {
+      "value": "UNVERIFIED",
+      "source_url": "",
+      "source_type": "agency_page",
+      "source_title": "",
+      "verified_on": "1970-01-01"
+    },
+    "annual_dollar_cap": {
+      "value": "UNVERIFIED",
+      "source_url": "",
+      "source_type": "agency_page",
+      "source_title": "",
+      "verified_on": "1970-01-01"
+    },
+    "visit_or_hour_limits": {
+      "value": "UNVERIFIED",
+      "source_url": "",
+      "source_type": "agency_page",
+      "source_title": "",
+      "verified_on": "1970-01-01"
+    },
+    "diagnosis_requirement": {
+      "value": "UNVERIFIED",
+      "source_url": "",
+      "source_type": "agency_page",
+      "source_title": "",
+      "verified_on": "1970-01-01"
+    },
+    "prescription_or_referral_requirement": {
+      "value": "UNVERIFIED",
+      "source_url": "",
+      "source_type": "agency_page",
+      "source_title": "",
+      "verified_on": "1970-01-01"
+    }
+  },
+  "self_funded_exemption": {
+    "applies": {
+      "value": "UNVERIFIED",
+      "source_url": "",
+      "source_type": "agency_page",
+      "source_title": "",
+      "verified_on": "1970-01-01",
+      "note": "SAFETY-CRITICAL: does the state mandate reach self-funded ERISA plans"
+    },
+    "how_a_family_can_tell": {
+      "value": "UNVERIFIED",
+      "source_url": "",
+      "source_type": "agency_page",
+      "source_title": "",
+      "verified_on": "1970-01-01",
+      "note": "plain-language test a parent can actually run"
+    },
+    "federal_basis": {
+      "value": "UNVERIFIED",
+      "source_url": "",
+      "source_type": "agency_page",
+      "source_title": "",
+      "verified_on": "1970-01-01"
+    }
+  },
+  "medicaid": {
+    "program_name": {
+      "value": "UNVERIFIED",
+      "source_url": "",
+      "source_type": "agency_page",
+      "source_title": "",
+      "verified_on": "1970-01-01"
+    },
+    "managed_care_organizations": {
+      "value": "UNVERIFIED",
+      "source_url": "",
+      "source_type": "agency_page",
+      "source_title": "",
+      "verified_on": "1970-01-01"
+    },
+    "aba_coverage_basis": {
+      "value": "UNVERIFIED",
+      "source_url": "",
+      "source_type": "agency_page",
+      "source_title": "",
+      "verified_on": "1970-01-01",
+      "note": "e.g. EPSDT"
+    },
+    "age_limit": {
+      "value": "UNVERIFIED",
+      "source_url": "",
+      "source_type": "agency_page",
+      "source_title": "",
+      "verified_on": "1970-01-01"
+    },
+    "prior_authorization": {
+      "value": "UNVERIFIED",
+      "source_url": "",
+      "source_type": "agency_page",
+      "source_title": "",
+      "verified_on": "1970-01-01"
+    },
+    "provider_enrollment_requirement": {
+      "value": "UNVERIFIED",
+      "source_url": "",
+      "source_type": "agency_page",
+      "source_title": "",
+      "verified_on": "1970-01-01"
+    }
+  },
+  "waivers": [
+    {
+      "name": {
+        "value": "UNVERIFIED",
+        "source_url": "",
+        "source_type": "agency_page",
+        "source_title": "",
+        "verified_on": "1970-01-01"
+      },
+      "population": {
+        "value": "UNVERIFIED",
+        "source_url": "",
+        "source_type": "agency_page",
+        "source_title": "",
+        "verified_on": "1970-01-01"
+      },
+      "covers_aba": {
+        "value": "UNVERIFIED",
+        "source_url": "",
+        "source_type": "agency_page",
+        "source_title": "",
+        "verified_on": "1970-01-01"
+      },
+      "waitlist_status": {
+        "value": "UNVERIFIED",
+        "source_url": "",
+        "source_type": "agency_page",
+        "source_title": "",
+        "verified_on": "1970-01-01"
+      },
+      "how_to_apply": {
+        "value": "UNVERIFIED",
+        "source_url": "",
+        "source_type": "agency_page",
+        "source_title": "",
+        "verified_on": "1970-01-01"
+      }
+    }
+  ],
+  "early_intervention": {
+    "program_name": {
+      "value": "UNVERIFIED",
+      "source_url": "",
+      "source_type": "agency_page",
+      "source_title": "",
+      "verified_on": "1970-01-01"
+    },
+    "age_range": {
+      "value": "UNVERIFIED",
+      "source_url": "",
+      "source_type": "agency_page",
+      "source_title": "",
+      "verified_on": "1970-01-01"
+    },
+    "lead_agency": {
+      "value": "UNVERIFIED",
+      "source_url": "",
+      "source_type": "agency_page",
+      "source_title": "",
+      "verified_on": "1970-01-01"
+    },
+    "family_cost_share": {
+      "value": "UNVERIFIED",
+      "source_url": "",
+      "source_type": "agency_page",
+      "source_title": "",
+      "verified_on": "1970-01-01"
+    },
+    "referral_route": {
+      "value": "UNVERIFIED",
+      "source_url": "",
+      "source_type": "agency_page",
+      "source_title": "",
+      "verified_on": "1970-01-01"
+    }
+  },
+  "school_services": {
+    "idea_part_c_to_b_transition": {
+      "value": "UNVERIFIED",
+      "source_url": "",
+      "source_type": "agency_page",
+      "source_title": "",
+      "verified_on": "1970-01-01"
+    },
+    "aba_in_iep": {
+      "value": "UNVERIFIED",
+      "source_url": "",
+      "source_type": "agency_page",
+      "source_title": "",
+      "verified_on": "1970-01-01"
+    },
+    "note": {
+      "value": "UNVERIFIED",
+      "source_url": "",
+      "source_type": "agency_page",
+      "source_title": "",
+      "verified_on": "1970-01-01",
+      "note": "what schools do and do not have to provide"
+    }
+  },
+  "appeals": {
+    "internal_appeal_deadline": {
+      "value": "UNVERIFIED",
+      "source_url": "",
+      "source_type": "agency_page",
+      "source_title": "",
+      "verified_on": "1970-01-01"
+    },
+    "external_review_body": {
+      "value": "UNVERIFIED",
+      "source_url": "",
+      "source_type": "agency_page",
+      "source_title": "",
+      "verified_on": "1970-01-01"
+    },
+    "external_review_deadline": {
+      "value": "UNVERIFIED",
+      "source_url": "",
+      "source_type": "agency_page",
+      "source_title": "",
+      "verified_on": "1970-01-01"
+    },
+    "expedited_route": {
+      "value": "UNVERIFIED",
+      "source_url": "",
+      "source_type": "agency_page",
+      "source_title": "",
+      "verified_on": "1970-01-01"
+    },
+    "how_to_file": {
+      "value": "UNVERIFIED",
+      "source_url": "",
+      "source_type": "agency_page",
+      "source_title": "",
+      "verified_on": "1970-01-01"
+    },
+    "regulator_complaint_route": {
+      "value": "UNVERIFIED",
+      "source_url": "",
+      "source_type": "agency_page",
+      "source_title": "",
+      "verified_on": "1970-01-01"
+    }
+  }
+}
