@@ -71,3 +71,21 @@ If the problem is lactose, often yes. If the problem is milk protein, no, becaus
 
 **Who should we talk to?**
 Start with your paediatrician. For behaviour and skills, our BCBA-led team provides in-home ABA therapy across New Jersey, Georgia, and North Carolina.
+
+## References
+
+(All verified against PubMed on 2026-08-11.)
+
+1. McElhanon BO, McCracken C, Karpen S, Sharp WG. *Pediatrics*. 2014;133(5):872-883. doi:10.1542/peds.2013-3995
+2. Li H, Liu H, Chen X, et al. *European Journal of Pediatrics*. 2021;180(4):999-1008. doi:10.1007/s00431-020-03826-x
+3. Keller A, Rimestad ML, Friis Rohde J, et al. *Nutrients*. 2021;13(2):470. doi:10.3390/nu13020470
+4. Piwowarczyk A, Horvath A, Łukasik J, et al. *European Journal of Nutrition*. 2018;57(2):433-440. doi:10.1007/s00394-017-1483-2
+
+<!-- SHIPPED 2026-08-11 (item 66bda846056fb4ca7d2ba438). US spellings, and the
+     draft's uncited factual claims now carry sources: GI symptoms roughly 4x
+     the odds (McElhanon 2014) and food sensitivities reported more often
+     (Li 2021), both explicitly framed as associations of unknown direction.
+     Piwowarczyk 2018 kept because it was the live page's own citation and its
+     conclusion supports the rewrite. Casein wording follows the new rule: the
+     trials "have not been able to show that it works", never "it does not
+     work". -->
