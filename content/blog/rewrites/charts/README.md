@@ -160,3 +160,31 @@ caps by 11px. Worth building into the shared styles rather than rediscovering.
 
 Live: 600px inset on desktop (821px column), 358px on mobile, zero horizontal
 overflow, axis labels 18.0px and 10.7px respectively.
+
+### Precision correction, same day (client caught it)
+
+The client asked whether -0.31 is really not statistically significant. It is
+not, and the question exposed that our own wording had drifted into asserting
+the null:
+
+- the figure said "No difference", which asserts there is none
+- the article said the interval "comfortably crosses zero", when in fact about
+  three quarters of it sits on the benefit side and only the top 0.27 of a
+  1.16-wide interval crosses
+- the article said the effect "goes away" under blinding
+
+All three are the error the article itself is about: confusing "no evidence of
+an effect" with "evidence of no effect". Corrected to "No significant
+difference", "does not reach statistical significance", and "stops being
+detectable", plus a new paragraph stating plainly that 143 children cannot
+settle the question and that the interval runs from a substantial benefit to a
+slight harm. Keller's own GRADE rating cites serious imprecision, which now
+appears in the text.
+
+Replacement asset gfcf-keller-outcomes-v2.webp (md5
+2fe511de1bafd20a1ea28785df20784a, asset 6a7af9888802f3f4985ab54a).
+
+Rule for the remaining rewrites: a non-significant result is never described as
+"no difference" or "no effect" in our own voice. Quote the authors if they use
+that phrasing, but our sentences say "no significant difference" and, where the
+sample is small, say so.
