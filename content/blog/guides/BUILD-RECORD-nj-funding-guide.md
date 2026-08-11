@@ -103,3 +103,33 @@ overflow.
 - Georgia and North Carolina guides not yet written. Both datasets are
   green, so they are copy work rather than research.
 - No FAQ schema on this page yet. The other posts have it.
+
+## Hero rebuilt, figures added (2026-08-11, second pass)
+
+The first hero carried four route cards along the bottom. They clipped at
+the right edge and added nothing the headline did not already say. Hero
+rebuilt as type only. New assets, and the draft repointed at them:
+
+- hero `6a7b37583152a720e4ee8d14`, md5 `ae1e98c2f94b62498b271d4b098e791d`
+- thumb `6a7b37583113b2b3334c4183`, md5 `e18e85166b77442d2341dc4b935720fe`
+
+Two in-body figures built by `tools/blog/build-nj-figures.py`, which
+computes the geometry, writes it into the HTML, then re-derives every bar
+edge from the published percentage and asserts it matches. It also asserts
+each labelled claim appears in the dataset field it is supposed to come
+from, so a figure cannot drift from the guide.
+
+1. **Who is responsible, and when.** A single age axis, birth to 21 plus.
+   Five bands: early intervention 0 to 3, school district from the third
+   birthday, Chapter 115 ABA to 21, NJ FamilyCare EPSDT to 21, DDD waivers
+   from 21. A red marker sits 120 days before the third birthday, where
+   the referral to the district is due, which is the date families miss.
+2. **The appeal clock.** Four steps with the numbers set large: 180 days
+   to Stage 1, 180 days to Stage 2, four months to IHCAP, 48 hours
+   expedited, no cost. Footnoted that it does not reach self-funded plans.
+
+Both on the 900px canvas, smallest type 23px, which renders at about 9px
+in a 358px phone column. Neither overflows.
+
+Not yet embedded in the CMS body. Figures exist as HTML and webp in
+`content/blog/guides/figures/`.
