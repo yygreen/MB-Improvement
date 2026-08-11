@@ -68,27 +68,34 @@ fig1 = f'''<!doctype html><html><head><meta charset="utf-8">
 body{{width:900px;font-family:'Manrope',system-ui,sans-serif;background:#f6f4ef;padding:44px 40px 34px}}
 h2{{font-size:40px;font-weight:800;color:#1a2744;letter-spacing:-.01em;line-height:1.15}}
 .sub{{font-size:27px;color:#5a5a5a;margin:12px 0 34px;line-height:1.4}}
+.lane{{position:relative;margin-left:330px;height:62px}}
+.markl{{position:absolute;bottom:10px;transform:translateX(-50%);font-size:24px;font-weight:800;
+        color:#c14a3f;white-space:nowrap}}
+.markl:after{{content:"";position:absolute;left:50%;bottom:-12px;margin-left:-6px;
+              border:6px solid transparent;border-top-color:#c14a3f}}
+.plot{{position:relative}}
 .row{{display:flex;align-items:center;margin-bottom:18px}}
 .lab{{width:330px;padding-right:22px;flex:none}}
 .lab b{{display:block;font-size:26px;font-weight:800;color:#1a2744;line-height:1.22}}
 .lab span{{display:block;font-size:25px;color:#6f6a5e;margin-top:3px}}
 .track{{position:relative;flex:1;height:46px;background:#e6e2da;border-radius:6px}}
 .bar{{position:absolute;top:0;height:46px}}
-.axis{{position:relative;margin-left:330px;height:74px;margin-top:6px}}
+.markwrap{{position:absolute;left:330px;right:0;top:0;bottom:18px;pointer-events:none}}
+.mark{{position:absolute;top:0;bottom:0;width:3px;background:#c14a3f;transform:translateX(-1px)}}
+.axis{{position:relative;margin-left:330px;height:70px;margin-top:2px}}
 .axis .line{{position:absolute;top:0;left:0;right:0;height:3px;background:#c9c4b8}}
 .tk{{position:absolute;top:12px;transform:translateX(-50%);font-size:25px;color:#6f6a5e;white-space:nowrap}}
-.mark{{position:absolute;top:-322px;height:322px;width:3px;background:#c14a3f}}
-.markl{{position:absolute;top:-368px;transform:translateX(-50%);font-size:24px;font-weight:800;
-        color:#c14a3f;white-space:nowrap;background:#f6f4ef;padding:0 8px}}
 .unit{{position:absolute;top:44px;left:0;font-size:25px;color:#8a8a8a}}
 .credit{{margin-top:16px;font-size:23px;color:#8a8a8a}}
 </style></head><body>
 <h2>Who is responsible, and when</h2>
 <div class="sub">The same child moves between systems on fixed dates. Age in years across the bottom.</div>
+<div class="lane"><div class="markl" style="left:{mark_x}%">Referral to district due</div></div>
+<div class="plot">
 {''.join(rows)}
+  <div class="markwrap"><div class="mark" style="left:{mark_x}%"></div></div>
+</div>
 <div class="axis"><div class="line"></div>{ticks}
-  <div class="mark" style="left:{mark_x}%"></div>
-  <div class="markl" style="left:{mark_x}%">Referral to district due</div>
   <div class="unit">Age in years</div>
 </div>
 <div class="credit">Mastermind Behavior. Sources: N.J.A.C. 6A:14; DOBI Bulletin 10-02; NJ Medicaid SPA 19-0003; NJ DDD.</div>
@@ -141,6 +148,11 @@ h2{{font-size:40px;font-weight:800;color:#1a2744;letter-spacing:-.01em;line-heig
 <div class="steps">{step_html}</div>
 <div class="credit">Mastermind Behavior. Source: NJ Department of Banking and Insurance, UM appeals and IHCAP. Does not apply to self-funded plans.</div>
 </body></html>'''
+
+if '<div class="lane">' not in fig1 or fig1.index('class="markl"') > fig1.index('<div class="plot">'):
+    errs.append('the marker label must sit in its own lane above the plot, not inside it')
+if 'class="markl"' in fig1[fig1.index('<div class="plot">'):]:
+    errs.append('a marker label is still rendered inside the plot area')
 
 (OUT / 'nj-who-pays-when.html').write_text(fig1, encoding='utf-8')
 (OUT / 'nj-appeal-clock.html').write_text(fig2, encoding='utf-8')

@@ -133,3 +133,22 @@ in a 358px phone column. Neither overflows.
 
 Not yet embedded in the CMS body. Figures exist as HTML and webp in
 `content/blog/guides/figures/`.
+
+### Marker label collision (third time this class of bug has appeared)
+
+The "Referral to district due" label was positioned by offset from the
+axis and landed on top of the bands. Fixed properly rather than nudged:
+the label now lives in its own 62px lane above the plot, with a pointer
+triangle down to the marker line, so there is no geometry in which it can
+reach a bar.
+
+Two gates added. A structural one in the generator: the label must appear
+before `<div class="plot">` and must not appear inside it. And a measured
+one at render time: the label's bounding box is tested against every bar,
+track and text box on the figure, and must intersect none of them. It
+reports 0.
+
+This is the third label collision in this program. The lesson each time
+has been the same, and it is now encoded rather than remembered: do not
+position a label by offset near something it must clear. Give it its own
+reserved space and let the layout guarantee the separation.
