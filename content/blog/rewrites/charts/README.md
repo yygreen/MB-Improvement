@@ -107,3 +107,24 @@ overflow, screenshots legible.
 NOTE for the four charts on /post/does-emotional-neglect-cause-autism: they are
 still on the 1400px canvas and have the same mobile legibility problem. They
 need the same treatment.
+
+### Label fix + figure sizing (same day, after client review)
+
+Two corrections:
+
+1. In the observation panel, the "no difference" label had been right-aligned
+   against the reference line, which put it on top of the confidence
+   interval's right cap (label ran ~48.9-66.7%, whisker ends at 53.3%). Moved
+   to the right of the reference line, matching the trial panel; now clear by
+   13.4% of the axis. New asset: vitamin-d-observation-vs-trial-m2.webp
+   (md5 12cc1a637d9ee29730d67abd0e0988eb, asset 6a7aed8f503626513621e67c).
+   The dose chart was unchanged and its md5 is identical, so it was not
+   re-uploaded.
+
+2. Figures were set to w-richtext-align-fullwidth, which stretched them across
+   the whole 821px text column on desktop. Changed to
+   w-richtext-align-center with style="max-width:600px" on the figure and
+   width="600" on the img. Verified live: 600px on desktop (col 821px, so
+   clearly not full width) and 358px on mobile where the container caps it.
+   Axis labels render 18.0px on desktop and 10.7px on a phone; zero horizontal
+   page overflow at both sizes.
