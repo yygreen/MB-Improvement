@@ -128,3 +128,35 @@ Two corrections:
    clearly not full width) and 358px on mobile where the container caps it.
    Axis labels render 18.0px on desktop and 10.7px on a phone; zero horizontal
    page overflow at both sizes.
+
+## GFCF figure added 2026-08-11
+
+gfcf-keller-outcomes-inline.webp (md5 31c653041eecad85f639af4239291bb8, asset
+6a7af42dd2006bdada050915), built from gfcf-charts.html on the same 900px
+mobile-legible canvas. Client chose Keller 2021 over a four-review forest plot,
+and it was the right call: Keller is the only synthesis that measured both the
+benefit and the harm, so one study carries the whole argument.
+
+Two panels, deliberately on separate scales:
+- Core autism symptoms, clinician-rated: SMD -0.31 (95% CI -0.89 to 0.27),
+  linear axis, null at 0. Interval crosses the line.
+- Gastrointestinal side effects: RR 2.33 (95% CI 0.69 to 7.90) on a LOG axis,
+  null at 1, because a ratio measure on a linear axis misrepresents the
+  distance between halving and doubling. Ticks 0.5 / 1 / 2 / 4 / 8.
+
+Not drawn: the two parent-rated outcomes (MD 0.61 and MD 0.80). Their scales
+are unnamed composite instruments, so bars would imply a precision the numbers
+do not carry; they are stated in words under the first panel instead. The gate
+asserts those two values never appear as geometry.
+
+Gate also asserts both intervals cross their own null line and that the harm
+point estimate sits on the harm side, so a future edit cannot silently flip the
+figure's meaning.
+
+Same label-over-whisker collision as the vitamin D chart appeared here and was
+fixed the same way, by giving real vertical separation: track height 108px and
+the interval moved to 63% so the "no difference" caption clears the whisker
+caps by 11px. Worth building into the shared styles rather than rediscovering.
+
+Live: 600px inset on desktop (821px column), 358px on mobile, zero horizontal
+overflow, axis labels 18.0px and 10.7px respectively.

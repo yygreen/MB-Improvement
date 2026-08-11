@@ -78,6 +78,13 @@ Behavioural therapy with clear goals and progress data, speech and occupational 
 5. Shi J, Cheng Y, Wei Y, et al. *Research in Developmental Disabilities*. 2026;171:105270. doi:10.1016/j.ridd.2026.105270
 6. Sathe N, Andrews JC, McPheeters ML, et al. *Pediatrics*. 2017;139(6):e20170346. doi:10.1542/peds.2017-0346
 
+<!-- FIGURE ADDED 2026-08-11: Keller 2021 two-panel outcomes chart placed after
+     the Keller paragraph. Also added, from Quan's PMC full text: its
+     improvements were in stereotypical behaviors (-0.41) and cognition
+     (-0.46), with NO significant change in communication or social issues.
+     That detail matters, because it means even the supportive meta-analysis
+     found nothing on the social-communication core of autism. -->
+
 <!-- SHIPPED 2026-08-11 (item 6762c12bd12eb4471377706a), materially restructured
      from this draft. The draft assumed the evidence was uniformly negative and
      led with "six trials found no effect". Checking the agreed citations showed
