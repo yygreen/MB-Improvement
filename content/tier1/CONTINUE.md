@@ -142,9 +142,26 @@ the same publish — that part is fine and intended.
 
 ## Backlog (not Tier 1, don't lose)
 
-13th internal link on the pilot review doc (manual editor task); footer
+RESOLVED 2026-08-11 (client-confirmed, verified): "15 unlinked city pages" and
+"NJ 115-vs-100 Collection List cap" are both fixed. Measured on production the
+same day: every town page reachable from /areas-we-serve, and 0 sitemap town
+URLs lacking a hub link. Do not re-raise these.
+
+OPEN, found 2026-08-11: the Areas We Serve collection holds TWO live items
+named "Perry", both Georgia. `perry` (6674696ea34ecacbc4eb3d61) is the real
+page with full Houston County content. `perry-043a7`
+(66ad3c53921c8c113c3c241b) is an empty duplicate: content, local-detail,
+final-cta and verify bodies all null. It is already sitemap-excluded and its
+URL 301s to /areas-we-serve/perry, but because it is still LIVE the collection
+list renders a second, identical "Perry" card on /areas-we-serve, and the
+2026-08-10 services-block backfill wrote fields to it. Fix is to archive or
+unpublish the duplicate item; awaiting client go-ahead (destructive). This is
+also the whole explanation of the 213-vs-212 gap: 213 live non-hub items but
+only 212 real town pages.
+
+Remaining: 13th internal link on the pilot review doc (manual editor task); footer
 h2->h6 heading jump site-wide; dead `.placeholder-note` CSS rule; sitemap
-lastmod; 15 unlinked city pages; NJ 115-vs-100 Collection List cap; button
+lastmod; button
 system convergence (state `.mm-btn` spec as base, see
 tools/css-consolidation/DESIGN-SYSTEM.md); possible Designer-styles port;
 pilot page lacks links to its 3 NJ siblings (add post-review, one sentence);
