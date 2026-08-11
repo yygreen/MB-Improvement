@@ -147,17 +147,20 @@ RESOLVED 2026-08-11 (client-confirmed, verified): "15 unlinked city pages" and
 same day: every town page reachable from /areas-we-serve, and 0 sitemap town
 URLs lacking a hub link. Do not re-raise these.
 
-OPEN, found 2026-08-11: the Areas We Serve collection holds TWO live items
-named "Perry", both Georgia. `perry` (6674696ea34ecacbc4eb3d61) is the real
-page with full Houston County content. `perry-043a7`
-(66ad3c53921c8c113c3c241b) is an empty duplicate: content, local-detail,
-final-cta and verify bodies all null. It is already sitemap-excluded and its
-URL 301s to /areas-we-serve/perry, but because it is still LIVE the collection
-list renders a second, identical "Perry" card on /areas-we-serve, and the
-2026-08-10 services-block backfill wrote fields to it. Fix is to archive or
-unpublish the duplicate item; awaiting client go-ahead (destructive). This is
-also the whole explanation of the 213-vs-212 gap: 213 live non-hub items but
-only 212 real town pages.
+RESOLVED 2026-08-11: the Areas We Serve collection held TWO live items named
+"Perry", both Georgia. `perry` (6674696ea34ecacbc4eb3d61) is the real page with
+full Houston County content; `perry-043a7` was an empty duplicate (content,
+local-detail, final-cta and verify bodies all null) that still rendered a second
+identical card on /areas-we-serve. Client deleted it. Verified after deletion:
+collection returns 1 Perry item, the index renders 1 Perry card, 212 town links
+on the index and 212 town URLs in the sitemap with ZERO in either direction
+unmatched, /areas-we-serve/perry 200s, and the old suffixed URL still 301s to it
+(Webflow keeps that redirect, which is the desired outcome).
+
+The true town count is therefore 212, not 213. The 213 figure that appears in
+earlier records and in the week-in-review artifact counted the empty duplicate.
+Field-write counts from the 2026-08-10 services-block backfill are unaffected in
+substance: 213 items were written, one of which no longer exists.
 
 Remaining: 13th internal link on the pilot review doc (manual editor task); footer
 h2->h6 heading jump site-wide; dead `.placeholder-note` CSS rule; sitemap
