@@ -17,7 +17,10 @@ ALLOWED_LINKS = {
     '/post/cost-of-aba-therapy-for-autism',
     '/post/iep-vs-504-plan-for-autism',
     '/post/early-signs-of-autism-in-babies-and-kids',
+    '/post/is-aba-therapy-covered-by-insurance-north-carolina',
     '/aba-therapy-in-north-carolina', '/aba-therapy-in-georgia',
+    '/transition-planning-georgia', '/early-intervention-georgia',
+    '/behavior-support-georgia', '/parent-training-georgia',
     '/transition-planning-north-carolina', '/early-intervention-north-carolina',
     '/behavior-support-north-carolina', '/parent-training-north-carolina',
 }
@@ -104,7 +107,11 @@ OURS = '732.813.7333'
 AGENCY = {'888.653.4463', '1.888.653.4463', '888-653-4463', '1-888-653-4463',
           '877.652.7624', '1.877.652.7624', '844.276.2444', '1.844.276.2444',
           '609.588.8522', '888.866.6205', '585.425.5296', '800.446.7467',
-          '1.800.446.7467', '855.408.1212', '1.855.408.1212'}
+          '1.800.446.7467', '855.408.1212', '1.855.408.1212',
+          # Georgia
+          '678-248-7449', '678.248.7449',   # Centralized Katie Beckett Medicaid Team
+          '800.229.2038', '1.800.229.2038', # Parent to Parent of Georgia
+          '404.656.2070', '800.656.2298', '1.800.656.2298'}  # OCI Consumer Services
 stray = {p for p in phones if p != OURS and p not in AGENCY}
 if stray:
     err(f'unrecognised phone number(s): {sorted(stray)}')
@@ -164,6 +171,17 @@ REQUIRED_BY_STATE = {
  'georgia': [
     ('$35,000', 'the cap figure'), ('20 years of age or under', 'age limit'),
     ('July 1, 2015', 'mandate effective date'),
+    ('January 1, 2019', 'SB 118 effective date'),
+    ('covering entity', 'who now makes the medical necessity call'),
+    ('any limits on the number of visits', 'the no-visit-cap clause'),
+    ('under the age of 21', 'medicaid age limit'),
+    ('six (6) month increments', 'medicaid authorization window'),
+    ('72 hours', 'expedited independent review'),
+    ('15 working days', 'standard independent review'),
+    ('678-248-7449', 'Katie Beckett team line'),
+    ('birth to three years of age', 'early intervention age range'),
+    ('payment in full', 'the early intervention balance billing bar'),
+    ('60 calendar days', 'school evaluation window'),
  ],
 }
 REQUIRED = REQUIRED_BY_STATE[ds['state_key']]
@@ -177,7 +195,15 @@ for needle, what in REQUIRED:
 # Quotes are extracted from the markdown source, where they are unambiguous,
 # rather than from the HTML, where href attributes also use double quotes.
 md_text = re.sub(r'\[([^\]]+)\]\(https://[^)]+\)', r'\1', body)
-qs = re.findall(r'"([^"]{12,})"', md_text)
+# Pair the quote marks in document order FIRST, then filter by length. Doing it
+# the other way round (a {12,} regex) silently skips a short quoted word such as
+# "six" and then pairs its closing mark with the next quote's opening one, which
+# mispairs every quote after it and invents spans that were never quoted.
+marks = [m.start() for m in re.finditer(r'"', md_text)]
+if len(marks) % 2:
+    err(f'odd number of double quote marks ({len(marks)}); one quote is unclosed')
+spans = [md_text[a + 1:b] for a, b in zip(marks[0::2], marks[1::2])]
+qs = [q for q in spans if len(q) >= 12]
 unmatched = []
 for q in qs:
     probe = re.sub(r'\s+', ' ', q).strip().rstrip('.,;:')
