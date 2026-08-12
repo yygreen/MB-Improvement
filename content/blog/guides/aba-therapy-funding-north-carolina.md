@@ -35,7 +35,7 @@ The mandate came in through Session Law 2015-271, "AN ACT TO provide coverage fo
 
 Four things matter in the text.
 
-**A doctor has to order it.** This is the sharpest practical difference from New Jersey, where no order is required. Treatment must be "ordered by a licensed physician or licensed psychologist" and "provided or supervised by" one of the listed professionals: psychologists, psychiatrists, developmental pediatricians, speech and language pathologists, occupational therapists, clinical social workers, mental health counselors, marriage and family therapists, or a board certified behavior analyst. If nobody has written the order, that is your first call.
+**A doctor has to order it.** This is the sharpest practical difference from [New Jersey](https://www.mastermindbehavior.com/post/aba-therapy-funding-new-jersey), where no order is required. Treatment must be "ordered by a licensed physician or licensed psychologist" and "provided or supervised by" one of the listed professionals: psychologists, psychiatrists, developmental pediatricians, speech and language pathologists, occupational therapists, clinical social workers, mental health counselors, marriage and family therapists, or a board certified behavior analyst. If nobody has written the order, that is your first call.
 
 **The age limit is permissive, not exclusionary.** Coverage for adaptive behavior treatment "may be limited to individuals 18 years of age or younger." Read that carefully: the statute lets a plan apply that limit, and the screening, diagnosis and treatment obligation in subsection (b) is not written with an age limit at all.
 
@@ -51,7 +51,7 @@ The statute permits a maximum benefit of "up to forty thousand dollars ($40,000)
 
 Ten years of indexing means the ceiling in force today is meaningfully higher than $40,000. We could not find the current indexed amount published on any primary source, so we are not going to print a number we cannot stand behind. **Ask your insurer for the current indexed maximum in writing, and cite the indexing clause if they quote you $40,000.** A plan quoting the 2015 base is quoting a figure the statute stopped using in 2017.
 
-Two other things worth knowing about the cap. It applies to adaptive behavior treatment specifically, not to everything the mandate covers. And most first-year programs do not reach it: typical recommendations run 15 to 25 hours a week, which generally sits inside the annual maximum at contracted rates. Families tend to meet the ceiling at higher hour counts, in longer treatment years, or when copays and coinsurance push the family share up.
+Two other things worth knowing about the cap. It applies to adaptive behavior treatment specifically, not to everything the mandate covers. And most first-year programs do not reach it: typical recommendations run 15 to 25 hours a week, which generally sits inside the annual maximum at [contracted rates](https://www.mastermindbehavior.com/post/how-much-is-aba-therapy-with-insurance). Families tend to meet the ceiling at higher hour counts, in longer treatment years, or when copays and coinsurance push the family share up. If the obstacle is the family share rather than the coverage decision, our [round-up of financial aid programs](https://www.mastermindbehavior.com/financial-aid-resources) sets out what else is available.
 
 ## NC Medicaid
 

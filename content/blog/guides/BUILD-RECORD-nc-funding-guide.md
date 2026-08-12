@@ -1,80 +1,77 @@
-# Build record: North Carolina funding guide (2026-08-11)
+# North Carolina funding guide: build record
 
-Written to replace the body at
-`/post/is-aba-therapy-covered-by-insurance-north-carolina`. Absorb, not
-redirect; reasoning in `OVERLAP-DECISION-north-carolina.md`.
+**Shipped 12 August 2026.** Live at
+`https://www.mastermindbehavior.com/post/is-aba-therapy-covered-by-insurance-north-carolina`
 
-**Not yet shipped.** Everything below is built, gated and waiting on the
-Webflow connection, which began returning "the site cannot be found" on
-every endpoint partway through this session.
+Rewritten in place per `OVERLAP-DECISION-north-carolina.md`. URL kept, no
+redirect, no second page created.
 
-    guide copy      18,252 chars, all gates green except the figure URL
-    quotes verified 42, every one matched verbatim against the dataset
-    figure          built, 900px canvas, 0 label collisions, no overflow
-    figure asset    NOT uploaded, Webflow returned 404 on create_asset
-    dataset         37 facts green, plus one fact added this session
+## What shipped
 
-## What the guide fixes in the page it replaces
+| | |
+|---|---|
+| Collection item | `673ae71b8f7e62aaf54d28e6` (Blog Posts `6627fd62e242d50407cfe157`) |
+| Body | 18,778 chars, md5 `99d06debdb97509df1a861c6b1ee9b0c` |
+| Dataset | `data/funding/north-carolina.json`, 37 facts, gate green |
+| Quotes gated against dataset | 42 |
+| Internal links | 9, of which 6 sit above the closing section |
+| Figures | 1 (`nc-funding-who-pays-when.webp`) |
+| Title | Is ABA Therapy Covered by Insurance in North Carolina? |
+| Byline | Mastermind Behavior Clinical Team `6a2e763ca589b9cdd033a53b` |
 
-1. The old body named NCDHHS as overseeing compliance and told families
-   near the cap to go there. The mandate is in Chapter 58 and appeals run
-   through Smart NC inside the Department of Insurance.
-2. The old appeals section had no deadline in it. The guide leads with
-   120 days, names Smart NC, gives the three-day expedited route, says it
-   is free, and lists who it does not cover.
-3. The statute's requirement that treatment be "ordered by a licensed
-   physician or licensed psychologist" was missing entirely. It is now the
-   first thing under what the law requires, because it is the step a
-   family has to take before anything else happens.
-4. $40,000 was presented as the live figure. The guide explains the CPI
-   indexing clause, says the current ceiling is higher, and tells families
-   to ask for the indexed maximum in writing rather than printing a number
-   nobody can source.
+Figure asset `6a7c889e9e9624011425c787`, normalized by Webflow into CMS
+space as `6627fd62e242d50407cfe155/6a7c89fb954d912788e40629_...`.
+`figures.json` now carries the normalized URL so a rebuild does not create
+a duplicate asset.
 
-## What it keeps
+## Verification
 
-The three-bucket framing, the note that most first-year programs sit
-inside the annual maximum, and the local knowledge that North Carolina
-licenses behavior analysts, which narrows insurer panels and makes single
-case agreements more available than families expect. That last one is
-first-party and no dataset could have produced it.
+Live page fetched after publish and compared against the generated source:
 
-## One claim verified rather than cut
+- tag-stripped text identical, 16,759 chars both sides
+- href list identical, 9 links, same order
+- figure renders, alt non-empty, width 600
+- no em dash, no `RBT`, no clinic or center language
+- only phone token in the body is the Smart NC line `855.408.1212`
 
-The old page said NCDHHS expanded behavioral health to RB-BHT for people
-over 21 in July 2021. It checks out: CMS approved it effective 1 July
-2021 and Policy 8F was updated. Added to the dataset with its source, and
-it is now a highlight of the guide, because most state Medicaid autism
-benefits stop at 21 and North Carolina's does not.
+## The seven must-fix items from the overlap decision
 
-## Section deliberately left thin
+1. **Regulator named wrong.** Fixed. The appeal section names the
+   Department of Insurance and states explicitly that this is not the
+   Department of Health and Human Services.
+2. **No appeal deadline.** Fixed. 120 days, Smart NC by name, the
+   expedited route, and that it is free.
+3. **Order requirement missing.** Fixed, and given its own subsection.
+4. **$40,000 treated as live.** Fixed. The page now leads that section
+   with the fact that the figure has been indexed since 2017, and tells
+   families to ask their insurer in writing rather than printing a number
+   we cannot source.
+5. **Unverified over-21 claim.** Verified against the NC Medicaid bulletin
+   on CMS approval effective 1 July 2021, and kept.
+6. **Legacy link** to `/areas-we-serve/aba-therapy-in-north-carolina`.
+   Removed; the page now links `/aba-therapy-in-north-carolina`.
+7. **Stray NJ Medicaid cross-reference.** Repointed at the New Jersey
+   funding guide, which now exists.
 
-The State Health Plan. The old page characterized its coverage; we have
-not verified its current terms against a primary source, so the guide
-says so and tells families to ask their plan in writing. A short honest
-section beats a confident wrong one.
+## What this page says that no competing page says
 
-## Three generator defects this build exposed
+The $40,000 cap is a 2015 base, not the live ceiling. N.C.G.S. 58-3-192
+indexes it to CPI for the South Region from 2017, measured against March
+2015 and rounded to the nearest thousand. Every other page we checked
+quotes $40,000 flat. We could not find the current indexed figure on a
+primary source, so the page flags that gap rather than inventing a number.
 
-Running a second state through the pipeline found all three:
+Second: North Carolina Medicaid does not stop at 21. CMS approved RB-BHT
+for beneficiaries over 21 effective 1 July 2021. Most state autism
+benefits end at 21, so this is the difference between a plan and a cliff
+for transition-age young adults.
 
-1. **The required-facts list was hardcoded to New Jersey.** A North
-   Carolina guide was being checked for `$36,000` and `February 9, 2010`.
-   Now keyed by `state_key`, with its own list per state.
-2. **The quote extractor skipped short quotes and mispaired everything
-   after them.** The minimum was 25 characters, so `"within three days"`
-   was skipped and the scanner paired its closing quote with the next
-   opening one, inventing a phantom quote that then failed verification.
-   Threshold lowered to 12, which catches the short quotes and restores
-   correct pairing.
-3. **The figure gate required every declared figure to be placed**, which
-   breaks as soon as `figures.json` serves more than one guide. Now
-   requires only that this guide places at least one.
+## Known gaps
 
-The New Jersey guide was rebuilt under all three and still passes.
-
-## To finish
-
-Upload `figures/nc-who-pays-when.webp`, set its CDN URL in
-`figures/figures.json`, regenerate, then replace the body at the existing
-URL and publish. Nothing else outstanding.
+- The State Health Plan section deliberately declines to characterize the
+  benefit, because we have not verified its terms against a primary
+  source. Verify or leave as is; do not guess.
+- The New Jersey guide does not yet link back to this page. Reciprocal
+  link outstanding.
+- The main image is the legacy hero. New Jersey got a custom photographic
+  hero; this page has not.
