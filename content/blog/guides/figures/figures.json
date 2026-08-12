@@ -8,5 +8,10 @@
     "url": "https://cdn.prod.website-files.com/6627fd62e242d50407cfe155/6a7b4062b56211560345d1c9_6a7b3fd56c344c8aeb8ac923_nj-funding-appeal-clock.webp",
     "alt": "Four appeal steps in New Jersey: denial, Stage 1 internal appeal within 180 days, Stage 2 internal appeal within 180 days, then IHCAP external review within four months, with expedited decisions in 48 hours and no cost to the family",
     "width": 600
+  },
+  "nc-who-pays-when": {
+    "url": "PENDING",
+    "alt": "Age axis for North Carolina showing which system pays: the Infant-Toddler Program birth to three, school district from the third birthday, the state autism mandate to age 18, and NC Medicaid RB-BHT which continues past 21",
+    "width": 600
   }
 }

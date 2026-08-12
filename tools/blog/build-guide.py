@@ -16,6 +16,9 @@ ALLOWED_LINKS = {
     '/post/cost-of-aba-therapy-for-autism',
     '/post/iep-vs-504-plan-for-autism',
     '/post/early-signs-of-autism-in-babies-and-kids',
+    '/aba-therapy-in-north-carolina', '/aba-therapy-in-georgia',
+    '/transition-planning-north-carolina', '/early-intervention-north-carolina',
+    '/behavior-support-north-carolina', '/parent-training-north-carolina',
 }
 used_figures = []
 
@@ -100,7 +103,7 @@ OURS = '732.813.7333'
 AGENCY = {'888.653.4463', '1.888.653.4463', '888-653-4463', '1-888-653-4463',
           '877.652.7624', '1.877.652.7624', '844.276.2444', '1.844.276.2444',
           '609.588.8522', '888.866.6205', '585.425.5296', '800.446.7467',
-          '1.800.446.7467'}
+          '1.800.446.7467', '855.408.1212', '1.855.408.1212'}
 stray = {p for p in phones if p != OURS and p not in AGENCY}
 if stray:
     err(f'unrecognised phone number(s): {sorted(stray)}')
@@ -136,18 +139,33 @@ if re.search(r'<\s+href', doc):
 ds = json.load(open(DATA))
 blob = json.dumps(ds)
 norm_blob = re.sub(r'\\s+', ' ', ' '.join(re.findall(r'"value": "(.*?)", "source_url"', blob)).replace('\\"', '"'))
-REQUIRED = [
-    ('$36,000', 'the cap figure'),
-    ('180 days', 'internal appeal deadline'),
+REQUIRED_BY_STATE = {
+ 'new-jersey': [
+    ('$36,000', 'the cap figure'), ('180 days', 'internal appeal deadline'),
     ('four months', 'external review deadline'),
     ('1-888-653-4463', 'early intervention referral line'),
-    ('120 days', 'part C to B evaluation request'),
-    ('90 calendar days', 'evaluation to IEP'),
-    ('48 hours', 'expedited external review'),
-    ('February 9, 2010', 'mandate effective date'),
+    ('120 days', 'part C to B evaluation request'), ('90 calendar days', 'evaluation to IEP'),
+    ('48 hours', 'expedited external review'), ('February 9, 2010', 'mandate effective date'),
     ('under the age of twenty-one', 'medicaid age limit'),
     ('300% Federal Poverty Level', 'early intervention cost floor'),
-]
+ ],
+ 'north-carolina': [
+    ('$40,000', 'the cap base figure'), ('Consumer Price Index', 'the indexing clause'),
+    ('120 days', 'external review deadline'), ('three days', 'expedited external review'),
+    ('July 1, 2016', 'mandate effective date'),
+    ('ordered by a licensed physician or licensed psychologist', 'the order requirement'),
+    ('180-calendar days', 'medicaid authorization window'),
+    ('90 calendar days', 'medicaid authorization window above 16 hours'),
+    ('birth to three', 'early intervention age range'),
+    ('inability to pay', 'early intervention cost floor'),
+    ('Smart NC', 'the external review body'),
+ ],
+ 'georgia': [
+    ('$35,000', 'the cap figure'), ('20 years of age or under', 'age limit'),
+    ('July 1, 2015', 'mandate effective date'),
+ ],
+}
+REQUIRED = REQUIRED_BY_STATE[ds['state_key']]
 for needle, what in REQUIRED:
     if needle not in doc:
         err(f'missing required fact in body ({what}): {needle}')
@@ -158,7 +176,7 @@ for needle, what in REQUIRED:
 # Quotes are extracted from the markdown source, where they are unambiguous,
 # rather than from the HTML, where href attributes also use double quotes.
 md_text = re.sub(r'\[([^\]]+)\]\(https://[^)]+\)', r'\1', body)
-qs = re.findall(r'"([^"]{25,})"', md_text)
+qs = re.findall(r'"([^"]{12,})"', md_text)
 unmatched = []
 for q in qs:
     probe = re.sub(r'\s+', ' ', q).strip().rstrip('.,;:')
@@ -169,9 +187,8 @@ if unmatched:
         err(f'quoted string not found verbatim in dataset: {u[:90]!r}')
 
 # 4b. figures
-for slug in FIGURES:
-    if slug not in used_figures:
-        err(f'figure defined but never placed: {slug}')
+if not used_figures:
+    err('no figure placed in this guide')
 for slug in used_figures:
     f = FIGURES[slug]
     if not f['alt'].strip():

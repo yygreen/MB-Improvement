@@ -113,10 +113,10 @@
       "verified_on": "2026-08-11"
     },
     "age_limit": {
-      "value": "Under 21, through the EPSDT provision at subsection 2.2.1, \"EPSDT Special Provision: Exception to Policy Limitations for a Medicaid Beneficiary under 21 Years of Age.\"",
-      "source_url": "https://medicaid.ncdhhs.gov/8f-research-based-behavioral-health-treatment-rb-bht-autism-spectrum-disorder-asd/download",
+      "value": "Under 21, through the EPSDT provision at subsection 2.2.1, \"EPSDT Special Provision: Exception to Policy Limitations for a Medicaid Beneficiary under 21 Years of Age.\" NC Medicaid also covers RB-BHT for adults: CMS approved the service for beneficiaries over the age of 21 effective July 1, 2021, \"when the intervention provided is supported by credible scientific or clinical evidence, as appropriate for the beneficiary's age range,\" and Clinical Coverage Policy 8F was updated to reflect it. North Carolina is unusual in this: most state Medicaid autism benefits stop at 21.",
+      "source_url": "https://medicaid.ncdhhs.gov/blog/2022/04/19/research-based-behavioral-health-treatment-autism-spectrum-disorder",
       "source_type": "medicaid_manual",
-      "source_title": "NC Medicaid Clinical Coverage Policy No. 8F, Research-Based Behavioral Health Treatment (RB-BHT) for Autism Spectrum Disorder, amended date August 1, 2026",
+      "source_title": "NC Medicaid Clinical Coverage Policy 8F (amended 1 August 2026) and NC Medicaid bulletin, Research Based Behavioral Health Treatment for Autism Spectrum Disorder",
       "verified_on": "2026-08-11"
     },
     "prior_authorization": {
