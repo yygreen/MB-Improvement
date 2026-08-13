@@ -1,0 +1,363 @@
+<div class="mm-embed mm-body">
+  <style>
+    .mm-embed { box-sizing: border-box; }
+    .mm-embed *, .mm-embed *::before, .mm-embed *::after { box-sizing: inherit; }
+
+    .mm-embed {
+      --navy:      #1a2744;
+      --teal:      #3ba5a8;
+      --teal-pale: #e8f6f6;
+      --warm:      #f9f6f1;
+      --accent:    #e8734a;
+      --cta:       #db5b4f;
+      --text:      #2c2c2c;
+      --soft:      #5a5a5a;
+      --mute:      #8a8a8a;
+      --rule:      #e6e2da;
+      --font-body: 'Manrope', system-ui, -apple-system, sans-serif;
+      --font-disp: 'Manrope', system-ui, -apple-system, sans-serif;
+    }
+
+    .mm-body { font-family: var(--font-body); color: var(--text); }
+
+    .mm-section { padding: clamp(64px, 10vw, 120px) clamp(20px, 5vw, 48px); }
+    .mm-section--warm { background: var(--warm); }
+    .mm-section__inner { max-width: 1200px; margin: 0 auto; }
+
+    .mm-h2 {
+      font-family: var(--font-disp); font-weight: 600;
+      font-size: clamp(28px, 4vw, 44px); line-height: 1.15;
+      letter-spacing: -0.01em; color: var(--navy); margin: 0 0 32px 0;
+    }
+    .mm-h3 {
+      font-family: var(--font-disp); font-weight: 600;
+      font-size: 22px; line-height: 1.3; color: var(--navy);
+      margin: 2em 0 0.5em 0;
+    }
+
+    .mm-rt { font-size: 17px; line-height: 1.7; color: var(--text); }
+    .mm-rt p { margin: 0 0 1.1em 0; }
+    .mm-rt p:last-child { margin-bottom: 0; }
+    .mm-rt strong { color: var(--navy); font-weight: 600; }
+    .mm-rt a {
+      color: var(--navy); text-decoration: underline;
+      text-decoration-color: var(--teal); text-underline-offset: 3px; text-decoration-thickness: 2px;
+    }
+    .mm-rt ul, .mm-rt ol { padding-left: 1.4em; margin: 0; }
+    .mm-rt li { margin-bottom: 0.6em; }
+    .mm-rt li::marker { color: var(--teal); }
+
+    /* TL;DR Card */
+    .mm-tldr {
+      padding: 28px 32px; background: #fff;
+      border-left: 4px solid var(--teal); border-radius: 0 12px 12px 0;
+      margin-bottom: 32px;
+      box-shadow: 0 1px 0 var(--rule), 0 12px 40px rgba(26,39,68,0.04);
+    }
+    .mm-tldr__label {
+      font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--teal); margin: 0 0 10px 0;
+    }
+    .mm-tldr p { margin: 0; font-size: 16px; line-height: 1.65; color: var(--text); }
+    .mm-tldr p + p { margin-top: 6px; }
+    .mm-tldr strong { color: var(--navy); font-weight: 700; }
+
+    /* Scope Card - explicit "we do / you do" split (no top bar) */
+    .mm-scope {
+      display: grid; gap: 16px; margin: 0 0 40px 0;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 700px) {
+      .mm-scope { grid-template-columns: 1fr 1fr; gap: 20px; }
+    }
+    .mm-scope__card {
+      padding: 24px 28px; background: #fff;
+      border: 1px solid var(--rule); border-radius: 12px;
+    }
+    .mm-scope__label {
+      font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; margin: 0 0 10px 0;
+    }
+    .mm-scope__card--we .mm-scope__label { color: var(--teal); }
+    .mm-scope__card--you .mm-scope__label { color: var(--accent); }
+    .mm-scope__title {
+      font-family: var(--font-disp); font-weight: 600; color: var(--navy);
+      font-size: 18px; line-height: 1.35; margin: 0 0 8px 0;
+    }
+    .mm-scope p { margin: 0; font-size: 15px; line-height: 1.6; color: var(--soft); }
+
+    /* Numbered steps for the 3-stack framework */
+    .mm-steps {
+      list-style: none; padding: 0; margin: 0 0 40px 0;
+      display: grid; gap: 20px;
+    }
+    .mm-step {
+      display: grid; grid-template-columns: 56px 1fr; gap: 20px; align-items: start;
+      padding: 24px; background: #fff;
+      border: 1px solid var(--rule); border-radius: 12px;
+    }
+    .mm-step__num {
+      display: flex; align-items: center; justify-content: center;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--teal-pale); color: var(--teal);
+      font-family: var(--font-disp); font-weight: 600; font-size: 20px;
+    }
+    .mm-step__body p { margin: 0; font-size: 16px; line-height: 1.65; color: var(--soft); }
+    .mm-step__body strong {
+      display: block; color: var(--navy); font-family: var(--font-body);
+      font-weight: 600; font-size: 17px; margin-bottom: 4px;
+    }
+    .mm-step__role {
+      display: inline-block; margin-top: 12px; padding: 6px 12px;
+      border-radius: 999px; font-size: 13px; font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    .mm-step__role--we { background: var(--teal-pale); color: var(--teal); }
+    .mm-step__role--you { background: #fef0eb; color: var(--accent); }
+
+    /* Compact table */
+    .mm-rt table {
+      width: 100%; border-collapse: collapse; margin: 24px 0;
+      font-size: 15px; background: #fff; border-radius: 12px; overflow: hidden;
+      box-shadow: 0 1px 0 var(--rule), 0 12px 40px rgba(26,39,68,0.04);
+    }
+    .mm-rt thead { display: none; }
+    .mm-rt tbody tr { border-bottom: 1px solid var(--rule); }
+    .mm-rt tbody tr:last-child { border-bottom: none; }
+    .mm-rt tbody tr:first-child { background: var(--navy); color: #fff; }
+    .mm-rt tbody tr:first-child strong { color: #fff; }
+    .mm-rt th, .mm-rt td {
+      padding: 14px 18px; text-align: left; vertical-align: top; line-height: 1.55;
+    }
+    .mm-rt tbody tr:first-child td { font-weight: 600; }
+    .mm-rt tbody td:first-child { width: 28%; }
+    @media (max-width: 600px) {
+      .mm-rt tbody td:first-child { width: 40%; }
+    }
+
+    .mm-cta-row {
+      display: flex; flex-wrap: wrap; gap: 14px; margin-top: 40px;
+    }
+    .mm-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 16px 28px; font-family: var(--font-body); font-size: 15px; font-weight: 600;
+      letter-spacing: 0.01em; border-radius: 999px; border: 2px solid transparent;
+      text-decoration: none; cursor: pointer;
+      transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+    .mm-btn--primary { background: var(--cta); color: #fff; border-color: var(--cta); }
+    .mm-btn--primary:hover { background: #b34a40; border-color: #b34a40; transform: translateY(-1px); }
+    .mm-btn--secondary { background: transparent; color: var(--navy); border-color: var(--cta); }
+    .mm-btn--secondary:hover { background: var(--cta); color: #fff; border-color: var(--cta); }
+  </style>
+
+  <!-- How families pay (the 3-stack framework) -->
+  <section class="mm-section">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">How families actually pay for ABA</h2>
+
+      <div class="mm-tldr">
+        <p class="mm-tldr__label">The short version</p>
+        <p>Almost no family pays full sticker price for ABA. Most stack three sources: insurance, Medicaid, and grants. <strong>We handle the insurance side end to end.</strong> Waivers and grants stay with the family. We provide the clinical documentation you'll include and point you to the right state agencies, but the applications themselves are yours.</p>
+      </div>
+
+      <div class="mm-scope">
+        <div class="mm-scope__card mm-scope__card--we">
+          <p class="mm-scope__label">What we handle</p>
+          <p class="mm-scope__title">Insurance, end to end</p>
+          <p>Benefits checks, prior authorizations, reauthorizations, appeals, and single case agreements. Free, before therapy starts.</p>
+        </div>
+        <div class="mm-scope__card mm-scope__card--you">
+          <p class="mm-scope__label">What stays with you</p>
+          <p class="mm-scope__title">Waiver &amp; grant applications</p>
+          <p>You file with the state, the SSA, and each grant program. We provide the clinical letters and documentation you'll include, and point you to the right agency.</p>
+        </div>
+      </div>
+
+      <ol class="mm-steps">
+        <li class="mm-step">
+          <div class="mm-step__num">1</div>
+          <div class="mm-step__body">
+            <strong>Insurance: the largest single source.</strong>
+            <p>All 50 states now have some form of autism mandate. For families on commercial plans, that mandate typically requires fully insured plans to cover ABA diagnostic assessment, treatment, and parent training. Self-funded employer plans aren't bound by state mandates but are usually covered under federal mental-health parity. The specifics (age cap, annual dollar cap, prior authorization) vary widely by plan, so the only honest answer to "is ABA covered?" is a benefits check. We do that for you, free.</p>
+            <span class="mm-step__role mm-step__role--we">We own this one, end to end</span>
+          </div>
+        </li>
+        <li class="mm-step">
+          <div class="mm-step__num">2</div>
+          <div class="mm-step__body">
+            <strong>Medicaid and state waivers: the broadest safety net.</strong>
+            <p>If your family qualifies, state Medicaid pays for ABA without an annual dollar cap, under the federal Early and Periodic Screening, Diagnostic, and Treatment (EPSDT) benefit for children under 21. On top of that, every state runs Home and Community-Based Services (HCBS) waivers that cover ABA-adjacent services (respite, family training, day supports) that commercial insurance won't touch. Eligibility and waiver names differ state to state. The underlying mechanism is the same.</p>
+            <span class="mm-step__role mm-step__role--you">You apply. We support with clinical documentation</span>
+          </div>
+        </li>
+        <li class="mm-step">
+          <div class="mm-step__num">3</div>
+          <div class="mm-step__body">
+            <strong>Grants and tax tools: closing the gap.</strong>
+            <p>National grants from organizations like ACT Today (Autism Care and Treatment Today), the UnitedHealthcare Children's Foundation, and the Doug Flutie Jr. Foundation cover out-of-pocket costs your insurance and Medicaid don't reach. Federal tax tools (the Child and Dependent Care Credit, the Medical Expense Deduction, FSA/HSA spending, and ABLE accounts) quietly recover thousands more each year.</p>
+            <span class="mm-step__role mm-step__role--you">You apply. We provide letters of medical necessity</span>
+          </div>
+        </li>
+      </ol>
+
+      <div class="mm-rt">
+        <p>The biggest financial mistake we see is parents accepting whatever their first phone call to insurance tells them, never opening a waiver application, and never applying for a single grant. The families who get the most out of these systems treat them as a stack, not a single option, and they don't wait for someone else to start the waiver and grant applications.</p>
+        <p>If what you actually need is the arithmetic, our guide to <a href="https://www.mastermindbehavior.com/post/cost-of-aba-therapy-for-autism">what ABA therapy costs</a> works out what your plan can and cannot cap once you put in the rate you have been quoted.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Insurance and state mandates -->
+  <section class="mm-section mm-section--warm">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">Insurance coverage for ABA</h2>
+
+      <div class="mm-tldr">
+        <p class="mm-tldr__label">Quick answer</p>
+        <p>Every state now requires some form of autism coverage on fully insured commercial plans. What "covered" means in practice (the age limit, the dollar cap, the prior-auth process) is set by your state's mandate and the specific plan you carry. The mandates do not bind self-funded employer plans, but federal Mental Health Parity (MHPAEA) often does. <strong>This is the section we handle end to end for our families.</strong></p>
+      </div>
+
+      <div class="mm-rt">
+        <p>Three kinds of plans behave very differently:</p>
+        <ul>
+          <li><strong>Fully insured commercial plans</strong> (most plans purchased directly or through small employers) are bound by the state autism mandate where the policy is issued. ABA is covered up to that state's age and dollar limits.</li>
+          <li><strong>Self-funded employer plans</strong> (most large-employer plans, including most Fortune 500 plans) are not bound by state mandates. They <em>are</em> bound by federal Mental Health Parity (MHPAEA), and many include ABA. The plan document, called the Summary Plan Description or SPD, is the source of truth.</li>
+          <li><strong>Medicaid Managed Care Organizations</strong> follow Medicaid rules, not commercial insurance rules. ABA is covered under EPSDT without dollar caps for children under 21.</li>
+        </ul>
+
+        <h3 class="mm-h3">What your state actually requires</h3>
+        <p>The mandate that applies to you is the one where your policy was issued, and the three we work in differ in ways that matter. Each of these guides is built from the statute, the Medicaid manual and the insurance regulator in that state, with every figure sourced and dated:</p>
+        <ul>
+          <li><a href="https://www.mastermindbehavior.com/post/aba-therapy-funding-new-jersey">New Jersey</a>, where the widely quoted dollar cap often cannot lawfully be applied.</li>
+          <li><a href="https://www.mastermindbehavior.com/post/aba-therapy-funding-georgia">Georgia</a>, where Ava's Law bans visit limits outright and the medical necessity call sits with the insurer.</li>
+          <li><a href="https://www.mastermindbehavior.com/post/is-aba-therapy-covered-by-insurance-north-carolina">North Carolina</a>, where a physician order is required first and the published cap is a 2015 base rather than the live figure.</li>
+        </ul>
+
+        <h3 class="mm-h3">What to ask your insurer</h3>
+        <ul>
+          <li>Is ABA (CPT codes 97151 to 97158) covered for an autism spectrum disorder diagnosis?</li>
+          <li>What is the age limit on ABA coverage under my plan?</li>
+          <li>Is there an annual dollar cap, hour cap, or visit limit?</li>
+          <li>What is the prior-authorization process and how long does it take?</li>
+          <li>How often does reauthorization happen, and what data do you require?</li>
+          <li>What's my in-network responsibility (copay, coinsurance, deductible)?</li>
+          <li>Does my plan allow Single Case Agreements (SCAs) with out-of-network ABA providers?</li>
+        </ul>
+        <p>If a representative tells you ABA isn't covered, push back. Ask them to point to the specific plan-document language and ask them to escalate to a clinical reviewer. Most "not covered" answers we see are first-line errors, not actual exclusions.</p>
+        <p><a href="https://www.mastermindbehavior.com/insurance-terminology">Our insurance terminology guide</a> covers the jargon you'll hear. Or skip the calls entirely. <a href="https://www.mastermindbehavior.com/contact">Request a free benefits check</a> and we'll make the calls, document what we find, and walk you through the result.</p>
+
+        <h3 class="mm-h3">Mastermind's role</h3>
+        <p>Insurance is the one piece of the funding stack we take off your plate entirely. The benefits check, the prior authorization paperwork, the six-month reauthorizations, the appeals when something gets denied, the single case agreements. All our work. You don't fill out a single insurance form.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Medicaid & HCBS waivers -->
+  <section class="mm-section">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">Medicaid and HCBS waivers</h2>
+
+      <div class="mm-tldr">
+        <p class="mm-tldr__label">Quick answer</p>
+        <p>Medicaid is the broadest funding source for ABA in the United States. It covers ABA without annual dollar caps for children who qualify, under the federal EPSDT benefit. HCBS waivers expand coverage to families who don't qualify for standard Medicaid based on income, and add services that even commercial insurance doesn't cover. <strong>Applications for Medicaid and waivers are family-led. We provide the clinical documentation you'll include.</strong></p>
+      </div>
+
+      <div class="mm-rt">
+        <h3 class="mm-h3">Standard Medicaid (EPSDT)</h3>
+        <p>Under the federal Early and Periodic Screening, Diagnostic, and Treatment benefit, every state Medicaid program is required to cover medically necessary ABA for children under 21 with a documented autism spectrum disorder diagnosis. There is no annual dollar cap. The number of weekly hours covered is set by the BCBA's recommendation and your state's Medicaid policy.</p>
+        <p>Eligibility is income-based and uses your full household income against your state's Medicaid limits. The income test is the biggest barrier for middle-income families.</p>
+
+        <h3 class="mm-h3">Home and Community-Based Services (HCBS) waivers</h3>
+        <p>HCBS waivers are state-run programs that expand Medicaid to families who wouldn't otherwise qualify, and to children with disabilities whose needs require services Medicaid doesn't normally cover. Each state runs its own set with its own name. The underlying federal authority is the same.</p>
+        <p>Common services covered under HCBS waivers:</p>
+        <ul>
+          <li>In-home behavioral support and ABA</li>
+          <li>Personal care assistants and in-home support staff</li>
+          <li>Care coordination and case management</li>
+          <li>Respite care for parents</li>
+          <li>Family training</li>
+          <li>Day programs and community supports</li>
+          <li>Adaptive equipment and assistive technology</li>
+        </ul>
+
+        <h3 class="mm-h3">Finding the program in your state</h3>
+        <p>The fastest path to finding the right Medicaid and waiver combination in your state is your state Department of Developmental Disabilities (or equivalent agency) and the state's Medicaid information line. The state agency is who you'll apply through, and who you'll work with throughout the process.</p>
+
+        <h3 class="mm-h3">Mastermind's role</h3>
+        <p>We don't file Medicaid or waiver applications. That stays with you. What we do, at no charge:</p>
+        <ul>
+          <li>Point you to the right state agency in NJ, GA, or NC.</li>
+          <li>Walk through the application packet during the consultation so you know what's coming and what each section asks for.</li>
+          <li>Provide every piece of clinical documentation you'll include: diagnostic letters, current BCBA assessments, treatment plans, progress data, and letters of medical necessity.</li>
+        </ul>
+        <p>The application stays in your hands (that's your voice), but you won't be figuring out the paperwork alone.</p>
+      </div>
+
+      <div class="mm-cta-row">
+        <a href="https://www.mastermindbehavior.com/contact" class="mm-btn mm-btn--primary">Get a free benefits check</a>
+        <a href="tel:+17328137333" class="mm-btn mm-btn--secondary">Call 732.813.7333</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Katie Beckett waivers -->
+  <section class="mm-section mm-section--warm">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">Katie Beckett waivers</h2>
+
+      <div class="mm-tldr">
+        <p class="mm-tldr__label">Quick answer</p>
+        <p>If your household income is too high for Medicaid, this is the paragraph to read twice. Katie Beckett pathways look at the child's income and resources only, not the family's, so a child who would otherwise be blocked can qualify and then use the regular state Medicaid autism benefit. <strong>The application is yours to file. We provide the clinical pieces.</strong></p>
+      </div>
+
+      <div class="mm-rt">
+        <p>Many states offer a Katie Beckett option (named for the policy precedent set in the early 1980s). These pathways determine Medicaid eligibility based on the child's income and resources only, not the family's. Children with significant disabilities qualify even when household income is well above standard Medicaid limits. The names vary state to state (Katie Beckett Waiver, TEFRA option, Children's Personal Care, Community Alternatives Program for Children), but the function is the same.</p>
+
+        <h3 class="mm-h3">Katie Beckett in Georgia</h3>
+        <p>Georgia runs this as the TEFRA / Katie Beckett Deeming Waiver, and it is the route most Georgia families are never told about. It "permits the state to ignore family income for certain children who are disabled", so a child blocked from Medicaid by parental income can qualify and then use the regular Georgia Medicaid autism benefit, which runs to age 21.</p>
+        <p>It covers children 18 or under who live at home rather than in an institution, and the test is not the diagnosis: "Qualification is not based on medical diagnosis; instead it is based on the institutional level of care the child requires."</p>
+        <p>To start, contact the Centralized Katie Beckett Medicaid Team on <a href="tel:+16782487449">678-248-7449</a>, or ask the Division of Family and Children Services office in your county. Our <a href="https://www.mastermindbehavior.com/post/aba-therapy-funding-georgia">Georgia funding guide</a> sets out what the benefit covers once you are through the door, and what prior authorization looks like.</p>
+
+        <h3 class="mm-h3">What the application asks for</h3>
+        <p>Application is paperwork-heavy. Expect documentation of the diagnosis, functional limitations, medical needs, and an institutional level of care determination. <strong>The application itself is yours to file.</strong> We provide the clinical pieces (current BCBA assessments, diagnostic letters, treatment summaries) to include in your packet.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SSI for children with autism -->
+  <section class="mm-section">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">SSI for children with autism</h2>
+
+      <div class="mm-tldr">
+        <p class="mm-tldr__label">Quick answer</p>
+        <p>Supplemental Security Income (SSI) can add up to <strong>$994 a month</strong> (the 2026 federal benefit rate for an eligible individual) if your child meets the SSA's disability definition and your household income falls under the SSI limits. Most autism diagnoses meet the disability criterion. Whether you meet the income test depends on the size of your family and your earnings. <strong>SSI applications are family-led. We provide the clinical documentation the SSA asks for.</strong></p>
+      </div>
+
+      <div class="mm-rt">
+        <p>SSI is a federal cash benefit administered by the Social Security Administration. For a child under 18, eligibility runs on three tests:</p>
+        <ul>
+          <li><strong>The child's disability.</strong> A documented condition that causes "marked and severe functional limitations" expected to last at least 12 months. An autism diagnosis with documented functional impairment typically meets this.</li>
+          <li><strong>The child's own income and resources.</strong> Very few young children have either, so this test rarely matters until age 18.</li>
+          <li><strong>"Deemed" parental income and resources.</strong> The SSA counts a portion of parental income against the child's eligibility. This is where most families pass or fail.</li>
+        </ul>
+
+        <h3 class="mm-h3">Application steps</h3>
+        <ul>
+          <li>Start online at <a href="https://www.ssa.gov" target="_blank" rel="noopener">ssa.gov</a> or call <a href="tel:+18007721213">1-800-772-1213</a> to file by phone.</li>
+          <li>Complete the Child Disability Report, the SSA's structured form documenting your child's diagnosis, daily functioning, and clinical care.</li>
+          <li>Give consent for the SSA to contact your child's pediatrician, BCBA, school, and therapists. The more clinical documentation upfront, the faster the decision.</li>
+          <li>Expect 3 to 5 months from filing to decision. Plan accordingly.</li>
+        </ul>
+
+        <h3 class="mm-h3">What happens at age 18</h3>
+        <p>SSI eligibility is redetermined using adult disability rules. Only the individual's own income and resources count, and parental "deeming" stops. Many young adults who weren't eligible as children become eligible at 18 when their parents' income no longer counts. Start the redetermination process the month your child turns 18.</p>
+        <p>We go through the amounts, the age-18 redetermination and ABLE accounts in more detail in our <a href="https://www.mastermindbehavior.com/post/ssi-benefits-for-autistic-child">guide to SSI benefits for an autistic child</a>.</p>
+
+        <h3 class="mm-h3">Mastermind's role</h3>
+        <p>We don't file SSI applications. That's between you and the SSA. What we do, at no charge: provide the clinical documentation the SSA asks for (current BCBA assessments, treatment plans, progress data), and point you to local disability-rights organizations that file SSI applications for families pro bono if you'd like a hand with the paperwork itself.</p>
+      </div>
+    </div>
+  </section>
+</div>
