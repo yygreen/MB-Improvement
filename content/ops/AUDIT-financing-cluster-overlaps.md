@@ -156,3 +156,25 @@ a decision rather than silently changed.
 
 **Unsourced hourly rates** ($100 to $200 per session) remain in the
 settings sections. They should point at the cost page instead.
+
+## Second competitor mention removed (2026-08-13, published)
+
+The table removal was not the whole job. The page's **opening paragraph**
+also named both organisations: "Families affected by autism benefit from
+several top autism centers, such as Above & Beyond Therapy and the Emory
+Autism Center." Found only when checking the published site, because the
+first pass searched for the table and did not sweep the page for the names.
+
+Rewritten to categories rather than names, and pointed at the coverage
+question. Verified live: both names absent, and an independent diff against
+the pre-change live text shows 12,986 of 13,420 characters untouched.
+
+**One undeclared change.** That diff also caught an em dash normalised to a
+comma in the Family Support Services paragraph, which I did not intend to
+touch. The result is correct (an em dash fails our own copy gate) but it
+was not a declared edit. This is the drift that hand-retyping causes, and
+it is the argument for doing large-body edits over REST with per-string
+assertions rather than re-emitting a whole field.
+
+**Lesson worth keeping:** when removing a named entity from a page, grep
+the whole body for the name, not just the structure it appeared in.
