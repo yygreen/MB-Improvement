@@ -233,6 +233,20 @@
       "source_type": "regulation",
       "source_title": "Georgia State Board of Education Rules, Chapter 160-4-7, Special Education Services and Supports",
       "verified_on": "2026-08-11"
+    },
+    "age_out": {
+      "value": "The obligation runs to the end of age 21. Rule 160-4-7-.02(1)(a): \"A free appropriate public education (FAPE) must be available to all children residing in the State between the ages of 3 and 21, inclusive, including children with disabilities who have been suspended or expelled from school, as provided for in Discipline.\" Rule 160-4-7-.02(1)(b) sets what happens at the far edge: \"If a student is receiving services upon reaching age 22, the LEA shall have a written procedure that identifies a process for completing services to which the adult student has been previously entitled,\" and if a student remains after the 22nd birthday the LEA must notify them that \"although services will continue, no individual entitlement to FAPE or other rights under IDEA are afforded the adult student.\" So the entitlement ends on the 22nd birthday at the latest, which is the year after Ava's Law and Georgia Medicaid both expire.",
+      "source_url": "https://rules.sos.ga.gov/gac/160-4-7",
+      "source_type": "regulation",
+      "source_title": "Georgia State Board of Education Rules, Chapter 160-4-7, Special Education Services and Supports",
+      "verified_on": "2026-08-13"
+    },
+    "diploma_exit": {
+      "value": "Age is not the only way school services end, and this is the one families do not see coming. Under 34 CFR 300.102(a)(3)(i) the FAPE obligation does not apply to \"Children with disabilities who have graduated from high school with a regular high school diploma.\" For many students that is well before 22. What counts is narrow: 300.102(a)(3)(iv) defines a regular high school diploma as \"the standard high school diploma awarded to the preponderance of students in the State that is fully aligned with State standards, or a higher diploma,\" and expressly excludes a general equivalency diploma, a certificate of completion, a certificate of attendance or a similar lesser credential. A student who leaves school without a regular diploma keeps the entitlement.",
+      "source_url": "https://sites.ed.gov/idea/regs/b/b/300.102",
+      "source_type": "federal",
+      "source_title": "34 CFR 300.102, Limitation on exception to FAPE for certain ages",
+      "verified_on": "2026-08-13"
     }
   },
   "appeals": {

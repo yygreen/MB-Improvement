@@ -2,35 +2,82 @@
 """Generate the Georgia funding figure. Geometry is computed here, written into
 the HTML, then re-derived from the published values and asserted. Every label
 that makes a claim is checked against the dataset field it came from."""
-import json, pathlib, sys
+import json, pathlib, sys, re
 
 DATA = json.load(open('data/funding/georgia.json'))
 OUT = pathlib.Path(sys.argv[1] if len(sys.argv) > 1 else '.')
 errs = []
 
-def need(text, path, why):
-    """Assert a claim appears in the dataset value it is supposed to come from."""
+
+def field(path):
     node = DATA
     for k in path.split('.'):
         node = node[int(k)] if k.isdigit() else node[k]
-    if text not in node['value']:
+    return node
+
+
+def need(text, path, why):
+    """Assert a claim appears in the dataset value it is supposed to come from."""
+    if text not in field(path)['value']:
         errs.append(f'{why}: {text!r} not in {path}')
+
+
+WORDS = {'three': 3}
+
+
+def edge(path, pattern, offset, why):
+    """Derive a band's exclusive right edge from the dataset prose.
+
+    Bands used to carry hardcoded end years. Four of the five happened to be
+    right; the school band's 22 was a number typed straight into the geometry
+    with nothing behind it, and the only assertion covering it was "greater
+    than the cliff", which 21.1 would also have passed. Deriving the edge means
+    a dataset correction moves the figure or breaks the build, rather than the
+    chart quietly disagreeing with the guide printed beside it.
+
+    offset is what turns an inclusive age into an exclusive edge: "20 years of
+    age or under" runs until the 21st birthday, so offset 1.
+    """
+    m = re.search(pattern, field(path)['value'], re.I)
+    if not m:
+        errs.append(f'{why}: {pattern!r} does not match {path}, cannot derive the edge')
+        return None
+    tok = m.group(1).lower()
+    n = WORDS.get(tok, None)
+    if n is None:
+        n = int(tok)
+    return float(n + offset)
 
 # ---------------------------------------------------------------- geometry
 AX0, AX1 = 0.0, 22.0
 def x(years):
     return round((years - AX0) / (AX1 - AX0) * 100, 2)
 
+# Every right edge is derived from the dataset prose, never typed here.
+E_EI     = edge('early_intervention.age_range',  r'birth to (three|\d+) years', 0,
+                'early intervention end')
+E_SCHOOL = edge('school_services.age_out',       r'ages of 3 and (\d+), inclusive', 1,
+                'school end')
+E_MAND   = edge('mandate.age_limit',             r'(\d+) years of age or under', 1,
+                'mandate end')
+E_MCD    = edge('medicaid.age_limit',            r'under the age of (\d+)', 0,
+                'medicaid end')
+E_KB     = edge('waivers.0.population',          r'(\d+) or under', 1,
+                'katie beckett end')
+
 # (label, note, start, end, colour, open_ended)
 BANDS = [
-    ("Babies Can't Wait",                'Birth to age three',        0.0,  3.0,  '#c14a3f', False),
-    ('School district, IEP',             'From the third birthday',   3.0,  22.0, '#9a9484', False),
-    ("Ava's Law, O.C.G.A. 33-24-59.10",  '20 years of age or under',  0.0,  21.0, '#009499', False),
-    ('Georgia Medicaid, ASD services',   'Under the age of 21',       0.0,  21.0, '#1a2744', False),
-    ('Katie Beckett eligibility route',  'Age 18 or under',           0.0,  19.0, '#b07d2b', False),
+    ("Babies Can't Wait",                'Birth to age three',        0.0,  E_EI,     '#c14a3f', False),
+    ('School district, IEP',             'From the third birthday',   3.0,  E_SCHOOL, '#9a9484', False),
+    ("Ava's Law, O.C.G.A. 33-24-59.10",  '20 years of age or under',  0.0,  E_MAND,   '#009499', False),
+    ('Georgia Medicaid, ASD services',   'Under the age of 21',       0.0,  E_MCD,    '#1a2744', False),
+    ('Katie Beckett eligibility route',  'Age 18 or under',           0.0,  E_KB,     '#b07d2b', False),
 ]
-CLIFF = 21.0
-TICKS = [0, 3, 5, 10, 15, 18, 21]
+CLIFF = E_MAND
+# Ticks have to be readable, not complete: at 900px the plot gives about 22px a
+# year against a 25px label, so adjacent years collide. Every band edge is
+# either a tick or the marked cliff year, which is gated below.
+TICKS = [0, 3, 5, 10, 15, 19, 22]
 
 need('20 years of age or under', 'mandate.age_limit', 'mandate age limit')
 need('under the age of 21', 'medicaid.age_limit', 'medicaid age limit')
@@ -38,10 +85,22 @@ need('birth to three years of age', 'early_intervention.age_range', 'early inter
 need('third birthday', 'school_services.idea_part_c_to_b_transition', 'FAPE start date')
 need('18 or under', 'waivers.0.population', 'Katie Beckett age limit')
 need("Babies Can't Wait", 'early_intervention.program_name', 'early intervention programme name')
+need('between the ages of 3 and 21, inclusive', 'school_services.age_out', 'FAPE age range')
+need('regular high school diploma', 'school_services.diploma_exit', 'diploma exit')
+
+if None in (E_EI, E_SCHOOL, E_MAND, E_MCD, E_KB):
+    for e in errs:
+        print('ERROR', e)
+    sys.exit(1)
 
 # the whole point of the figure: the mandate and Medicaid end together, the school does not
 assert BANDS[2][3] == BANDS[3][3] == CLIFF, 'mandate and Medicaid must share the cliff year'
 assert BANDS[1][3] > CLIFF, 'the school band must outlast the cliff or the figure has no point'
+# a reader has to be able to read every edge off the chart
+for name, _, _, end, _, _ in BANDS:
+    if end not in TICKS and end != CLIFF:
+        errs.append(f'{name} ends at {end:g}, which is neither a tick nor the marked '
+                    f'cliff year; the reader cannot tell where the band stops')
 
 rows = []
 for name, note, a, b, colour, open_end in BANDS:
@@ -66,7 +125,9 @@ assert abs((mark_x / 100) * AX1 - CLIFF) < 0.01, 'marker drifted off the cliff y
 CANVAS, PAD, LABW = 900, 40, 330
 PLOT_L, PLOT_R = PAD + LABW, CANVAS - PAD
 MARK_PX = PLOT_L + (mark_x / 100) * (PLOT_R - PLOT_L)
-MARK_LABEL = 'Insurance and Medicaid both stop'
+# The cliff year rides in the label because it cannot be a tick: 21 and the
+# school band's 22 are one year apart, and their labels would overlap.
+MARK_LABEL = f'Insurance and Medicaid both stop at {CLIFF:g}'
 CHAR_PX = 13.2                       # Manrope 800 at 24px, measured
 label_w = len(MARK_LABEL) * CHAR_PX
 anchor_right = MARK_PX + label_w / 2 > PLOT_R
@@ -82,6 +143,23 @@ if l_left < PAD:
     errs.append(f'marker label overflows the left edge ({l_left:.0f}px < {PAD}px)')
 if l_right > CANVAS - PAD:
     errs.append(f'marker label overflows the right edge ({l_right:.0f}px > {CANVAS - PAD}px)')
+
+# ---------------------------------------------------------------- caveat
+# A bar chart of age ranges reads as a promise, and two of these bars are not
+# one. Katie Beckett stops two years before the marked cliff, and the school
+# band ends on a diploma rather than a birthday. Both numbers come out of the
+# bands so they cannot drift away from the geometry above them.
+CAVEAT = (f'<b>Two of these end sooner than the bar suggests.</b> The Katie Beckett '
+          f'route ends at {E_KB:g}, before the line. School services end when a '
+          f'student graduates with a regular high school diploma, which for many is '
+          f'well before {E_SCHOOL:g}. A GED, a certificate of completion or a '
+          f'certificate of attendance does not end them.')
+
+for needle, why in [('regular high school diploma', 'the diploma exit'),
+                    (f'ends at {E_KB:g}', 'the Katie Beckett early end'),
+                    (f'before {E_SCHOOL:g}', 'the school band end')]:
+    if needle not in CAVEAT:
+        errs.append(f'caveat does not carry {why}')
 
 fig = f'''<!doctype html><html><head><meta charset="utf-8">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
@@ -108,7 +186,9 @@ h2{{font-size:40px;font-weight:800;color:#1a2744;letter-spacing:-.01em;line-heig
 .axis .line{{position:absolute;top:0;left:0;right:0;height:3px;background:#c9c4b8}}
 .tk{{position:absolute;top:12px;transform:translateX(-50%);font-size:25px;color:#6f6a5e;white-space:nowrap}}
 .unit{{position:absolute;top:44px;left:0;font-size:25px;color:#8a8a8a}}
-.credit{{margin-top:16px;font-size:23px;color:#8a8a8a}}
+.caveat{{margin-top:14px;font-size:24px;line-height:1.42;color:#5a5a5a}}
+.caveat b{{font-weight:800;color:#1a2744}}
+.credit{{margin-top:14px;font-size:23px;color:#8a8a8a}}
 </style></head><body>
 <h2>Who pays, and until when</h2>
 <div class="sub">The same child moves between systems on fixed dates. Age in years across the bottom.</div>
@@ -120,7 +200,8 @@ h2{{font-size:40px;font-weight:800;color:#1a2744;letter-spacing:-.01em;line-heig
 <div class="axis"><div class="line"></div>{ticks}
   <div class="unit">Age in years</div>
 </div>
-<div class="credit">Mastermind Behavior. Sources: O.C.G.A. 33-24-59.10; Georgia Medicaid ASD policy; Georgia DPH; Georgia SBOE Rule 160-4-7.</div>
+<div class="caveat">{CAVEAT}</div>
+<div class="credit">Mastermind Behavior. Sources: O.C.G.A. 33-24-59.10; Georgia Medicaid ASD policy; Georgia DPH; Georgia SBOE Rule 160-4-7; 34 CFR 300.102.</div>
 </body></html>'''
 
 # structural gates: the label must be in its own lane, never inside the plot
