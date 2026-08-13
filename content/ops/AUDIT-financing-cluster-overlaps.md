@@ -99,3 +99,60 @@ least one embeds the insurance widget, so they should go through the REST
 path with per-replacement assertions rather than being re-emitted by hand.
 Item 1 is a redirect, which is UI-only. Item 4 needs no change beyond a
 link from a static page.
+
+---
+
+## Executed 2026-08-13 (staged, not published)
+
+All three edits went through the REST path with per-replacement assertions
+and a re-read diff. Every write verified byte-identical to the locally
+computed body, so the embedded insurance widget passed through untouched.
+
+**`/post/medicaid-and-aba-coverage-in-nj`** (+204 chars)
+April 2020 corrected to 1 January 2019 in both places, with the SPA named
+and its 18 September 2020 approval date given. Reference [1] repointed from
+a landing page that stated no date to the CMS-approved SPA PDF, across all
+five occurrences. Legacy `/areas-we-serve/` link fixed.
+
+The assertion earned its place here: the nj.gov URL occurs five times, not
+the four I specified, because the reference line carries it twice. The dry
+run refused to write until the count was right.
+
+**`/post/how-georgia-laws-support-autism-services`** (-361 chars)
+Competitor table deleted. Replaced with a section that points at the
+Georgia funding guide instead of naming providers. Also removed a broken
+heading, `<h2>Age GroupNumber Screened18-24 Months3,500+</h2>`, where a
+table had collapsed into an H2.
+
+**`/post/aba-therapy-services-in-georgia-overview`** (-2,023 chars)
+The coverage section did not merely overlap the guide, it contradicted the
+statute: it told families insurers "may impose restrictions on the number
+of therapy sessions allowed per week or year" when Ava's Law states a
+policy "shall not include any limits on the number of visits". Replaced
+with the sourced position plus a pointer to the guide. Legacy link fixed.
+
+## Two corrections to this audit
+
+- The **"guarantee"** on the Georgia laws page refers to what the law
+  guarantees, not to an outcome we promise. Correct usage, left alone.
+- The **screening figure is sourced**, to Georgia DPH. Calling it invented
+  was wrong. The actual defect was the collapsed table, now removed.
+
+## Still open on these pages
+
+**The clinic language on the Georgia overview.** Eighteen references,
+including a "Clinic-Based Therapy" section describing dedicated therapy
+rooms and sensory spaces as though we offer them. This is a rewrite rather
+than a find-and-replace: the section sits under "ABA Therapy Settings in
+Georgia" and legitimately describes what exists in the state, so it needs
+reframing to make clear it is describing the landscape, not our services.
+Doing that badly would be worse than leaving it.
+
+**RBT on the same page, three uses.** All three name the BACB credential:
+a certification-tier table row, "RBT certification", and "RBT Ethics Code".
+The house rule targets RBT as our term for our own staff; renaming an
+actual credential would introduce a factual error. Left as is, flagged for
+a decision rather than silently changed.
+
+**Unsourced hourly rates** ($100 to $200 per session) remain in the
+settings sections. They should point at the cost page instead.
