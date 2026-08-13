@@ -18,6 +18,8 @@ ALLOWED_LINKS = {
     '/post/iep-vs-504-plan-for-autism',
     '/post/early-signs-of-autism-in-babies-and-kids',
     '/post/is-aba-therapy-covered-by-insurance-north-carolina',
+    '/post/aba-therapy-funding-georgia',
+    '/post/how-much-autism-evaluation-cost',
     '/aba-therapy-in-north-carolina', '/aba-therapy-in-georgia',
     '/transition-planning-georgia', '/early-intervention-georgia',
     '/behavior-support-georgia', '/parent-training-georgia',
@@ -25,6 +27,7 @@ ALLOWED_LINKS = {
     '/behavior-support-north-carolina', '/parent-training-north-carolina',
 }
 used_figures = []
+used_widgets = []
 
 SRC = sys.argv[1]
 DATA = sys.argv[2]
@@ -60,6 +63,16 @@ while i < len(lines):
             f'style="max-width:{f["width"]}px"><div>'
             f'<img width="{f["width"]}" src="{f["url"]}" loading="lazy" '
             f'alt="{html.escape(f["alt"], quote=True)}"></div></figure>')
+        i += 1; continue
+    if ln.startswith('@widget '):
+        # Widgets render client-side into this container. The script also
+        # accepts a sentinel paragraph, so the page still works if Webflow's
+        # rich-text sanitiser strips the id on save.
+        wid = ln.split(None, 1)[1].strip()
+        if wid != 'cost-calculator':
+            raise SystemExit(f'unknown widget: {wid}')
+        used_widgets.append(wid)
+        out.append('<div id="mm-ccw"><p>Calculator loading. If it does not appear, the short version is this: ask your provider for their rate for code 97153, multiply it by your weekly hours and by 52, then read the cap section below to see what your plan can do with that figure.</p></div>')
         i += 1; continue
     if ln.startswith('## '):
         out.append(f'<h2>{inline(ln[3:].strip())}</h2>'); i += 1; continue
@@ -144,9 +157,19 @@ if re.search(r'<\s+href', doc):
     err('clipped anchor tag (< href)')
 
 # 3. every claim number must be traceable to the dataset
-ds = json.load(open(DATA))
-blob = json.dumps(ds)
-norm_blob = re.sub(r'\\s+', ' ', ' '.join(re.findall(r'"value": "(.*?)", "source_url"', blob)).replace('\\"', '"'))
+# DATA may be one dataset or several comma-separated. The cost page is national:
+# it renders facts from all three states, so its quotes must be checked against
+# the union of them rather than any single file.
+DATA_PATHS = [x.strip() for x in DATA.split(',') if x.strip()]
+datasets = [json.load(open(x)) for x in DATA_PATHS]
+ds = datasets[0]
+blob = json.dumps(datasets if len(datasets) > 1 else ds)
+# Match every "value" regardless of what follows it. The cost datasets put
+# rate_per_unit and code between value and source_url, and the old pattern
+# (which required "source_url" to come next) silently skipped those facts,
+# meaning a quoted rate would have passed the gate unchecked.
+_vals = re.findall(r'"value": "((?:[^"\\]|\\.)*)"', blob)
+norm_blob = re.sub(r'\s+', ' ', ' '.join(_vals).replace('\"', '"'))
 REQUIRED_BY_STATE = {
  'new-jersey': [
     ('$36,000', 'the cap figure'), ('180 days', 'internal appeal deadline'),
@@ -168,6 +191,13 @@ REQUIRED_BY_STATE = {
     ('inability to pay', 'early intervention cost floor'),
     ('Smart NC', 'the external review body'),
  ],
+ 'national': [
+    ('$35,000', 'the Georgia cap'), ('$36,000', 'the New Jersey cap'),
+    ('$40,000', 'the North Carolina cap base'),
+    ('97153', 'the code a family should ask about'),
+    ('15 minute', 'the billing unit'),
+    ('self-fund', 'the ERISA branch'),
+ ],
  'georgia': [
     ('$35,000', 'the cap figure'), ('20 years of age or under', 'age limit'),
     ('July 1, 2015', 'mandate effective date'),
@@ -184,7 +214,10 @@ REQUIRED_BY_STATE = {
     ('60 calendar days', 'school evaluation window'),
  ],
 }
-REQUIRED = REQUIRED_BY_STATE[ds['state_key']]
+GATE_KEY = ds['state_key'] if len(datasets) == 1 else 'national'
+if GATE_KEY not in REQUIRED_BY_STATE:
+    raise SystemExit(f'no required-facts list for {GATE_KEY!r}')
+REQUIRED = REQUIRED_BY_STATE[GATE_KEY]
 for needle, what in REQUIRED:
     if needle not in doc:
         err(f'missing required fact in body ({what}): {needle}')
@@ -214,8 +247,8 @@ if unmatched:
         err(f'quoted string not found verbatim in dataset: {u[:90]!r}')
 
 # 4b. figures
-if not used_figures:
-    err('no figure placed in this guide')
+if not used_figures and not used_widgets:
+    err('no figure or widget placed in this guide')
 for slug in used_figures:
     f = FIGURES[slug]
     if not f['alt'].strip():

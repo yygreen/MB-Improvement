@@ -43,7 +43,9 @@
       "source_url": "https://www.legis.ga.gov/api/legislation/document/20172018/176814",
       "source_type": "statute",
       "source_title": "Georgia SB 118, 2017-2018 session, House Substitute, amending O.C.G.A. 33-24-59.10",
-      "verified_on": "2026-08-11"
+      "verified_on": "2026-08-11",
+      "cap_usd": 35000,
+      "cap_status": "applies_to_aba_only"
     },
     "visit_or_hour_limits": {
       "value": "None permitted. \"The policy or contract shall not include any limits on the number of visits.\"",

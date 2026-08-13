@@ -1,0 +1,77 @@
+{
+  "state": "Georgia",
+  "state_key": "georgia",
+  "medicaid_rates": {
+    "schedule_name": {
+      "value": "Georgia Medicaid Autism Spectrum Disorder (ASD) Fee Schedule, published by the Department of Community Health through the GAMMIS provider portal.",
+      "source_url": "https://www.mmis.georgia.gov/portal/Portals/0/StaticContent/Public/ALL/Fee%20Schedules/ASD%20Fee%20Schedule%2020251008194835.pdf",
+      "source_type": "medicaid_manual",
+      "source_title": "Georgia Medicaid ASD Fee Schedule",
+      "verified_on": "2026-08-13"
+    },
+    "unit": {
+      "value": "Every adaptive behavior code is billed in 15 minute units, so four units make an hour.",
+      "minutes_per_unit": 15,
+      "source_url": "https://www.mmis.georgia.gov/portal/Portals/0/StaticContent/Public/ALL/Fee%20Schedules/ASD%20Fee%20Schedule%2020251008194835.pdf",
+      "source_type": "medicaid_manual",
+      "source_title": "Georgia Medicaid ASD Fee Schedule",
+      "verified_on": "2026-08-13"
+    },
+    "rate_varies_by": {
+      "value": "The rate depends on two things beyond the code: the practitioner level modifier, which runs from U1 for the most qualified down to U5, and the service location modifier, where U7 for the home pays more than U6 or the GT telehealth rate.",
+      "source_url": "https://www.mmis.georgia.gov/portal/Portals/0/StaticContent/Public/ALL/Fee%20Schedules/ASD%20Fee%20Schedule%2020251008194835.pdf",
+      "source_type": "medicaid_manual",
+      "source_title": "Georgia Medicaid ASD Fee Schedule",
+      "verified_on": "2026-08-13"
+    },
+    "direct_treatment_technician_home": {
+      "value": "Code 97153, adaptive behavior treatment by protocol, delivered by a U5 practitioner in the home, pays $18.69 per 15 minute unit.",
+      "code": "97153",
+      "rate_per_unit": 18.69,
+      "minutes_per_unit": 15,
+      "source_url": "https://www.mmis.georgia.gov/portal/Portals/0/StaticContent/Public/ALL/Fee%20Schedules/ASD%20Fee%20Schedule%2020251008194835.pdf",
+      "source_type": "medicaid_manual",
+      "source_title": "Georgia Medicaid ASD Fee Schedule",
+      "verified_on": "2026-08-13"
+    },
+    "direct_treatment_technician_office": {
+      "value": "The same code 97153 delivered by a U5 practitioner outside the home pays $15.58 per 15 minute unit.",
+      "code": "97153",
+      "rate_per_unit": 15.58,
+      "minutes_per_unit": 15,
+      "source_url": "https://www.mmis.georgia.gov/portal/Portals/0/StaticContent/Public/ALL/Fee%20Schedules/ASD%20Fee%20Schedule%2020251008194835.pdf",
+      "source_type": "medicaid_manual",
+      "source_title": "Georgia Medicaid ASD Fee Schedule",
+      "verified_on": "2026-08-13"
+    },
+    "supervision_top_level_home": {
+      "value": "Code 97155, treatment with protocol modification by the supervising analyst, pays $76.31 per 15 minute unit at the U1 practitioner level in the home.",
+      "code": "97155",
+      "rate_per_unit": 76.31,
+      "minutes_per_unit": 15,
+      "source_url": "https://www.mmis.georgia.gov/portal/Portals/0/StaticContent/Public/ALL/Fee%20Schedules/ASD%20Fee%20Schedule%2020251008194835.pdf",
+      "source_type": "medicaid_manual",
+      "source_title": "Georgia Medicaid ASD Fee Schedule",
+      "verified_on": "2026-08-13"
+    },
+    "parent_training_top_level_home": {
+      "value": "Code 97156, parent training with or without the child, pays $27.52 per 15 minute unit at the U1 level in the home.",
+      "code": "97156",
+      "rate_per_unit": 27.52,
+      "minutes_per_unit": 15,
+      "source_url": "https://www.mmis.georgia.gov/portal/Portals/0/StaticContent/Public/ALL/Fee%20Schedules/ASD%20Fee%20Schedule%2020251008194835.pdf",
+      "source_type": "medicaid_manual",
+      "source_title": "Georgia Medicaid ASD Fee Schedule",
+      "verified_on": "2026-08-13"
+    }
+  },
+  "commercial_rates": {
+    "published": {
+      "value": "FLAG, not sourced. Commercial insurers negotiate rates with each provider and do not publish them, so there is no primary source for what a Georgia plan pays. Use the rate on your own provider quote or explanation of benefits rather than any figure quoted online, including ours.",
+      "source_url": "https://www.mmis.georgia.gov/portal/Portals/0/StaticContent/Public/ALL/Fee%20Schedules/ASD%20Fee%20Schedule%2020251008194835.pdf",
+      "source_type": "medicaid_manual",
+      "source_title": "Georgia Medicaid ASD Fee Schedule, checked for commercial rates and containing none",
+      "verified_on": "2026-08-13"
+    }
+  }
+}

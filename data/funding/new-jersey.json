@@ -43,7 +43,9 @@
       "source_url": "https://www.nj.gov/dobi/bulletins/blt10_02.pdf",
       "source_type": "doi_bulletin",
       "source_title": "NJ DOBI Bulletin No. 10-02, Implementation of P.L. 2009, c. 115 With Respect to Certain Benefits for Treatment of Autism and Other Developmental Disabilities (January 14, 2010)",
-      "verified_on": "2026-08-11"
+      "verified_on": "2026-08-11",
+      "cap_usd": 36000,
+      "cap_status": "rarely_applicable"
     },
     "visit_or_hour_limits": {
       "value": "No visit or hour cap is set by Chapter 115. Carriers may not reduce the physical, occupational, speech or behavioral therapy benefits otherwise available under the contract because those services were used to treat autism or another developmental disability. A separate set of benefits may be established for these services only on terms the same as or more favorable than those applying to other conditions, and DOBI \"will not approve limits for physical therapy, occupational therapy or speech therapy for treatment of autism or other developmental disabilities that establish a maximum number of days of therapy measured from the date of diagnosis or inception of treatment, or benefit limits established on a per illness or injury basis.\"",

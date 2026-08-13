@@ -43,7 +43,9 @@
       "source_url": "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_58/GS_58-3-192.html",
       "source_type": "statute",
       "source_title": "N.C.G.S. 58-3-192, Coverage for autism spectrum disorder",
-      "verified_on": "2026-08-11"
+      "verified_on": "2026-08-11",
+      "cap_usd": 40000,
+      "cap_status": "stale_base_indexed"
     },
     "visit_or_hour_limits": {
       "value": "The statute sets no visit or hour limit for adaptive behavior treatment. Its stated limit is the annual dollar maximum in subsection (c).",
