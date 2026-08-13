@@ -1,0 +1,277 @@
+{
+  "cluster": "financing",
+  "in": [
+    {
+      "url": "/post/how-much-is-aba-therapy-with-insurance",
+      "title": "How Much is ABA Therapy Costs with Insurance",
+      "words": 2641,
+      "hits": 14
+    },
+    {
+      "url": "/post/average-cost-of-autism-treatment",
+      "title": "Average Cost of Autism Treatment Exposed",
+      "words": 2779,
+      "hits": 13
+    },
+    {
+      "url": "/financial-aid-resources",
+      "title": "How Families Pay for ABA: Waivers, Katie Beckett and SSI",
+      "words": 4133,
+      "hits": 12
+    },
+    {
+      "url": "/post/aba-therapy-funding-georgia",
+      "title": "Who Pays for ABA Therapy in Georgia?",
+      "words": 3279,
+      "hits": 12
+    },
+    {
+      "url": "/post/medicaid-and-aba-coverage-in-nj",
+      "title": "Understanding Medicaid and ABA Coverage in NJ",
+      "words": 1949,
+      "hits": 12
+    },
+    {
+      "url": "/insurance-terminology",
+      "title": "Does Insurance Cover ABA Therapy? Check Your Coverage | Mastermind Behavior",
+      "words": 988,
+      "hits": 11
+    },
+    {
+      "url": "/post/cost-of-aba-therapy-for-autism",
+      "title": "How Much Does ABA Therapy Cost?",
+      "words": 1806,
+      "hits": 11
+    },
+    {
+      "url": "/post/how-much-autism-evaluation-cost",
+      "title": "How Much Does Autism Evaluation Costs?",
+      "words": 2109,
+      "hits": 11
+    },
+    {
+      "url": "/post/how-much-is-autism-benefits",
+      "title": "How Much is Autism Benefits",
+      "words": 2777,
+      "hits": 10
+    },
+    {
+      "url": "/post/aba-therapy-funding-new-jersey",
+      "title": "Who Pays for ABA Therapy in New Jersey?",
+      "words": 2937,
+      "hits": 9
+    },
+    {
+      "url": "/post/is-aba-therapy-covered-by-insurance-north-carolina",
+      "title": "Is ABA Therapy Covered by Insurance in North Carolina?",
+      "words": 2845,
+      "hits": 9
+    },
+    {
+      "url": "/post/autism-treatment-expenses",
+      "title": "Autism Treatment Expenses: Unveiling the Cost",
+      "words": 2683,
+      "hits": 8
+    },
+    {
+      "url": "/post/ssi-benefits-for-autistic-child",
+      "title": "How Much Does a Child With Autism Get From SSI?",
+      "words": 2441,
+      "hits": 7
+    },
+    {
+      "url": "/post/rbt-certification-cost",
+      "title": "RBT Certification Cost in New Jersey",
+      "words": 2405,
+      "hits": 6
+    },
+    {
+      "url": "/areas-we-serve/stafford",
+      "title": "At-Home ABA Therapy In Stafford, New Jersey",
+      "words": 1322,
+      "hits": 6
+    },
+    {
+      "url": "/post/how-to-teach-money-management-skills-to-teens-with-asd",
+      "title": "How to Teach Money Management Skills to Teens with ASD",
+      "words": 2316,
+      "hits": 4
+    },
+    {
+      "url": "/post/strategies-for-teaching-children-to-follow-instructions",
+      "title": "Strategies for teaching children to follow instructions",
+      "words": 2553,
+      "hits": 4
+    },
+    {
+      "url": "/post/the-benefits-of-early-diagnosis-and-intervention",
+      "title": "The benefits of early diagnosis and intervention",
+      "words": 1740,
+      "hits": 4
+    }
+  ],
+  "rejected": [
+    {
+      "url": "/post/addressing-sensory-seeking-behaviors-in-therapy",
+      "title": "Addressing sensory-seeking behaviors in therapy",
+      "words": 2377,
+      "hits": 2
+    },
+    {
+      "url": "/post/are-online-autism-tests-accurate",
+      "title": "Are Online Autism Tests Accurate? Assessing the Truth",
+      "words": 2283,
+      "hits": 2
+    },
+    {
+      "url": "/post/autism-and-narcissism",
+      "title": "Autism and Narcissism Explored",
+      "words": 2747,
+      "hits": 2
+    },
+    {
+      "url": "/post/autism-facial-expressions",
+      "title": "Understanding Autism Facial Expressions",
+      "words": 2041,
+      "hits": 2
+    },
+    {
+      "url": "/post/autism-obsessions",
+      "title": "What is Autism Obsession",
+      "words": 2588,
+      "hits": 3
+    },
+    {
+      "url": "/post/autism-unemployment-rate",
+      "title": "Addressing the Autism Unemployment Rate",
+      "words": 2323,
+      "hits": 3
+    },
+    {
+      "url": "/post/behavioral-strategies-for-improving-social-interactions-in-children-with-autism",
+      "title": "Behavioral Strategies for Improving Social Interactions in Children with Autism",
+      "words": 4825,
+      "hits": 3
+    },
+    {
+      "url": "/post/how-structured-teaching-methods-benefit-children-with-asd",
+      "title": "How Structured Teaching Methods Benefit Children with ASD",
+      "words": 1964,
+      "hits": 3
+    },
+    {
+      "url": "/post/how-to-encourage-self-expression-through-art",
+      "title": "How to encourage self-expression through art",
+      "words": 1699,
+      "hits": 3
+    },
+    {
+      "url": "/post/how-to-handle-regression-in-learned-skills",
+      "title": "How to handle regression in learned skills",
+      "words": 2205,
+      "hits": 2
+    },
+    {
+      "url": "/post/how-to-integrate-aba-strategies-during-mealtime-and-snack-time",
+      "title": "How To Integrate ABA Strategies During Mealtime And Snack Time",
+      "words": 2716,
+      "hits": 3
+    },
+    {
+      "url": "/post/how-to-manage-aggressive-behavior-in-children-with-autism-using-aba",
+      "title": "How to Manage Aggressive Behavior in Children with Autism Using ABA",
+      "words": 2569,
+      "hits": 3
+    },
+    {
+      "url": "/post/how-to-teach-coping-strategies-for-frustration",
+      "title": "How to teach coping strategies for frustration",
+      "words": 2137,
+      "hits": 2
+    },
+    {
+      "url": "/post/strategies-for-increasing-motivation-in-therapy-sessions",
+      "title": "Strategies for increasing motivation in therapy sessions",
+      "words": 2116,
+      "hits": 2
+    },
+    {
+      "url": "/post/strategies-for-reducing-self-injurious-behaviors-in-children",
+      "title": "Strategies for reducing self-injurious behaviors in children",
+      "words": 2709,
+      "hits": 3
+    },
+    {
+      "url": "/post/strategies-for-teaching-sequencing-skills",
+      "title": "Strategies for teaching sequencing skills",
+      "words": 1774,
+      "hits": 3
+    },
+    {
+      "url": "/post/strategies-to-improve-functional-living-skills-in-children-with-asd",
+      "title": "Strategies to Improve Functional Living Skills in Children with ASD",
+      "words": 2578,
+      "hits": 3
+    },
+    {
+      "url": "/post/teaching-memory-strategies-using-aba-therapy",
+      "title": "Teaching Memory Strategies Using ABA Therapy",
+      "words": 4141,
+      "hits": 3
+    },
+    {
+      "url": "/post/the-benefits-of-inclusive-education-for-children-with-autism",
+      "title": "The benefits of inclusive education for children with autism",
+      "words": 2243,
+      "hits": 3
+    },
+    {
+      "url": "/post/the-benefits-of-music-therapy-for-social-and-emotional-development-in-autism",
+      "title": "The Benefits of Music Therapy for Social and Emotional Development in Autism",
+      "words": 2153,
+      "hits": 3
+    },
+    {
+      "url": "/post/the-benefits-of-sensory-play-for-developing-emotional-awareness-in-autism",
+      "title": "The Benefits of Sensory Play for Developing Emotional Awareness in Autism",
+      "words": 1743,
+      "hits": 3
+    },
+    {
+      "url": "/post/the-benefits-of-structured-learning-environments-in-behavioral-therapy",
+      "title": "The Benefits of Structured Learning Environments in Behavioral Therapy",
+      "words": 1886,
+      "hits": 3
+    },
+    {
+      "url": "/post/the-benefits-of-teaching-relaxation-techniques",
+      "title": "The benefits of teaching relaxation techniques",
+      "words": 1873,
+      "hits": 3
+    },
+    {
+      "url": "/post/the-benefits-of-using-preference-assessments-in-therapy",
+      "title": "The benefits of using preference assessments in therapy",
+      "words": 4882,
+      "hits": 3
+    },
+    {
+      "url": "/post/the-importance-of-teaching-self-regulation-strategies-in-asd",
+      "title": "The Importance of Teaching Self-Regulation Strategies in ASD",
+      "words": 2504,
+      "hits": 3
+    },
+    {
+      "url": "/post/the-role-of-observation-in-assessing-behavior",
+      "title": "The role of observation in assessing behavior",
+      "words": 2454,
+      "hits": 3
+    },
+    {
+      "url": "/post/what-does-overstimulation-feel-like-autism",
+      "title": "What Does Overstimulation Feel Like in Autism?",
+      "words": 2747,
+      "hits": 3
+    }
+  ]
+}
