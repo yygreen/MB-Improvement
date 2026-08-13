@@ -40,7 +40,15 @@ CLUSTERS = {
             'coverage', 'reimburse', 'out-of-pocket', 'grant', 'waiver',
             'benefit', 'cost', 'afford', 'fee schedule', 'prior authorization',
         ],
-        'body_hits_required': 4,
+        # Chosen from the observed distribution over all 609 URLs, not guessed.
+        # The 213 town pages carry a boilerplate financing block and cluster at
+        # 5 to 7 hits; at 8 and above there are no template pages at all. The
+        # first run of this tool used 4 and returned 302 "financing pages",
+        # which is how a threshold picked by intuition fails.
+        'body_hits_required': 8,
+        # Template families: one page's worth of content repeated hundreds of
+        # times. Counting each as a cluster member drowns the real map.
+        'exclude_prefixes': ['/areas-we-serve/'],
     },
 }
 
@@ -96,9 +104,17 @@ def main():
         title = (re.search(r'<title>(.*?)</title>', h) or [None, ''])[1]
         rec = {'url': u.replace(BASE, ''), 'title': title,
                'words': len(t.split()), 'hits': len(hits)}
-        (inside if len(hits) >= cfg['body_hits_required'] else rejected).append(rec)
+        excluded = any(rec['url'].startswith(x) for x in cfg.get('exclude_prefixes', []))
+        in_cluster = len(hits) >= cfg['body_hits_required'] and not excluded
+        (inside if in_cluster else rejected).append(rec)
         if i % 25 == 0:
             print(f'  ...{i}/{len(candidates)}')
+
+    import collections
+    dist = collections.Counter(r['hits'] for r in inside + rejected)
+    print('\nhit distribution (pick the threshold from this, do not guess):')
+    for k in sorted(dist, reverse=True):
+        print(f'  {k:2d} hits: {dist[k]:3d} pages')
 
     inside.sort(key=lambda r: -r['hits'])
     out = pathlib.Path(f'content/ops/cluster-{cluster}.json')
