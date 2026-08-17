@@ -106,7 +106,48 @@ Negative tests, both fire:
 - delete the age range from the value and the build fails because the edge
   cannot be derived at all
 
-## Not fixed: New Jersey and North Carolina carry the same defect
+## Resolved 2026-08-17: New Jersey and North Carolina
+
+Both fixed, and the verified law turned out to be different in each state,
+which is why copying Georgia's answer across was never an option.
+
+**New Jersey** (N.J.A.C. 6A:14, read out of the code PDF itself): programs
+run "age three through 21", but "Age 21" is defined as attaining the 21st
+birthday by June 30 of that school year, and a student turning 21 mid-year
+"shall continue to be provided services for the balance of that school
+year." So the school entitlement has **no single end date**: it varies with
+the birthday, from the 21st birthday to just short of the 22nd. The old
+hard bar at 22 promised most families a year they do not get. The honest
+render is an open-ended arrow plus a caveat naming the finish-the-year rule
+and the diploma exit (6A:14-3.8 treats graduation as a terminating event;
+6A:14-4.11 lets a parent contest a proposed graduation before it happens).
+
+**North Carolina** (N.C.G.S. 115C-107.1, quoted verbatim): (a)(1) grants
+FAPE for "the ages of three through 21", and (a)(2) carries a student
+already in services "until the end of the school year in which that child
+reaches the age of 22", which can land close to the 23rd birthday, past the
+chart's axis entirely. NC also writes the diploma exit into the grant
+itself: both subsections apply only to a student who "has not graduated
+from high school". Open-ended arrow past the axis, caveat carries the rule.
+
+Both generators now derive every closed edge from dataset prose via the
+same `edge()` pattern, and gate that closed edges are ticks while
+open-ended bands run exactly to the axis end (an arrow that stops mid-plot
+labels nothing). NC gains the missing 19 tick for the mandate band's edge.
+The NJ generator's dead `need(...) if False else None` line is gone, and
+the NC docstring no longer claims to generate the NJ figures.
+
+Geometry re-derived independently from both emitted HTML files: all nine
+bands match, all closed edges ticked, both caveats name the diploma rule.
+Negative tests fire in both: corrupting NJ's mandate age to 25 fails on the
+changed quote and again on the unreadable edge; deleting NC's (a)(2)
+continuation fails the build.
+
+The rebuilt images are in the repo; the live pages still serve the old
+assets until the next token session swaps them (same MD5-addressing as the
+Georgia figure).
+
+## The original finding (2026-08-13), kept for the record
 
 `build-nj-figures.py` and `build-nc-figures.py` both hardcode the school band
 at `22.0`, and neither `data/funding/new-jersey.json` nor

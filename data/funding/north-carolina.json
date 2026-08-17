@@ -233,6 +233,20 @@
       "source_type": "medicaid_manual",
       "source_title": "NC Medicaid Clinical Coverage Policy No. 8F, Research-Based Behavioral Health Treatment (RB-BHT) for Autism Spectrum Disorder, amended date August 1, 2026",
       "verified_on": "2026-08-11"
+    },
+    "age_out": {
+      "value": "N.C.G.S. 115C-107.1(a)(1) grants FAPE to \"All children with disabilities who reside in the State, who are the ages of three through 21, who have not graduated from high school, and who require special education and related services.\" Subsection (a)(2) then carries a student already in services past that: \"Any child with a disability who is receiving special education and related services and who has not graduated from high school until the end of the school year in which that child reaches the age of 22.\" So for a student already receiving services, the edge is the end of the school year of the 22nd birthday, which can land close to the 23rd.",
+      "source_url": "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_115C/GS_115C-107.1.html",
+      "source_type": "statute",
+      "source_title": "N.C.G.S. 115C-107.1, Free appropriate public education",
+      "verified_on": "2026-08-17"
+    },
+    "diploma_exit": {
+      "value": "North Carolina writes the diploma exit into the grant itself: both 115C-107.1(a)(1) and (a)(2) apply only to a student who \"has not graduated from high school,\" so graduation ends the entitlement at any age. What counts federally as a regular high school diploma is narrow: 34 CFR 300.102(a)(3)(iv) excludes a general equivalency diploma, a certificate of completion, a certificate of attendance or a similar lesser credential, and a student who leaves without a regular diploma keeps the entitlement.",
+      "source_url": "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_115C/GS_115C-107.1.html",
+      "source_type": "statute",
+      "source_title": "N.C.G.S. 115C-107.1, Free appropriate public education",
+      "verified_on": "2026-08-17"
     }
   },
   "appeals": {

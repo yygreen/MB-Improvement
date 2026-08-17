@@ -1,31 +1,67 @@
 #!/usr/bin/env python3
 """Generate the two NJ funding figures. Geometry is computed here, written into
 the HTML, then re-derived from the published values and asserted."""
-import json, pathlib, sys
+import json, pathlib, sys, re
 
 DATA = json.load(open('data/funding/new-jersey.json'))
 OUT = pathlib.Path(sys.argv[1] if len(sys.argv) > 1 else '.')
 errs = []
 
-def need(text, path, why):
-    """Assert a claim appears in the dataset value it is supposed to come from."""
+
+def field(path):
     node = DATA
     for k in path.split('.'):
-        node = node[k]
-    if text not in node['value']:
+        node = node[int(k)] if k.isdigit() else node[k]
+    return node
+
+
+def need(text, path, why):
+    """Assert a claim appears in the dataset value it is supposed to come from."""
+    if text not in field(path)['value']:
         errs.append(f'{why}: {text!r} not in {path}')
+
+
+WORDS = {'three': 3, 'twenty-one': 21}
+
+
+def edge(path, pattern, offset, why):
+    """Derive a closed band's exclusive right edge from the dataset prose.
+
+    The school band used to end at a hardcoded 22.0 with no dataset field
+    behind it, which is the defect the Georgia figure audit found. offset
+    turns an inclusive age into an exclusive edge.
+    """
+    m = re.search(pattern, field(path)['value'], re.I)
+    if not m:
+        errs.append(f'{why}: {pattern!r} does not match {path}, cannot derive the edge')
+        return None
+    tok = m.group(1).lower()
+    n = WORDS.get(tok)
+    if n is None:
+        n = int(tok)
+    return float(n + offset)
 
 # ---------------------------------------------------------------- figure 1
 AX0, AX1 = 0.0, 22.0
 def x(years):
     return round((years - AX0) / (AX1 - AX0) * 100, 2)
 
+E_EI   = edge('early_intervention.age_range', r'birth and age (three|\d+)', 0, 'EI end')
+E_MAND = edge('mandate.age_limit', r'under (\d+) years of age', 0, 'mandate end')
+E_MCD  = edge('medicaid.age_limit', r'under the age of (twenty-one|\d+)', 0, 'medicaid end')
+E_DDD  = edge('waivers.0.population', r'Being (\d+) Years of age or older', 0, 'DDD floor')
+
+# The school band is open-ended by law, not by drawing style: N.J.A.C. 6A:14
+# ends the entitlement at the close of the school year in which the student
+# turns 21, so the true edge varies with the birthday and can reach just
+# short of 22. An arrow past the axis plus the caveat is the honest render;
+# a hard bar at 22 would promise most families a year they do not get.
 BANDS = [
-    ('New Jersey Early Intervention', 'Birth to age three',      0.0,  3.0,  '#c14a3f', False),
-    ('School district, IEP',          'From the third birthday', 3.0,  22.0, '#9a9484', True),
-    ('Chapter 115, commercial insurance', 'ABA for under 21',    0.0,  21.0, '#009499', False),
-    ('NJ FamilyCare, EPSDT autism benefit', 'Under 21',          0.0,  21.0, '#1a2744', False),
-    ('DDD waiver programs',           'Age 21 and over',        21.0, 22.0, '#6f6a5e', True),
+    ('New Jersey Early Intervention', 'Birth to age three',      0.0,  E_EI,   '#c14a3f', False),
+    ('School district, IEP',          'From the third birthday', 3.0,  AX1,    '#9a9484', True),
+    ('Chapter 115, commercial insurance', 'ABA for under 21',    0.0,  E_MAND, '#009499', False),
+    ('NJ FamilyCare, EPSDT autism benefit', 'Under 21',          0.0,  E_MCD,  '#1a2744', False),
+    ('DDD waiver programs',           'Age 21 and over',        E_DDD, AX1,    '#6f6a5e', True),
 ]
 REFERRAL = 3.0 - 120 / 365.0          # 120 days before the third birthday
 TICKS = [0, 3, 5, 10, 15, 21]
@@ -36,10 +72,31 @@ need('birth and age three', 'early_intervention.age_range', 'EI age range')
 need('at least 120 days prior to the preschooler attaining age three',
      'school_services.idea_part_c_to_b_transition', 'referral lead time')
 need('third birthday', 'school_services.idea_part_c_to_b_transition', 'FAPE start')
-need('Being 21 Years of age or older', 'waivers.0.population'.replace('.0.', '.'), 'waiver age') \
-    if False else None
+need('age three through 21', 'school_services.age_out', 'school age range')
+need('continue to be provided services for the balance of that school year',
+     'school_services.age_out', 'the finish-the-year rule')
+need('graduation', 'school_services.diploma_exit', 'diploma exit')
 if DATA['waivers'][0]['population']['value'].find('21 Years of age or older') < 0:
     errs.append('waiver age floor not found in waivers[0].population')
+
+if None in (E_EI, E_MAND, E_MCD, E_DDD):
+    for e in errs:
+        print('ERROR', e)
+    sys.exit(1)
+
+# every edge must be readable: closed edges are ticks; open-ended bands must
+# run exactly to the axis end, where the arrow says "continues", never stop
+# at an unlabelled year inside the plot
+for name, _, a, b, _, open_end in BANDS:
+    if open_end:
+        if b != AX1:
+            errs.append(f'{name} is open-ended but stops at {b:g}, inside the axis; '
+                        f'an arrow that stops mid-plot labels nothing')
+    elif b not in TICKS:
+        errs.append(f'{name} ends at {b:g}, which is not a tick; the reader cannot '
+                    f'tell where the band stops')
+    if a not in (0.0, 3.0) and a not in TICKS:
+        errs.append(f'{name} starts at {a:g}, which is not a tick')
 
 rows = []
 for name, note, a, b, colour, open_end in BANDS:
@@ -60,6 +117,18 @@ ticks = ''.join(
     f'<div class="tk" style="left:{x(t)}%">{t}</div>' for t in TICKS)
 mark_x = round(x(REFERRAL), 2)
 assert 2.6 < (mark_x / 100) * AX1 < 2.75, 'referral marker is not ~4 months before age three'
+
+# The arrows continue past the axis for a reason, and the reason has to be on
+# the image itself. Numbers interpolate from the derived edges above.
+CAVEAT = (f'<b>The school band has no single end date.</b> Services run to the close '
+          f'of the school year in which a student turns {E_MAND:g}, so the exact edge '
+          f'depends on the birthday. Graduating with a regular high school diploma '
+          f'ends them sooner, at any age. A GED, a certificate of completion or a '
+          f'certificate of attendance does not.')
+for needle, why in [('regular high school diploma', 'the diploma exit'),
+                    (f'turns {E_MAND:g}', 'the finish-the-year rule')]:
+    if needle not in CAVEAT:
+        errs.append(f'caveat does not carry {why}')
 
 fig1 = f'''<!doctype html><html><head><meta charset="utf-8">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
@@ -86,7 +155,9 @@ h2{{font-size:40px;font-weight:800;color:#1a2744;letter-spacing:-.01em;line-heig
 .axis .line{{position:absolute;top:0;left:0;right:0;height:3px;background:#c9c4b8}}
 .tk{{position:absolute;top:12px;transform:translateX(-50%);font-size:25px;color:#6f6a5e;white-space:nowrap}}
 .unit{{position:absolute;top:44px;left:0;font-size:25px;color:#8a8a8a}}
-.credit{{margin-top:16px;font-size:23px;color:#8a8a8a}}
+.caveat{{margin-top:14px;font-size:24px;line-height:1.42;color:#5a5a5a}}
+.caveat b{{font-weight:800;color:#1a2744}}
+.credit{{margin-top:14px;font-size:23px;color:#8a8a8a}}
 </style></head><body>
 <h2>Who is responsible, and when</h2>
 <div class="sub">The same child moves between systems on fixed dates. Age in years across the bottom.</div>
@@ -98,7 +169,8 @@ h2{{font-size:40px;font-weight:800;color:#1a2744;letter-spacing:-.01em;line-heig
 <div class="axis"><div class="line"></div>{ticks}
   <div class="unit">Age in years</div>
 </div>
-<div class="credit">Mastermind Behavior. Sources: N.J.A.C. 6A:14; DOBI Bulletin 10-02; NJ Medicaid SPA 19-0003; NJ DDD.</div>
+<div class="caveat">{CAVEAT}</div>
+<div class="credit">Mastermind Behavior. Sources: N.J.A.C. 6A:14; DOBI Bulletin 10-02; NJ Medicaid SPA 19-0003; NJ DDD; 34 CFR 300.102.</div>
 </body></html>'''
 
 # ---------------------------------------------------------------- figure 2

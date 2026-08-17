@@ -270,6 +270,20 @@
       "source_type": "regulation",
       "source_title": "N.J.A.C. 6A:14, Special Education (current text, NJ Department of Education)",
       "verified_on": "2026-08-11"
+    },
+    "age_out": {
+      "value": "N.J.A.C. 6A:14-1.1: \"Programs and services shall be provided to students age three through 21,\" and districts \"may\" serve students above 21 at their own option. The upper edge is not a single date for every student. The code defines it: \"Age 21\" means the attainment of the 21st birthday by June 30 of that school year. Students with disabilities attaining age 21 during the school year shall continue to be provided services for the balance of that school year. So a student who turns 21 mid-year finishes the year, and the entitlement ends somewhere between the 21st birthday and just before the 22nd, set by where the birthday falls against June 30.",
+      "source_url": "https://www.nj.gov/education/code/current/title6a/chap14.pdf",
+      "source_type": "regulation",
+      "source_title": "New Jersey Administrative Code, Title 6A, Chapter 14, Special Education",
+      "verified_on": "2026-08-17"
+    },
+    "diploma_exit": {
+      "value": "Graduation ends the entitlement before age does. N.J.A.C. 6A:14-3.8 treats graduation as a terminating event: \"a reevaluation shall not be required before the termination of a student's eligibility under this chapter due to graduation or exceeding age 21,\" and 6A:14-4.11 requires the IEP of every high school student to address graduation requirements, with a parent able to contest a proposed graduation through mediation or due process before it happens. What counts federally as a regular high school diploma is narrow: 34 CFR 300.102(a)(3)(iv) excludes a general equivalency diploma, a certificate of completion, a certificate of attendance or a similar lesser credential.",
+      "source_url": "https://www.nj.gov/education/code/current/title6a/chap14.pdf",
+      "source_type": "regulation",
+      "source_title": "New Jersey Administrative Code, Title 6A, Chapter 14, Special Education",
+      "verified_on": "2026-08-17"
     }
   },
   "appeals": {
