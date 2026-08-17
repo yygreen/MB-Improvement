@@ -3,6 +3,16 @@
 Handoff for a new Claude session. Written 2026-08-05, after the full 12-page
 complex went live on staging. Read this top to bottom before touching anything.
 
+> **SUPERSEDED IN PART, 2026-08-17.** The user confirmed the staged work is
+> shipped, and production verification agrees: all 7 nav-pathway placements
+> (4 Find Your Local Team retargets, 3 hub services blocks) are live on
+> production with 24/24 links resolving, and all 12 service-state pages are
+> live, self-canonical, indexable and in the sitemap. The "rides a publish"
+> protections below describe a state that no longer exists; they are kept
+> for the record. Whether Taylor's clinical review happened before the
+> publish is not recorded here — the review states below are the last known
+> and should not be read as current.
+
 ## Standing constraints (never violate)
 
 1. **Staging only.** Publish with `publishToWebflowSubdomain: true,
