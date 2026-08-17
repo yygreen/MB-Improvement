@@ -1,0 +1,156 @@
+**URL (new):** `/post/aba-therapy-funding-new-jersey`
+**SEO title (58 chars):** Who Pays for ABA Therapy in New Jersey? A Funding Guide
+**Meta description (152 chars):** New Jersey insurance law, NJ FamilyCare, Early Intervention and school services, with the appeal deadlines. Every figure sourced to a state document.
+**Category:** Living with Autism | Insurance & Funding
+**Data source:** `data/funding/new-jersey.json` (42 facts, gate green 2026-08-11)
+**Internal links:** `/aba-therapy-in-new-jersey`, `/in-home-aba-therapy`, `/contact`
+
+---
+
+# Who Pays for ABA Therapy in New Jersey?
+
+Four different systems can pay for ABA in New Jersey, and they answer to four different rulebooks. Most of the confusion families run into comes from advice that was true about one of them being applied to another.
+
+This page sorts them out. Every figure below is taken from a New Jersey or federal government document, and each one is dated, because coverage rules change and a guide that does not tell you when it was checked is not much use.
+
+Checked 11 August 2026.
+
+@figure nj-who-pays-when
+
+## Before anything else: is your plan self-funded?
+
+This is the question that decides whether the rest of the insurance section applies to you at all, and almost nobody thinks to ask it.
+
+New Jersey's autism coverage law binds insurance contracts. Many employers, particularly larger ones, do not buy an insurance contract. They pay claims out of their own money and hire an insurance company only to administer the plan. That is a self-funded plan, and New Jersey's mandate does not reach it. The Department of Banking and Insurance says so directly: its rules on utilization management appeals "do not apply to self-funded plans, to policies issued and delivered in a state other than New Jersey, or to limited benefits plans that do not provide hospital or medical expense benefits."
+
+The reason is federal. ERISA preserves state insurance regulation, then removes self-funded plans from its reach: an employee benefit plan shall not "be deemed to be an insurance company or other insurer ... or to be engaged in the business of insurance ... for purposes of any law of a State purporting to regulate insurance companies, insurance contracts, banks, trust companies, or investment companies." A state law that binds the insurance contract cannot bind a plan that never bought one.
+
+**How to find out, in two minutes.** Ask your employer's plan administrator whether the plan is self-funded or fully insured. Read the Summary Plan Description, which the administrator must give you free of charge and which sets out "how it works, what benefits it provides, how to file a claim for benefits, and any limitations that may apply." Or look at a denial letter: the US Department of Labor notes that "the external review process used by the plan depends on whether the plan is self-funded or provides benefits through an insurance company. The claim denial notice from your plan will describe the external process and your rights." If your denial points you to a federal external review rather than to New Jersey's appeals program, your plan is self-funded.
+
+Being on a self-funded plan is not a dead end. Those plans have their own federal appeal rights, and many voluntarily cover ABA. It just means the New Jersey rules below are not leverage you have. If it is the vocabulary in your plan documents that is the obstacle, our [plain English guide to insurance terms](https://www.mastermindbehavior.com/insurance-terminology) works through it.
+
+## What New Jersey law requires
+
+The law is P.L. 2009, c. 115, which everyone at the Department of Banking and Insurance calls Chapter 115. It applies to health insurance policies "issued or renewed on or after February 9, 2010 that provide hospital and medical expense benefits, including all health maintenance organization and all health service corporation contracts." It also covers the State Health Benefits Plan and the School Employees Health Benefits Plan.
+
+It requires four things:
+
+1. Coverage for screening and diagnosing autism or another developmental disability
+2. Coverage for medically necessary physical, occupational and speech therapy for those conditions
+3. Coverage for medically necessary behavioral interventions based on applied behavior analysis, for individuals **under 21** diagnosed with autism
+4. A benefit covering the Family Cost Share you pay to New Jersey Early Intervention
+
+Two details are worth knowing before you call anyone.
+
+**There is no visit cap, and there cannot be one.** Carriers may not reduce the therapy benefits otherwise available under your contract because those services were used to treat autism. If a carrier sets up a separate autism benefit, it must be on terms "the same as or more favorable than" the ones applying to other conditions. And the Department "will not approve limits for physical therapy, occupational therapy or speech therapy for treatment of autism or other developmental disabilities that establish a maximum number of days of therapy measured from the date of diagnosis or inception of treatment, or benefit limits established on a per illness or injury basis."
+
+**Who delivers the ABA matters.** New Jersey has no professional license for behavior analysts, so the Department leans on national certification instead. It believes carriers should treat ABA services as eligible for benefits "if administered directly by or under the direct supervision of an individual who is credentialed by the national Behavior Analyst Certification Board as either: a Board Certified Behavior Analyst - Doctoral (BCBA-D); or a Board Certified Behavior Analyst (BCBA)."
+
+## The $36,000 figure, and why it usually does not apply
+
+Search for New Jersey autism coverage and you will be told, over and over, that the state caps ABA at $36,000 a year. That is what the Legislature intended. It is often not what the law can do.
+
+Here is the Department of Banking and Insurance in its own words: "Although DOBI recognizes that the Legislature intended to limit coverage of ABA services for persons under age 21 diagnosed with autism spectrum disorder to $36,000 per calendar year, carriers may not be able to limit the benefit as described."
+
+The reason is federal parity. New Jersey classifies pervasive developmental disorders as a biologically-based mental illness. The federal Mental Health Parity and Addiction Equity Act generally bars group health plans from applying tighter limits to mental health treatment than to physical health treatment. So the two conflict, and the Department's conclusion is that the state cap "may not be applied unless the employer obtains an exemption under MHPAEA for its group health plan based on the 1% cost increase."
+
+What that means in practice:
+
+- **Group health plan subject to federal parity:** the $36,000 limit generally cannot be applied. If your carrier applies it, that is worth challenging.
+- **Individual market policy:** federal parity does not apply, and the Department states carriers may apply the limit.
+- **Self-funded plan:** Chapter 115 does not reach you at all. See above.
+
+If a letter tells you that you have hit a $36,000 annual maximum, the first thing to establish is which of those three you are. For what families actually end up paying once a plan is applied, see [how much ABA therapy costs with insurance](https://www.mastermindbehavior.com/post/how-much-is-aba-therapy-with-insurance) and our breakdown of [ABA therapy costs](https://www.mastermindbehavior.com/post/cost-of-aba-therapy-for-autism).
+
+## NJ FamilyCare
+
+NJ FamilyCare is New Jersey's combined Medicaid and CHIP program, and it covers ABA through the state plan rather than through a waiver. That distinction matters: it means eligible children get the benefit as an entitlement, not a slot on a list.
+
+The benefit was added by State Plan Amendment NJ-19-0003, approved 18 September 2020 with an effective date of 1 January 2019. It sits under Early and Periodic Screening, Diagnostic and Treatment, and it is "available to Medicaid beneficiaries under the age of twenty-one with an ASD diagnosis made by a qualified licensed practitioner." Services must be "recommended by a physician, advanced practice nurse, or psychologist." Covered behavioral intervention "should include but are not limited to development of an integrated Applied Behavior Analysis (ABA) plan of care or behavior support plan."
+
+**Who can deliver it.** The state plan sets a supervision ladder. A BCBA-D or BCBA can practice independently. A Board Certified Assistant Behavior Analyst "may not practice independently" and works only "under the supervision of a BCBA/BCBA-D certified provider." Below that sits the behavior technician, described by the state plan as "a paraprofessional practicing under the supervision of a BCaBA, BCBA, or BCBA-D," who must have a bachelor's degree plus a year of supervised experience, or a high school diploma or GED plus three years, or hold Behavior Analyst Certification Board technician certification. Providers must be enrolled with NJ FamilyCare and "licensed by New Jersey, certified by a nationally accredited credentialing body, or by a recognized provider of continuing education."
+
+**Getting it authorized.** Where the request goes depends on how your child is covered. There are five NJ FamilyCare health plans: Aetna Better Health of New Jersey, Fidelis Care, Horizon NJ Health, UnitedHealthcare Community Plan, and Wellpoint. If your child is in one of them, authorization goes to that plan. If your child is fee for service, prior authorization runs through the Interim Managing Entity on 1.844.276.2444, and there is a dedicated state autism line for ABA questions on 609.588.8522. Behavioral health access for children under 21 also runs through PerformCare, the Children's System of Care's single point of entry, on 1.877.652.7624.
+
+## Under three: New Jersey Early Intervention
+
+Before your child's third birthday, the relevant system is not insurance and not the school. It is the New Jersey Early Intervention System, run by the Department of Health. We set out what that looks like in practice on our page on [early intervention in New Jersey](https://www.mastermindbehavior.com/early-intervention-new-jersey).
+
+**You can refer your own child.** No doctor's note, no waiting for someone else to act. If you are still at the stage of wondering whether there is anything to refer, start with the [early signs of autism](https://www.mastermindbehavior.com/post/early-signs-of-autism-in-babies-and-kids). "If you suspect that an infant or toddler may be experiencing developmental delays, the referral is made by calling the Regional System Point of Entry toll free number at 1-888-653-4463 and following the menu directions based on the county in which the child (or family) lives."
+
+**Eligibility** runs on either measured delay ("at least 2.0 standard deviations below the mean in one developmental area; or 1.5 standard deviations below the mean in two or more") or a diagnosed condition with a high probability of causing developmental delay, confirmed in writing by a physician, advanced practice nurse or licensed clinician.
+
+**Cost.** "If a family's income is below 300% Federal Poverty Level (FPL), they will have no cost participation." Above that line, five things are still free at any income, because federal law requires them at public expense: child find and referral, evaluation and assessment, service coordination, development and review of the Individualized Family Service Plan, and procedural safeguards. Beyond those, a Family Cost Share applies on a sliding scale by income and household size, and Chapter 115 separately requires New Jersey carriers to reimburse that share, which many families never claim.
+
+Services are set out in an Individualized Family Service Plan, reviewed every six months, with a full developmental evaluation and IFSP meeting at least once a year.
+
+## Three and over: what the school does, and does not do
+
+On your child's third birthday, responsibility for educational services moves to your school district, and the paperwork has to start four months earlier.
+
+New Jersey's special education code requires that "the obligation to make a free, appropriate public education available to each eligible student begins no later than the student's third birthday and that an individualized education program is in effect for the student by that date." To make that possible, "a written request for initial evaluation shall be forwarded by Early Intervention Service providers to the district board of education at least 120 days prior to the preschooler attaining age three." A child study team member from the district must attend the transition planning conference that your early intervention service coordinator arranges. We cover that handover, and the later ones, on our page on [transition planning in New Jersey](https://www.mastermindbehavior.com/transition-planning-new-jersey).
+
+Once you consent to an initial evaluation, "the evaluation, determination of eligibility for services under this chapter, and, if eligible, development and implementation of the student's IEP shall be completed within 90 calendar days."
+
+**On whether ABA belongs in an IEP.** New Jersey's special education code does not mention applied behavior analysis anywhere. What it requires instead is that "the services and placement needed by each student with a disability to receive a free, appropriate public education are based on the student's unique needs and not on the student's disability." Whether behavioral services appear in a given IEP is a decision the IEP team makes about your child. If you are weighing which document your child should have at all, we compare [an IEP against a 504 plan](https://www.mastermindbehavior.com/post/iep-vs-504-plan-for-autism).
+
+**The distinction that saves families a lot of frustration:** an IEP and an insurance authorization answer different questions. The IEP exists to deliver a free, appropriate public education, so it turns on educational need. Chapter 115 and NJ FamilyCare turn on medical necessity. A district declining to write a service into an IEP is not a finding that the service is unnecessary, and an insurer authorizing hours does not obligate the school to provide them. You can pursue both.
+
+## If you are denied
+
+Denials are common and often reversed. The path has dates on it, and missing them is the most avoidable way to lose.
+
+@figure nj-appeal-clock
+
+**Step one: the internal appeal.** You have 180 days from receiving an adverse utilization management determination to file a Stage 1 appeal, and 180 days again for Stage 2. NJ FamilyCare members have 60 days. The carrier should decide Stage 1 within 10 business days, or within 72 hours where urgent or emergency care is involved, and Stage 2 within 20 business days.
+
+**Step two: independent external review.** New Jersey runs the Independent Health Care Appeals Program through the Department of Banking and Insurance, with reviews decided by independent review organizations. Since 1 January 2022 the vendor has been Maximus Federal Services.
+
+You have **four months** from receiving the final internal appeal determination. File online at njihcap.maximus.com, by phone on 888.866.6205, by fax on 585.425.5296, or by post to Maximus Federal, NJ IHCAP, 3750 Monroe Avenue, Suite 705, Pittsford, NY 14534.
+
+It costs you nothing. "Carriers bear the costs of both the preliminary and full review."
+
+**If it is urgent.** Expedited external reviews "are decided by the IURO within 48 hours from when the appeal request was submitted," and are available for admission requests, continued stays, or where the standard timeframe "would seriously jeopardize your life or health." You normally have to finish the internal appeal first, but there are exceptions: where the carrier missed its own deadlines, or where you applied for expedited external review at the same time as expedited internal review.
+
+**Separately, you can complain.** The Department takes consumer complaints about carriers on 1.800.446.7467, weekdays 8:30am to 5:00pm. Formal complaints must be in writing and include "the company name/agent's name, the policy/certificate number(s), any documentation that will substantiate your position, and a brief description of the problems." That is a different process from the appeal, and it does not reach self-funded plans either.
+
+## Why Mastermind Behavior
+
+Almost none of what is on this page is written down anywhere a parent would think to look. It came out of state bulletins, a Medicaid state plan amendment, an insurance department appeals program and the special education code, read line by line and dated so you can see how current it is. That is the same work we do with families every week, because the funding conversation is not an afterthought for us. It is usually the first one. Mastermind Behavior is a BCBA-owned provider delivering [in-home ABA therapy](https://www.mastermindbehavior.com/in-home-aba-therapy) across [New Jersey](https://www.mastermindbehavior.com/aba-therapy-in-new-jersey), Georgia and North Carolina, and we will help you work out which of the four systems above applies to your child, what your plan is actually obliged to cover, and whether a denial is worth appealing. If we are not the right fit for your family, we will tell you that as well. You can [talk it through with us](https://www.mastermindbehavior.com/contact) before you commit to anything.
+
+## Sources
+
+Every figure on this page was checked against these documents on 11 August 2026.
+
+1. New Jersey Department of Banking and Insurance. Bulletin No. 10-02, Implementation of P.L. 2009, c. 115 With Respect to Certain Benefits for Treatment of Autism and Other Developmental Disabilities. 14 January 2010.
+2. New Jersey Department of Banking and Insurance. Utilization Management Appeals and the Independent Health Care Appeals Program.
+3. New Jersey Department of Banking and Insurance. Independent Health Care Appeals Program (IHCAP).
+4. New Jersey Department of Banking and Insurance. Consumer Information and Complaints.
+5. Centers for Medicare & Medicaid Services. New Jersey Medicaid State Plan Amendment NJ-19-0003, EPSDT Autism Benefit. Approved 18 September 2020.
+6. New Jersey Division of Medical Assistance and Health Services. NJ FamilyCare Health Plans.
+7. New Jersey Division of Medical Assistance and Health Services. BH Integration Points of Contact V3.1, 30 April 2026.
+8. New Jersey Department of Health. Early Intervention Services in New Jersey: Frequently Asked Questions.
+9. New Jersey Department of Health. Early Intervention: System of Payment and Family Cost Participation.
+10. N.J.A.C. 6A:14, Special Education. New Jersey Department of Education.
+11. 29 U.S.C. 1144(b)(2). ERISA saving clause and deemer clause.
+12. US Department of Labor, Employee Benefits Security Administration. Filing a Claim for Your Health Benefits.
+
+---
+
+## Build notes
+
+Copy gates applied: no em dashes in fresh copy; no clinic or center implied;
+no outcome guarantees; no competitor names; no named BCBA attribution; phone
+732.813.7333 only (no phone number appears in this body, all numbers are state
+agency lines).
+
+The behavior technician credential rule is quoted from the NJ Medicaid state
+plan, which names the Behavior Analyst Certification Board technician
+certification. The house rule is to say Behavior Technician in our own voice;
+the state's own wording is reproduced only where it is the coverage rule being
+described, and the certification is referred to descriptively rather than by
+its acronym.
+
+Two numbers deliberately not stated as flat facts: the $36,000 cap, which the
+Department itself says usually cannot be applied, and any claim that self-funded
+families have no options, which is false.

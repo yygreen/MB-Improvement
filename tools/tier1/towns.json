@@ -1,0 +1,860 @@
+{
+ "new-jersey": [
+  {
+   "slug": "aberdeen",
+   "name": "Aberdeen"
+  },
+  {
+   "slug": "asbury-park",
+   "name": "Asbury Park"
+  },
+  {
+   "slug": "bayonne",
+   "name": "Bayonne"
+  },
+  {
+   "slug": "belleville",
+   "name": "Belleville"
+  },
+  {
+   "slug": "belvidere",
+   "name": "Belvidere"
+  },
+  {
+   "slug": "bergenfield",
+   "name": "Bergenfield"
+  },
+  {
+   "slug": "berkeley",
+   "name": "Berkeley"
+  },
+  {
+   "slug": "bloomfield",
+   "name": "Bloomfield"
+  },
+  {
+   "slug": "brick",
+   "name": "Brick"
+  },
+  {
+   "slug": "bridgeton",
+   "name": "Bridgeton"
+  },
+  {
+   "slug": "bridgewater",
+   "name": "Bridgewater"
+  },
+  {
+   "slug": "camden",
+   "name": "Camden"
+  },
+  {
+   "slug": "cape-may",
+   "name": "Cape May"
+  },
+  {
+   "slug": "carteret",
+   "name": "Carteret"
+  },
+  {
+   "slug": "cherry-hill",
+   "name": "Cherry Hill"
+  },
+  {
+   "slug": "cliffside-park",
+   "name": "Cliffside Park"
+  },
+  {
+   "slug": "clifton",
+   "name": "Clifton"
+  },
+  {
+   "slug": "cranford",
+   "name": "Cranford"
+  },
+  {
+   "slug": "denville",
+   "name": "Denville"
+  },
+  {
+   "slug": "deptford",
+   "name": "Deptford"
+  },
+  {
+   "slug": "dover",
+   "name": "Dover"
+  },
+  {
+   "slug": "dumont",
+   "name": "Dumont"
+  },
+  {
+   "slug": "east-brunswick",
+   "name": "East Brunswick"
+  },
+  {
+   "slug": "east-orange",
+   "name": "East Orange"
+  },
+  {
+   "slug": "edison",
+   "name": "Edison"
+  },
+  {
+   "slug": "egg-harbor",
+   "name": "Egg Harbor"
+  },
+  {
+   "slug": "elizabeth",
+   "name": "Elizabeth"
+  },
+  {
+   "slug": "elmwood-park",
+   "name": "Elmwood Park"
+  },
+  {
+   "slug": "evesham",
+   "name": "Evesham"
+  },
+  {
+   "slug": "ewing",
+   "name": "Ewing"
+  },
+  {
+   "slug": "fair-lawn",
+   "name": "Fair Lawn"
+  },
+  {
+   "slug": "flemington",
+   "name": "Flemington"
+  },
+  {
+   "slug": "franklin",
+   "name": "Franklin"
+  },
+  {
+   "slug": "freehold",
+   "name": "Freehold"
+  },
+  {
+   "slug": "galloway",
+   "name": "Galloway"
+  },
+  {
+   "slug": "garfield",
+   "name": "Garfield"
+  },
+  {
+   "slug": "gloucester",
+   "name": "Gloucester"
+  },
+  {
+   "slug": "hackensack",
+   "name": "Hackensack"
+  },
+  {
+   "slug": "hamilton",
+   "name": "Hamilton"
+  },
+  {
+   "slug": "hawthorne",
+   "name": "Hawthorne"
+  },
+  {
+   "slug": "hazlet",
+   "name": "Hazlet"
+  },
+  {
+   "slug": "hoboken",
+   "name": "Hoboken"
+  },
+  {
+   "slug": "holmdel",
+   "name": "Holmdel"
+  },
+  {
+   "slug": "howell",
+   "name": "Howell"
+  },
+  {
+   "slug": "irvington",
+   "name": "Irvington"
+  },
+  {
+   "slug": "jackson",
+   "name": "Jackson"
+  },
+  {
+   "slug": "jersey-city",
+   "name": "Jersey City"
+  },
+  {
+   "slug": "kearny",
+   "name": "Kearny"
+  },
+  {
+   "slug": "lacey",
+   "name": "Lacey"
+  },
+  {
+   "slug": "lakewood",
+   "name": "Lakewood"
+  },
+  {
+   "slug": "linden",
+   "name": "Linden"
+  },
+  {
+   "slug": "livingston",
+   "name": "Livingston"
+  },
+  {
+   "slug": "lodi",
+   "name": "Lodi"
+  },
+  {
+   "slug": "long-branch",
+   "name": "Long Branch"
+  },
+  {
+   "slug": "madison",
+   "name": "Madison"
+  },
+  {
+   "slug": "mahwah",
+   "name": "Mahwah"
+  },
+  {
+   "slug": "manalapan",
+   "name": "Manalapan"
+  },
+  {
+   "slug": "manchester",
+   "name": "Manchester"
+  },
+  {
+   "slug": "maplewood",
+   "name": "Maplewood"
+  },
+  {
+   "slug": "marlboro",
+   "name": "Marlboro"
+  },
+  {
+   "slug": "millburn",
+   "name": "Millburn"
+  },
+  {
+   "slug": "monroe",
+   "name": "Monroe"
+  },
+  {
+   "slug": "montclair",
+   "name": "Montclair"
+  },
+  {
+   "slug": "montville",
+   "name": "Montville"
+  },
+  {
+   "slug": "mount-laurel",
+   "name": "Mount Laurel"
+  },
+  {
+   "slug": "mount-olive",
+   "name": "Mount Olive"
+  },
+  {
+   "slug": "newark",
+   "name": "Newark"
+  },
+  {
+   "slug": "new-brunswick",
+   "name": "New Brunswick"
+  },
+  {
+   "slug": "newton",
+   "name": "Newton"
+  },
+  {
+   "slug": "north-brunswick",
+   "name": "North Brunswick"
+  },
+  {
+   "slug": "nutley",
+   "name": "Nutley"
+  },
+  {
+   "slug": "old-bridge",
+   "name": "Old Bridge"
+  },
+  {
+   "slug": "paramus",
+   "name": "Paramus"
+  },
+  {
+   "slug": "parsippany-troy-hills",
+   "name": "Parsippany-Troy Hills"
+  },
+  {
+   "slug": "passaic",
+   "name": "Passaic"
+  },
+  {
+   "slug": "paterson",
+   "name": "Paterson"
+  },
+  {
+   "slug": "pequannock",
+   "name": "Pequannock"
+  },
+  {
+   "slug": "perth-amboy",
+   "name": "Perth Amboy"
+  },
+  {
+   "slug": "piscataway",
+   "name": "Piscataway"
+  },
+  {
+   "slug": "plainfield",
+   "name": "Plainfield"
+  },
+  {
+   "slug": "point-pleasant",
+   "name": "Point Pleasant"
+  },
+  {
+   "slug": "princeton",
+   "name": "Princeton"
+  },
+  {
+   "slug": "rahway",
+   "name": "Rahway"
+  },
+  {
+   "slug": "randolph",
+   "name": "Randolph"
+  },
+  {
+   "slug": "ridgewood",
+   "name": "Ridgewood"
+  },
+  {
+   "slug": "rockaway",
+   "name": "Rockaway"
+  },
+  {
+   "slug": "roxbury",
+   "name": "Roxbury"
+  },
+  {
+   "slug": "rutherford",
+   "name": "Rutherford"
+  },
+  {
+   "slug": "salem",
+   "name": "Salem"
+  },
+  {
+   "slug": "sayreville",
+   "name": "Sayreville"
+  },
+  {
+   "slug": "scotch-plains",
+   "name": "Scotch Plains"
+  },
+  {
+   "slug": "secaucus",
+   "name": "Secaucus"
+  },
+  {
+   "slug": "somerville",
+   "name": "Somerville"
+  },
+  {
+   "slug": "south-brunswick",
+   "name": "South Brunswick"
+  },
+  {
+   "slug": "south-orange",
+   "name": "South Orange"
+  },
+  {
+   "slug": "sparta",
+   "name": "Sparta"
+  },
+  {
+   "slug": "stafford",
+   "name": "Stafford"
+  },
+  {
+   "slug": "summit",
+   "name": "Summit"
+  },
+  {
+   "slug": "teaneck",
+   "name": "Teaneck"
+  },
+  {
+   "slug": "tinton-falls",
+   "name": "Tinton Falls"
+  },
+  {
+   "slug": "toms-river",
+   "name": "Toms River"
+  },
+  {
+   "slug": "trenton",
+   "name": "Trenton"
+  },
+  {
+   "slug": "union",
+   "name": "Union"
+  },
+  {
+   "slug": "vernon",
+   "name": "Vernon"
+  },
+  {
+   "slug": "vineland",
+   "name": "Vineland"
+  },
+  {
+   "slug": "voorhees",
+   "name": "Voorhees"
+  },
+  {
+   "slug": "wall",
+   "name": "Wall"
+  },
+  {
+   "slug": "wayne",
+   "name": "Wayne"
+  },
+  {
+   "slug": "westfield",
+   "name": "Westfield"
+  },
+  {
+   "slug": "west-milford",
+   "name": "West Milford"
+  },
+  {
+   "slug": "west-new-york",
+   "name": "West New York"
+  },
+  {
+   "slug": "west-orange",
+   "name": "West Orange"
+  },
+  {
+   "slug": "willingboro",
+   "name": "Willingboro"
+  },
+  {
+   "slug": "winslow",
+   "name": "Winslow"
+  },
+  {
+   "slug": "woodbridge",
+   "name": "Woodbridge"
+  }
+ ],
+ "georgia": [
+  {
+   "slug": "acworth",
+   "name": "Acworth"
+  },
+  {
+   "slug": "adel",
+   "name": "Adel"
+  },
+  {
+   "slug": "alma",
+   "name": "Alma"
+  },
+  {
+   "slug": "americus",
+   "name": "Americus"
+  },
+  {
+   "slug": "bainbridge",
+   "name": "Bainbridge"
+  },
+  {
+   "slug": "baxley",
+   "name": "Baxley"
+  },
+  {
+   "slug": "blackshear",
+   "name": "Blackshear"
+  },
+  {
+   "slug": "blakely",
+   "name": "Blakely"
+  },
+  {
+   "slug": "brunswick",
+   "name": "Brunswick"
+  },
+  {
+   "slug": "buford",
+   "name": "Buford"
+  },
+  {
+   "slug": "cairo",
+   "name": "Cairo"
+  },
+  {
+   "slug": "calhoun",
+   "name": "Calhoun"
+  },
+  {
+   "slug": "camilla",
+   "name": "Camilla"
+  },
+  {
+   "slug": "cleveland",
+   "name": "Cleveland"
+  },
+  {
+   "slug": "college-park",
+   "name": "College Park"
+  },
+  {
+   "slug": "conyers",
+   "name": "Conyers"
+  },
+  {
+   "slug": "cordele",
+   "name": "Cordele"
+  },
+  {
+   "slug": "cornelia",
+   "name": "Cornelia"
+  },
+  {
+   "slug": "covington",
+   "name": "Covington"
+  },
+  {
+   "slug": "cumming",
+   "name": "Cumming"
+  },
+  {
+   "slug": "cuthbert",
+   "name": "Cuthbert"
+  },
+  {
+   "slug": "dahlonega",
+   "name": "Dahlonega"
+  },
+  {
+   "slug": "dallas",
+   "name": "Dallas"
+  },
+  {
+   "slug": "dawson",
+   "name": "Dawson"
+  },
+  {
+   "slug": "dawsonville",
+   "name": "Dawsonville"
+  },
+  {
+   "slug": "donalsonville",
+   "name": "Donalsonville"
+  },
+  {
+   "slug": "douglas",
+   "name": "Douglas"
+  },
+  {
+   "slug": "dublin",
+   "name": "Dublin"
+  },
+  {
+   "slug": "eastman",
+   "name": "Eastman"
+  },
+  {
+   "slug": "eatonton",
+   "name": "Eatonton"
+  },
+  {
+   "slug": "fairburn",
+   "name": "Fairburn"
+  },
+  {
+   "slug": "fayetteville",
+   "name": "Fayetteville"
+  },
+  {
+   "slug": "fitzgerald",
+   "name": "Fitzgerald"
+  },
+  {
+   "slug": "folkston",
+   "name": "Folkston"
+  },
+  {
+   "slug": "forest-park",
+   "name": "Forest Park"
+  },
+  {
+   "slug": "forsyth",
+   "name": "Forsyth"
+  },
+  {
+   "slug": "hartwell",
+   "name": "Hartwell"
+  },
+  {
+   "slug": "hawkinsville",
+   "name": "Hawkinsville"
+  },
+  {
+   "slug": "hazlehurst",
+   "name": "Hazlehurst"
+  },
+  {
+   "slug": "homerville",
+   "name": "Homerville"
+  },
+  {
+   "slug": "jackson-3007d",
+   "name": "Jackson"
+  },
+  {
+   "slug": "jefferson-52383",
+   "name": "Jefferson"
+  },
+  {
+   "slug": "jesup",
+   "name": "Jesup"
+  },
+  {
+   "slug": "kingsland",
+   "name": "Kingsland"
+  },
+  {
+   "slug": "lafayette-3ea86",
+   "name": "LaFayette"
+  },
+  {
+   "slug": "lakeland",
+   "name": "Lakeland"
+  },
+  {
+   "slug": "lithia-springs",
+   "name": "Lithia Springs"
+  },
+  {
+   "slug": "louisville",
+   "name": "Louisville"
+  },
+  {
+   "slug": "macon",
+   "name": "Macon"
+  },
+  {
+   "slug": "manchester-691eb",
+   "name": "Manchester"
+  },
+  {
+   "slug": "milledgeville",
+   "name": "Milledgeville"
+  },
+  {
+   "slug": "monroe-5ebab",
+   "name": "Monroe"
+  },
+  {
+   "slug": "nashville",
+   "name": "Nashville"
+  },
+  {
+   "slug": "norcross",
+   "name": "Norcross"
+  },
+  {
+   "slug": "pelham",
+   "name": "Pelham"
+  },
+  {
+   "slug": "perry",
+   "name": "Perry"
+  },
+  {
+   "slug": "perry-043a7",
+   "name": "Perry"
+  },
+  {
+   "slug": "pooler",
+   "name": "Pooler"
+  },
+  {
+   "slug": "powder-springs",
+   "name": "Powder Springs"
+  },
+  {
+   "slug": "quitman",
+   "name": "Quitman"
+  },
+  {
+   "slug": "richmond-hill",
+   "name": "Richmond Hill"
+  },
+  {
+   "slug": "ringgold",
+   "name": "Ringgold"
+  },
+  {
+   "slug": "riverdale-ed13c",
+   "name": "Riverdale"
+  },
+  {
+   "slug": "sandersville",
+   "name": "Sandersville"
+  },
+  {
+   "slug": "savannah",
+   "name": "Savannah"
+  },
+  {
+   "slug": "snellville",
+   "name": "Snellville"
+  },
+  {
+   "slug": "st-marys",
+   "name": "St. Marys"
+  },
+  {
+   "slug": "suwanee",
+   "name": "Suwanee"
+  },
+  {
+   "slug": "swainsboro",
+   "name": "Swainsboro"
+  },
+  {
+   "slug": "thomaston",
+   "name": "Thomaston"
+  },
+  {
+   "slug": "thomasville",
+   "name": "Thomasville"
+  },
+  {
+   "slug": "tifton",
+   "name": "Tifton"
+  },
+  {
+   "slug": "toccoa",
+   "name": "Toccoa"
+  },
+  {
+   "slug": "vidalia",
+   "name": "Vidalia"
+  },
+  {
+   "slug": "villa-rica",
+   "name": "Villa Rica"
+  },
+  {
+   "slug": "warner-robins",
+   "name": "Warner Robins"
+  },
+  {
+   "slug": "waycross",
+   "name": "Waycross"
+  },
+  {
+   "slug": "winder",
+   "name": "Winder"
+  }
+ ],
+ "north-carolina": [
+  {
+   "slug": "asheville",
+   "name": "Asheville"
+  },
+  {
+   "slug": "cary",
+   "name": "Cary"
+  },
+  {
+   "slug": "charlotte",
+   "name": "Charlotte"
+  },
+  {
+   "slug": "concord",
+   "name": "Concord"
+  },
+  {
+   "slug": "durham",
+   "name": "Durham"
+  },
+  {
+   "slug": "elizabeth-city",
+   "name": "Elizabeth City"
+  },
+  {
+   "slug": "fayetteville-nc",
+   "name": "Fayetteville"
+  },
+  {
+   "slug": "gastonia",
+   "name": "Gastonia"
+  },
+  {
+   "slug": "goldsboro",
+   "name": "Goldsboro"
+  },
+  {
+   "slug": "greensboro-nc",
+   "name": "Greensboro"
+  },
+  {
+   "slug": "greenville-urfem",
+   "name": "Greenville"
+  },
+  {
+   "slug": "hickory",
+   "name": "Hickory"
+  },
+  {
+   "slug": "jacksonville",
+   "name": "Jacksonville"
+  },
+  {
+   "slug": "lumberton-nc",
+   "name": "Lumberton"
+  },
+  {
+   "slug": "monroe-nc",
+   "name": "Monroe"
+  },
+  {
+   "slug": "mooresville",
+   "name": "Mooresville"
+  },
+  {
+   "slug": "new-bern",
+   "name": "New Bern"
+  },
+  {
+   "slug": "raleigh",
+   "name": "Raleigh"
+  },
+  {
+   "slug": "wilmington",
+   "name": "Wilmington"
+  },
+  {
+   "slug": "winston-salem",
+   "name": "Winston-Salem"
+  }
+ ]
+}

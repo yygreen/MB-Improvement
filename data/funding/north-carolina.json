@@ -1,0 +1,296 @@
+{
+  "state": "North Carolina",
+  "state_key": "north-carolina",
+  "last_full_review": "2026-08-11",
+  "mandate": {
+    "statute_name": {
+      "value": "The North Carolina autism coverage mandate, enacted by Session Law 2015-271, \"AN ACT TO provide coverage for the treatment of autism spectrum disorder,\" which became law on October 15, 2015.",
+      "source_url": "https://ncleg.gov/EnactedLegislation/SessionLaws/HTML/2015-2016/SL2015-271.html",
+      "source_type": "statute",
+      "source_title": "N.C. Session Law 2015-271, An Act to Provide Coverage for the Treatment of Autism Spectrum Disorder",
+      "verified_on": "2026-08-11"
+    },
+    "citation": {
+      "value": "N.C.G.S. 58-3-192, with \"health benefit plan\" defined by reference to G.S. 58-3-167.",
+      "source_url": "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_58/GS_58-3-192.html",
+      "source_type": "statute",
+      "source_title": "N.C.G.S. 58-3-192, Coverage for autism spectrum disorder",
+      "verified_on": "2026-08-11"
+    },
+    "effective_date": {
+      "value": "\"This act becomes effective July 1, 2016, and applies to insurance contracts issued, renewed, or amended on or after that date.\"",
+      "source_url": "https://ncleg.gov/EnactedLegislation/SessionLaws/HTML/2015-2016/SL2015-271.html",
+      "source_type": "statute",
+      "source_title": "N.C. Session Law 2015-271, An Act to Provide Coverage for the Treatment of Autism Spectrum Disorder",
+      "verified_on": "2026-08-11"
+    },
+    "applies_to_plan_types": {
+      "value": "Health benefit plans as defined at G.S. 58-3-167, which are state-regulated insurance contracts. Subsection (g) addresses non-grandfathered individual and small group plans subject to the federal essential health benefits requirement. It does not reach self-funded employer plans; see the self_funded_exemption block.",
+      "source_url": "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_58/GS_58-3-192.html",
+      "source_type": "statute",
+      "source_title": "N.C.G.S. 58-3-192, Coverage for autism spectrum disorder",
+      "verified_on": "2026-08-11"
+    },
+    "age_limit": {
+      "value": "Coverage for adaptive behavior treatment \"may be limited to individuals 18 years of age or younger.\" Note the shape of that sentence: the age limit is something the plan is permitted to apply, not a statement that older people are excluded from the rest of the section. The screening, diagnosis and treatment obligation in subsection (b) is not written with an age limit.",
+      "source_url": "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_58/GS_58-3-192.html",
+      "source_type": "statute",
+      "source_title": "N.C.G.S. 58-3-192, Coverage for autism spectrum disorder",
+      "verified_on": "2026-08-11"
+    },
+    "annual_dollar_cap": {
+      "value": "FLAG, do not publish a bare $40,000 figure. The statute permits a maximum benefit of \"up to forty thousand dollars ($40,000) per year\" for adaptive behavior treatment, but that number is a 2015 base that the statute then indexes: \"beginning in 2017 and for subsequent years, the amount shall be indexed using the Consumer Price Index for All Urban Consumers for the South Region\" against the index as of March 2015, \"rounded to the nearest whole thousand dollars.\" Ten years of indexing means the figure in force today is meaningfully higher than $40,000. The current indexed amount was not published on any primary source located during this pass, so the guide must describe the mechanism and tell families to ask their insurer for the current figure, rather than repeating $40,000 as if it were live.",
+      "source_url": "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_58/GS_58-3-192.html",
+      "source_type": "statute",
+      "source_title": "N.C.G.S. 58-3-192, Coverage for autism spectrum disorder",
+      "verified_on": "2026-08-11",
+      "cap_usd": 40000,
+      "cap_status": "stale_base_indexed"
+    },
+    "visit_or_hour_limits": {
+      "value": "The statute sets no visit or hour limit for adaptive behavior treatment. Its stated limit is the annual dollar maximum in subsection (c).",
+      "source_url": "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_58/GS_58-3-192.html",
+      "source_type": "statute",
+      "source_title": "N.C.G.S. 58-3-192, Coverage for autism spectrum disorder",
+      "verified_on": "2026-08-11"
+    },
+    "diagnosis_requirement": {
+      "value": "Autism spectrum disorder \"as defined by the most recent edition of the Diagnostic and Statistical Manual of Mental Disorders (DSM) or the most recent edition of the International Statistical Classification of Diseases.\" No insurer \"shall terminate coverage or refuse to issue, amend, or renew coverage to an individual solely because the individual is diagnosed with autism spectrum disorder or has received treatment for autism spectrum disorder.\"",
+      "source_url": "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_58/GS_58-3-192.html",
+      "source_type": "statute",
+      "source_title": "N.C.G.S. 58-3-192, Coverage for autism spectrum disorder",
+      "verified_on": "2026-08-11"
+    },
+    "prescription_or_referral_requirement": {
+      "value": "Yes, North Carolina requires an order. Treatment must be \"ordered by a licensed physician or licensed psychologist\" and \"provided or supervised by\" one of the listed professionals: psychologists, psychiatrists, developmental pediatricians, speech and language pathologists, occupational therapists, clinical social workers, mental health counselors, marriage and family therapists, or a board certified behavior analyst. This is the sharpest practical difference from New Jersey, where no order is required for the commercial mandate.",
+      "source_url": "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_58/GS_58-3-192.html",
+      "source_type": "statute",
+      "source_title": "N.C.G.S. 58-3-192, Coverage for autism spectrum disorder",
+      "verified_on": "2026-08-11"
+    }
+  },
+  "self_funded_exemption": {
+    "applies": {
+      "value": "Yes, and North Carolina says so in plain words rather than leaving it to be inferred. The Department of Insurance states that external review \"does not apply to self-funded employer health plans,\" and the mandate itself binds \"insurance contracts,\" which a self-funded plan does not buy.",
+      "source_url": "https://www.ncdoi.gov/consumers/health-insurance/health-claim-denied/request-external-review",
+      "source_type": "agency_page",
+      "source_title": "NC Department of Insurance, Smart NC, Request an External Review",
+      "verified_on": "2026-08-11"
+    },
+    "how_a_family_can_tell": {
+      "value": "Ask the employer's plan administrator whether the plan is self-funded or fully insured, and read the Summary Plan Description, which the administrator must provide free of charge and which \"provides a detailed overview of the plan: how it works, what benefits it provides, how to file a claim for benefits, and any limitations that may apply.\" The denial letter is the faster tell: \"the external review process used by the plan depends on whether the plan is self-funded or provides benefits through an insurance company. The claim denial notice from your plan will describe the external process and your rights.\" A denial that routes you to a federal external review rather than to Smart NC indicates a self-funded plan.",
+      "source_url": "https://www.dol.gov/agencies/ebsa/about-ebsa/our-activities/resource-center/publications/filing-a-claim-for-your-health-benefits",
+      "source_type": "federal",
+      "source_title": "U.S. Department of Labor, EBSA, Filing a Claim for Your Health Benefits",
+      "verified_on": "2026-08-11"
+    },
+    "federal_basis": {
+      "value": "ERISA section 514(b)(2), 29 U.S.C. 1144(b)(2). The saving clause preserves state insurance regulation; the deemer clause then removes self-funded plans from its reach, providing that an employee benefit plan shall not \"be deemed to be an insurance company or other insurer ... or to be engaged in the business of insurance ... for purposes of any law of a State purporting to regulate insurance companies, insurance contracts, banks, trust companies, or investment companies.\"",
+      "source_url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title29-section1144&num=0&edition=prelim",
+      "source_type": "federal",
+      "source_title": "29 U.S.C. 1144(b)(2), ERISA saving clause and deemer clause",
+      "verified_on": "2026-08-11"
+    }
+  },
+  "medicaid": {
+    "program_name": {
+      "value": "NC Medicaid and NC Health Choice. The autism benefit is Research-Based Behavioral Health Treatment (RB-BHT) for Autism Spectrum Disorder, governed by Clinical Coverage Policy 8F.",
+      "source_url": "https://medicaid.ncdhhs.gov/8f-research-based-behavioral-health-treatment-rb-bht-autism-spectrum-disorder-asd/download",
+      "source_type": "medicaid_manual",
+      "source_title": "NC Medicaid Clinical Coverage Policy No. 8F, Research-Based Behavioral Health Treatment (RB-BHT) for Autism Spectrum Disorder, amended date August 1, 2026",
+      "verified_on": "2026-08-11"
+    },
+    "managed_care_organizations": {
+      "value": "Coverage is administered both through NC Medicaid Direct and through prepaid health plans, and Policy 8F contemplates authorization by the PHP where the beneficiary is enrolled in one. Confirm which entity authorizes before submitting, because services \"provided without prior authorization by the PHP\" are not covered.",
+      "source_url": "https://medicaid.ncdhhs.gov/8f-research-based-behavioral-health-treatment-rb-bht-autism-spectrum-disorder-asd/download",
+      "source_type": "medicaid_manual",
+      "source_title": "NC Medicaid Clinical Coverage Policy No. 8F, Research-Based Behavioral Health Treatment (RB-BHT) for Autism Spectrum Disorder, amended date August 1, 2026",
+      "verified_on": "2026-08-11"
+    },
+    "aba_coverage_basis": {
+      "value": "EPSDT. Policy 8F carries the standard EPSDT special provision, under which service limits \"may be exceeded or may not apply as long as the provider's documentation shows that the requested service is medically necessary 'to correct or ameliorate a defect, physical or mental illness, or a condition'.\" That makes medically necessary RB-BHT a mandatory benefit for beneficiaries under 21 rather than an optional one.",
+      "source_url": "https://medicaid.ncdhhs.gov/8f-research-based-behavioral-health-treatment-rb-bht-autism-spectrum-disorder-asd/download",
+      "source_type": "medicaid_manual",
+      "source_title": "NC Medicaid Clinical Coverage Policy No. 8F, Research-Based Behavioral Health Treatment (RB-BHT) for Autism Spectrum Disorder, amended date August 1, 2026",
+      "verified_on": "2026-08-11"
+    },
+    "age_limit": {
+      "value": "Under 21, through the EPSDT provision at subsection 2.2.1, \"EPSDT Special Provision: Exception to Policy Limitations for a Medicaid Beneficiary under 21 Years of Age.\" NC Medicaid also covers RB-BHT for adults: CMS approved the service for beneficiaries over the age of 21 effective July 1, 2021, \"when the intervention provided is supported by credible scientific or clinical evidence, as appropriate for the beneficiary's age range,\" and Clinical Coverage Policy 8F was updated to reflect it. North Carolina is unusual in this: most state Medicaid autism benefits stop at 21.",
+      "source_url": "https://medicaid.ncdhhs.gov/blog/2022/04/19/research-based-behavioral-health-treatment-autism-spectrum-disorder",
+      "source_type": "medicaid_manual",
+      "source_title": "NC Medicaid Clinical Coverage Policy 8F (amended 1 August 2026) and NC Medicaid bulletin, Research Based Behavioral Health Treatment for Autism Spectrum Disorder",
+      "verified_on": "2026-08-11"
+    },
+    "prior_authorization": {
+      "value": "Required, and the authorization window narrows as hours rise. \"RB-BHT services are provided under a prior authorized Treatment Plan that has measurable goals over a specific timeline for the specific beneficiary being treated as developed by a Licensed Qualified Autism Service Provider (LQASP). Services provided without prior authorization are not considered for payment or reimbursement except in the case of retroactive Medicaid eligibility.\" For plans of 16 hours or fewer per week, Medicaid \"covers up to 180-calendar days for the initial authorization period\"; for plans of more than 16 hours per week, \"up to 90 calendar days.\" Reauthorization follows the same split, at least every 180 or every 90 calendar days. Being under 21 does not remove the requirement: \"the fact that the beneficiary is under 21 years of age does NOT eliminate the requirement for prior approval.\"",
+      "source_url": "https://medicaid.ncdhhs.gov/8f-research-based-behavioral-health-treatment-rb-bht-autism-spectrum-disorder-asd/download",
+      "source_type": "medicaid_manual",
+      "source_title": "NC Medicaid Clinical Coverage Policy No. 8F, Research-Based Behavioral Health Treatment (RB-BHT) for Autism Spectrum Disorder, amended date August 1, 2026",
+      "verified_on": "2026-08-11"
+    },
+    "provider_enrollment_requirement": {
+      "value": "Three tiers. A Licensed Qualified Autism Service Provider develops the treatment plan and may supervise or deliver treatment; recognized LQASP types include a physician, licensed psychologist, licensed psychological associate, occupational therapist, speech and language pathologist, licensed clinical social worker, licensed clinical mental health counselor, licensed marriage and family therapist, and licensed behavior analyst. A Certified Qualified Professional \"provides, supervises, or provides and supervises RB-BHT pursuant to a Treatment Plan developed by a LQASP.\" A paraprofessional delivers treatment under a LQASP-developed plan and must be \"supervised or observed to modify behavior interventions by a LQASP or C-QP.\" The policy also sets a floor on oversight: \"at least ten percent (10%) of all services under CCP-8F that are provided by a paraprofessional must involve the observation and direction of the paraprofessional by a LQASP.\"",
+      "source_url": "https://medicaid.ncdhhs.gov/8f-research-based-behavioral-health-treatment-rb-bht-autism-spectrum-disorder-asd/download",
+      "source_type": "medicaid_manual",
+      "source_title": "NC Medicaid Clinical Coverage Policy No. 8F, Research-Based Behavioral Health Treatment (RB-BHT) for Autism Spectrum Disorder, amended date August 1, 2026",
+      "verified_on": "2026-08-11"
+    }
+  },
+  "waivers": [
+    {
+      "name": {
+        "value": "NC Innovations Waiver, a 1915(c) Medicaid home and community based services waiver.",
+        "source_url": "https://medicaid.ncdhhs.gov/beneficiaries/nc-innovations-waiver",
+        "source_type": "waiver_document",
+        "source_title": "NC Medicaid, NC Innovations Waiver",
+        "verified_on": "2026-08-11"
+      },
+      "population": {
+        "value": "People with intellectual or developmental disabilities who would otherwise need institutional care, so that they can \"live in their chosen home and community.\" It is managed locally: \"Local Management Entity/Managed Care Organizations (LME/MCO) are organizations that manage the NC Innovations waiver.\"",
+        "source_url": "https://medicaid.ncdhhs.gov/beneficiaries/nc-innovations-waiver/how-apply-nc-innovations-waiver",
+        "source_type": "waiver_document",
+        "source_title": "NC Medicaid, How to Apply for the NC Innovations Waiver",
+        "verified_on": "2026-08-11"
+      },
+      "covers_aba": {
+        "value": "This is not the route to ABA for a child. Medically necessary Research-Based Behavioral Health Treatment is already a mandatory EPSDT benefit for NC Medicaid beneficiaries under 21 under Clinical Coverage Policy 8F, so a family does not need an Innovations slot to reach it. Innovations funds long term home and community based supports, which is a different problem.",
+        "source_url": "https://medicaid.ncdhhs.gov/8f-research-based-behavioral-health-treatment-rb-bht-autism-spectrum-disorder-asd/download",
+        "source_type": "medicaid_manual",
+        "source_title": "NC Medicaid Clinical Coverage Policy No. 8F, Research-Based Behavioral Health Treatment (RB-BHT) for Autism Spectrum Disorder, amended date August 1, 2026",
+        "verified_on": "2026-08-11"
+      },
+      "waitlist_status": {
+        "value": "Long, and unpredictable. \"The NC Innovations waiver is funded by the North Carolina General Assembly. Due to limited funding, there is a long waitlist,\" which \"used to be called the Registry of Unmet Needs (or RUN).\" Slots open only \"when someone on the waiver no longer needs services or when the North Carolina General Assembly adds funding,\" and \"LME/MCOs are unable to predict anyone's exact wait time.\" Because of that, getting on the list early matters more than the list's current length; county level counts are published on the state's Innovations Waitlist Dashboard.",
+        "source_url": "https://medicaid.ncdhhs.gov/beneficiaries/nc-innovations-waiver/about-nc-innovations-waiver-waitlist",
+        "source_type": "waiver_document",
+        "source_title": "NC Medicaid, About the NC Innovations Waiver Waitlist",
+        "verified_on": "2026-08-11"
+      },
+      "how_to_apply": {
+        "value": "\"Call your LME/MCO to apply\" and \"ask to apply for the NC Innovations waiver.\" To find out which one covers your county, call 1.855.262.1946, 8 a.m. to 5 p.m. Monday through Friday. Note the vocabulary gap: \"the application used to be called the 'Registry of Unmet Needs application,' and they may refer to it under that name.\"",
+        "source_url": "https://medicaid.ncdhhs.gov/beneficiaries/nc-innovations-waiver/how-apply-nc-innovations-waiver",
+        "source_type": "waiver_document",
+        "source_title": "NC Medicaid, How to Apply for the NC Innovations Waiver",
+        "verified_on": "2026-08-11"
+      }
+    }
+  ],
+  "early_intervention": {
+    "program_name": {
+      "value": "The North Carolina Infant-Toddler Program (NC ITP), delivered through the NC Early Intervention Section, which is \"part of the NC Division of Child and Family Well-Being.\" Services reach families through local agencies: \"sixteen Children's Developmental Services Agencies (CDSAs) across North Carolina work with local service providers to help families help their children succeed.\"",
+      "source_url": "https://www.ncdhhs.gov/divisions/child-and-family-well-being/north-carolina-infant-toddler-program-nc-itp/about-nc-itp",
+      "source_type": "agency_page",
+      "source_title": "NCDHHS, About the North Carolina Infant-Toddler Program",
+      "verified_on": "2026-08-11"
+    },
+    "age_range": {
+      "value": "\"Children aged birth to three.\"",
+      "source_url": "https://www.ncdhhs.gov/divisions/child-and-family-well-being/north-carolina-infant-toddler-program-nc-itp/about-nc-itp",
+      "source_type": "agency_page",
+      "source_title": "NCDHHS, About the North Carolina Infant-Toddler Program",
+      "verified_on": "2026-08-11"
+    },
+    "lead_agency": {
+      "value": "The North Carolina Department of Health and Human Services, through the NC Early Intervention Section within the Division of Child and Family Well-Being. On the child's third birthday responsibility shifts to the Department of Public Instruction.",
+      "source_url": "https://www.ncdhhs.gov/divisions/child-and-family-well-being/north-carolina-infant-toddler-program-nc-itp/about-nc-itp",
+      "source_type": "agency_page",
+      "source_title": "NCDHHS, About the North Carolina Infant-Toddler Program",
+      "verified_on": "2026-08-11"
+    },
+    "family_cost_share": {
+      "value": "\"No family is denied services because of the inability to pay.\" Treat that as the operative sentence when a family hesitates to call because of cost.",
+      "source_url": "https://www.ncdhhs.gov/divisions/child-and-family-well-being/north-carolina-infant-toddler-program-nc-itp/about-nc-itp",
+      "source_type": "agency_page",
+      "source_title": "NCDHHS, About the North Carolina Infant-Toddler Program",
+      "verified_on": "2026-08-11"
+    },
+    "referral_route": {
+      "value": "Open referral, no gatekeeper. \"Referrals to the ITP can be made by phone, email, fax, letter, in person at your CDSA, or by completing and submitting the NC ITP Referral Form.\" A referral needs the child's name, date of birth, address, telephone number, the parent's name and the reason for concern. Eligibility runs on either a documented developmental delay or an established condition with a \"high probability of resulting in developmental delay.\"",
+      "source_url": "https://www.ncdhhs.gov/divisions/child-and-family-well-being/north-carolina-infant-toddler-program-nc-itp/about-nc-itp",
+      "source_type": "agency_page",
+      "source_title": "NCDHHS, About the North Carolina Infant-Toddler Program",
+      "verified_on": "2026-08-11"
+    }
+  },
+  "school_services": {
+    "idea_part_c_to_b_transition": {
+      "value": "The handover is dated and the meeting comes first. \"In NC, on the third birthday of a child with a disability, the responsibility for services shifts from the Department of Health and Human Services (Part C program) to the Department of Public Instruction.\" A transition meeting is \"held as early as nine months before, but no later than 90 days before your child's third birthday,\" and where the child is found eligible \"the IEP must be written and consented to (e.g., start date) no later than the child's third birthday.\" A representative of the public school unit is invited to the transition planning conference with the parent's permission.",
+      "source_url": "https://www.ncdhhs.gov/early-childhood-transitions-englishpdf/open",
+      "source_type": "agency_page",
+      "source_title": "NCDHHS, Early Childhood Transitions in North Carolina: A Parent's Guide",
+      "verified_on": "2026-08-11"
+    },
+    "aba_in_iep": {
+      "value": "Eligibility and services are decided by the IEP team under the state's special education policies: \"the IEP Team determines if the child is a child with a disability under NC 1500-2.4 as well as the educational needs of the child (NC 1503.2.2).\" As in New Jersey and Georgia, the policies do not name a specific methodology, so whether behavioral services appear in a given IEP is a team decision about that child.",
+      "source_url": "https://www.dpi.nc.gov/documents/publications/catalog/ec144-policies-governing-services/open",
+      "source_type": "regulation",
+      "source_title": "NC DPI, Policies Governing Services for Children with Disabilities, amended March 2021",
+      "verified_on": "2026-08-11"
+    },
+    "note": {
+      "value": "An IEP and an insurance authorization answer different questions. NC DPI's policies exist to deliver a free appropriate public education under IDEA and turn on educational need; N.C.G.S. 58-3-192 and Policy 8F turn on medical necessity. A district declining to write a service into an IEP is not a finding that the service is unnecessary, and an insurer authorizing hours does not obligate the school. Policy 8F makes the boundary explicit from the Medicaid side by excluding \"services provided to teach academic subjects or as a substitute for educational personnel.\"",
+      "source_url": "https://medicaid.ncdhhs.gov/8f-research-based-behavioral-health-treatment-rb-bht-autism-spectrum-disorder-asd/download",
+      "source_type": "medicaid_manual",
+      "source_title": "NC Medicaid Clinical Coverage Policy No. 8F, Research-Based Behavioral Health Treatment (RB-BHT) for Autism Spectrum Disorder, amended date August 1, 2026",
+      "verified_on": "2026-08-11"
+    },
+    "age_out": {
+      "value": "N.C.G.S. 115C-107.1(a)(1) grants FAPE to \"All children with disabilities who reside in the State, who are the ages of three through 21, who have not graduated from high school, and who require special education and related services.\" Subsection (a)(2) then carries a student already in services past that: \"Any child with a disability who is receiving special education and related services and who has not graduated from high school until the end of the school year in which that child reaches the age of 22.\" So for a student already receiving services, the edge is the end of the school year of the 22nd birthday, which can land close to the 23rd.",
+      "source_url": "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_115C/GS_115C-107.1.html",
+      "source_type": "statute",
+      "source_title": "N.C.G.S. 115C-107.1, Free appropriate public education",
+      "verified_on": "2026-08-17"
+    },
+    "diploma_exit": {
+      "value": "North Carolina writes the diploma exit into the grant itself: both 115C-107.1(a)(1) and (a)(2) apply only to a student who \"has not graduated from high school,\" so graduation ends the entitlement at any age. What counts federally as a regular high school diploma is narrow: 34 CFR 300.102(a)(3)(iv) excludes a general equivalency diploma, a certificate of completion, a certificate of attendance or a similar lesser credential, and a student who leaves without a regular diploma keeps the entitlement.",
+      "source_url": "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_115C/GS_115C-107.1.html",
+      "source_type": "statute",
+      "source_title": "N.C.G.S. 115C-107.1, Free appropriate public education",
+      "verified_on": "2026-08-17"
+    }
+  },
+  "appeals": {
+    "internal_appeal_deadline": {
+      "value": "The insurer's internal appeal must be finished first: one of Smart NC's eligibility criteria is that \"you have exhausted your insurer's appeals process,\" unless the request qualifies for the expedited route. The deadline for starting that internal appeal is set by the plan, so use the date printed on the denial letter.",
+      "source_url": "https://www.ncdoi.gov/consumers/health-insurance/health-claim-denied/request-external-review",
+      "source_type": "agency_page",
+      "source_title": "NC Department of Insurance, Smart NC, Request an External Review",
+      "verified_on": "2026-08-11"
+    },
+    "external_review_body": {
+      "value": "Smart NC, the consumer assistance program within the North Carolina Department of Insurance, which arranges review by an independent review organization.",
+      "source_url": "https://www.ncdoi.gov/consumers/health-insurance/health-claim-denied/request-external-review",
+      "source_type": "agency_page",
+      "source_title": "NC Department of Insurance, Smart NC, Request an External Review",
+      "verified_on": "2026-08-11"
+    },
+    "external_review_deadline": {
+      "value": "120 days. The request must be \"submitted within 120 days of receiving your insurer's final decision on appeal.\" For an expedited external review the window is 120 days from either the initial denial or the appeal decision. The other eligibility criteria are that the coverage type is subject to external review, that the request concerns \"an insurer's medical necessity determination that resulted in a denial,\" that \"you had coverage in effect with the insurer at the time the services were requested,\" and that \"the service for which coverage was denied appears to be a covered benefit.\"",
+      "source_url": "https://www.ncdoi.gov/consumers/health-insurance/health-claim-denied/request-external-review",
+      "source_type": "agency_page",
+      "source_title": "NC Department of Insurance, Smart NC, Request an External Review",
+      "verified_on": "2026-08-11"
+    },
+    "expedited_route": {
+      "value": "Yes, available \"in cases where the time involved in obtaining a final decision can have an impact on a person's health,\" with a decision \"within three days\" of submission. The expedited route can be used without first exhausting the internal appeal.",
+      "source_url": "https://www.ncdoi.gov/consumers/health-insurance/health-claim-denied/request-external-review",
+      "source_type": "agency_page",
+      "source_title": "NC Department of Insurance, Smart NC, Request an External Review",
+      "verified_on": "2026-08-11"
+    },
+    "how_to_file": {
+      "value": "Online, or by printing the form and sending it by mail or fax. Smart NC will talk a family through it on 855.408.1212, toll free, and the service is free. Do not send a request here for a self-funded employer plan, Medicare or Medicaid, or for dental, vision, Medicare supplement, long term care, specified disease, workers compensation, credit or disability income coverage, or medical payments under homeowners or auto insurance: external review does not apply to any of those.",
+      "source_url": "https://www.ncdoi.gov/consumers/health-insurance/health-claim-denied/request-external-review",
+      "source_type": "agency_page",
+      "source_title": "NC Department of Insurance, Smart NC, Request an External Review",
+      "verified_on": "2026-08-11"
+    },
+    "regulator_complaint_route": {
+      "value": "Smart NC is itself the Department of Insurance's consumer assistance route and takes complaints as well as external review requests, on 855.408.1212. As with the appeal, it cannot reach a self-funded employer plan.",
+      "source_url": "https://www.ncdoi.gov/consumers/health-insurance/health-claim-denied/request-external-review",
+      "source_type": "agency_page",
+      "source_title": "NC Department of Insurance, Smart NC, Request an External Review",
+      "verified_on": "2026-08-11"
+    }
+  }
+}

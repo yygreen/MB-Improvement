@@ -1,0 +1,169 @@
+<div class="mm-embed mm-t1">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
+    .mm-embed { box-sizing: border-box; }
+    .mm-embed *, .mm-embed *::before, .mm-embed *::after { box-sizing: inherit; }
+
+    .mm-embed {
+      --navy:     #1a2744;
+      --teal:     #3ba5a8;
+      --teal-pale:#e8f6f6;
+      --warm:     #f9f6f1;
+      --cta:      #db5b4f;
+      --text:     #2c2c2c;
+      --soft:     #5a5a5a;
+      --rule:     #e6e2da;
+      --font-body: 'Manrope', system-ui, -apple-system, sans-serif;
+    }
+    .mm-t1 { font-family: var(--font-body, 'Manrope', sans-serif); color: var(--text, #2c2c2c); }
+
+    .mm-hero {
+      background: radial-gradient(ellipse at 80% 0%, rgba(59,165,168,0.15) 0%, transparent 55%),
+                  linear-gradient(180deg, var(--warm, #f9f6f1) 0%, #fff 100%);
+      padding: clamp(36px, 5vw, 64px) clamp(20px, 5vw, 48px) clamp(28px, 4vw, 48px);
+    }
+    .mm-hero__inner { max-width: 1200px; margin: 0 auto; }
+    .mm-hero__grid {
+      display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+      gap: clamp(32px, 5vw, 64px); align-items: center;
+    }
+    .mm-hero__text { min-width: 0; }
+    .mm-hero__media {
+      position: relative; border-radius: 20px; overflow: hidden;
+      aspect-ratio: 4/3; background: #f0ebe3;
+    }
+    .mm-hero__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .mm-hero__placeholder {
+      width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 20px; font-size: 15px; font-weight: 500; color: #8a8a8a;
+      background: linear-gradient(135deg, var(--teal-pale, #e8f6f6) 0%, #f0ebe3 100%);
+    }
+    @media (max-width: 900px) {
+      .mm-hero__grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+    .mm-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--teal, #3ba5a8); margin-bottom: 28px;
+    }
+    .mm-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--teal, #3ba5a8); }
+    .mm-t1 h1 {
+      font-family: var(--font-body); font-weight: 600;
+      font-size: clamp(32px, 5vw, 52px); line-height: 1.08; letter-spacing: -0.015em;
+      color: var(--navy, #1a2744); margin: 0 0 28px 0;
+    }
+    .mm-hero__intro { line-height: 1.65; color: var(--soft, #5a5a5a); margin: 0 0 36px 0; }
+    .mm-hero__intro p { font-size: 18px; margin: 0 0 1.1em 0; }
+    .mm-hero__intro p:last-child { margin-bottom: 0; }
+    .mm-hero__intro a, .mm-rt a {
+      color: var(--navy, #1a2744); text-decoration: underline;
+      text-decoration-color: var(--teal, #3ba5a8); text-underline-offset: 3px; text-decoration-thickness: 2px;
+    }
+    .mm-cta-row { display: flex; flex-wrap: wrap; gap: 14px; }
+    .mm-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 16px 28px; font-family: var(--font-body); font-size: 15px; font-weight: 600;
+      letter-spacing: 0.01em; border-radius: 999px; border: 2px solid transparent;
+      text-decoration: none; cursor: pointer;
+      transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+    .mm-btn--primary { background: var(--cta, #db5b4f); color: #fff; border-color: var(--cta, #db5b4f); }
+    .mm-btn--primary:hover { background: #b34a40; border-color: #b34a40; transform: translateY(-1px); }
+    .mm-btn--secondary { background: transparent; color: var(--navy, #1a2744); border-color: var(--cta, #db5b4f); }
+    .mm-btn--secondary:hover { background: var(--cta, #db5b4f); color: #fff; border-color: var(--cta, #db5b4f); }
+
+    .mm-section { padding: clamp(48px, 7vw, 88px) clamp(20px, 5vw, 48px); }
+    .mm-section--warm { background: var(--warm, #f9f6f1); }
+    .mm-section__inner { max-width: 1200px; margin: 0 auto; }
+    .mm-h2 {
+      font-family: var(--font-body); font-weight: 600;
+      font-size: clamp(26px, 3.6vw, 40px); line-height: 1.15; letter-spacing: -0.01em;
+      color: var(--navy, #1a2744); margin: 0 0 28px 0;
+    }
+    .mm-rt { line-height: 1.7; color: var(--text, #2c2c2c); }
+    .mm-rt p { font-size: 18px; margin: 0 0 1.1em 0; }
+    .mm-rt p:last-child { margin-bottom: 0; }
+    .mm-rt strong { color: var(--navy, #1a2744); font-weight: 600; }
+
+    .mm-rt table {
+      width: 100%; border-collapse: collapse; margin: 24px 0;
+      font-size: 15px; background: #fff; border-radius: 12px; overflow: hidden;
+      box-shadow: 0 1px 0 var(--rule, #e6e2da), 0 12px 40px rgba(26,39,68,0.04);
+    }
+    .mm-rt tbody tr { border-bottom: 1px solid var(--rule, #e6e2da); }
+    .mm-rt tbody tr:last-child { border-bottom: none; }
+    .mm-rt tbody tr:first-child { background: var(--navy, #1a2744); color: #fff; }
+    .mm-rt tbody tr:first-child strong { color: #fff; }
+    .mm-rt td { padding: 14px 18px; text-align: left; vertical-align: top; line-height: 1.55; }
+    .mm-rt tbody td:first-child { width: 30%; }
+    @media (max-width: 600px) { .mm-rt tbody td:first-child { width: 40%; } }
+
+    .mm-cta-close { background: #f9f6f1; text-align: center; }
+    .mm-cta-close .mm-h2 { margin-bottom: 16px; }
+    .mm-cta-close .mm-cta-row { justify-content: center; margin-top: 28px; }
+  </style>
+
+  <section class="mm-hero">
+    <div class="mm-hero__inner">
+      <div class="mm-hero__grid">
+        <div class="mm-hero__text">
+          <span class="mm-eyebrow">In-Home Therapy</span>
+          <h1>ABA Transition Planning in Georgia</h1>
+          <div class="mm-hero__intro">
+            <p>In Georgia, the systems that support a child with autism mostly wind down in the early twenties. Special education ends at graduation or aging out. The insurance mandate covers through age 20. Medicaid ABA coverage runs to 21. What comes after is a set of adult supports your family applies to, waits for, and navigates, and the families who do best are the ones who started preparing years before the deadline.</p>
+            <p>Mastermind Behavior provides in-home ABA therapy for children and young people with autism through age 21, across Georgia.</p>
+          </div>
+          <div class="mm-cta-row">
+            <a href="/contact" class="mm-btn mm-btn--primary">Schedule a free consultation</a>
+            <a href="tel:732.813.7333" class="mm-btn mm-btn--secondary">Call 732.813.7333</a>
+          </div>
+        </div>
+        <div class="mm-hero__media">
+          <img src="https://cdn.prod.website-files.com/6627fd62e242d50407cfe12d/6a78eedfc4ed60382a36306e_transition-planning-georgia-hero.webp" alt="Young adult loads the dishwasher while a parent reads at the kitchen table" width="1200" height="900" loading="eager" decoding="async">
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="mm-section mm-section--warm">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">What Georgia requires, and when</h2>
+      <div class="mm-rt">
+        <p><a href="/transition-planning">Transition planning in ABA</a> means teaching the skills adult life will ask for while there is still time to teach them: self-advocacy, daily living routines, handling unstructured time, communicating with people who do not already know your child. We work on them in your home and in your community, where they will actually be used.</p>
+        <p>On the school side, Georgia follows the federal timeline. Under IDEA, transition services must be in place in the IEP by the time your child turns 16, and your child must be invited to IEP meetings where transition is discussed. Many teams begin earlier, and nothing stops you from asking for that.</p>
+        <p>On the adult side, the agency that matters is the Department of Behavioral Health and Developmental Disabilities, DBHDD. Georgia's home and community based supports for adults with developmental disabilities run through two Medicaid waivers, the New Options Waiver and the Comprehensive Supports Waiver, and DBHDD manages the day-to-day operation of both.</p>
+        <p>Here is the part worth writing down: waiver slots are limited, demand runs ahead of supply, and waits are commonly measured in years. The application is not something to hold until the last year of school. Families who apply early, keep documentation current, and stay in contact with their DBHDD regional field office give themselves options that late applicants do not have.</p>
+        <p>Meanwhile the funding that pays for ABA itself has its own clock. Ava's Law coverage is mandated through age 20. Georgia Medicaid covers ABA to 21 under EPSDT. Special education continues until your child graduates or ages out. All of these end within a short span, which is exactly why the skills work belongs in the years before the deadline, not the year of it.</p>
+      </div>
+    </div>
+  </section>
+  <section class="mm-section">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">Coverage in Georgia</h2>
+      <div class="mm-rt">
+        <p>Coverage in the transition years is a countdown, and the rows below are the clocks that matter most. The full Georgia picture lives on our <a href="/aba-therapy-in-georgia">Georgia ABA therapy page</a>.</p>
+        <table>
+          <tbody>
+            <tr> <td><strong>Coverage element</strong></td> <td><strong>Georgia detail</strong></td> </tr>
+            <tr> <td><strong>State mandate</strong></td> <td>Ava's Law (HB 429, effective July 1, 2015), amended by SB 118 (signed 2018, effective January 1, 2019) — codified at O.C.G.A. § 33-24-59.10</td> </tr>
+            <tr> <td><strong>Age limit</strong></td> <td>Coverage mandated through age 20 (i.e., individuals 20 and under)</td> </tr>
+            <tr> <td><strong>Medicaid</strong></td> <td>GA Medicaid (DCH) covers ABA for individuals under 21 since January 1, 2018, via EPSDT. Up to 40 hours/week for under-6, 25 hours/week for ages 6–20. Requires DSM-5 ASD diagnosis from a licensed professional and prior authorization through the assigned Care Management Organization.</td> </tr>
+            <tr> <td><strong>Other programs</strong></td> <td>Katie Beckett Medicaid Waiver, Family Support Services, Georgia TEFRA — alternative pathways for children with disabilities whose family income exceeds standard Medicaid limits</td> </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <section class="mm-section mm-section--warm">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">How we work with teens in Georgia</h2>
+      <div class="mm-rt">
+        <p>Everything we do happens in your home and in the places your child already goes, and for a teenager that increasingly means the places adult life will happen: the kitchen, the store, the job application, the bus ride, the plan that changes at the last minute.</p>
+        <p>Programs are designed and supervised by a BCBA and delivered by Behavior Technicians who work with your child consistently rather than rotating through. Assessment takes about four weeks, and there is no onboarding waitlist, which matters most in the years when time is the scarcest resource.</p>
+        <p>Your BCBA can contribute to the IEP process.</p>
+        <p>Transition planning connects to our other Georgia services: <a href="/behavior-support-georgia">behavior support</a> when specific behaviors stand in the way, <a href="/parent-training-georgia">parent training</a> so the skills hold at home, and <a href="/early-intervention-georgia">early intervention</a> for the youngest children.</p>
+        <p>Our Georgia team works from the Macon office at 4658 Presidential Pkwy, <a href="/aba-therapy-in-georgia">serving families across the state</a>.</p>
+      </div>
+    </div>
+  </section>
+</div>

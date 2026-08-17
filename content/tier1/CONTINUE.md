@@ -3,15 +3,26 @@
 Handoff for a new Claude session. Written 2026-08-05, after the full 12-page
 complex went live on staging. Read this top to bottom before touching anything.
 
+> **SUPERSEDED IN PART, 2026-08-17.** The user confirmed the staged work is
+> shipped, and production verification agrees: all 7 nav-pathway placements
+> (4 Find Your Local Team retargets, 3 hub services blocks) are live on
+> production with 24/24 links resolving, and all 12 service-state pages are
+> live, self-canonical, indexable and in the sitemap. The "rides a publish"
+> protections below describe a state that no longer exists; they are kept
+> for the record. Whether Taylor's clinical review happened before the
+> publish is not recorded here — the review states below are the last known
+> and should not be read as current.
+
 ## Standing constraints (never violate)
 
 1. **Staging only.** Publish with `publishToWebflowSubdomain: true,
    customDomains: []`. NOTHING goes to production without Taylor's clinical
    sign-off, and nothing may be staged that is unsafe if someone else runs a
    full-site production publish (see "rides a publish" below).
-2. Push all work to branch `claude/mastermind-behavior-css-unify-es1c30`
-   (PR #1, draft) — the user chose this over the originally-designated
-   ncsu87 branch. Never push elsewhere.
+2. Push all work to the session's designated branch. As of 2026-08-05 that
+   is `claude/tier1-state-service-continue-fn9xeg`, fast-forwarded from
+   `claude/mastermind-behavior-css-unify-es1c30` (PR #1) so it carries the
+   full history. Never push elsewhere.
 3. Site id `6627fd62e242d50407cfe12d`. Phone is 732.813.7333 only.
 4. Copy gates: no em dashes in fresh client-facing copy (verbatim coverage
    rows are the sole exemption); Behavior Technicians / BT, never RBT; no
@@ -64,11 +75,21 @@ counts, verification results, citation status: see
 
 1. After Taylor sign-off: apply edits, regenerate FAQPage schema from FINAL
    Section 6 text, add OG images, flip pages sitemap-INCLUDED.
-2. Build the 9 nav-pathway link blocks and stage them: an "Available in:"
-   state strip on each of the 6 generic service pages, and a 4-link services
-   block on each of the 3 state hubs. Screenshot all 9 for the user before
-   publishing (they are edits to client-approved pages). The 12 pages stay
-   OUT of the global nav — decided; do not revisit.
+2. DONE 2026-08-05: the 9 nav-pathway link blocks are BUILT and STAGED
+   (staging subdomain only), verified, and screenshotted for the user —
+   approval still pending. Final shape after three rounds of user feedback:
+   the 4 service pages with state variants have their EXISTING "Find Your
+   Local Team" section retargeted to the service's state pages (6-line
+   embed edit, gen-fylt-retarget.py, banked under build/linkblocks/fylt/);
+   the 3 hubs carry the four-card block under the hero. SEVEN placements
+   total: the in-home/skill-development strips were DROPPED on user
+   decision (duplicated existing hub links). See
+   build/BUILD-RECORD-linkblocks.md and
+   build/linkblocks/ (embeds, manifest.json with element ids, generator
+   tools/tier1/gen-link-blocks.py, verifier tools/tier1/verify-linkblocks.py).
+   Session decision to review: in-home-aba-therapy and skill-development
+   strips link to the three STATE HUBS (no per-state pages exist for them).
+   The 12 pages stay OUT of the global nav — decided; do not revisit.
 3. Run backfill (after typed confirmation).
 4. **Production publish #1**: 12 pages + 9 link blocks + the long-staged
    old-path link fixes (tools/css-consolidation/linkfix/, -45 bytes each,
@@ -90,12 +111,15 @@ counts, verification results, citation status: see
 ## "Rides a publish" warning (the sharpest live edge)
 
 All 12 pages are NOT draft and NOT noindexed (the Data API cannot set
-per-page robots). Protections today: sitemap-excluded + zero inbound links.
-If ANYONE runs a full-site production publish before sign-off, the pages go
-live and indexable. Mitigate before that risk materializes: add noindex via
-Designer page-settings head code, or flip the pages to draft (breaks
-review URLs). The staged old-path link fixes ride the same publish — that
-part is fine and intended.
+per-page robots). Protections today: sitemap-excluded ONLY — the "zero
+inbound links" protection is GONE as of 2026-08-05: the 9 staged link
+blocks sit on six production service pages and three production hubs, so a
+full-site production publish now takes the 12 pages live WITH inbound
+navigation. That order (blocks staged before production publish #1) is the
+client-confirmed plan, but it sharpens this edge. Mitigate before the risk
+materializes: add noindex via Designer page-settings head code, or flip the
+pages to draft (breaks review URLs). The staged old-path link fixes ride
+the same publish — that part is fine and intended.
 
 ## Traps already paid for (do not rediscover)
 
@@ -113,14 +137,44 @@ part is fine and intended.
   columns; domain rankings via `resource_organic` with display_filter.
   phrase_organic returns NOTHING FOUND for low-volume state phrases.
 - After any publish, poll the newest page for 200 before trusting diffs.
+- /services does NOT load the shared "Service Page Styles" component; every
+  other service page does. It carries a standalone copy of an older sheet, so
+  "delete the local rule and let the shared one take over" is the WRONG fix
+  there — it converges by value instead. See BUILD-RECORD-HERO-DRIFT.md.
+- `tools/css-consolidation/rebase-shared.mjs` rebases onto a PRE-convergence
+  snapshot of in-home-aba-therapy, so a run would have reverted the whole
+  2026-08-04 hero convergence. It now refuses to run (exit 2) while the
+  reference is stale. Re-snapshot the reference before rebasing again.
+- The repo mirror of the shared sheet goes stale whenever the Designer is
+  edited. Refresh it with `tools/tier1/sync-shared-from-live.py --apply`.
 - GSC MCP may be unavailable; cannibalization checks so far are
   Semrush-only — carry that flag in records.
 
 ## Backlog (not Tier 1, don't lose)
 
-13th internal link on the pilot review doc (manual editor task); footer
+RESOLVED 2026-08-11 (client-confirmed, verified): "15 unlinked city pages" and
+"NJ 115-vs-100 Collection List cap" are both fixed. Measured on production the
+same day: every town page reachable from /areas-we-serve, and 0 sitemap town
+URLs lacking a hub link. Do not re-raise these.
+
+RESOLVED 2026-08-11: the Areas We Serve collection held TWO live items named
+"Perry", both Georgia. `perry` (6674696ea34ecacbc4eb3d61) is the real page with
+full Houston County content; `perry-043a7` was an empty duplicate (content,
+local-detail, final-cta and verify bodies all null) that still rendered a second
+identical card on /areas-we-serve. Client deleted it. Verified after deletion:
+collection returns 1 Perry item, the index renders 1 Perry card, 212 town links
+on the index and 212 town URLs in the sitemap with ZERO in either direction
+unmatched, /areas-we-serve/perry 200s, and the old suffixed URL still 301s to it
+(Webflow keeps that redirect, which is the desired outcome).
+
+The true town count is therefore 212, not 213. The 213 figure that appears in
+earlier records and in the week-in-review artifact counted the empty duplicate.
+Field-write counts from the 2026-08-10 services-block backfill are unaffected in
+substance: 213 items were written, one of which no longer exists.
+
+Remaining: 13th internal link on the pilot review doc (manual editor task); footer
 h2->h6 heading jump site-wide; dead `.placeholder-note` CSS rule; sitemap
-lastmod; 15 unlinked city pages; NJ 115-vs-100 Collection List cap; button
+lastmod; button
 system convergence (state `.mm-btn` spec as base, see
 tools/css-consolidation/DESIGN-SYSTEM.md); possible Designer-styles port;
 pilot page lacks links to its 3 NJ siblings (add post-review, one sentence);

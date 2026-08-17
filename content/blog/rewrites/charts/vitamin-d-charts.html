@@ -1,0 +1,121 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+  /* Canvas is 900px wide, not 1400: the article column is ~358px on a phone,
+     so every type size here is chosen to stay legible at 0.36 scale. */
+  body { margin: 0; background: #fff; font-family: 'Manrope', system-ui, sans-serif; color: #1a2744; }
+  .fig { width: 900px; padding: 44px 44px 36px; box-sizing: border-box; background: #fff; }
+  h2 { font-size: 46px; font-weight: 700; letter-spacing: -0.015em; line-height: 1.14; margin: 0 0 12px; }
+  .sub { font-size: 29px; line-height: 1.35; color: #5a5a5a; margin: 0 0 30px; font-weight: 500; }
+  .key { margin: 0 0 34px; }
+  .key div { font-size: 27px; font-weight: 600; color: #2c2c2c; margin-bottom: 9px; }
+  .sw { display: inline-block; width: 20px; height: 20px; border-radius: 4px; margin-right: 11px; vertical-align: -2px; }
+
+  .rlabel { font-size: 34px; font-weight: 700; margin: 0 0 4px; }
+  .rlabel span { font-weight: 500; color: #5a5a5a; }
+  .track { position: relative; height: 62px; margin-bottom: 8px; }
+  .band { position: absolute; top: 16px; height: 30px; border-radius: 4px; background: #efece4; }
+  .rda  { position: absolute; top: 16px; height: 30px; border-radius: 4px 0 0 4px; background: #009499; }
+  .ceil { position: absolute; top: 0; bottom: 0; width: 4px; background: #1a2744; }
+  .dose { position: absolute; top: 4px; width: 26px; height: 54px; border-radius: 4px; background: #c14a3f; transform: translateX(-50%); }
+  .note { font-size: 27px; line-height: 1.4; margin: 0 0 30px; color: #1a2744; }
+  .note b { color: #c14a3f; }
+  .axis { position: relative; height: 44px; }
+  .tk { position: absolute; font-size: 27px; color: #8a8a8a; transform: translateX(-50%); white-space: nowrap; }
+  .tk.first { transform: none; } .tk.last { transform: translateX(-100%); }
+  .credit { font-size: 26px; line-height: 1.45; color: #8a8a8a; margin-top: 26px; }
+
+  .panel { border-left: 6px solid #e6e2da; padding: 2px 0 2px 24px; margin-bottom: 38px; }
+  .ptitle { font-size: 33px; font-weight: 700; line-height: 1.2; margin: 0 0 6px; }
+  .pnote { font-size: 26px; line-height: 1.4; color: #5a5a5a; margin: 0 0 18px; }
+  .ptrack { position: relative; height: 84px; background: #f6f4ef; border-radius: 5px; }
+  .ref { position: absolute; top: 0; bottom: 0; width: 3px; background: #9a9484; }
+  .reflab { position: absolute; top: 8px; font-size: 25px; color: #6f6a5e; font-weight: 600; white-space: nowrap; }
+  .ci2 { position: absolute; top: 50%; height: 4px; transform: translateY(-50%); }
+  .ci2::before, .ci2::after { content: ''; position: absolute; top: -13px; height: 30px; width: 4px; background: inherit; }
+  .ci2::before { left: 0; } .ci2::after { right: 0; }
+  .pt { position: absolute; top: 50%; width: 30px; height: 30px; border-radius: 50%; transform: translate(-50%, -50%); }
+  .paxis { position: relative; height: 40px; margin-top: 8px; }
+  .pres { font-size: 28px; font-weight: 700; margin: 4px 0 0; }
+  .pres span { font-weight: 500; color: #5a5a5a; }
+</style></head><body>
+
+<div class="fig" id="vdfig1">
+  <h2>The dose this page used to publish sat above the safe ceiling</h2>
+  <p class="sub">Daily vitamin D in IU: what is recommended, where the ceiling sits, and what the old article listed</p>
+  <div class="key">
+    <div><span class="sw" style="background:#009499"></span>Recommended daily amount</div>
+    <div><span class="sw" style="background:#efece4"></span>Still below the ceiling</div>
+    <div><span class="sw" style="background:#c14a3f"></span>Dose listed in the old article</div>
+  </div>
+
+  <p class="rlabel">During pregnancy</p>
+  <div class="track">
+    <div class="band" style="left:0; width:72.7%"></div>
+    <div class="rda"  style="left:0; width:10.9%"></div>
+    <div class="ceil" style="left:72.7%"></div>
+    <div class="dose" style="left:90.9%"></div>
+  </div>
+  <p class="note">Recommended 600 IU. Ceiling 4,000 IU. <b>Old article: 5,000 IU, past the ceiling.</b></p>
+
+  <p class="rlabel">Infants under 6 months</p>
+  <div class="track">
+    <div class="band" style="left:0; width:18.2%"></div>
+    <div class="rda"  style="left:0; width:7.3%"></div>
+    <div class="ceil" style="left:18.2%"></div>
+    <div class="dose" style="left:18.2%"></div>
+  </div>
+  <p class="note">Recommended 400 IU. Ceiling 1,000 IU. <b>Old article: 1,000 IU, exactly at the ceiling.</b></p>
+
+  <div class="axis">
+    <span class="tk first" style="left:0">0</span>
+    <span class="tk" style="left:18.2%">1,000</span>
+    <span class="tk" style="left:36.4%">2,000</span>
+    <span class="tk" style="left:54.5%">3,000</span>
+    <span class="tk" style="left:72.7%">4,000</span>
+    <span class="tk last" style="left:90.9%">5,000</span>
+  </div>
+  <p class="credit">Recommended amounts and ceilings: NIH Office of Dietary Supplements. The 5,000 IU and 1,000 IU figures are the doses used in Stubbs et al. 2016, the 19-person uncontrolled study the old page relied on.</p>
+</div>
+
+<div class="fig" id="vdfig2">
+  <h2>Comparing mothers is not the same as running a trial</h2>
+  <p class="sub">The same question, asked two ways, gives two different answers</p>
+
+  <div class="panel">
+    <p class="ptitle">Comparing mothers who already had higher vs lower vitamin D</p>
+    <p class="pnote">Pooled across 15 observational studies. Lower risk sits left of the line.</p>
+    <div class="ptrack">
+      <div class="ref" style="left:66.7%"></div>
+      <div class="reflab" style="left:66.7%; padding-left:14px">no difference</div>
+      <div class="ci2" style="left:23.3%; width:30.0%; background:#009499"></div>
+      <div class="pt" style="left:36.7%; background:#009499"></div>
+    </div>
+    <div class="paxis">
+      <span class="tk first" style="left:0">0.80</span><span class="tk" style="left:33.3%">0.90</span>
+      <span class="tk" style="left:66.7%">1.00</span><span class="tk last" style="left:100%">1.10</span>
+    </div>
+    <p class="pres">9% lower risk <span>(0.91, 95% CI 0.87 to 0.96)</span></p>
+  </div>
+
+  <div class="panel">
+    <p class="ptitle">Randomly assigning children a higher dose for their first two years</p>
+    <p class="pnote">366 children given 1,200 IU or 400 IU daily, autism traits measured at ages 6 to 8.</p>
+    <div class="ptrack">
+      <div class="ref" style="left:50%"></div>
+      <div class="reflab" style="left:50%; padding-left:14px">no difference</div>
+      <div class="ci2" style="left:16.7%; width:66.6%; background:#c14a3f"></div>
+      <div class="pt" style="left:49.7%; background:#c14a3f"></div>
+    </div>
+    <div class="paxis">
+      <span class="tk first" style="left:0">&minus;0.30</span><span class="tk" style="left:33.3%">&minus;0.10</span>
+      <span class="tk" style="left:50%">0</span><span class="tk last" style="left:83.3%">+0.20</span>
+    </div>
+    <p class="pres">No measurable difference <span>(&minus;0.002, 95% CI &minus;0.20 to 0.20)</span></p>
+  </div>
+
+  <p class="credit">The two panels use different measures and different scales, so the bars are not comparable to each other; what is comparable is the conclusion. Observation finds a link. The trial that assigned the vitamin found no difference. Data: Bandini et al. 2026, European Child &amp; Adolescent Psychiatry; Sandboge et al. 2026, Journal of Child Psychology and Psychiatry.</p>
+</div>
+
+</body></html>

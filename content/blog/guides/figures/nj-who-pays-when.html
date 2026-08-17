@@ -1,0 +1,57 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:900px;font-family:'Manrope',system-ui,sans-serif;background:#f6f4ef;padding:44px 40px 34px}
+h2{font-size:40px;font-weight:800;color:#1a2744;letter-spacing:-.01em;line-height:1.15}
+.sub{font-size:27px;color:#5a5a5a;margin:12px 0 34px;line-height:1.4}
+.lane{position:relative;margin-left:330px;height:62px}
+.markl{position:absolute;bottom:10px;transform:translateX(-50%);font-size:24px;font-weight:800;
+        color:#c14a3f;white-space:nowrap}
+.markl:after{content:"";position:absolute;left:50%;bottom:-12px;margin-left:-6px;
+              border:6px solid transparent;border-top-color:#c14a3f}
+.plot{position:relative}
+.row{display:flex;align-items:center;margin-bottom:18px}
+.lab{width:330px;padding-right:22px;flex:none}
+.lab b{display:block;font-size:26px;font-weight:800;color:#1a2744;line-height:1.22}
+.lab span{display:block;font-size:25px;color:#6f6a5e;margin-top:3px}
+.track{position:relative;flex:1;height:46px;background:#e6e2da;border-radius:6px}
+.bar{position:absolute;top:0;height:46px}
+.markwrap{position:absolute;left:330px;right:0;top:0;bottom:18px;pointer-events:none}
+.mark{position:absolute;top:0;bottom:0;width:3px;background:#c14a3f;transform:translateX(-1px)}
+.axis{position:relative;margin-left:330px;height:70px;margin-top:2px}
+.axis .line{position:absolute;top:0;left:0;right:0;height:3px;background:#c9c4b8}
+.tk{position:absolute;top:12px;transform:translateX(-50%);font-size:25px;color:#6f6a5e;white-space:nowrap}
+.unit{position:absolute;top:44px;left:0;font-size:25px;color:#8a8a8a}
+.caveat{margin-top:14px;font-size:24px;line-height:1.42;color:#5a5a5a}
+.caveat b{font-weight:800;color:#1a2744}
+.credit{margin-top:14px;font-size:23px;color:#8a8a8a}
+</style></head><body>
+<h2>Who is responsible, and when</h2>
+<div class="sub">The same child moves between systems on fixed dates. Age in years across the bottom.</div>
+<div class="lane"><div class="markl" style="left:12.14%">Referral to district due</div></div>
+<div class="plot">
+<div class="row">
+  <div class="lab"><b>New Jersey Early Intervention</b><span>Birth to age three</span></div>
+  <div class="track"><div class="bar" style="left:0.0%;width:13.64%;background:#c14a3f;border-radius:6px"></div></div>
+</div><div class="row">
+  <div class="lab"><b>School district, IEP</b><span>From the third birthday</span></div>
+  <div class="track"><div class="bar" style="left:13.64%;width:86.36%;background:#9a9484;border-radius:0;clip-path:polygon(0 0,calc(100% - 16px) 0,100% 50%,calc(100% - 16px) 100%,0 100%)"></div></div>
+</div><div class="row">
+  <div class="lab"><b>Chapter 115, commercial insurance</b><span>ABA for under 21</span></div>
+  <div class="track"><div class="bar" style="left:0.0%;width:95.45%;background:#009499;border-radius:6px"></div></div>
+</div><div class="row">
+  <div class="lab"><b>NJ FamilyCare, EPSDT autism benefit</b><span>Under 21</span></div>
+  <div class="track"><div class="bar" style="left:0.0%;width:95.45%;background:#1a2744;border-radius:6px"></div></div>
+</div><div class="row">
+  <div class="lab"><b>DDD waiver programs</b><span>Age 21 and over</span></div>
+  <div class="track"><div class="bar" style="left:95.45%;width:4.55%;background:#6f6a5e;border-radius:0;clip-path:polygon(0 0,calc(100% - 16px) 0,100% 50%,calc(100% - 16px) 100%,0 100%)"></div></div>
+</div>
+  <div class="markwrap"><div class="mark" style="left:12.14%"></div></div>
+</div>
+<div class="axis"><div class="line"></div><div class="tk" style="left:0.0%">0</div><div class="tk" style="left:13.64%">3</div><div class="tk" style="left:22.73%">5</div><div class="tk" style="left:45.45%">10</div><div class="tk" style="left:68.18%">15</div><div class="tk" style="left:95.45%">21</div>
+  <div class="unit">Age in years</div>
+</div>
+<div class="caveat"><b>The school band has no single end date.</b> Services run to the close of the school year in which a student turns 21, so the exact edge depends on the birthday. Graduating with a regular high school diploma ends them sooner, at any age. A GED, a certificate of completion or a certificate of attendance does not.</div>
+<div class="credit">Mastermind Behavior. Sources: N.J.A.C. 6A:14; DOBI Bulletin 10-02; NJ Medicaid SPA 19-0003; NJ DDD; 34 CFR 300.102.</div>
+</body></html>

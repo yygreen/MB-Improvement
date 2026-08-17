@@ -1,0 +1,170 @@
+<div class="mm-embed mm-t1">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
+    .mm-embed { box-sizing: border-box; }
+    .mm-embed *, .mm-embed *::before, .mm-embed *::after { box-sizing: inherit; }
+
+    .mm-embed {
+      --navy:     #1a2744;
+      --teal:     #3ba5a8;
+      --teal-pale:#e8f6f6;
+      --warm:     #f9f6f1;
+      --cta:      #db5b4f;
+      --text:     #2c2c2c;
+      --soft:     #5a5a5a;
+      --rule:     #e6e2da;
+      --font-body: 'Manrope', system-ui, -apple-system, sans-serif;
+    }
+    .mm-t1 { font-family: var(--font-body, 'Manrope', sans-serif); color: var(--text, #2c2c2c); }
+
+    .mm-hero {
+      background: radial-gradient(ellipse at 80% 0%, rgba(59,165,168,0.15) 0%, transparent 55%),
+                  linear-gradient(180deg, var(--warm, #f9f6f1) 0%, #fff 100%);
+      padding: clamp(36px, 5vw, 64px) clamp(20px, 5vw, 48px) clamp(28px, 4vw, 48px);
+    }
+    .mm-hero__inner { max-width: 1200px; margin: 0 auto; }
+    .mm-hero__grid {
+      display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+      gap: clamp(32px, 5vw, 64px); align-items: center;
+    }
+    .mm-hero__text { min-width: 0; }
+    .mm-hero__media {
+      position: relative; border-radius: 20px; overflow: hidden;
+      aspect-ratio: 4/3; background: #f0ebe3;
+    }
+    .mm-hero__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .mm-hero__placeholder {
+      width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 20px; font-size: 15px; font-weight: 500; color: #8a8a8a;
+      background: linear-gradient(135deg, var(--teal-pale, #e8f6f6) 0%, #f0ebe3 100%);
+    }
+    @media (max-width: 900px) {
+      .mm-hero__grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+    .mm-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--teal, #3ba5a8); margin-bottom: 28px;
+    }
+    .mm-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--teal, #3ba5a8); }
+    .mm-t1 h1 {
+      font-family: var(--font-body); font-weight: 600;
+      font-size: clamp(32px, 5vw, 52px); line-height: 1.08; letter-spacing: -0.015em;
+      color: var(--navy, #1a2744); margin: 0 0 28px 0;
+    }
+    .mm-hero__intro { line-height: 1.65; color: var(--soft, #5a5a5a); margin: 0 0 36px 0; }
+    .mm-hero__intro p { font-size: 18px; margin: 0 0 1.1em 0; }
+    .mm-hero__intro p:last-child { margin-bottom: 0; }
+    .mm-hero__intro a, .mm-rt a {
+      color: var(--navy, #1a2744); text-decoration: underline;
+      text-decoration-color: var(--teal, #3ba5a8); text-underline-offset: 3px; text-decoration-thickness: 2px;
+    }
+    .mm-cta-row { display: flex; flex-wrap: wrap; gap: 14px; }
+    .mm-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 16px 28px; font-family: var(--font-body); font-size: 15px; font-weight: 600;
+      letter-spacing: 0.01em; border-radius: 999px; border: 2px solid transparent;
+      text-decoration: none; cursor: pointer;
+      transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+    .mm-btn--primary { background: var(--cta, #db5b4f); color: #fff; border-color: var(--cta, #db5b4f); }
+    .mm-btn--primary:hover { background: #b34a40; border-color: #b34a40; transform: translateY(-1px); }
+    .mm-btn--secondary { background: transparent; color: var(--navy, #1a2744); border-color: var(--cta, #db5b4f); }
+    .mm-btn--secondary:hover { background: var(--cta, #db5b4f); color: #fff; border-color: var(--cta, #db5b4f); }
+
+    .mm-section { padding: clamp(48px, 7vw, 88px) clamp(20px, 5vw, 48px); }
+    .mm-section--warm { background: var(--warm, #f9f6f1); }
+    .mm-section__inner { max-width: 1200px; margin: 0 auto; }
+    .mm-h2 {
+      font-family: var(--font-body); font-weight: 600;
+      font-size: clamp(26px, 3.6vw, 40px); line-height: 1.15; letter-spacing: -0.01em;
+      color: var(--navy, #1a2744); margin: 0 0 28px 0;
+    }
+    .mm-rt { line-height: 1.7; color: var(--text, #2c2c2c); }
+    .mm-rt p { font-size: 18px; margin: 0 0 1.1em 0; }
+    .mm-rt p:last-child { margin-bottom: 0; }
+    .mm-rt strong { color: var(--navy, #1a2744); font-weight: 600; }
+
+    .mm-rt table {
+      width: 100%; border-collapse: collapse; margin: 24px 0;
+      font-size: 15px; background: #fff; border-radius: 12px; overflow: hidden;
+      box-shadow: 0 1px 0 var(--rule, #e6e2da), 0 12px 40px rgba(26,39,68,0.04);
+    }
+    .mm-rt tbody tr { border-bottom: 1px solid var(--rule, #e6e2da); }
+    .mm-rt tbody tr:last-child { border-bottom: none; }
+    .mm-rt tbody tr:first-child { background: var(--navy, #1a2744); color: #fff; }
+    .mm-rt tbody tr:first-child strong { color: #fff; }
+    .mm-rt td { padding: 14px 18px; text-align: left; vertical-align: top; line-height: 1.55; }
+    .mm-rt tbody td:first-child { width: 30%; }
+    @media (max-width: 600px) { .mm-rt tbody td:first-child { width: 40%; } }
+
+    .mm-cta-close { background: #f9f6f1; text-align: center; }
+    .mm-cta-close .mm-h2 { margin-bottom: 16px; }
+    .mm-cta-close .mm-cta-row { justify-content: center; margin-top: 28px; }
+  </style>
+
+  <section class="mm-hero">
+    <div class="mm-hero__inner">
+      <div class="mm-hero__grid">
+        <div class="mm-hero__text">
+          <span class="mm-eyebrow">In-Home Therapy</span>
+          <h1>ABA Behavior Support in New Jersey</h1>
+          <div class="mm-hero__intro">
+            <p>By the time most families search for behavior support, they are past the general advice. The sticker charts did not work. The consequences did not work. Waiting did not work. What is left is a behavior that is running the household, and a family that is exhausted in a way that is hard to explain to anyone outside it.</p>
+            <p>Mastermind Behavior provides in-home ABA therapy, including behavior support, for children and young people with autism through age 21 across New Jersey.</p>
+          </div>
+          <div class="mm-cta-row">
+            <a href="/contact" class="mm-btn mm-btn--primary">Schedule a free consultation</a>
+            <a href="tel:732.813.7333" class="mm-btn mm-btn--secondary">Call 732.813.7333</a>
+          </div>
+        </div>
+        <div class="mm-hero__media">
+          <img src="https://cdn.prod.website-files.com/6627fd62e242d50407cfe12d/6a78e6e658560a803d64112e_behavior-support-new-jersey-hero.webp" alt="Behavior Technician kneels by the front door showing a boy two picture cards" width="1200" height="900" loading="eager" decoding="async">
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="mm-section mm-section--warm">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">Who does what in New Jersey</h2>
+      <div class="mm-rt">
+        <p><a href="/behavior-support">Behavior support</a> in ABA starts from a different premise: behavior is communication. Before anything gets changed, it gets understood, through careful observation and data, in the place where the behavior actually happens. For our families that place is home, so that is where we work.</p>
+        <p>If your child's behavior shows up at school, the school system has its own process. Federal special education law requires the IEP team to consider positive behavioral interventions and supports when behavior interferes with learning, and in practice that often means the district conducts a functional behavior assessment and writes a behavior intervention plan for the school day.</p>
+        <p>The school's plan covers school. It does not follow your child home, and home is usually where the hardest hours are. In-home behavior support fills that half of the picture: a functional behavior assessment done in your home, a behavior intervention plan built for your routines, and coaching so the adults respond the same way every time. Findings from the home assessment can also inform the school's process.</p>
+        <p>New Jersey also regulates who can do this work. Behavior analysts practicing in the state are licensed under the Applied Behavior Analyst Licensing Act, and our BCBAs hold both BACB certification and an active New Jersey LBA license. The person writing your child's plan is credentialed for exactly this.</p>
+        <p>For situations that have escalated beyond what a home plan can hold, New Jersey's Children's System of Care, administered by PerformCare, is the state's door to additional behavioral health supports for children and young people until age 21. We are not that system, but we can work alongside it.</p>
+      </div>
+    </div>
+  </section>
+  <section class="mm-section">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">Coverage in New Jersey</h2>
+      <div class="mm-rt">
+        <p>Behavior support is ABA therapy, and New Jersey treats it that way for coverage purposes. The rows below are the parts of the state's coverage picture families ask about most. The full detail lives on our <a href="/aba-therapy-in-new-jersey">New Jersey ABA therapy page</a>.</p>
+        <table>
+          <tbody>
+            <tr><td><strong>Coverage element</strong></td><td><strong>New Jersey detail</strong></td></tr>
+            <tr><td><strong>State mandate</strong></td><td>P.L. 2009, c. 115 ("Health Benefits Coverage for Autism and Other Developmental Disabilities") — signed August 2009, effective February 9, 2010</td></tr>
+            <tr><td><strong>Annual dollar cap</strong></td><td>None — DOBI Bulletin 10-02 (January 2010) and federal MHPAEA parity make dollar caps unenforceable on plans subject to parity</td></tr>
+            <tr><td><strong>NJ FamilyCare (Medicaid)</strong></td><td>Covers ABA for children under 21 via EPSDT, effective April 2020. Income up to 355% FPL for children under 19. We're enrolled with the major NJ FamilyCare MCOs.</td></tr>
+            <tr><td><strong>BCBA licensure</strong></td><td>Required in NJ — Applied Behavior Analyst Licensing Act (P.L. 2019, c. 337) signed January 2020; final regulations effective May 2024. Our BCBAs hold both BACB certification and an active NJ LBA license.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <section class="mm-section mm-section--warm">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">How the process works at home</h2>
+      <div class="mm-rt">
+        <p>It starts with a functional behavior assessment: careful observation and data collection to identify what happens right before the behavior and what happens right after it. Not a theory about your child. A record of your child.</p>
+        <p>The behavior intervention plan is built on that data, using the least restrictive, most positive strategies available. A large part of the plan is teaching rather than stopping: functional communication training gives your child a faster, easier way to get what the behavior was getting, and replacement skills give them something to do instead.</p>
+        <p>Parents are in the plan from the start. Behavior changes when the response to it is consistent, so we coach you on exactly what to do in the moment, and the plan is adjusted as the data comes in.</p>
+        <p>Programs are designed and supervised by a BCBA and delivered by Behavior Technicians who work with your child consistently rather than rotating through. Assessment takes about four weeks, and there is no onboarding waitlist.</p>
+        <p>Behavior support often runs alongside our other services in New Jersey: <a href="/parent-training-new-jersey">parent training</a> deepens the coaching side, <a href="/early-intervention-new-jersey">early intervention</a> serves the youngest children, and <a href="/transition-planning-new-jersey">transition planning</a> picks up the teen years.</p>
+        <p>Our New Jersey team works from the Lakewood office at 410 Monmouth Ave, <a href="/aba-therapy-in-new-jersey">serving families across the state</a>.</p>
+      </div>
+    </div>
+  </section>
+</div>

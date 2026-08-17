@@ -1,0 +1,74 @@
+<div class="mm-embed mm-t1">
+  <style>
+    /* the FAQ is white and the closing CTA beige - stated, not inherited */
+    .mm-faq { background: #fff; }
+    .mm-cta-close { background: var(--warm, #f9f6f1); }
+    .mm-cta-close__lede {
+      font-size: 18px; line-height: 1.7; color: var(--soft, #5a5a5a);
+      max-width: 60ch; margin: 0 auto;
+    }
+    .mm-acc { border-top: 1px solid var(--rule, #e6e2da); }
+    .mm-acc__item { border-bottom: 1px solid var(--rule, #e6e2da); }
+    .mm-acc__q {
+      list-style: none; cursor: pointer;
+      display: flex; align-items: flex-start; justify-content: space-between; gap: 20px;
+      padding: 20px 0; font-family: var(--font-body); font-weight: 600;
+      font-size: 18px; line-height: 1.35; color: var(--navy, #1a2744);
+      transition: color 0.15s ease;
+    }
+    .mm-acc__q::-webkit-details-marker { display: none; }
+    .mm-acc__q:hover { color: var(--teal, #3ba5a8); }
+    .mm-acc__q::after {
+      content: ''; flex: 0 0 auto; width: 10px; height: 10px; margin-top: 6px;
+      border-right: 2px solid var(--teal, #3ba5a8); border-bottom: 2px solid var(--teal, #3ba5a8);
+      transform: rotate(45deg); transition: transform 0.2s ease;
+    }
+    .mm-acc__item[open] .mm-acc__q::after { transform: rotate(-135deg); margin-top: 10px; }
+    .mm-acc__a { padding: 0 0 22px 0; line-height: 1.7; color: var(--text, #2c2c2c); }
+    /* size the P itself: a global Webflow rule sets p to 1.125rem, which beats
+       anything inherited from the container - see the note in the base sheet */
+    .mm-acc__a p { font-size: 18px; margin: 0 0 1.1em 0; }
+    .mm-acc__a p:last-child { margin-bottom: 0; }
+  </style>
+  <section class="mm-section mm-faq">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">Questions families ask</h2>
+      <div class="mm-acc">
+        <details class="mm-acc__item">
+          <summary class="mm-acc__q">Is parent training covered by insurance in Georgia?</summary>
+          <div class="mm-acc__a"><p>When it is part of your child's ABA treatment plan, it is typically covered as part of ABA therapy. Ava's Law requires most state-regulated plans to cover ABA, and Georgia Medicaid covers ABA for individuals under 21. We check your specific plan with you before starting.</p></div>
+        </details>
+        <details class="mm-acc__item">
+          <summary class="mm-acc__q">Do both parents have to participate?</summary>
+          <div class="mm-acc__a"><p>We coach the people who are actually in the routines. For some families that is one parent. For others it is both, a grandparent, or another caregiver. The goal is consistency across the adults your child spends time with.</p></div>
+        </details>
+        <details class="mm-acc__item">
+          <summary class="mm-acc__q">Is this a class?</summary>
+          <div class="mm-acc__a"><p>No. There is no curriculum binder and no classroom. It is one-to-one coaching in your own home, during your own routines, on the specific situations you face.</p></div>
+        </details>
+        <details class="mm-acc__item">
+          <summary class="mm-acc__q">My child already receives ABA. Why add this?</summary>
+          <div class="mm-acc__a"><p>Because your child's week has far more hours in it than any therapy schedule. When the adults at home use the same prompts, reinforcement, and structured routines as the session team, skills generalize instead of staying locked to sessions.</p></div>
+        </details>
+        <details class="mm-acc__item">
+          <summary class="mm-acc__q">What if a strategy does not work for us?</summary>
+          <div class="mm-acc__a"><p>That is information, not failure. Your BCBA adjusts the plan based on what the data and your experience show. The program serves your family, not the other way around.</p></div>
+        </details>
+        <details class="mm-acc__item">
+          <summary class="mm-acc__q">How soon can we start?</summary>
+          <div class="mm-acc__a"><p>There is no onboarding waitlist. Assessment takes about four weeks.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+  <section class="mm-section mm-cta-close">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">Therapy doesn't end when the session does</h2>
+      <p class="mm-cta-close__lede">Bring the routine that is hardest right now. We will talk through what coaching in your own home would look like for your family in Georgia.</p>
+      <div class="mm-cta-row">
+        <a href="/contact" class="mm-btn mm-btn--primary">Schedule a free consultation</a>
+        <a href="tel:732.813.7333" class="mm-btn mm-btn--secondary">Call 732.813.7333</a>
+      </div>
+    </div>
+  </section>
+</div>

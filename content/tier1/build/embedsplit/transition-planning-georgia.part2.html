@@ -1,0 +1,74 @@
+<div class="mm-embed mm-t1">
+  <style>
+    /* the FAQ is white and the closing CTA beige - stated, not inherited */
+    .mm-faq { background: #fff; }
+    .mm-cta-close { background: var(--warm, #f9f6f1); }
+    .mm-cta-close__lede {
+      font-size: 18px; line-height: 1.7; color: var(--soft, #5a5a5a);
+      max-width: 60ch; margin: 0 auto;
+    }
+    .mm-acc { border-top: 1px solid var(--rule, #e6e2da); }
+    .mm-acc__item { border-bottom: 1px solid var(--rule, #e6e2da); }
+    .mm-acc__q {
+      list-style: none; cursor: pointer;
+      display: flex; align-items: flex-start; justify-content: space-between; gap: 20px;
+      padding: 20px 0; font-family: var(--font-body); font-weight: 600;
+      font-size: 18px; line-height: 1.35; color: var(--navy, #1a2744);
+      transition: color 0.15s ease;
+    }
+    .mm-acc__q::-webkit-details-marker { display: none; }
+    .mm-acc__q:hover { color: var(--teal, #3ba5a8); }
+    .mm-acc__q::after {
+      content: ''; flex: 0 0 auto; width: 10px; height: 10px; margin-top: 6px;
+      border-right: 2px solid var(--teal, #3ba5a8); border-bottom: 2px solid var(--teal, #3ba5a8);
+      transform: rotate(45deg); transition: transform 0.2s ease;
+    }
+    .mm-acc__item[open] .mm-acc__q::after { transform: rotate(-135deg); margin-top: 10px; }
+    .mm-acc__a { padding: 0 0 22px 0; line-height: 1.7; color: var(--text, #2c2c2c); }
+    /* size the P itself: a global Webflow rule sets p to 1.125rem, which beats
+       anything inherited from the container - see the note in the base sheet */
+    .mm-acc__a p { font-size: 18px; margin: 0 0 1.1em 0; }
+    .mm-acc__a p:last-child { margin-bottom: 0; }
+  </style>
+  <section class="mm-section mm-faq">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">Questions families ask</h2>
+      <div class="mm-acc">
+        <details class="mm-acc__item">
+          <summary class="mm-acc__q">When does transition planning start in Georgia?</summary>
+          <div class="mm-acc__a"><p>Federal law requires transition services to be in the IEP by age 16. Teams can address it earlier when appropriate, and asking for that is reasonable.</p></div>
+        </details>
+        <details class="mm-acc__item">
+          <summary class="mm-acc__q">What is DBHDD and when should we apply?</summary>
+          <div class="mm-acc__a"><p>The Department of Behavioral Health and Developmental Disabilities runs Georgia's adult developmental disability supports, including the NOW and COMP Medicaid waivers. Because waits for waiver slots are commonly measured in years, applying early in the transition years is the safer path.</p></div>
+        </details>
+        <details class="mm-acc__item">
+          <summary class="mm-acc__q">What happens when my child turns 21?</summary>
+          <div class="mm-acc__a"><p>The insurance mandate covers through age 20, Georgia Medicaid covers ABA to 21, and special education ends at graduation or aging out. After that, support runs through adult systems that require their own applications and eligibility determinations.</p></div>
+        </details>
+        <details class="mm-acc__item">
+          <summary class="mm-acc__q">What is the Katie Beckett waiver?</summary>
+          <div class="mm-acc__a"><p>A Medicaid pathway for children with disabilities whose family income exceeds standard Medicaid limits. It is one of the alternative routes listed in the coverage table above.</p></div>
+        </details>
+        <details class="mm-acc__item">
+          <summary class="mm-acc__q">Can ABA therapy continue through the transition years?</summary>
+          <div class="mm-acc__a"><p>We work with children and young people through age 21. Whether it continues uninterrupted depends on your coverage, which is covered above.</p></div>
+        </details>
+        <details class="mm-acc__item">
+          <summary class="mm-acc__q">How soon can we start?</summary>
+          <div class="mm-acc__a"><p>There is no onboarding waitlist. Assessment takes about four weeks.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+  <section class="mm-section mm-cta-close">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">Start while there is still time to teach</h2>
+      <p class="mm-cta-close__lede">Tell us where your child sits in the Georgia timeline and we will talk through what is worth starting now and what can wait.</p>
+      <div class="mm-cta-row">
+        <a href="/contact" class="mm-btn mm-btn--primary">Schedule a free consultation</a>
+        <a href="tel:732.813.7333" class="mm-btn mm-btn--secondary">Call 732.813.7333</a>
+      </div>
+    </div>
+  </section>
+</div>
