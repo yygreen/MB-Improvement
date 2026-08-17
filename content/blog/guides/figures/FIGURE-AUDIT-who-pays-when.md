@@ -143,9 +143,20 @@ Negative tests fire in both: corrupting NJ's mandate age to 25 fails on the
 changed quote and again on the unreadable edge; deleting NC's (a)(2)
 continuation fails the build.
 
-The rebuilt images are in the repo; the live pages still serve the old
-assets until the next token session swaps them (same MD5-addressing as the
-Georgia figure).
+**All three rebuilt figures went live 2026-08-17.** New assets uploaded and
+verified byte-identical on the CDN before any body was touched; one img src
+swap per guide, each asserted to occur exactly once with a masked-diff check
+that nothing outside the URL span changed. Webflow then normalized the URLs
+into CMS space (`cfe155/<newid>_<asset>`), which the write verification
+treats as the one permitted difference. Final check pulled the figure each
+live page actually serves and md5-matched it against the repo webp: all
+three match, and no page references its old asset.
+
+One naming wrinkle for the next sweep: the old live assets did not share a
+naming pattern (`ga-funding-who-pays-when`, `nj-funding-who-is-responsible-when`,
+`nc-funding-who-pays-when`). The swap used the exact per-state filename
+rather than a pattern, after two pattern guesses each found zero matches
+and the once-only assertion refused to proceed.
 
 ## The original finding (2026-08-13), kept for the record
 
