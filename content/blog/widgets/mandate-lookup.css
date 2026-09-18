@@ -1,0 +1,131 @@
+/* Mandate lookup widget (#mm-mlw), injected by mb-mandate-lookup-1.0.0.js.
+   Matches the insurance check widget on the same page.
+
+   SOURCE OF TRUTH. tools/blog/build-mandate-lookup.py inlines this file into
+   the generated widget, which injects it as a single <style> element at mount
+   time. The widget therefore carries its own styling and does not depend on
+   anything being present in the Designer.
+
+   Every selector must be scoped under #mm-mlw. The build gate enforces it:
+   an unscoped rule here would leak onto every element of the host page. */
+
+#mm-mlw { margin: 48px 0; font-family: 'Manrope', system-ui, -apple-system, sans-serif; }
+
+#mm-mlw .mm-mlw-box {
+  background: #f9f6f1;
+  border: 1px solid #dce7e9;
+  border-radius: 16px;
+  padding: 32px;
+}
+
+#mm-mlw .mm-mlw-h {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #002833;
+  margin: 0 0 8px;
+}
+
+#mm-mlw .mm-mlw-sub {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: #4a5a63;
+  margin: 0 0 24px;
+  max-width: 46rem;
+}
+
+/* inputs */
+#mm-mlw .mm-mlw-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+#mm-mlw .mm-mlw-row label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #4a5a63;
+}
+
+#mm-mlw select,
+#mm-mlw input[type="number"] {
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  background: #ffffff;
+  border: 1.5px solid #cfdde0;
+  border-radius: 10px;
+  padding: 12px 40px 12px 14px;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #002833;
+  line-height: 1.3;
+  cursor: pointer;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+#mm-mlw select {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%2334abc7' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 6l5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+}
+
+#mm-mlw input[type="number"] {
+  padding-right: 14px;
+  cursor: text;
+}
+
+#mm-mlw select:hover,
+#mm-mlw input[type="number"]:hover { border-color: #34abc7; }
+
+#mm-mlw select:focus-visible,
+#mm-mlw input[type="number"]:focus-visible {
+  outline: none;
+  border-color: #34abc7;
+  box-shadow: 0 0 0 3px rgba(52, 171, 199, 0.22);
+}
+
+/* result */
+#mm-mlw .mm-mlw-out {
+  background: #ffffff;
+  border: 1px solid #e3ebed;
+  border-radius: 12px;
+  padding: 24px 24px 8px;
+}
+
+#mm-mlw .mm-mlw-out:empty { display: none; }
+
+#mm-mlw .mm-mlw-out p {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: #24343c;
+  margin: 0 0 16px;
+}
+
+#mm-mlw .mm-mlw-out p b { color: #002833; }
+
+#mm-mlw .mm-mlw-out a { color: #34abc7; text-decoration: underline; }
+#mm-mlw .mm-mlw-out a:hover { color: #db5b4f; }
+
+#mm-mlw .mm-mlw-note {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #5f7079;
+  border-left: 3px solid #dce7e9;
+  padding-left: 14px;
+}
+
+@media (max-width: 760px) {
+  #mm-mlw { margin: 32px 0; }
+  #mm-mlw .mm-mlw-box { padding: 22px 18px; border-radius: 14px; }
+  #mm-mlw .mm-mlw-h { font-size: 1.25rem; }
+  #mm-mlw .mm-mlw-row { grid-template-columns: 1fr; gap: 14px; }
+  #mm-mlw .mm-mlw-out { padding: 18px 18px 4px; }
+}
