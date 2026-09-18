@@ -1,0 +1,238 @@
+{
+ "state": "new-jersey",
+ "window": "58-114",
+ "eligible": [
+  {
+   "id": "6646ed1869dfd70e34614089",
+   "slug": "maplewood"
+  },
+  {
+   "id": "6646ed14ccef72f4b339e568",
+   "slug": "marlboro"
+  },
+  {
+   "id": "6646ed1b69dfd70e3461426a",
+   "slug": "millburn"
+  },
+  {
+   "id": "6646ed125dc1556bdfa3fa91",
+   "slug": "monroe"
+  },
+  {
+   "id": "6646ed1487c509232f15cdaa",
+   "slug": "montclair"
+  },
+  {
+   "id": "6646ed1ab0234bc85afc0698",
+   "slug": "montville"
+  },
+  {
+   "id": "6646ed136c143a6ac2d163eb",
+   "slug": "mount-laurel"
+  },
+  {
+   "id": "6646ed17af3833e0e71b4d34",
+   "slug": "mount-olive"
+  },
+  {
+   "id": "6646ed0f639ab4144301f26d",
+   "slug": "newark"
+  },
+  {
+   "id": "6646ed119ab7448da5f2eee1",
+   "slug": "new-brunswick"
+  },
+  {
+   "id": "6646ed31941c997a34d41de8",
+   "slug": "newton"
+  },
+  {
+   "id": "6646ed14b2c458905ffc7c5a",
+   "slug": "north-brunswick"
+  },
+  {
+   "id": "6646ed164a2f91daec16c3b4",
+   "slug": "nutley"
+  },
+  {
+   "id": "6646ed10f649e649ef3f41ba",
+   "slug": "old-bridge"
+  },
+  {
+   "id": "6646ed18d97b33b2895104c4",
+   "slug": "paramus"
+  },
+  {
+   "id": "6646ed128c31f8bf8d71ddd6",
+   "slug": "parsippany-troy-hills"
+  },
+  {
+   "id": "6646ed10d07b73b3e10bfde2",
+   "slug": "passaic"
+  },
+  {
+   "id": "6646ed0f30c52748b031059e",
+   "slug": "paterson"
+  },
+  {
+   "id": "6646ed20840ca41ee336bd3f",
+   "slug": "pequannock"
+  },
+  {
+   "id": "6646ed126c143a6ac2d1637f",
+   "slug": "perth-amboy"
+  },
+  {
+   "id": "6646ed11f649e649ef3f41dd",
+   "slug": "piscataway"
+  },
+  {
+   "id": "6646ed12f649e649ef3f41f8",
+   "slug": "plainfield"
+  },
+  {
+   "id": "6646ed1d154e496e05259adb",
+   "slug": "point-pleasant"
+  },
+  {
+   "id": "6646ed168b8b2422f7c8b212",
+   "slug": "princeton"
+  },
+  {
+   "id": "6646ed16c79fdaa617178584",
+   "slug": "rahway"
+  },
+  {
+   "id": "6646ed180ca42be34dd5efed",
+   "slug": "randolph"
+  },
+  {
+   "id": "6646ed1895970f23533d6e15",
+   "slug": "ridgewood"
+  },
+  {
+   "id": "6646ed1887c509232f15cfec",
+   "slug": "rockaway"
+  },
+  {
+   "id": "6646ed1ac1d1934d3d66190e",
+   "slug": "roxbury"
+  },
+  {
+   "id": "6646ed1da1869b0981255d78",
+   "slug": "rutherford"
+  },
+  {
+   "id": "6646ed3bda5d33f229a872a9",
+   "slug": "salem"
+  },
+  {
+   "id": "6646ed1375169877c6f9f39d",
+   "slug": "sayreville"
+  },
+  {
+   "id": "6646ed19d07b73b3e10c007a",
+   "slug": "scotch-plains"
+  },
+  {
+   "id": "6646ed1bc3c64052505a6f02",
+   "slug": "secaucus"
+  },
+  {
+   "id": "6646ed254a2f91daec16cf65",
+   "slug": "somerville"
+  },
+  {
+   "id": "6646ed13af924fa4e0051924",
+   "slug": "south-brunswick"
+  },
+  {
+   "id": "6646ed1d29342da0d6454bc1",
+   "slug": "south-orange"
+  },
+  {
+   "id": "6646ed1cd07b73b3e10c0175",
+   "slug": "sparta"
+  },
+  {
+   "id": "6646ed178268cc28afdec98c",
+   "slug": "stafford"
+  },
+  {
+   "id": "6646ed1af9506626a0e19935",
+   "slug": "summit"
+  },
+  {
+   "id": "6646ed14c1d1934d3d661652",
+   "slug": "teaneck"
+  },
+  {
+   "id": "6646ed1d0869d8afd59c3210",
+   "slug": "tinton-falls"
+  },
+  {
+   "id": "6646ed0f8268cc28afdec66a",
+   "slug": "toms-river"
+  },
+  {
+   "id": "6646ed0fb2e8ce909c2456f1",
+   "slug": "trenton"
+  },
+  {
+   "id": "6646ed10b28e17f0460737a2",
+   "slug": "union"
+  },
+  {
+   "id": "6646ed1a8a529badae1b49f4",
+   "slug": "vernon"
+  },
+  {
+   "id": "6646ed11487f6ef8d2c5f1f8",
+   "slug": "vineland"
+  },
+  {
+   "id": "6646ed1687c509232f15ce59",
+   "slug": "voorhees"
+  },
+  {
+   "id": "6646ed18f97616d11977cea3",
+   "slug": "wall"
+  },
+  {
+   "id": "6646ed128e779d9dc7322f34",
+   "slug": "wayne"
+  },
+  {
+   "id": "6646ed164dec8c3f0c9f93f1",
+   "slug": "westfield"
+  },
+  {
+   "id": "6646ed19382783ffd03251a4",
+   "slug": "west-milford"
+  },
+  {
+   "id": "6646ed12f649e649ef3f421e",
+   "slug": "west-new-york"
+  },
+  {
+   "id": "6646ed12ccef72f4b339e4ac",
+   "slug": "west-orange"
+  },
+  {
+   "id": "6646ed1669dfd70e34613e82",
+   "slug": "willingboro"
+  },
+  {
+   "id": "6646ed1469dfd70e34613dff",
+   "slug": "winslow"
+  },
+  {
+   "id": "6646ed0f30c52748b03105df",
+   "slug": "woodbridge"
+  }
+ ],
+ "updated": 57,
+ "skipped_current": 0,
+ "skipped_astate": 0,
+ "published": 57
+}

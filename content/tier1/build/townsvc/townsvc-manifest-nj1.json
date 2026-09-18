@@ -1,0 +1,242 @@
+{
+ "state": "new-jersey",
+ "window": "0-57",
+ "eligible": [
+  {
+   "id": "6646ed1d049e24b253c57ed8",
+   "slug": "aberdeen"
+  },
+  {
+   "id": "6646ed2092e7badcc59bae61",
+   "slug": "asbury-park"
+  },
+  {
+   "id": "6646ed10154e496e052591d2",
+   "slug": "bayonne"
+  },
+  {
+   "id": "6646ed150869d8afd59c2c94",
+   "slug": "belleville"
+  },
+  {
+   "id": "6646ed45af924fa4e005325a",
+   "slug": "belvidere"
+  },
+  {
+   "id": "6646ed176b4ad2d52426b793",
+   "slug": "bergenfield"
+  },
+  {
+   "id": "6646ed13af3833e0e71b4bd8",
+   "slug": "berkeley"
+  },
+  {
+   "id": "6646ed12f9506626a0e194e8",
+   "slug": "bloomfield"
+  },
+  {
+   "id": "6646ed108c31f8bf8d71dd31",
+   "slug": "brick"
+  },
+  {
+   "id": "6646ed17ccef72f4b339e6aa",
+   "slug": "bridgeton"
+  },
+  {
+   "id": "6646ed13095e6bbcabd273da",
+   "slug": "bridgewater"
+  },
+  {
+   "id": "6646ed105dc1556bdfa3fa04",
+   "slug": "camden"
+  },
+  {
+   "id": "6646ed439ab7448da5f31756",
+   "slug": "cape-may"
+  },
+  {
+   "id": "6646ed1895970f23533d6e3d",
+   "slug": "carteret"
+  },
+  {
+   "id": "6646ed109d76df51b4a0f022",
+   "slug": "cherry-hill"
+  },
+  {
+   "id": "6646ed18a1869b0981255b2f",
+   "slug": "cliffside-park"
+  },
+  {
+   "id": "6646ed108b8b2422f7c8aed9",
+   "slug": "clifton"
+  },
+  {
+   "id": "6646ed19af3833e0e71b4f27",
+   "slug": "cranford"
+  },
+  {
+   "id": "6646ed1e81dc6b3a6d1111ec",
+   "slug": "denville"
+  },
+  {
+   "id": "6646ed15344d79e99a1aeecd",
+   "slug": "deptford"
+  },
+  {
+   "id": "6646ed1dffd919d7c58d30e6",
+   "slug": "dover"
+  },
+  {
+   "id": "6646ed1d9240e04d9ea29348",
+   "slug": "dumont"
+  },
+  {
+   "id": "6646ed12d97b33b28951022b",
+   "slug": "east-brunswick"
+  },
+  {
+   "id": "6646ed10d07b73b3e10bfdf0",
+   "slug": "east-orange"
+  },
+  {
+   "id": "6646ed0f6474cb8171cbb22b",
+   "slug": "edison"
+  },
+  {
+   "id": "6646ed138e779d9dc7322fba",
+   "slug": "egg-harbor"
+  },
+  {
+   "id": "6646ed0fccef72f4b339e372",
+   "slug": "elizabeth"
+  },
+  {
+   "id": "6646ed1c4a2f91daec16c865",
+   "slug": "elmwood-park"
+  },
+  {
+   "id": "6646ed13382783ffd0324d15",
+   "slug": "evesham"
+  },
+  {
+   "id": "6646ed15f9506626a0e19614",
+   "slug": "ewing"
+  },
+  {
+   "id": "6646ed18da5d33f229a86547",
+   "slug": "fair-lawn"
+  },
+  {
+   "id": "6646ed3b049e24b253c59164",
+   "slug": "flemington"
+  },
+  {
+   "id": "6646ed10c80487a822b06505",
+   "slug": "franklin"
+  },
+  {
+   "id": "6646ed15a1869b0981254f6d",
+   "slug": "freehold"
+  },
+  {
+   "id": "6646ed156474cb8171cbb394",
+   "slug": "galloway"
+  },
+  {
+   "id": "6646ed15af3833e0e71b4cab",
+   "slug": "garfield"
+  },
+  {
+   "id": "6646ed118a529badae1b43b8",
+   "slug": "gloucester"
+  },
+  {
+   "id": "6646ed130ca42be34dd5ee19",
+   "slug": "hackensack"
+  },
+  {
+   "id": "6646ed0f154e496e052590f2",
+   "slug": "hamilton"
+  },
+  {
+   "id": "6646ed1dcc5d728e17bf0163",
+   "slug": "hawthorne"
+  },
+  {
+   "id": "6646ed1c639ab4144302026c",
+   "slug": "hazlet"
+  },
+  {
+   "id": "6646ed118c31f8bf8d71ddb0",
+   "slug": "hoboken"
+  },
+  {
+   "id": "6646ed1e9240e04d9ea29377",
+   "slug": "holmdel"
+  },
+  {
+   "id": "6646ed126c143a6ac2d16390",
+   "slug": "howell"
+  },
+  {
+   "id": "6646ed119240e04d9ea28e0d",
+   "slug": "irvington"
+  },
+  {
+   "id": "6646ed11c1d1934d3d66156b",
+   "slug": "jackson"
+  },
+  {
+   "id": "664d1198556295f3d905ed42",
+   "slug": "jersey-city"
+  },
+  {
+   "id": "6646ed1481dc6b3a6d110c70",
+   "slug": "kearny"
+  },
+  {
+   "id": "6646ed17e16eeb573bbf85bb",
+   "slug": "lacey"
+  },
+  {
+   "id": "6646ed0fb0234bc85afbfd95",
+   "slug": "lakewood"
+  },
+  {
+   "id": "6646ed148a529badae1b458a",
+   "slug": "linden"
+  },
+  {
+   "id": "6646ed1630c52748b031096a",
+   "slug": "livingston"
+  },
+  {
+   "id": "6646ed18095e6bbcabd27610",
+   "slug": "lodi"
+  },
+  {
+   "id": "6646ed15f97616d11977cdad",
+   "slug": "long-branch"
+  },
+  {
+   "id": "6646ed1f344d79e99a1af435",
+   "slug": "madison"
+  },
+  {
+   "id": "6646ed18ccef72f4b339e6df",
+   "slug": "mahwah"
+  },
+  {
+   "id": "6646ed146474cb8171cbb33c",
+   "slug": "manalapan"
+  },
+  {
+   "id": "6646ed13d07b73b3e10bfeda",
+   "slug": "manchester"
+  }
+ ],
+ "updated": 57,
+ "skipped_current": 1,
+ "skipped_astate": 0,
+ "published": 58
+}

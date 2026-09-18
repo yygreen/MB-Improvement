@@ -1,0 +1,75 @@
+<style>
+/* Page-specific overrides for /early-intervention.
+   Shared rules live in the "Service Page Styles" component - do not duplicate
+   them here, an override loads later and silently wins.
+   The hero headline deliberately carries NO rule here. It uses the canonical
+   .hero-headline rule from the shared component (fluid clamp, weight 600) so it
+   cannot drift from the reference page again. The pair of bare-h1 rules that
+   used to sit here forced 48px at weight 800 and were the drift; they are gone
+   on purpose, do not reinstate them.
+   The eyebrow is a div on this page where the other five use an h1, so it still
+   needs its own rules below.
+   (Angle brackets are deliberately avoided in this comment - a literal tag
+   inside a style block is valid CSS but trips naive markup parsers.) */
+  .mm-embed .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--teal); margin-bottom: 20px; }
+  .mm-embed .hero-eyebrow::before { content: ''; width: 24px; height: 2px; background: var(--teal); }
+  .mm-embed .why-early-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; margin-top: 48px; }
+  .mm-embed .why-early-copy p { font-size: 17px; line-height: 1.75; color: var(--text-light); margin-bottom: 20px; }
+  .mm-embed .why-early-copy strong { color: var(--text); font-weight: 600; }
+  .mm-embed .why-early-copy a { color: var(--teal); text-decoration: underline; text-decoration-color: rgba(59,165,168,0.3); text-underline-offset: 3px; transition: text-decoration-color 0.2s; }
+  .mm-embed .why-early-copy a:hover { text-decoration-color: var(--teal); }
+  .mm-embed .why-early-image { border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 4/3; background: var(--warm-dark); }
+  .mm-embed .sessions-header { text-align: center; margin-bottom: 64px; }
+  .mm-embed .sessions-header h2 { margin: 0 auto 16px; }
+  .mm-embed .skills-header h2 { margin: 0 auto 16px; }
+  .mm-embed .approach-header h2 { margin: 0 auto 16px; }
+@media (max-width: 768px) {
+  .mm-embed .why-early-grid { grid-template-columns: 1fr; gap: 40px; }
+  .mm-embed .right-grid { grid-template-columns: 1fr; gap: 40px; }
+}
+@media (max-width: 480px) {
+  .mm-embed .icon-grid { grid-template-columns: 1fr; }
+}
+</style>
+<div class="mm-embed">
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow">Early Intervention ABA Therapy</div>
+        <h1 class="hero-headline">The earlier you start, the stronger the foundation</h1>
+        <p class="hero-body">You're not too late. And the fact that you're already here tells us something important about you — you're the kind of parent who acts. Early intervention gives your child the best possible chance to build communication, connection, and independence during the years when their brain is growing fastest.</p>
+        <div class="hero-ctas">
+          <a href="/contact" class="btn-primary">Schedule Your Child's Assessment →</a>
+        </div>
+        <div class="trust-badges">
+          <div class="trust-badge-row">
+            <div class="trust-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;color:var(--teal)"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              BCBA-led
+            </div>
+            <div class="trust-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;color:var(--teal)"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              BHCOE accredited
+            </div>
+          </div>
+          <div class="trust-badge-row">
+            <div class="trust-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;color:var(--teal)"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              Insurance accepted
+            </div>
+            <div class="trust-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;color:var(--teal)"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              30+ years experience
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="https://cdn.prod.website-files.com/6627fd62e242d50407cfe12d/69ca33f12f2d73da7862fda9_in-home-aba-therapy-session-blocks-with-parent.webp" alt="Toddler playing with blocks alongside therapist while parent watches from nearby chair" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+    </div>
+  </div>
+</section>
+</div>

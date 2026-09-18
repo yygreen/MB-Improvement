@@ -1,0 +1,168 @@
+<div class="mm-embed mm-t1">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
+    .mm-embed { box-sizing: border-box; }
+    .mm-embed *, .mm-embed *::before, .mm-embed *::after { box-sizing: inherit; }
+
+    .mm-embed {
+      --navy:     #1a2744;
+      --teal:     #3ba5a8;
+      --teal-pale:#e8f6f6;
+      --warm:     #f9f6f1;
+      --cta:      #db5b4f;
+      --text:     #2c2c2c;
+      --soft:     #5a5a5a;
+      --rule:     #e6e2da;
+      --font-body: 'Manrope', system-ui, -apple-system, sans-serif;
+    }
+    .mm-t1 { font-family: var(--font-body, 'Manrope', sans-serif); color: var(--text, #2c2c2c); }
+
+    .mm-hero {
+      background: radial-gradient(ellipse at 80% 0%, rgba(59,165,168,0.15) 0%, transparent 55%),
+                  linear-gradient(180deg, var(--warm, #f9f6f1) 0%, #fff 100%);
+      padding: clamp(36px, 5vw, 64px) clamp(20px, 5vw, 48px) clamp(28px, 4vw, 48px);
+    }
+    .mm-hero__inner { max-width: 1200px; margin: 0 auto; }
+    .mm-hero__grid {
+      display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+      gap: clamp(32px, 5vw, 64px); align-items: center;
+    }
+    .mm-hero__text { min-width: 0; }
+    .mm-hero__media {
+      position: relative; border-radius: 20px; overflow: hidden;
+      aspect-ratio: 4/3; background: #f0ebe3;
+    }
+    .mm-hero__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .mm-hero__placeholder {
+      width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 20px; font-size: 15px; font-weight: 500; color: #8a8a8a;
+      background: linear-gradient(135deg, var(--teal-pale, #e8f6f6) 0%, #f0ebe3 100%);
+    }
+    @media (max-width: 900px) {
+      .mm-hero__grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+    .mm-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--teal, #3ba5a8); margin-bottom: 28px;
+    }
+    .mm-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--teal, #3ba5a8); }
+    .mm-t1 h1 {
+      font-family: var(--font-body); font-weight: 600;
+      font-size: clamp(32px, 5vw, 52px); line-height: 1.08; letter-spacing: -0.015em;
+      color: var(--navy, #1a2744); margin: 0 0 28px 0;
+    }
+    .mm-hero__intro { line-height: 1.65; color: var(--soft, #5a5a5a); margin: 0 0 36px 0; }
+    .mm-hero__intro p { font-size: 18px; margin: 0 0 1.1em 0; }
+    .mm-hero__intro p:last-child { margin-bottom: 0; }
+    .mm-hero__intro a, .mm-rt a {
+      color: var(--navy, #1a2744); text-decoration: underline;
+      text-decoration-color: var(--teal, #3ba5a8); text-underline-offset: 3px; text-decoration-thickness: 2px;
+    }
+    .mm-cta-row { display: flex; flex-wrap: wrap; gap: 14px; }
+    .mm-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 16px 28px; font-family: var(--font-body); font-size: 15px; font-weight: 600;
+      letter-spacing: 0.01em; border-radius: 999px; border: 2px solid transparent;
+      text-decoration: none; cursor: pointer;
+      transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+    .mm-btn--primary { background: var(--cta, #db5b4f); color: #fff; border-color: var(--cta, #db5b4f); }
+    .mm-btn--primary:hover { background: #b34a40; border-color: #b34a40; transform: translateY(-1px); }
+    .mm-btn--secondary { background: transparent; color: var(--navy, #1a2744); border-color: var(--cta, #db5b4f); }
+    .mm-btn--secondary:hover { background: var(--cta, #db5b4f); color: #fff; border-color: var(--cta, #db5b4f); }
+
+    .mm-section { padding: clamp(48px, 7vw, 88px) clamp(20px, 5vw, 48px); }
+    .mm-section--warm { background: var(--warm, #f9f6f1); }
+    .mm-section__inner { max-width: 1200px; margin: 0 auto; }
+    .mm-h2 {
+      font-family: var(--font-body); font-weight: 600;
+      font-size: clamp(26px, 3.6vw, 40px); line-height: 1.15; letter-spacing: -0.01em;
+      color: var(--navy, #1a2744); margin: 0 0 28px 0;
+    }
+    .mm-rt { line-height: 1.7; color: var(--text, #2c2c2c); }
+    .mm-rt p { font-size: 18px; margin: 0 0 1.1em 0; }
+    .mm-rt p:last-child { margin-bottom: 0; }
+    .mm-rt strong { color: var(--navy, #1a2744); font-weight: 600; }
+
+    .mm-rt table {
+      width: 100%; border-collapse: collapse; margin: 24px 0;
+      font-size: 15px; background: #fff; border-radius: 12px; overflow: hidden;
+      box-shadow: 0 1px 0 var(--rule, #e6e2da), 0 12px 40px rgba(26,39,68,0.04);
+    }
+    .mm-rt tbody tr { border-bottom: 1px solid var(--rule, #e6e2da); }
+    .mm-rt tbody tr:last-child { border-bottom: none; }
+    .mm-rt tbody tr:first-child { background: var(--navy, #1a2744); color: #fff; }
+    .mm-rt tbody tr:first-child strong { color: #fff; }
+    .mm-rt td { padding: 14px 18px; text-align: left; vertical-align: top; line-height: 1.55; }
+    .mm-rt tbody td:first-child { width: 30%; }
+    @media (max-width: 600px) { .mm-rt tbody td:first-child { width: 40%; } }
+
+    .mm-cta-close { background: #f9f6f1; text-align: center; }
+    .mm-cta-close .mm-h2 { margin-bottom: 16px; }
+    .mm-cta-close .mm-cta-row { justify-content: center; margin-top: 28px; }
+  </style>
+
+  <section class="mm-hero">
+    <div class="mm-hero__inner">
+      <div class="mm-hero__grid">
+        <div class="mm-hero__text">
+          <span class="mm-eyebrow">In-Home Therapy</span>
+          <h1>ABA Parent Training in Georgia</h1>
+          <div class="mm-hero__intro">
+            <p>A child with autism in Georgia can have a long list of professionals: a Babies Can't Wait coordinator in the early years, a school team, a BCBA, a care manager at a Medicaid CMO. Every one of them eventually hands the moment back to you. Bedtime is yours. The grocery store is yours. The morning routine is yours.</p>
+            <p>Mastermind Behavior provides in-home ABA therapy, with parent training built into the model, for families across Georgia.</p>
+          </div>
+          <div class="mm-cta-row">
+            <a href="/contact" class="mm-btn mm-btn--primary">Schedule a free consultation</a>
+            <a href="tel:732.813.7333" class="mm-btn mm-btn--secondary">Call 732.813.7333</a>
+          </div>
+        </div>
+        <div class="mm-hero__media">
+          <img src="https://cdn.prod.website-files.com/6627fd62e242d50407cfe12d/6a78eedf6cbd4007454bb684_parent-training-georgia-hero.webp" alt="Father reads to his son on the porch at dusk while a Behavior Technician sits nearby" width="1200" height="900" loading="eager" decoding="async">
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="mm-section mm-section--warm">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">Where parent training fits in Georgia's system</h2>
+      <div class="mm-rt">
+        <p><a href="/parent-training">Parent training</a> in ABA exists for exactly that reason. It is hands-on coaching, in your home, that teaches you the same evidence-based strategies your child's team uses, so progress made in sessions does not evaporate when the session ends.</p>
+        <p>Georgia surrounds a child with autism with systems: Babies Can't Wait before three, the school district and IEP after, a Care Management Organization if your child's ABA runs through Medicaid, and pathways like Katie Beckett for families whose income sits above standard Medicaid limits. Each has its own professionals, paperwork, and timeline.</p>
+        <p>You are the one constant in all of them, and that is leverage, not just load: the person present for every routine, every transition, and every hard moment is also the person best positioned to change them. Parent training turns that position into practical skill.</p>
+        <p>It is also, in most cases, part of your child's covered care rather than an extra. When parent training is written into your child's ABA treatment plan, it is typically delivered and billed as part of ABA therapy itself, which Ava's Law requires most state-regulated plans to cover and Georgia Medicaid covers for individuals under 21.</p>
+      </div>
+    </div>
+  </section>
+  <section class="mm-section">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">Coverage in Georgia</h2>
+      <div class="mm-rt">
+        <p>Parent training rarely appears as its own line in a policy. It travels inside ABA coverage, so the question that matters is whether ABA is covered, and in Georgia the answer is usually yes. The full detail lives on our <a href="/aba-therapy-in-georgia">Georgia ABA therapy page</a>.</p>
+        <table>
+          <tbody>
+            <tr> <td><strong>Coverage element</strong></td> <td><strong>Georgia detail</strong></td> </tr>
+            <tr> <td><strong>State mandate</strong></td> <td>Ava's Law (HB 429, effective July 1, 2015), amended by SB 118 (signed 2018, effective January 1, 2019) — codified at O.C.G.A. § 33-24-59.10</td> </tr>
+            <tr> <td><strong>Coverage</strong></td> <td>Diagnostic assessments and ABA therapy, plus speech, OT, PT, and counseling for autism spectrum disorder</td> </tr>
+            <tr> <td><strong>Plans covered</strong></td> <td>Individual grandfathered plans; fully insured large group plans; fully insured small group grandfathered plans</td> </tr>
+            <tr> <td><strong>Medicaid</strong></td> <td>GA Medicaid (DCH) covers ABA for individuals under 21 since January 1, 2018, via EPSDT. Up to 40 hours/week for under-6, 25 hours/week for ages 6–20. Requires DSM-5 ASD diagnosis from a licensed professional and prior authorization through the assigned Care Management Organization.</td> </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <section class="mm-section mm-section--warm">
+    <div class="mm-section__inner">
+      <h2 class="mm-h2">How the coaching works</h2>
+      <div class="mm-rt">
+        <p>The method is Behavioral Skills Training, which is the opposite of a parenting lecture. Your BCBA explains a strategy, models it inside the routine where you need it, then coaches while you practice it yourself. Feedback lands in the moment, at the kitchen table or the front door, not in a debrief a week later.</p>
+        <p>The strategies come from your child's own program: reinforcement that actually works for your child, antecedent strategies that head off hard moments, prompting, structured routines, visual supports, and simple ways to track whether things are improving.</p>
+        <p>Coaching is provided by your child's BCBA, the person who designs the program and knows the data, and it happens during your real routines rather than a staged version of them.</p>
+        <p>Parent training rarely stands alone. Georgia families pair it with <a href="/early-intervention-georgia">early intervention</a> in the youngest years, <a href="/behavior-support-georgia">behavior support</a> when specific behaviors press hardest, and <a href="/transition-planning-georgia">transition planning</a> as the teen years arrive.</p>
+        <p>Our Georgia team works from the Macon office at 4658 Presidential Pkwy, <a href="/aba-therapy-in-georgia">serving families across the state</a>.</p>
+      </div>
+    </div>
+  </section>
+</div>

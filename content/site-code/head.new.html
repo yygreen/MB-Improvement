@@ -1,0 +1,114 @@
+<script defer src="https://cdn.callrail.com/companies/477025173/f7528af0f4afd62596b2/12/swap.js"></script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5VGLJT3J');</script>
+<!-- End Google Tag Manager -->
+<script defer data-domain="mastermindbehavior.com" src="https://plausible.io/js/script.js"></script>
+<meta name="ahrefs-site-verification" content="9d0c3c13ce8a3d46eb05d99b7da911820c5dcccc992918da9918a56fc9e6076b">
+<meta name="google-site-verification" content="K3MtryBHIij4yvjkXzgNDiyJiXtccDhNqdyiqDxM9e4" />
+<style>
+html, body {
+    overflow-x: clip !important;
+  }
+</style>
+<script type="text/javascript">
+  ;(function(leadtrap){
+    if (/\/thank-you\/?$/i.test(location.pathname)) return;  // skip chat on Thank You
+    (window.leadtrap) || (window.leadtrap = {});
+    document.head.appendChild((function(s){ s.src = 'https://app.leadtrap.ai/platform/script?partner_id=' + leadtrap; s.async = true; return s; })(document.createElement('script')))
+  })('afb49d4f-d04d-4636-a1c0-46ab4f116a3d')
+</script>
+<!-- Noindex for paginated URLs -->
+<script>
+(function () {
+  if (window.location.search.includes("_page=")) {
+    var existing = document.querySelector('meta[name="robots"]');
+    if (existing) {
+      existing.setAttribute("content", "noindex, follow");
+    } else {
+      var meta = document.createElement("meta");
+      meta.name = "robots";
+      meta.content = "noindex, follow";
+      document.head.appendChild(meta);
+    }
+  }
+})();
+</script>
+<!-- Canonical enforcement (overrides Finsweet) -->
+<script>
+(function () {
+  var cleanUrl = window.location.origin + window.location.pathname;
+
+  function fixCanonical() {
+    var canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement("link");
+      canonical.rel = "canonical";
+      document.head.appendChild(canonical);
+    }
+    if (canonical.href !== cleanUrl) {
+      canonical.href = cleanUrl;
+    }
+  }
+
+  fixCanonical();
+
+  var observer = new MutationObserver(function () {
+    fixCanonical();
+  });
+
+  observer.observe(document.head, {
+    childList: true,
+    subtree: true,
+    attributes: true,
+    attributeFilter: ["href"]
+  });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    fixCanonical();
+    setTimeout(fixCanonical, 500);
+    setTimeout(fixCanonical, 1500);
+  });
+})();
+</script>
+
+  <style>
+    .navbar1_menu-button .menu-icon1_line-top,
+    .navbar1_menu-button .menu-icon1_line-middle,
+    .navbar1_menu-button .menu-icon1_line-bottom {
+      transition: transform 260ms cubic-bezier(0.4, 0, 0.2, 1),
+                  opacity 200ms ease;
+      transform-origin: center;
+    }
+    .navbar1_menu-button.w--open .menu-icon1_line-top    { transform: translateY(7px) rotate(45deg); }
+    .navbar1_menu-button.w--open .menu-icon1_line-middle { transform: translateY(1px) rotate(-45deg); }
+    .navbar1_menu-button.w--open .menu-icon1_line-bottom { transform: rotate(-45deg); opacity: 0; }
+  </style>
+<!-- Manrope 600. Webflow's self-hosted Manrope ships only the 500 and 700 weights, so
+     every font-weight:600 on the site was resolving UP to the 700 face: CSS font
+     matching searches upward first for any weight above 500. Measured on 22 of 36 main
+     pages, where weight 600 and weight 700 rendered identical advance widths. This
+     restores the real 600 face site-wide. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap">
+<style>
+  /* The reference hero (/in-home-aba-therapy) renders antialiased. Eleven pages,
+     including /bcba-team and every /bcbas/ profile, were on the browser default of
+     auto, which paints strokes thicker and compounded the 600 -> 700 substitution. */
+  body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+</style>
+<style>
+  /* Eyebrow colour, one value sitewide: #3ba5a8, the reference teal on
+     /in-home-aba-therapy and 18 of the 33 eyebrows already on the site.
+     Five classes were corrected at source via the style API: .mm-eyebrow,
+     .g90-eyebrow, .author-profile_eyebrow, .author-box_eyebrow and
+     .mm-eyebrow-line. The sixth, .mm-topics-eyebrow, is declared inside the
+     /blog topics embed rather than as a Webflow class, so it is overridden here.
+     body-prefixed for (0,1,1): the embed's own rule is (0,1,0) in a body style
+     block, which wins on document order against an equal-specificity head rule. */
+  body .mm-topics-eyebrow { color: #3ba5a8; }
+</style>

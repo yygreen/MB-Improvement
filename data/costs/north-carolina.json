@@ -1,0 +1,67 @@
+{
+  "state": "North Carolina",
+  "state_key": "north-carolina",
+  "medicaid_rates": {
+    "schedule_name": {
+      "value": "NC Medicaid Research Based Intensive Behavioral Health Treatment fee schedule. The published sheet we could reach carries a fee effective date of 1 January 2019.",
+      "source_url": "https://medicaid.ncdhhs.gov/providers/fee-schedules/other-behavioral-health-services-archive",
+      "source_type": "medicaid_manual",
+      "source_title": "NC Medicaid, Other Behavioral Health Services Fee Schedules Archive",
+      "verified_on": "2026-08-13"
+    },
+    "unit": {
+      "value": "Every RB-BHT code is billed in 15 minute units, so four units make an hour.",
+      "minutes_per_unit": 15,
+      "source_url": "https://medicaid.ncdhhs.gov/providers/fee-schedules/other-behavioral-health-services-archive",
+      "source_type": "medicaid_manual",
+      "source_title": "NC Medicaid, Other Behavioral Health Services Fee Schedules Archive",
+      "verified_on": "2026-08-13"
+    },
+    "direct_treatment_technician": {
+      "value": "Code 97153, adaptive behavior treatment by protocol, is listed at $18.09 per 15 minute unit on the archived sheet, which is a non facility fee.",
+      "code": "97153",
+      "rate_per_unit": 18.09,
+      "minutes_per_unit": 15,
+      "source_url": "https://medicaid.ncdhhs.gov/providers/fee-schedules/other-behavioral-health-services-archive",
+      "source_type": "medicaid_manual",
+      "source_title": "NC Medicaid, Research Based Intensive Behavioral Health Treatment fee schedule",
+      "verified_on": "2026-08-13"
+    },
+    "supervision_analyst": {
+      "value": "Code 97155, treatment by the analyst with protocol modification and supervision, is listed at $28.00 per 15 minute unit on the archived sheet.",
+      "code": "97155",
+      "rate_per_unit": 28.0,
+      "minutes_per_unit": 15,
+      "source_url": "https://medicaid.ncdhhs.gov/providers/fee-schedules/other-behavioral-health-services-archive",
+      "source_type": "medicaid_manual",
+      "source_title": "NC Medicaid, Research Based Intensive Behavioral Health Treatment fee schedule",
+      "verified_on": "2026-08-13"
+    },
+    "parent_training": {
+      "value": "Code 97156, parent training with or without the child, is listed at $20.60 per 15 minute unit on the archived sheet.",
+      "code": "97156",
+      "rate_per_unit": 20.6,
+      "minutes_per_unit": 15,
+      "source_url": "https://medicaid.ncdhhs.gov/providers/fee-schedules/other-behavioral-health-services-archive",
+      "source_type": "medicaid_manual",
+      "source_title": "NC Medicaid, Research Based Intensive Behavioral Health Treatment fee schedule",
+      "verified_on": "2026-08-13"
+    },
+    "currency_caveat": {
+      "value": "FLAG, these figures are a base and not the live rate. NC Medicaid states that from 3 November 2022 its Other Behavioral Health Services fee schedules moved to the Fee Schedule and Covered Code site, so the archived sheet is no longer where the current number lives. Treat the figures above as the published base and check the current rate on the state portal before relying on it.",
+      "source_url": "https://medicaid.ncdhhs.gov/providers/fee-schedules/other-behavioral-health-services-archive",
+      "source_type": "medicaid_manual",
+      "source_title": "NC Medicaid, Other Behavioral Health Services Fee Schedules Archive",
+      "verified_on": "2026-08-13"
+    }
+  },
+  "commercial_rates": {
+    "published": {
+      "value": "FLAG, not sourced. Commercial insurers negotiate rates with each provider and do not publish them, so there is no primary source for what a North Carolina plan pays. Use the rate on your own provider quote or explanation of benefits rather than any figure quoted online, including ours.",
+      "source_url": "https://medicaid.ncdhhs.gov/providers/fee-schedules/other-behavioral-health-services-archive",
+      "source_type": "medicaid_manual",
+      "source_title": "NC Medicaid fee schedules, checked for commercial rates and containing none",
+      "verified_on": "2026-08-13"
+    }
+  }
+}

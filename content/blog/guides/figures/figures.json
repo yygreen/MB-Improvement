@@ -1,0 +1,22 @@
+{
+  "nj-who-pays-when": {
+    "url": "https://cdn.prod.website-files.com/6627fd62e242d50407cfe155/6a7b4062b56211560345d1cc_6a7b3fd5444dfcb6d1cedc6a_nj-funding-who-is-responsible-when.webp",
+    "alt": "Age axis from birth to 21 showing which system pays: New Jersey Early Intervention birth to three, school district from the third birthday, Chapter 115 commercial insurance and NJ FamilyCare to 21, DDD waivers from 21, with the referral to the school district due 120 days before the third birthday",
+    "width": 600
+  },
+  "nj-appeal-clock": {
+    "url": "https://cdn.prod.website-files.com/6627fd62e242d50407cfe155/6a7b4062b56211560345d1c9_6a7b3fd56c344c8aeb8ac923_nj-funding-appeal-clock.webp",
+    "alt": "Four appeal steps in New Jersey: denial, Stage 1 internal appeal within 180 days, Stage 2 internal appeal within 180 days, then IHCAP external review within four months, with expedited decisions in 48 hours and no cost to the family",
+    "width": 600
+  },
+  "nc-who-pays-when": {
+    "url": "https://cdn.prod.website-files.com/6627fd62e242d50407cfe155/6a7c89fb954d912788e40629_6a7c889e9e9624011425c787_nc-funding-who-pays-when.webp",
+    "alt": "Age axis for North Carolina showing which system pays: the Infant-Toddler Program birth to three, school district from the third birthday, the state autism mandate to age 18, and NC Medicaid RB-BHT which continues past 21",
+    "width": 600
+  },
+  "ga-who-pays-when": {
+    "url": "https://cdn.prod.website-files.com/6627fd62e242d50407cfe155/6a7c8cfc5b76d299c8cacc7b_6a7c8beca821f36d7ab16b85_ga-funding-who-pays-when.webp",
+    "width": 600,
+    "alt": "Age axis for Georgia showing which system pays: Babies Can't Wait birth to three, school district from the third birthday, Ava's Law and Georgia Medicaid both ending at 21, and the Katie Beckett eligibility route to age 18"
+  }
+}

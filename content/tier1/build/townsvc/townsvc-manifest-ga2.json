@@ -1,0 +1,166 @@
+{
+ "state": "georgia",
+ "window": "39-77",
+ "eligible": [
+  {
+   "id": "66ad3c68ed5e6fb71ac34d01",
+   "slug": "homerville"
+  },
+  {
+   "id": "66ad3c5ba2ac538098306c3b",
+   "slug": "jackson-3007d"
+  },
+  {
+   "id": "66ad3c56175e13707165bbc9",
+   "slug": "jefferson-52383"
+  },
+  {
+   "id": "66ad3c57e26979851e6b0d7d",
+   "slug": "jesup"
+  },
+  {
+   "id": "66ad3c53e56bee98960421d8",
+   "slug": "kingsland"
+  },
+  {
+   "id": "66ad3c59921c8c113c3c27ba",
+   "slug": "lafayette-3ea86"
+  },
+  {
+   "id": "66ad3c63e26979851e6b14f8",
+   "slug": "lakeland"
+  },
+  {
+   "id": "66ad3c5467e4c7ab704088ce",
+   "slug": "lithia-springs"
+  },
+  {
+   "id": "66ad3c63175e13707165c0dc",
+   "slug": "louisville"
+  },
+  {
+   "id": "66746956e50420ea8947dd20",
+   "slug": "macon"
+  },
+  {
+   "id": "66ad3c5e2c0248af519e87e9",
+   "slug": "manchester-691eb"
+  },
+  {
+   "id": "66ad3c5475ff33f70e7c1153",
+   "slug": "milledgeville"
+  },
+  {
+   "id": "66ad3c55f64fc2f8119e1f34",
+   "slug": "monroe-5ebab"
+  },
+  {
+   "id": "66ad3c5b18abfa837deff717",
+   "slug": "nashville"
+  },
+  {
+   "id": "66ad3c5430a48b91256bb43b",
+   "slug": "norcross"
+  },
+  {
+   "id": "66ad3c5ff1b824d2e5548497",
+   "slug": "pelham"
+  },
+  {
+   "id": "6674696ea34ecacbc4eb3d61",
+   "slug": "perry"
+  },
+  {
+   "id": "66ad3c53921c8c113c3c241b",
+   "slug": "perry-043a7"
+  },
+  {
+   "id": "6722006d8d7b2a6913ce9c48",
+   "slug": "pooler"
+  },
+  {
+   "id": "66ad3c54397285c936730077",
+   "slug": "powder-springs"
+  },
+  {
+   "id": "66ad3c5de26979851e6b121f",
+   "slug": "quitman"
+  },
+  {
+   "id": "66ad3c5412fe4164e16cf45f",
+   "slug": "richmond-hill"
+  },
+  {
+   "id": "66ad3c60ae0e8ff8a4860c8e",
+   "slug": "ringgold"
+  },
+  {
+   "id": "66ad3c55f5ebefd3fb95d7e5",
+   "slug": "riverdale-ed13c"
+  },
+  {
+   "id": "66ad3c5af08c1c4dd07b9644",
+   "slug": "sandersville"
+  },
+  {
+   "id": "6722009e0de78fc84580a12b",
+   "slug": "savannah"
+  },
+  {
+   "id": "66ad3c52b1e739f1dd07a607",
+   "slug": "snellville"
+  },
+  {
+   "id": "66ad3c534906d585b7b9f101",
+   "slug": "st-marys"
+  },
+  {
+   "id": "66ad3c52e56bee9896042194",
+   "slug": "suwanee"
+  },
+  {
+   "id": "66ad3c596a546a67c83f3d7a",
+   "slug": "swainsboro"
+  },
+  {
+   "id": "66ad3c575098f548b709e7d7",
+   "slug": "thomaston"
+  },
+  {
+   "id": "66ad3c5306ccedc50530bb85",
+   "slug": "thomasville"
+  },
+  {
+   "id": "66ad3c54455dcf16acfeeb89",
+   "slug": "tifton"
+  },
+  {
+   "id": "66ad3c586bdb8177169faefa",
+   "slug": "toccoa"
+  },
+  {
+   "id": "66ad3c56ae33e71b5e73377f",
+   "slug": "vidalia"
+  },
+  {
+   "id": "66ad3c53142cc8ce2601e6a5",
+   "slug": "villa-rica"
+  },
+  {
+   "id": "6674698ced02b5d37d1b7d0e",
+   "slug": "warner-robins"
+  },
+  {
+   "id": "66ad3c56be3ee5200f9fb597",
+   "slug": "waycross"
+  },
+  {
+   "id": "66ad3c53811d3428052c0f1d",
+   "slug": "winder"
+  }
+ ],
+ "updated": 38,
+ "skipped_current": 1,
+ "skipped_astate": 0,
+ "published": 39
+}

@@ -41,3 +41,21 @@ collection template (992 town pages). Visual reference:
 Extend tools/seo/link-audit.sh: sample several towns from EACH state
 (NC's 20 must not hide behind the NJ majority); assert the block renders,
 all four hrefs carry that town's correct state suffix, and return 200.
+
+## Placement re-confirmed (2026-08-09)
+
+The client revisited placement, weighing the slot directly after the "Meet
+Mastermind Behavior's ABA Therapy in {Town}" closer (better contextual fit,
+more visibility) against the original spec position. Decision, in the
+client's words: "keep it after the final CTA, before the footer." Reasoning
+accepted: the Meet section ends in the page's first intake CTA, and four
+navigation cards under that button would put exit ramps beside the primary
+conversion; the pre-footer slot catches non-converting readers at zero cost
+to the funnel, and the internal-link value to the 12 state pages is
+identical either way. Placement is final: last content section, after
+"Nurturing potential. Inspiring hope. Creating futures.", before the footer,
+uniformly across all towns via the collection template.
+
+Note: collection now holds 213 live towns (NJ 115 / GA 78 / NC 20) after the
+archived-item purge; the backfill gate phrase is updated to BACKFILL 213.
+The state-key field exists in the schema, 0 of 213 populated.

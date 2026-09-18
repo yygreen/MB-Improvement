@@ -1,0 +1,166 @@
+{
+ "state": "georgia",
+ "window": "0-38",
+ "eligible": [
+  {
+   "id": "66ad3c52be3ee5200f9fb205",
+   "slug": "acworth"
+  },
+  {
+   "id": "66ad3c5b596170f4778af97f",
+   "slug": "adel"
+  },
+  {
+   "id": "66ad3c60a29ce227f56e5ffd",
+   "slug": "alma"
+  },
+  {
+   "id": "66ad3c5406ccedc50530bc46",
+   "slug": "americus"
+  },
+  {
+   "id": "66ad3c55f64da5ce9e4c9af9",
+   "slug": "bainbridge"
+  },
+  {
+   "id": "66ad3c5b3cafb31b410d9a39",
+   "slug": "baxley"
+  },
+  {
+   "id": "66ad3c5f921c8c113c3c2ae5",
+   "slug": "blackshear"
+  },
+  {
+   "id": "66ad3c5b03a96fd398e1e167",
+   "slug": "blakely"
+  },
+  {
+   "id": "66ad3c55ed5e6fb71ac3425f",
+   "slug": "brunswick"
+  },
+  {
+   "id": "66ad3c53d699a08450ce8339",
+   "slug": "buford"
+  },
+  {
+   "id": "66ad3c57397285c93673033f",
+   "slug": "cairo"
+  },
+  {
+   "id": "66ad3c54455dcf16acfeeb63",
+   "slug": "calhoun"
+  },
+  {
+   "id": "66ad3c5bd699a08450ce87fc",
+   "slug": "camilla"
+  },
+  {
+   "id": "66ad3c5fb672c190d9108fe4",
+   "slug": "cleveland"
+  },
+  {
+   "id": "66ad3c55397285c93673029b",
+   "slug": "college-park"
+  },
+  {
+   "id": "66ad3c53921c8c113c3c245b",
+   "slug": "conyers"
+  },
+  {
+   "id": "66ad3c57e56bee98960423e2",
+   "slug": "cordele"
+  },
+  {
+   "id": "66ad3c5cee0035ecc53db21d",
+   "slug": "cornelia"
+  },
+  {
+   "id": "66ad3c556bdb8177169fadcb",
+   "slug": "covington"
+  },
+  {
+   "id": "66ad3c594420825511b17e6b",
+   "slug": "cumming"
+  },
+  {
+   "id": "66ad3c61f64da5ce9e4ca24c",
+   "slug": "cuthbert"
+  },
+  {
+   "id": "66ad3c59389f8bdae000fe40",
+   "slug": "dahlonega"
+  },
+  {
+   "id": "66ad3c55e56bee9896042356",
+   "slug": "dallas"
+  },
+  {
+   "id": "66ad3c5dfa1efcd2091fa818",
+   "slug": "dawson"
+  },
+  {
+   "id": "66ad3c5ea7ef74e33c93650c",
+   "slug": "dawsonville"
+  },
+  {
+   "id": "66ad3c6327a9893d4666c38f",
+   "slug": "donalsonville"
+  },
+  {
+   "id": "66ad3c56b4e1c70cac11ca54",
+   "slug": "douglas"
+  },
+  {
+   "id": "66ad3c54687a94f0f68197cb",
+   "slug": "dublin"
+  },
+  {
+   "id": "66ad3c5a3cafb31b410d99d4",
+   "slug": "eastman"
+  },
+  {
+   "id": "66ad3c5acc0e8fbc4d77b90a",
+   "slug": "eatonton"
+  },
+  {
+   "id": "66ad3c5418abfa837deff366",
+   "slug": "fairburn"
+  },
+  {
+   "id": "66ad3c53db7118cb27330335",
+   "slug": "fayetteville"
+  },
+  {
+   "id": "66ad3c59f08c1c4dd07b9472",
+   "slug": "fitzgerald"
+  },
+  {
+   "id": "66ad3c5da2ac538098306d92",
+   "slug": "folkston"
+  },
+  {
+   "id": "66ad3c52e61b522e36732e07",
+   "slug": "forest-park"
+  },
+  {
+   "id": "66ad3c5c1bb9f765b7bd475f",
+   "slug": "forsyth"
+  },
+  {
+   "id": "66ad3c5cfcc0eb28f2e15998",
+   "slug": "hartwell"
+  },
+  {
+   "id": "66ad3c62be3ee5200f9fc90a",
+   "slug": "hawkinsville"
+  },
+  {
+   "id": "66ad3c5db4e1c70cac11cdc9",
+   "slug": "hazlehurst"
+  }
+ ],
+ "updated": 39,
+ "skipped_current": 0,
+ "skipped_astate": 0,
+ "published": 39
+}

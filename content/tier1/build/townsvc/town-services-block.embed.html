@@ -1,0 +1,48 @@
+<div class="mm-svc-wrap" data-sk="{{wf {"path":"state-key","type":"PlainText"\} }}">
+  <style>
+    /* hidden unless state-key resolved to a real key: a missing key or an
+       unresolved token renders nothing rather than a dead link */
+    .mm-svc-wrap { display: none; }
+    .mm-svc-wrap[data-sk="new-jersey"], .mm-svc-wrap[data-sk="georgia"],
+    .mm-svc-wrap[data-sk="north-carolina"] { display: block; }
+    .mm-svc {
+      background: #f9f6f1; border-top: 1px solid #e6e2da;
+      padding: clamp(36px, 5vw, 56px) clamp(20px, 5vw, 48px);
+      font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+    }
+    .mm-svc__inner { max-width: 900px; margin: 0 auto; }
+    .mm-svc h2 {
+      font-family: inherit; font-weight: 600; font-size: clamp(22px, 3vw, 30px);
+      line-height: 1.15; letter-spacing: -0.01em; color: #1a2744; margin: 0 0 10px;
+    }
+    .mm-svc .mm-svc__lede {
+      font-size: 16px; line-height: 1.6; color: #5a5a5a;
+      margin: 0 0 22px; max-width: 62ch;
+    }
+    .mm-svc nav { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+    .mm-svc nav a {
+      display: flex; align-items: center; justify-content: space-between; gap: 10px;
+      background: #fff; border: 1px solid #e6e2da; border-radius: 12px;
+      padding: 16px 18px; text-decoration: none;
+      font-size: 15px; font-weight: 600; color: #1a2744;
+      transition: border-color .15s ease, transform .15s ease, box-shadow .15s ease;
+    }
+    .mm-svc nav a::after { content: '\2192'; color: #3ba5a8; font-weight: 700; }
+    .mm-svc nav a:hover {
+      border-color: #3ba5a8; transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(26,39,68,0.07);
+    }
+  </style>
+  <section class="mm-svc">
+    <div class="mm-svc__inner">
+      <h2>ABA services in {{wf {"path":"state","type":"PlainText"\} }}</h2>
+      <p class="mm-svc__lede">All four are delivered in your home by a BCBA-led team, anywhere we serve in {{wf {"path":"state","type":"PlainText"\} }}.</p>
+      <nav aria-label="ABA services">
+        <a href="/early-intervention-{{wf {"path":"state-key","type":"PlainText"\} }}">Early Intervention</a>
+        <a href="/parent-training-{{wf {"path":"state-key","type":"PlainText"\} }}">Parent Training</a>
+        <a href="/behavior-support-{{wf {"path":"state-key","type":"PlainText"\} }}">Behavior Support</a>
+        <a href="/transition-planning-{{wf {"path":"state-key","type":"PlainText"\} }}">Transition Planning</a>
+      </nav>
+    </div>
+  </section>
+</div>

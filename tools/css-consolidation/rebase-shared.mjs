@@ -154,6 +154,33 @@ const refCss = readFileSync(join(DIR, 'in-home-aba-therapy.merged.css'), 'utf8')
 const sharedPath = join(DIR, 'service-pages.shared.css');
 const sharedCss = readFileSync(sharedPath, 'utf8');
 
+// --- staleness guard -------------------------------------------------------
+//
+// The reference is a SNAPSHOT of in-home-aba-therapy, taken before the hero
+// convergence of 2026-08-04. That convergence lives only in Webflow and in the
+// mirror, and it is not expressible in EXCEPTIONS: it renames a selector
+// (`.hero h1.hero-eyebrow` -> `.hero .hero-eyebrow`), adds rules the reference
+// has no opinion on (`.hero .container { padding: 0 }`, a 900px breakpoint) and
+// deletes one (`@media 768px { .hero-headline { font-size: 36px } }`). EXCEPTIONS
+// can only override properties on a selector the walk already visits, so a run
+// against the stale snapshot would quietly put the hero back to 48px/1.15/800 -
+// precisely the drift the convergence removed, and precisely the "a fix that a
+// tool quietly undoes" failure this file's EXCEPTIONS map was written to prevent.
+//
+// So: refuse to run rather than corrupt the mirror. Re-snapshot the reference
+// from live first (the shared sheet's own mirror is refreshed by
+// tools/tier1/sync-shared-from-live.py), then delete this guard's premise by
+// confirming the snapshot carries the converged hero.
+const CONVERGED = 'font-size: clamp(32px, 5vw, 52px)';
+if (sharedCss.includes(CONVERGED) && !refCss.includes(CONVERGED)) {
+  console.error(
+    'refusing to run: in-home-aba-therapy.merged.css is a pre-convergence\n' +
+    'snapshot (fixed 48px hero) while service-pages.shared.css is converged\n' +
+    '(fluid clamp). Rebasing onto the stale reference would revert the hero.\n' +
+    'Re-snapshot the reference from the live page first.');
+  process.exit(2);
+}
+
 const ref = new Map();  // "context||selector" -> Map(prop -> value)
 for (const r of parseRules(refCss)) {
   for (const sel of r.selectors) {

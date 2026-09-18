@@ -1,0 +1,37 @@
+{
+  "state": "New Jersey",
+  "state_key": "new-jersey",
+  "medicaid_rates": {
+    "schedule_name": {
+      "value": "FLAG, not sourced. The Division of Medical Assistance and Health Services is the authority for NJ FamilyCare, and its official site publishes provider resources and service manuals but no adaptive behavior fee schedule. We could not reach a primary source listing a New Jersey dollar amount for the adaptive behavior codes, so we are not going to print one.",
+      "source_url": "https://nj.gov/humanservices/dmahs/",
+      "source_type": "medicaid_manual",
+      "source_title": "NJ Department of Human Services, Division of Medical Assistance and Health Services (NJ FamilyCare), official site checked for a published ABA fee schedule",
+      "verified_on": "2026-08-13"
+    },
+    "unit": {
+      "value": "The adaptive behavior codes are billed nationally in 15 minute units, so four units make an hour. The New Jersey dollar amount per unit is the part we could not source.",
+      "minutes_per_unit": 15,
+      "source_url": "https://nj.gov/humanservices/dmahs/",
+      "source_type": "medicaid_manual",
+      "source_title": "NJ Department of Human Services, Division of Medical Assistance and Health Services (NJ FamilyCare), official site checked for a published ABA fee schedule",
+      "verified_on": "2026-08-13"
+    },
+    "how_to_get_the_number": {
+      "value": "Ask your managed care plan for the current adaptive behavior fee schedule in writing, or ask your provider what the plan reimburses for code 97153. Both are entitled to tell you, and a written answer beats any figure quoted online.",
+      "source_url": "https://nj.gov/humanservices/dmahs/",
+      "source_type": "medicaid_manual",
+      "source_title": "NJ Department of Human Services, Division of Medical Assistance and Health Services (NJ FamilyCare), official site checked for a published ABA fee schedule",
+      "verified_on": "2026-08-13"
+    }
+  },
+  "commercial_rates": {
+    "published": {
+      "value": "FLAG, not sourced. Commercial insurers negotiate rates with each provider and do not publish them, so there is no primary source for what a New Jersey plan pays. Use the rate on your own provider quote or explanation of benefits rather than any figure quoted online, including ours.",
+      "source_url": "https://nj.gov/humanservices/dmahs/",
+      "source_type": "medicaid_manual",
+      "source_title": "NJ Department of Human Services, Division of Medical Assistance and Health Services (NJ FamilyCare), official site checked for a published ABA fee schedule",
+      "verified_on": "2026-08-13"
+    }
+  }
+}

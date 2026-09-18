@@ -1,0 +1,296 @@
+{
+  "state": "Georgia",
+  "state_key": "georgia",
+  "last_full_review": "2026-08-11",
+  "mandate": {
+    "statute_name": {
+      "value": "Ava's Law, the autism coverage mandate at O.C.G.A. 33-24-59.10, as expanded by SB 118 in the 2017-2018 session. SB 118's caption was \"To amend Code Section 33-24-59.10 of the Official Code of Georgia Annotated, relating to coverage for autism, so as to change the age limit for coverage for autism spectrum disorders for an individual covered under a policy or contract; to clarify treatment coverage; to change coverage limit\".",
+      "source_url": "https://www.legis.ga.gov/api/legislation/document/20172018/176814",
+      "source_type": "statute",
+      "source_title": "Georgia SB 118, 2017-2018 session, House Substitute, amending O.C.G.A. 33-24-59.10",
+      "verified_on": "2026-08-11"
+    },
+    "citation": {
+      "value": "O.C.G.A. 33-24-59.10, with the plan definition at O.C.G.A. 33-24-59.1 and the exemptions at O.C.G.A. 33-24-59.10(e).",
+      "source_url": "https://oci.georgia.gov/document/directive/directive-23-ex-2-annual-autism-spectrum-disorder-data-call-filing-requirement/download",
+      "source_type": "doi_bulletin",
+      "source_title": "Georgia OCI Directive 23-EX-2, Annual Autism Spectrum Disorder Data Call Filing Requirement, March 20, 2023",
+      "verified_on": "2026-08-11"
+    },
+    "effective_date": {
+      "value": "Two dates matter. The original mandate reaches plans \"issued or renewed in Georgia on or after July 1, 2015.\" The expansion to age 20 and $35,000 came through SB 118, signed May 8, 2018, which states \"This Act shall become effective January 1, 2019.\"",
+      "source_url": "https://www.legis.ga.gov/api/legislation/document/20172018/176814",
+      "source_type": "statute",
+      "source_title": "Georgia SB 118, 2017-2018 session, House Substitute, amending O.C.G.A. 33-24-59.10",
+      "verified_on": "2026-08-11"
+    },
+    "applies_to_plan_types": {
+      "value": "Any \"accident and sickness insurance benefits plan, policy or contract as defined by O.C.G.A. 33-24-59.1 (Health Plan) and not otherwise exempt per O.C.G.A. 33-24-59.10(e), that is issued or renewed in Georgia on or after July 1, 2015.\" The statute binds insurance contracts, so it does not reach self-funded employer plans; see the self_funded_exemption block.",
+      "source_url": "https://oci.georgia.gov/document/directive/directive-23-ex-2-annual-autism-spectrum-disorder-data-call-filing-requirement/download",
+      "source_type": "doi_bulletin",
+      "source_title": "Georgia OCI Directive 23-EX-2, Annual Autism Spectrum Disorder Data Call Filing Requirement, March 20, 2023",
+      "verified_on": "2026-08-11"
+    },
+    "age_limit": {
+      "value": "20 years of age or under. SB 118 struck \"six\" and inserted \"20\": coverage is required \"for an individual covered under a policy or contract who is 20 years of age or under.\"",
+      "source_url": "https://www.legis.ga.gov/api/legislation/document/20172018/176814",
+      "source_type": "statute",
+      "source_title": "Georgia SB 118, 2017-2018 session, House Substitute, amending O.C.G.A. 33-24-59.10",
+      "verified_on": "2026-08-11"
+    },
+    "annual_dollar_cap": {
+      "value": "$35,000 per year, and it is a ceiling the plan may choose to apply rather than a benefit amount. SB 118 struck $30,000.00 and inserted $35,000.00: \"The policy or contract may limit coverage for applied behavior analysis to $35,000.00 per year. An insurer shall not apply payments for coverage unrelated to autism spectrum disorders to any maximum benefit established under this paragraph.\" Unlike New Jersey, Georgia's cap is written as a limit on ABA specifically, so federal parity arguments are less clear cut here; check the plan documents and raise parity with the insurer if the cap is applied to a plan subject to MHPAEA.",
+      "source_url": "https://www.legis.ga.gov/api/legislation/document/20172018/176814",
+      "source_type": "statute",
+      "source_title": "Georgia SB 118, 2017-2018 session, House Substitute, amending O.C.G.A. 33-24-59.10",
+      "verified_on": "2026-08-11",
+      "cap_usd": 35000,
+      "cap_status": "applies_to_aba_only"
+    },
+    "visit_or_hour_limits": {
+      "value": "None permitted. \"The policy or contract shall not include any limits on the number of visits.\"",
+      "source_url": "https://www.legis.ga.gov/api/legislation/document/20172018/176814",
+      "source_type": "statute",
+      "source_title": "Georgia SB 118, 2017-2018 session, House Substitute, amending O.C.G.A. 33-24-59.10",
+      "verified_on": "2026-08-11"
+    },
+    "diagnosis_requirement": {
+      "value": "A licensed physician or licensed psychologist. The plan \"shall provide coverage for any assessments, evaluations, or tests by a licensed physician or licensed psychologist to diagnose whether an individual has an autism spectrum disorder.\"",
+      "source_url": "https://www.legis.ga.gov/api/legislation/document/20172018/176814",
+      "source_type": "statute",
+      "source_title": "Georgia SB 118, 2017-2018 session, House Substitute, amending O.C.G.A. 33-24-59.10",
+      "verified_on": "2026-08-11"
+    },
+    "prescription_or_referral_requirement": {
+      "value": "No prescription requirement, but a medical necessity determination and an annual redetermination. Coverage for ABA is required \"when it is determined by the covering entity that the treatment is medically necessary health care according to established criteria. A licensed physician or licensed psychologist may be required to demonstrate ongoing medical necessity for coverage provided under this Code section at least annually.\" Note that SB 118 moved the medical necessity determination from the physician or psychologist to the covering entity.",
+      "source_url": "https://www.legis.ga.gov/api/legislation/document/20172018/176814",
+      "source_type": "statute",
+      "source_title": "Georgia SB 118, 2017-2018 session, House Substitute, amending O.C.G.A. 33-24-59.10",
+      "verified_on": "2026-08-11"
+    }
+  },
+  "self_funded_exemption": {
+    "applies": {
+      "value": "Yes. Georgia's mandate is written as a requirement on \"accident and sickness contracts, policies, or benefit plans,\" that is, on insurance. An employer that self-funds buys no such contract, so Ava's Law does not bind it, and neither does Georgia's independent review process, which applies to managed care entities regulated by the state.",
+      "source_url": "https://www.legis.ga.gov/api/legislation/document/20172018/176814",
+      "source_type": "statute",
+      "source_title": "Georgia SB 118, 2017-2018 session, House Substitute, amending O.C.G.A. 33-24-59.10",
+      "verified_on": "2026-08-11"
+    },
+    "how_a_family_can_tell": {
+      "value": "Ask the employer's plan administrator whether the plan is self-funded or fully insured, and read the Summary Plan Description, which the administrator must provide free of charge and which \"provides a detailed overview of the plan: how it works, what benefits it provides, how to file a claim for benefits, and any limitations that may apply.\" The denial letter is the other tell: \"the external review process used by the plan depends on whether the plan is self-funded or provides benefits through an insurance company. The claim denial notice from your plan will describe the external process and your rights.\" A denial pointing to a federal external review route rather than Georgia's independent review indicates a self-funded plan.",
+      "source_url": "https://www.dol.gov/agencies/ebsa/about-ebsa/our-activities/resource-center/publications/filing-a-claim-for-your-health-benefits",
+      "source_type": "federal",
+      "source_title": "U.S. Department of Labor, Employee Benefits Security Administration, Filing a Claim for Your Health Benefits",
+      "verified_on": "2026-08-11"
+    },
+    "federal_basis": {
+      "value": "ERISA section 514(b)(2), 29 U.S.C. 1144(b)(2). The saving clause preserves state insurance regulation, and the deemer clause then removes self-funded plans from its reach: an employee benefit plan shall not \"be deemed to be an insurance company or other insurer ... or to be engaged in the business of insurance ... for purposes of any law of a State purporting to regulate insurance companies, insurance contracts, banks, trust companies, or investment companies.\"",
+      "source_url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title29-section1144&num=0&edition=prelim",
+      "source_type": "federal",
+      "source_title": "29 U.S.C. 1144(b)(2), ERISA saving clause and deemer clause",
+      "verified_on": "2026-08-11"
+    }
+  },
+  "medicaid": {
+    "program_name": {
+      "value": "Georgia Medicaid, delivered for most children through Georgia Families care management organizations. The autism benefit is called Autism Spectrum Disorder services, or Adaptive Behavior Services (ABS) in the policy manual.",
+      "source_url": "https://medicaid.georgia.gov/programs/all-programs/autism-spectrum-disorder",
+      "source_type": "agency_page",
+      "source_title": "Georgia Department of Community Health, Georgia Medicaid, Autism Spectrum Disorder",
+      "verified_on": "2026-08-11"
+    },
+    "managed_care_organizations": {
+      "value": "Georgia Medicaid states that assessment and treatment are covered \"according to severity and is based on medical necessity\" for members under 21, with prior authorization; the Georgia Medicaid ASD page does not itself name which Georgia Families care management organizations administer the benefit, so confirm the plan on the member's card before assuming a route.",
+      "source_url": "https://medicaid.georgia.gov/programs/all-programs/autism-spectrum-disorder",
+      "source_type": "agency_page",
+      "source_title": "Georgia Department of Community Health, Georgia Medicaid, Autism Spectrum Disorder",
+      "verified_on": "2026-08-11"
+    },
+    "aba_coverage_basis": {
+      "value": "Adaptive Behavior Services under the Autism Spectrum Disorder policy, based on medical necessity and an assessment. \"The QHCP must use valid and reliable evaluation tools that conform to industry standards (such as the ADOS) to conduct the assessment. Based on the assessment, the QHCP validates the individual's diagnosis of ASD and identifies the severity level of the ASD diagnosis according to the DSM-5 manual.\" Reimbursement requires an ICD-10-CM code in the F84 series.",
+      "source_url": "https://medicaid.georgia.gov/document/publication/asd-policy-manual/download",
+      "source_type": "medicaid_manual",
+      "source_title": "Georgia Medicaid, Part II Policies and Procedures for Autism Spectrum Disorder Services",
+      "verified_on": "2026-08-11"
+    },
+    "age_limit": {
+      "value": "Under 21. \"Autism Spectrum Services are for individuals under the age of 21.\" The manual adds that \"therapy can range from 10-30 hours per week, or more if medically necessary, and requires active parent/caregiver participation and involvement.\"",
+      "source_url": "https://medicaid.georgia.gov/document/publication/asd-policy-manual/download",
+      "source_type": "medicaid_manual",
+      "source_title": "Georgia Medicaid, Part II Policies and Procedures for Autism Spectrum Disorder Services",
+      "verified_on": "2026-08-11"
+    },
+    "prior_authorization": {
+      "value": "Required, without exception, and time limited. \"Prior Authorization (PA) is required for all Medicaid-covered ABS. Services without a PA will not be covered. ABS is authorized in six (6) month increments. All ABS PAs must be requested by the enrolled QHCP.\" A separate PA is needed for the assessment and for treatment.",
+      "source_url": "https://medicaid.georgia.gov/document/publication/asd-policy-manual/download",
+      "source_type": "medicaid_manual",
+      "source_title": "Georgia Medicaid, Part II Policies and Procedures for Autism Spectrum Disorder Services",
+      "verified_on": "2026-08-11"
+    },
+    "provider_enrollment_requirement": {
+      "value": "\"A documented diagnosis of ASD must be established by a licensed physician or psychologist, or other licensed professional as designated by the Medical Composite Board in order to perform a behavioral assessment and develop a resulting Plan of Care.\" Board Certified Behavior Analysts are independent practitioners who supervise Board Certified Assistant Behavior Analysts and Registered Behavior Technicians; a Registered Behavior Technician is \"a paraprofessional who implements the service.\" BCaBAs and RBTs \"are not enrolled directly\" and bill through their supervising provider, and a supervisor may \"supervise up to six (6) certified BCaBAs and RBTs at any point in time.\"",
+      "source_url": "https://medicaid.georgia.gov/document/publication/asd-policy-manual/download",
+      "source_type": "medicaid_manual",
+      "source_title": "Georgia Medicaid, Part II Policies and Procedures for Autism Spectrum Disorder Services",
+      "verified_on": "2026-08-11"
+    }
+  },
+  "waivers": [
+    {
+      "name": {
+        "value": "TEFRA / Katie Beckett Deeming Waiver",
+        "source_url": "https://medicaid.georgia.gov/programs/all-programs/tefrakatie-beckett",
+        "source_type": "waiver_document",
+        "source_title": "Georgia Medicaid, TEFRA/Katie Beckett",
+        "verified_on": "2026-08-11"
+      },
+      "population": {
+        "value": "Children 18 or under who qualify as disabled under section 1614 of the Social Security Act and who live at home rather than in an institution. \"Qualification is not based on medical diagnosis; instead it is based on the institutional level of care the child requires.\"",
+        "source_url": "https://dch.georgia.gov/document/publication/katie-beckett-program-fact-sheet/download",
+        "source_type": "waiver_document",
+        "source_title": "Georgia DCH, TEFRA/Katie Beckett Eligibility Waiver Overview",
+        "verified_on": "2026-08-11"
+      },
+      "covers_aba": {
+        "value": "Indirectly, and that is the point of it. Katie Beckett is an eligibility route, not a service package: it \"permits the state to ignore family income for certain children who are disabled,\" so a child who would be blocked from Medicaid by parental income can qualify and then use the regular Georgia Medicaid Autism Spectrum Disorder benefit, which is available to members under 21.",
+        "source_url": "https://dch.georgia.gov/document/publication/katie-beckett-program-fact-sheet/download",
+        "source_type": "waiver_document",
+        "source_title": "Georgia DCH, TEFRA/Katie Beckett Eligibility Waiver Overview",
+        "verified_on": "2026-08-11"
+      },
+      "waitlist_status": {
+        "value": "The Georgia DCH fact sheet describes an eligibility determination rather than a capped slot, unlike the state's home and community based services waivers. Confirm current processing times with the Katie Beckett team before relying on this.",
+        "source_url": "https://dch.georgia.gov/document/publication/katie-beckett-program-fact-sheet/download",
+        "source_type": "waiver_document",
+        "source_title": "Georgia DCH, TEFRA/Katie Beckett Eligibility Waiver Overview",
+        "verified_on": "2026-08-11"
+      },
+      "how_to_apply": {
+        "value": "\"Medicaid applications may be obtained by contacting the Centralized Katie Beckett Medicaid Team at 678-248-7449 or from the county Division of Family and Children Services (DFCS) office in the child's county of residence.\"",
+        "source_url": "https://dch.georgia.gov/document/publication/katie-beckett-program-fact-sheet/download",
+        "source_type": "waiver_document",
+        "source_title": "Georgia DCH, TEFRA/Katie Beckett Eligibility Waiver Overview",
+        "verified_on": "2026-08-11"
+      }
+    }
+  ],
+  "early_intervention": {
+    "program_name": {
+      "value": "Babies Can't Wait (BCW), Georgia's IDEA Part C system.",
+      "source_url": "https://dph.georgia.gov/babies-cant-wait",
+      "source_type": "agency_page",
+      "source_title": "Georgia Department of Public Health, Babies Can't Wait",
+      "verified_on": "2026-08-11"
+    },
+    "age_range": {
+      "value": "\"From birth to three years of age.\"",
+      "source_url": "https://dph.georgia.gov/babies-cant-wait",
+      "source_type": "agency_page",
+      "source_title": "Georgia Department of Public Health, Babies Can't Wait",
+      "verified_on": "2026-08-11"
+    },
+    "lead_agency": {
+      "value": "The Georgia Department of Public Health, which administers and publishes the Babies Can't Wait program.",
+      "source_url": "https://dph.georgia.gov/babies-cant-wait",
+      "source_type": "agency_page",
+      "source_title": "Georgia Department of Public Health, Babies Can't Wait",
+      "verified_on": "2026-08-11"
+    },
+    "family_cost_share": {
+      "value": "Georgia calls it Family Cost Participation, and insurance largely displaces it. FCP \"only applies to IFSP services which are not covered by private insurance or public insurance (Medicaid or PeachCare),\" and \"families that have IFSP services covered by private or public insurance will not have a Family Cost Participation for those services.\" Part C funds cover the gap: BCW \"will be responsible for co-payments and deductibles for covered IFSP services,\" and providers \"cannot bill families for co-pays, deductibles, travel or any other fees if insurance has paid any portion of a claim or the cost was applied to the deductible.\" Where Medicaid pays any portion, \"the provider must consider that as payment in full.\"",
+      "source_url": "https://dph.georgia.gov/document/document/bcwfcpparentguidepdf/download",
+      "source_type": "agency_page",
+      "source_title": "Georgia DPH, Babies Can't Wait Family Cost Participation Parent Guide",
+      "verified_on": "2026-08-11"
+    },
+    "referral_route": {
+      "value": "Eligibility runs on either \"a diagnosed physical or mental condition that is known to result in a developmental delay, such as blindness, Down syndrome, autism, spina bifida\" or \"a diagnosed developmental delay confirmed by a qualified team of professionals.\" To refer, \"complete the Child Health Referral Form\" and \"submit the form to the child's local Child Health Referral Contact in the county where the family resides or call and they can take the referral by phone.\" Parent to Parent of Georgia can help on 800.229.2038.",
+      "source_url": "https://dph.georgia.gov/babies-cant-wait",
+      "source_type": "agency_page",
+      "source_title": "Georgia Department of Public Health, Babies Can't Wait",
+      "verified_on": "2026-08-11"
+    }
+  },
+  "school_services": {
+    "idea_part_c_to_b_transition": {
+      "value": "The school district's obligation starts at the third birthday. Rule 160-4-7-.02(1)(c): \"The obligation to make FAPE available to each eligible child residing in the LEA begins no later at the child's third birthday; and an IEP or IFSP is in effect for the child by that date.\" Once a parent consents to an evaluation, it \"must be completed within 60 calendar days of receiving parental consent for evaluation,\" excluding holiday periods where children are out for five consecutive school days. Child find covers \"preschool children, ages 3-5, not yet eligible for state-funded kindergarten.\"",
+      "source_url": "https://rules.sos.ga.gov/gac/160-4-7",
+      "source_type": "regulation",
+      "source_title": "Georgia State Board of Education Rules, Chapter 160-4-7, Special Education Services and Supports",
+      "verified_on": "2026-08-11"
+    },
+    "aba_in_iep": {
+      "value": "Georgia's special education rules do not name applied behavior analysis: the phrase does not appear in Chapter 160-4-7. The rules provide for behavioral evaluation and assessment, but whether behavioral services appear in a given IEP is an IEP team decision about that child rather than something the rules grant or withhold by diagnosis.",
+      "source_url": "https://rules.sos.ga.gov/gac/160-4-7",
+      "source_type": "regulation",
+      "source_title": "Georgia State Board of Education Rules, Chapter 160-4-7, Special Education Services and Supports",
+      "verified_on": "2026-08-11"
+    },
+    "note": {
+      "value": "An IEP and an insurance authorization answer different questions. Chapter 160-4-7 exists to deliver a free appropriate public education under IDEA, so it turns on educational need; Ava's Law and Georgia Medicaid turn on medical necessity. A district declining to write a service into an IEP is not a finding that the service is unnecessary, and an insurer authorizing hours does not obligate the school.",
+      "source_url": "https://rules.sos.ga.gov/gac/160-4-7",
+      "source_type": "regulation",
+      "source_title": "Georgia State Board of Education Rules, Chapter 160-4-7, Special Education Services and Supports",
+      "verified_on": "2026-08-11"
+    },
+    "age_out": {
+      "value": "The obligation runs to the end of age 21. Rule 160-4-7-.02(1)(a): \"A free appropriate public education (FAPE) must be available to all children residing in the State between the ages of 3 and 21, inclusive, including children with disabilities who have been suspended or expelled from school, as provided for in Discipline.\" Rule 160-4-7-.02(1)(b) sets what happens at the far edge: \"If a student is receiving services upon reaching age 22, the LEA shall have a written procedure that identifies a process for completing services to which the adult student has been previously entitled,\" and if a student remains after the 22nd birthday the LEA must notify them that \"although services will continue, no individual entitlement to FAPE or other rights under IDEA are afforded the adult student.\" So the entitlement ends on the 22nd birthday at the latest, which is the year after Ava's Law and Georgia Medicaid both expire.",
+      "source_url": "https://rules.sos.ga.gov/gac/160-4-7",
+      "source_type": "regulation",
+      "source_title": "Georgia State Board of Education Rules, Chapter 160-4-7, Special Education Services and Supports",
+      "verified_on": "2026-08-13"
+    },
+    "diploma_exit": {
+      "value": "Age is not the only way school services end, and this is the one families do not see coming. Under 34 CFR 300.102(a)(3)(i) the FAPE obligation does not apply to \"Children with disabilities who have graduated from high school with a regular high school diploma.\" For many students that is well before 22. What counts is narrow: 300.102(a)(3)(iv) defines a regular high school diploma as \"the standard high school diploma awarded to the preponderance of students in the State that is fully aligned with State standards, or a higher diploma,\" and expressly excludes a general equivalency diploma, a certificate of completion, a certificate of attendance or a similar lesser credential. A student who leaves school without a regular diploma keeps the entitlement.",
+      "source_url": "https://sites.ed.gov/idea/regs/b/b/300.102",
+      "source_type": "federal",
+      "source_title": "34 CFR 300.102, Limitation on exception to FAPE for certain ages",
+      "verified_on": "2026-08-13"
+    }
+  },
+  "appeals": {
+    "internal_appeal_deadline": {
+      "value": "The managed care entity's internal grievance process must be exhausted before independent review. Rule 120-2-111-.04(1)(a) conditions eligibility on the fact that \"the eligible enrollee has received notice of an adverse outcome pursuant to a grievance procedure.\" The deadline for starting that internal grievance is set by the plan, so use the date printed on the denial letter.",
+      "source_url": "https://rules.sos.ga.gov/gac/120-2-111",
+      "source_type": "regulation",
+      "source_title": "Rules of the Georgia Insurance Commissioner, Chapter 120-2-111, Patient's Right to Independent Review",
+      "verified_on": "2026-08-11"
+    },
+    "external_review_body": {
+      "value": "An independent review organization certified under the Patient's Right to Independent Review Act, administered by the Georgia Office of the Commissioner of Insurance and Safety Fire. \"House Bill 1013, signed by Governor Brian P. Kemp on April 4, 2022, transfers the duties under the Patient's Rights to Independent Review Act from DCH to the Georgia Office of Commissioner of Insurance and Safety Fire. Effective July 1, 2022, send independent review requests to\" OCI.",
+      "source_url": "https://dch.georgia.gov/managed-care-patients-rights",
+      "source_type": "agency_page",
+      "source_title": "Georgia Department of Community Health, Managed Care Patient's Rights",
+      "verified_on": "2026-08-11"
+    },
+    "external_review_deadline": {
+      "value": "FLAG, unresolved from primary sources. Chapter 120-2-111 as published on the Secretary of State's rules site requires that the internal grievance be exhausted and directs requests to the Department at adminproc@oci.ga.gov, but the chapter text checked here states no filing deadline. Families should treat the deadline printed on their final denial letter as controlling and file immediately, and confirm with OCI before assuming any window. Do not publish a specific number of days for Georgia until this is sourced.",
+      "source_url": "https://rules.sos.ga.gov/gac/120-2-111",
+      "source_type": "regulation",
+      "source_title": "Rules of the Georgia Insurance Commissioner, Chapter 120-2-111, Patient's Right to Independent Review",
+      "verified_on": "2026-08-11"
+    },
+    "expedited_route": {
+      "value": "Yes. Rule 120-2-111-.06(8): \"a decision by the expert reviewer shall be rendered within 72 hours (three calendar days) after the expert reviewer's receipt of all available requested documentation.\" Standard reviews run longer: under Rule 120-2-111-.06(5) the reviewer \"shall make a determination within 15 working days after expiration of all additional information time limits.\"",
+      "source_url": "https://rules.sos.ga.gov/gac/120-2-111",
+      "source_type": "regulation",
+      "source_title": "Rules of the Georgia Insurance Commissioner, Chapter 120-2-111, Patient's Right to Independent Review",
+      "verified_on": "2026-08-11"
+    },
+    "how_to_file": {
+      "value": "Send the independent review request to the Georgia Office of the Commissioner of Insurance and Safety Fire, Attn: Administrative Procedure Department, 2 Martin Luther King Jr. Drive, Atlanta, with the rules listing adminproc@oci.ga.gov as the contact. There is no charge to the family: Rule 120-2-111-.04(3) provides that \"a managed care entity shall be required to pay the full cost of applying for and obtaining the independent review.\"",
+      "source_url": "https://rules.sos.ga.gov/gac/120-2-111",
+      "source_type": "regulation",
+      "source_title": "Rules of the Georgia Insurance Commissioner, Chapter 120-2-111, Patient's Right to Independent Review",
+      "verified_on": "2026-08-11"
+    },
+    "regulator_complaint_route": {
+      "value": "Separately from the appeal, the OCI Consumer Services Division takes complaints: \"if you have a complaint about your insurance provider or agent, or how a claim is being handled, the Department of Insurance's Consumer Services Division may be able to help you.\" Phone 404.656.2070 or toll free 800.656.2298. This route does not reach self-funded plans.",
+      "source_url": "https://oci.georgia.gov/insurance-resources/health",
+      "source_type": "agency_page",
+      "source_title": "Georgia Office of the Commissioner of Insurance and Safety Fire, Health insurance resources",
+      "verified_on": "2026-08-11"
+    }
+  }
+}
